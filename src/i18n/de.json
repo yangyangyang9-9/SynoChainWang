@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "aiTools": "AI Gesundheitswerkzeuge",
+    "diseaseLibrary": "Krankheitsbibliothek",
+    "symptoms": "Symptomprüfer",
+    "causes": "Ursachen-Explorer",
+    "naturalHealth": "Naturgesundheit",
+    "nutrition": "Ernährung",
+    "healthTests": "Gesundheitstests",
+    "blog": "Blog / Forschung",
+    "community": "Community",
+    "crowdfunding": "Gründer werden",
+    "support": "Früher Unterstützer"
+  },
+  "hero": {
+    "title": "Gemeinsam den weltweit ersten AI-Gesundheitsbegleiter aufbauen",
+    "subtitle": "Treten Sie unserem gemeinschaftsfinanzierten AI-Gesundheitsprojekt bei. Ihr Beitrag hilft uns, AI-Modelle zu erstellen, medizinische Wissenssysteme zu trainieren, Apps zu entwickeln und personalisierte Gesundheitsberatung für alle zugänglich zu machen.",
+    "cta": "Früher Unterstützer werden",
+    "raised": "eingesammelt",
+    "supporters": "Unterstützer",
+    "daysRemaining": "Tage verbleibend"
+  },
+  "home": {
+    "aiAssistantTitle": "AI-Gesundheitsassistent",
+    "aiAssistantDesc": "Erhalten Sie personalisierte Gesundheitsberatung unterstützt durch AI, trainiert auf medizinischem Wissen und ständig aktualisiert.",
+    "tryAssistant": "AI-Assistent ausprobieren",
+    "founderTitle": "Gründer-Mitgliedschaft",
+    "founderSubtitle": "Werden Sie Teil der Gründergemeinschaft. Unterstützen Sie das Projekt und schalten Sie exklusive Vorteile frei.",
+    "fundUsageTitle": "Wohin Ihre Unterstützung geht",
+    "fundUsageSubtitle": "Volle Transparenz darüber, wie Ihre Beiträge zum Aufbau der Plattform verwendet werden.",
+    "toolsTitle": "Gesundheitswerkzeuge entdecken",
+    "toolsSubtitle": "Umfassende AI-gestützte Gesundheitswerkzeuge und Wissensbibliothek griffbereit.",
+    "faqTitle": "Häufig gestellte Fragen",
+    "architectureTitle": "Plattformarchitektur",
+    "architectureSubtitle": "Ein modulares, skalierbares System für globales Gesundheitswissen"
+  },
+  "founder": {
+    "aiPioneer": "AI-Pionier",
+    "lifetimeFounder": "Lebenslanger Gründer",
+    "perYear": "/Jahr",
+    "oneTime": "einmalig",
+    "choosePlan": "Diesen Plan wählen",
+    "mostPopular": "Beliebteste",
+    "bestValue": "Bestes Angebot"
+  },
+  "fund": {
+    "server": "Server",
+    "serverDesc": "AI-Computing-Infrastruktur",
+    "aiTraining": "AI-Training",
+    "aiTrainingDesc": "Medizinisches AI-Wissenssystem",
+    "appDev": "App-Entwicklung",
+    "appDevDesc": "iOS / Android Apps",
+    "operations": "Betrieb",
+    "operationsDesc": "Sicherheit & Wartung"
+  },
+  "tools": {
+    "aiTools": {
+      "title": "AI Gesundheitswerkzeuge",
+      "desc": "Interaktive AI-gestützte Gesundheitsbewertung und -beratung"
+    },
+    "diseaseLibrary": {
+      "title": "Krankheitsbibliothek",
+      "desc": "Umfassende Datenbank medizinischer Zustände"
+    },
+    "symptoms": {
+      "title": "Symptomprüfer",
+      "desc": "Gesundheitssymptome suchen und analysieren"
+    },
+    "causes": {
+      "title": "Ursachen-Explorer",
+      "desc": "Die Grundursachen von Erkrankungen verstehen"
+    },
+    "naturalHealth": {
+      "title": "Naturgesundheit",
+      "desc": "Natürliche Heilmittel und Lebensstilansätze"
+    },
+    "nutrition": {
+      "title": "Ernährung",
+      "desc": "Ernährungswissen und Ernährungsberatung"
+    },
+    "healthTests": {
+      "title": "Gesundheitstests",
+      "desc": "Interaktive Selbsteinschätzungswerkzeuge"
+    },
+    "blog": {
+      "title": "Blog / Forschung",
+      "desc": "Neueste Forschung und Gesundheitsartikel"
+    },
+    "community": {
+      "title": "Community",
+      "desc": "Mit gesundheitsbewussten Menschen verbinden"
+    }
+  },
+  "ai": {
+    "title": "AI-Gesundheitsassistent",
+    "subtitle": "Beschreiben Sie Ihre Symptome und erhalten Sie AI-gestützte Gesundheitsberatung",
+    "placeholder": "Beschreiben Sie Ihre Symptome... z.B. Ich habe Kopfschmerzen und fühle mich müde",
+    "send": "Senden",
+    "thinking": "AI denkt nach...",
+    "disclaimer": "Dieser AI-Assistent bietet nur allgemeine Gesundheitsinformationen und ersetzt keinen professionellen medizinischen Rat. Wenden Sie sich bei gesundheitlichen Anliegen immer an einen qualifizierten Arzt.",
+    "suggestedQuestions": "Vorgeschlagene Fragen",
+    "newChat": "Neuer Chat"
+  },
+  "footer": {
+    "tagline": "Gemeinsam den weltweit ersten AI-Gesundheitsbegleiter aufbauen.",
+    "product": "Produkt",
+    "company": "Unternehmen",
+    "resources": "Ressourcen",
+    "legal": "Rechtliches",
+    "rights": "Alle Rechte vorbehalten.",
+    "privacy": "Datenschutzrichtlinie",
+    "terms": "Nutzungsbedingungen",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "careers": "Karriere",
+    "docs": "Dokumentation",
+    "api": "API",
+    "blog": "Blog"
+  },
+  "faq": {
+    "q1": "Was ist SynoChain AI?",
+    "a1": "SynoChain AI ist eine gemeinschaftsfinanzierte AI-Gesundheitsbegleiter-Plattform, die AI-Technologie mit umfassendem medizinischem Wissen kombiniert, um personalisierte Gesundheitsberatung zu bieten.",
+    "q2": "Wie funktioniert der AI-Gesundheitsassistent?",
+    "a2": "Unser AI-Assistent verwendet fortschrittliche Sprachmodelle, die auf medizinischem Wissen trainiert sind, um Ihre Symptome zu analysieren und mögliche Faktoren, verwandte Erkrankungen und nächste Schritte vorzuschlagen.",
+    "q3": "Sind meine Gesundheitsdaten privat?",
+    "a3": "Ja, wir nehmen Datenschutz ernst. Alle Gesundheitsdaten werden verschlüsselt und sicher gespeichert. Sie kontrollieren Ihre Daten und können sie jederzeit löschen.",
+    "q4": "Was ist der Unterschied zwischen AI-Pionier und Lebenslangem Gründer?",
+    "a4": "AI-Pionier ($29) bietet 1 Jahr Zugang zum AI-Gesundheitsassistenten, während Lebenslanger Gründer ($199) permanenten Zugriff sowie exklusive Vorteile wie NFT-Zertifikate und Stimmrechte bietet.",
+    "q5": "Wann wird die mobile App verfügbar sein?",
+    "a5": "Wir entwickeln iOS- und Android-Apps. Gründermitglieder erhalten bevorzugten Zugang zu Beta-Tests, sobald diese verfügbar sind."
+  },
+  "common": {
+    "learnMore": "Mehr erfahren",
+    "getStarted": "Loslegen",
+    "viewAll": "Alle ansehen",
+    "search": "Gesundheitsthemen suchen...",
+    "loading": "Lädt...",
+    "language": "Sprache"
+  }
+}

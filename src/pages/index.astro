@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import AIAssistantPreview from '../components/home/AIAssistantPreview.astro';
+import FounderTiers from '../components/home/FounderTiers.astro';
+import FundUsage from '../components/home/FundUsage.astro';
+import ToolsNav from '../components/home/ToolsNav.astro';
+import Architecture from '../components/home/Architecture.astro';
+import FAQ from '../components/home/FAQ.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title="SynoChain AI - Build The World's First AI Health Companion Together"
+  description="Join our community-funded AI health project. Build AI models, train medical knowledge systems, develop apps, and make personalized health guidance accessible to everyone."
+  lang={lang}
+>
+  <Hero lang={lang} />
+  <AIAssistantPreview lang={lang} />
+  <FounderTiers lang={lang} />
+  <FundUsage lang={lang} />
+  <ToolsNav lang={lang} />
+  <Architecture lang={lang} />
+  <FAQ lang={lang} />
+</BaseLayout>

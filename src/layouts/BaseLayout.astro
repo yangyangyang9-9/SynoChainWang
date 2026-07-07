@@ -1,0 +1,109 @@
+---
+import '../styles/global.css';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import { languages, defaultLang, useTranslations, type Lang } from '../i18n/ui';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  lang?: Lang;
+}
+
+const { title = 'SynoChain AI - AI Health Companion', description = 'Build the world\'s first AI health companion together. Community-funded AI health platform.', lang = defaultLang } = Astro.props;
+
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="SynoChain AI" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- 浏览器语言自动检测脚本（首次访问时重定向到用户语言） -->
+    <script is:inline>
+      (function () {
+        try {
+          // 已有语言偏好则不重定向
+          if (localStorage.getItem('synochain-lang')) return;
+
+          var supported = ['en', 'zh', 'es', 'ja', 'de', 'fr', 'ko', 'pt'];
+          var browserLangs = navigator.languages || [navigator.language];
+          var detected = 'en';
+
+          for (var i = 0; i < browserLangs.length; i++) {
+            var lower = browserLangs[i].toLowerCase();
+            var prefix = lower.split('-')[0];
+            if (supported.indexOf(prefix) !== -1) {
+              detected = prefix;
+              break;
+            }
+          }
+
+          // 检测当前页面语言
+          var pathSegments = window.location.pathname.split('/').filter(Boolean);
+          var currentLang = 'en';
+          if (pathSegments.length > 0 && supported.indexOf(pathSegments[0]) !== -1) {
+            currentLang = pathSegments[0];
+          }
+
+          // 检测到的语言与当前页面语言不同时重定向
+          if (detected !== currentLang) {
+            var newPath;
+            if (detected === 'en') {
+              // 英文无前缀，移除当前语言前缀
+              if (pathSegments.length > 0 && supported.indexOf(pathSegments[0]) !== -1) {
+                newPath = '/' + pathSegments.slice(1).join('/');
+              } else {
+                newPath = window.location.pathname;
+              }
+            } else {
+              // 非英文，添加语言前缀
+              if (pathSegments.length > 0 && supported.indexOf(pathSegments[0]) !== -1) {
+                pathSegments[0] = detected;
+                newPath = '/' + pathSegments.join('/');
+              } else {
+                newPath = '/' + detected + window.location.pathname;
+              }
+            }
+            if (newPath === '') newPath = '/';
+            // 保存检测到的语言，避免循环重定向
+            localStorage.setItem('synochain-lang', detected);
+            window.location.replace(newPath + window.location.search + window.location.hash);
+          }
+        } catch (e) {
+          // 静默失败，不影响页面加载
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <Header lang={lang} currentPath={currentPath} />
+    <main>
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

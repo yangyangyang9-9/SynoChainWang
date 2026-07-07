@@ -1,0 +1,114 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "aiTools": "Herramientas de Salud IA",
+    "diseaseLibrary": "Biblioteca de Enfermedades",
+    "symptoms": "Verificador de Síntomas",
+    "causes": "Explorador de Causas",
+    "naturalHealth": "Salud Natural",
+    "nutrition": "Nutrición",
+    "healthTests": "Pruebas de Salud",
+    "blog": "Blog / Investigación",
+    "community": "Comunidad",
+    "crowdfunding": "Ser Fundador",
+    "support": "Seguidor Temprano"
+  },
+  "hero": {
+    "title": "Construyamos Juntos el Primer Compañero de Salud IA del Mundo",
+    "subtitle": "Únete a nuestro proyecto de salud IA financiado por la comunidad. Tu contribución nos ayuda a construir modelos de IA, entrenar sistemas de conocimiento médico, desarrollar aplicaciones y hacer que la orientación de salud personalizada sea accesible para todos.",
+    "cta": "Ser Seguidor Temprano",
+    "raised": "recaudado",
+    "supporters": "seguidores",
+    "daysRemaining": "días restantes"
+  },
+  "home": {
+    "aiAssistantTitle": "Asistente de Salud IA",
+    "aiAssistantDesc": "Obtén orientación de salud personalizada impulsada por IA, entrenada en conocimiento médico y actualizada constantemente.",
+    "tryAssistant": "Probar Asistente IA",
+    "founderTitle": "Membresía de Fundador",
+    "founderSubtitle": "Sé parte de la comunidad fundadora. Apoya el proyecto y desbloquea beneficios exclusivos.",
+    "fundUsageTitle": "A Dónde Va Tu Apoyo",
+    "fundUsageSubtitle": "Transparencia total sobre cómo se usan tus contribuciones para construir la plataforma.",
+    "toolsTitle": "Explorar Herramientas de Salud",
+    "toolsSubtitle": "Herramientas de salud integrales impulsadas por IA y biblioteca de conocimiento a tu alcance.",
+    "faqTitle": "Preguntas Frecuentes",
+    "architectureTitle": "Arquitectura de la Plataforma",
+    "architectureSubtitle": "Un sistema modular y escalable diseñado para conocimiento de salud global"
+  },
+  "founder": {
+    "aiPioneer": "Pionero IA",
+    "lifetimeFounder": "Fundador Vitalicio",
+    "perYear": "/año",
+    "oneTime": "único",
+    "choosePlan": "Elegir Este Plan",
+    "mostPopular": "Más Popular",
+    "bestValue": "Mejor Valor"
+  },
+  "fund": {
+    "server": "Servidores",
+    "serverDesc": "Infraestructura de computación IA",
+    "aiTraining": "Entrenamiento IA",
+    "aiTrainingDesc": "Sistema de conocimiento médico IA",
+    "appDev": "Desarrollo de App",
+    "appDevDesc": "Apps iOS / Android",
+    "operations": "Operaciones",
+    "operationsDesc": "Seguridad y mantenimiento"
+  },
+  "tools": {
+    "aiTools": { "title": "Herramientas de Salud IA", "desc": "Evaluación y orientación de salud interactiva" },
+    "diseaseLibrary": { "title": "Biblioteca de Enfermedades", "desc": "Base de datos integral de condiciones médicas" },
+    "symptoms": { "title": "Verificador de Síntomas", "desc": "Buscar y analizar síntomas de salud" },
+    "causes": { "title": "Explorador de Causas", "desc": "Comprender las causas raíz de las condiciones" },
+    "naturalHealth": { "title": "Salud Natural", "desc": "Remedios naturales y enfoques de estilo de vida" },
+    "nutrition": { "title": "Nutrición", "desc": "Conocimiento nutricional y orientación dietética" },
+    "healthTests": { "title": "Pruebas de Salud", "desc": "Herramientas interactivas de autoevaluación" },
+    "blog": { "title": "Blog / Investigación", "desc": "Última investigación y artículos de salud" },
+    "community": { "title": "Comunidad", "desc": "Conecta con personas conscientes de la salud" }
+  },
+  "ai": {
+    "title": "Asistente de Salud IA",
+    "subtitle": "Describe tus síntomas y obtén orientación de salud impulsada por IA",
+    "placeholder": "Describe tus síntomas... ej. Tengo dolor de cabeza y me siento cansado",
+    "send": "Enviar",
+    "thinking": "IA está pensando...",
+    "disclaimer": "Este asistente de IA proporciona solo información de salud general y no es un sustituto del consejo médico profesional. Siempre consulta a un proveedor de atención médica calificado para problemas médicos.",
+    "suggestedQuestions": "Preguntas Sugeridas",
+    "newChat": "Nuevo Chat"
+  },
+  "footer": {
+    "tagline": "Construyendo juntos el primer compañero de salud IA del mundo.",
+    "product": "Producto",
+    "company": "Empresa",
+    "resources": "Recursos",
+    "legal": "Legal",
+    "rights": "Todos los derechos reservados.",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "about": "Sobre Nosotros",
+    "contact": "Contacto",
+    "careers": "Carreras",
+    "docs": "Documentación",
+    "api": "API",
+    "blog": "Blog"
+  },
+  "faq": {
+    "q1": "¿Qué es SynoChain AI?",
+    "a1": "SynoChain AI es una plataforma de compañero de salud IA financiado por la comunidad que combina tecnología IA con conocimiento médico integral para proporcionar orientación de salud personalizada.",
+    "q2": "¿Cómo funciona el Asistente de Salud IA?",
+    "a2": "Nuestro asistente IA usa modelos de lenguaje avanzados entrenados en conocimiento médico para analizar tus síntomas y proporcionar posibles factores, condiciones relacionadas y próximos pasos sugeridos.",
+    "q3": "¿Son privados mis datos de salud?",
+    "a3": "Sí, tomamos la privacidad en serio. Todos los datos de salud están cifrados y almacenados de forma segura. Tú controlas tus datos y puedes eliminarlos en cualquier momento.",
+    "q4": "¿Cuál es la diferencia entre Pionero IA y Fundador Vitalicio?",
+    "a4": "Pionero IA ($29) te da 1 año de acceso al Asistente de Salud IA, mientras que Fundador Vitalicio ($199) proporciona acceso permanente más beneficios exclusivos como certificados NFT y derechos de voto.",
+    "q5": "¿Cuándo estará disponible la aplicación móvil?",
+    "a5": "Estamos desarrollando apps para iOS y Android. Los miembros fundadores tendrán acceso prioritario a las pruebas beta cuando estén disponibles."
+  },
+  "common": {
+    "learnMore": "Saber Más",
+    "getStarted": "Comenzar",
+    "viewAll": "Ver Todo",
+    "search": "Buscar temas de salud...",
+    "loading": "Cargando...",
+    "language": "Idioma"
+  }
+}

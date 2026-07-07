@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// 根据语言生成基础路径
+const basePath = lang === 'en' ? '' : `/${lang}`;
+
+// 自然疗法分类 mock 数据
+const categories = [
+  {
+    name: 'Herbal Remedies',
+    icon: '🌿',
+    color: 'from-health-400 to-health-600',
+    description: 'Plant-based treatments used for centuries across cultures.',
+    remedies: [
+      { name: 'Chamomile', use: 'Sleep, anxiety, digestion', note: 'Mild sedative effects' },
+      { name: 'Ginger', use: 'Nausea, inflammation', note: 'Anti-inflammatory' },
+      { name: 'Turmeric', use: 'Inflammation, joint pain', note: 'Curcumin compound' },
+      { name: 'Echinacea', use: 'Immune support, colds', note: 'Immune stimulant' },
+      { name: 'Valerian Root', use: 'Insomnia, anxiety', note: 'Natural sedative' },
+      { name: 'Peppermint', use: 'Digestion, headaches', note: 'Antispasmodic' },
+    ],
+  },
+  {
+    name: 'Supplements',
+    icon: '💊',
+    color: 'from-medical-400 to-medical-600',
+    description: 'Vitamins, minerals, and compounds that support health.',
+    remedies: [
+      { name: 'Vitamin D', use: 'Bone health, immunity', note: 'Sunshine vitamin' },
+      { name: 'Omega-3 Fatty Acids', use: 'Heart, brain, inflammation', note: 'Fish oil source' },
+      { name: 'Magnesium', use: 'Sleep, muscle, nerves', note: 'Essential mineral' },
+      { name: 'Probiotics', use: 'Gut health, immunity', note: 'Beneficial bacteria' },
+      { name: 'Zinc', use: 'Immune function', note: 'Wound healing' },
+      { name: 'Melatonin', use: 'Sleep regulation', note: 'Natural hormone' },
+    ],
+  },
+  {
+    name: 'Lifestyle',
+    icon: '🏃',
+    color: 'from-amber-400 to-orange-500',
+    description: 'Daily habits and practices that promote wellness.',
+    remedies: [
+      { name: 'Regular Exercise', use: 'Cardiovascular, mental health', note: '150 min/week' },
+      { name: 'Meditation', use: 'Stress, anxiety, focus', note: '10-20 min daily' },
+      { name: 'Adequate Sleep', use: 'Recovery, immunity', note: '7-9 hours' },
+      { name: 'Sunlight Exposure', use: 'Mood, vitamin D', note: '15-30 min daily' },
+      { name: 'Breathing Exercises', use: 'Stress, anxiety', note: '4-7-8 technique' },
+      { name: 'Digital Detox', use: 'Mental wellbeing', note: 'Reduce screen time' },
+    ],
+  },
+  {
+    name: 'Dietary Therapy',
+    icon: '🥗',
+    color: 'from-medical-500 to-health-500',
+    description: 'Food-based approaches to prevent and manage conditions.',
+    remedies: [
+      { name: 'Mediterranean Diet', use: 'Heart, longevity', note: 'Anti-inflammatory' },
+      { name: 'Anti-inflammatory Diet', use: 'Arthritis, chronic pain', note: 'Reduce processed foods' },
+      { name: 'Low-FODMAP', use: 'IBS, digestive issues', note: 'Reduce fermentable carbs' },
+      { name: 'Plant-Based Diet', use: 'Diabetes, heart health', note: 'Whole foods focus' },
+      { name: 'Intermittent Fasting', use: 'Weight, metabolism', note: 'Time-restricted eating' },
+      { name: 'DASH Diet', use: 'Hypertension', note: 'Low sodium, high potassium' },
+    ],
+  },
+];
+
+// 健康提示
+const tips = [
+  { icon: '🌱', text: 'Always consult a healthcare provider before starting any natural remedy, especially if taking medications.' },
+  { icon: '⚖️', text: 'Natural does not always mean safe. Some herbs can interact with prescription medications.' },
+  { icon: '📋', text: 'Start with low doses and monitor your body\'s response to any new supplement or remedy.' },
+];
+---
+
+<BaseLayout
+  title="Natural Health - Remedies & Lifestyle | SynoChain AI"
+  description="Explore natural health approaches including herbal remedies, supplements, lifestyle practices, and dietary therapy for holistic wellness."
+  lang={lang}
+>
+  <!-- 页面顶部 Hero -->
+  <section class="relative overflow-hidden bg-white pt-32 pb-16">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="container-x relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-health-200 bg-health-50 px-4 py-1.5 text-xs font-medium text-health-700">
+          <span class="text-base">🌿</span>
+          {t('tools.naturalHealth.title')}
+        </span>
+        <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl">
+          Natural Health
+        </h1>
+        <p class="mt-4 text-base text-ink-500 sm:text-lg">
+          Discover evidence-informed natural remedies, supplements, lifestyle practices, and dietary approaches to support your wellbeing holistically.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 自然疗法卡片网格 -->
+  <section class="bg-white section-padding pt-8">
+    <div class="container-x">
+      <div class="space-y-10">
+        {categories.map((cat) => (
+          <div>
+            <!-- 分类标题 -->
+            <div class="flex items-center gap-4">
+              <div class={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${cat.color} text-3xl shadow-sm`}>
+                {cat.icon}
+              </div>
+              <div>
+                <h2 class="font-display text-2xl font-bold text-ink-800">{cat.name}</h2>
+                <p class="text-sm text-ink-500">{cat.description}</p>
+              </div>
+            </div>
+
+            <!-- 卡片网格 -->
+            <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {cat.remedies.map((remedy) => (
+                <div class="card group">
+                  <h3 class="font-display font-bold text-ink-800 group-hover:text-medical-600">{remedy.name}</h3>
+                  <p class="mt-2 text-sm text-ink-600">{remedy.use}</p>
+                  <div class="mt-3 inline-flex items-center gap-1 rounded-full bg-health-50 px-3 py-1 text-xs font-medium text-health-700">
+                    <span>💡</span> {remedy.note}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- 安全提示 -->
+      <div class="mx-auto mt-16 max-w-4xl rounded-2xl border border-medical-200 bg-medical-50 p-8">
+        <h2 class="flex items-center gap-2 font-display text-xl font-bold text-medical-800">
+          <span>💡</span> Important Safety Tips
+        </h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          {tips.map((tip) => (
+            <div class="flex items-start gap-3 rounded-xl bg-white p-4">
+              <span class="text-2xl">{tip.icon}</span>
+              <p class="text-sm text-ink-600">{tip.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- AI CTA -->
+      <div class="mx-auto mt-12 max-w-4xl overflow-hidden rounded-3xl bg-gradient-to-br from-health-500 to-medical-500 p-8 text-center text-white sm:p-12">
+        <div class="text-5xl">🤖</div>
+        <h2 class="mt-4 text-2xl font-bold sm:text-3xl">Get Personalized Natural Health Advice</h2>
+        <p class="mx-auto mt-3 max-w-xl text-white/90">
+          Our AI assistant can recommend natural approaches tailored to your specific health concerns and conditions.
+        </p>
+        <a href={`${basePath}/ai-tools`} class="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-health-600 transition-colors hover:bg-white/90">
+          Consult AI Assistant
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+
+      <!-- 医疗免责声明 -->
+      <div class="mx-auto mt-12 max-w-3xl border-t border-ink-100 pt-6">
+        <p class="text-center text-xs leading-relaxed text-ink-400">
+          ⚠️ Medical Disclaimer: Natural remedies and supplements may interact with medications or have side effects. This information is educational only. Always consult a qualified healthcare professional before using any natural remedy, especially if pregnant, nursing, or managing a medical condition.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

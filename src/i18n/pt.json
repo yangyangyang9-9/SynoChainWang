@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "home": "Início",
+    "aiTools": "Ferramentas de Saúde AI",
+    "diseaseLibrary": "Biblioteca de Doenças",
+    "symptoms": "Verificador de Sintomas",
+    "causes": "Explorador de Causas",
+    "naturalHealth": "Saúde Natural",
+    "nutrition": "Nutrição",
+    "healthTests": "Testes de Saúde",
+    "blog": "Blog / Pesquisa",
+    "community": "Comunidade",
+    "crowdfunding": "Seja Fundador",
+    "support": "Apoiador Inicial"
+  },
+  "hero": {
+    "title": "Vamos Construir Juntos o Primeiro Companheiro de Saúde AI do Mundo",
+    "subtitle": "Junte-se ao nosso projeto de saúde AI financiado pela comunidade. Sua contribuição nos ajuda a construir modelos de AI, treinar sistemas de conhecimento médico, desenvolver aplicativos e tornar a orientação de saúde personalizada acessível a todos.",
+    "cta": "Seja Apoiador Inicial",
+    "raised": "arrecadado",
+    "supporters": "apoiadores",
+    "daysRemaining": "dias restantes"
+  },
+  "home": {
+    "aiAssistantTitle": "Assistente de Saúde AI",
+    "aiAssistantDesc": "Obtenha orientação de saúde personalizada impulsionada por AI, treinada em conhecimento médico e constantemente atualizada.",
+    "tryAssistant": "Experimentar Assistente AI",
+    "founderTitle": "Assinatura de Fundador",
+    "founderSubtitle": "Faça parte da comunidade fundadora. Apoie o projeto e desbloqueie benefícios exclusivos.",
+    "fundUsageTitle": "Para Onde Vai Seu Apoio",
+    "fundUsageSubtitle": "Transparência total sobre como suas contribuições são usadas para construir a plataforma.",
+    "toolsTitle": "Explorar Ferramentas de Saúde",
+    "toolsSubtitle": "Ferramentas de saúde abrangentes impulsionadas por AI e biblioteca de conhecimento ao seu alcance.",
+    "faqTitle": "Perguntas Frequentes",
+    "architectureTitle": "Arquitetura da Plataforma",
+    "architectureSubtitle": "Um sistema modular e escalável projetado para conhecimento de saúde global"
+  },
+  "founder": {
+    "aiPioneer": "Pioneiro AI",
+    "lifetimeFounder": "Fundador Vitalício",
+    "perYear": "/ano",
+    "oneTime": "único",
+    "choosePlan": "Escolher Este Plano",
+    "mostPopular": "Mais Popular",
+    "bestValue": "Melhor Valor"
+  },
+  "fund": {
+    "server": "Servidores",
+    "serverDesc": "Infraestrutura de computação AI",
+    "aiTraining": "Treinamento AI",
+    "aiTrainingDesc": "Sistema de conhecimento médico AI",
+    "appDev": "Desenvolvimento de App",
+    "appDevDesc": "Apps iOS / Android",
+    "operations": "Operações",
+    "operationsDesc": "Segurança e manutenção"
+  },
+  "tools": {
+    "aiTools": {
+      "title": "Ferramentas de Saúde AI",
+      "desc": "Avaliação e orientação de saúde interativa impulsionada por AI"
+    },
+    "diseaseLibrary": {
+      "title": "Biblioteca de Doenças",
+      "desc": "Banco de dados abrangente de condições médicas"
+    },
+    "symptoms": {
+      "title": "Verificador de Sintomas",
+      "desc": "Pesquisar e analisar sintomas de saúde"
+    },
+    "causes": {
+      "title": "Explorador de Causas",
+      "desc": "Compreender as causas raiz das condições"
+    },
+    "naturalHealth": {
+      "title": "Saúde Natural",
+      "desc": "Remédios naturais e abordagens de estilo de vida"
+    },
+    "nutrition": {
+      "title": "Nutrição",
+      "desc": "Conhecimento nutricional e orientação dietética"
+    },
+    "healthTests": {
+      "title": "Testes de Saúde",
+      "desc": "Ferramentas interativas de autoavaliação"
+    },
+    "blog": {
+      "title": "Blog / Pesquisa",
+      "desc": "Últimas pesquisas e artigos de saúde"
+    },
+    "community": {
+      "title": "Comunidade",
+      "desc": "Conecte-se com pessoas preocupadas com a saúde"
+    }
+  },
+  "ai": {
+    "title": "Assistente de Saúde AI",
+    "subtitle": "Descreva seus sintomas e obtenha orientação de saúde impulsionada por AI",
+    "placeholder": "Descreva seus sintomas... ex. Tenho dor de cabeça e me sinto cansado",
+    "send": "Enviar",
+    "thinking": "AI está pensando...",
+    "disclaimer": "Este assistente de AI fornece apenas informações gerais de saúde e não substitui o conselho médico profissional. Sempre consulte um profissional de saúde qualificado para preocupações médicas.",
+    "suggestedQuestions": "Perguntas Sugeridas",
+    "newChat": "Novo Chat"
+  },
+  "footer": {
+    "tagline": "Construindo juntos o primeiro companheiro de saúde AI do mundo.",
+    "product": "Produto",
+    "company": "Empresa",
+    "resources": "Recursos",
+    "legal": "Jurídico",
+    "rights": "Todos os direitos reservados.",
+    "privacy": "Política de Privacidade",
+    "terms": "Termos de Serviço",
+    "about": "Sobre Nós",
+    "contact": "Contato",
+    "careers": "Carreiras",
+    "docs": "Documentação",
+    "api": "API",
+    "blog": "Blog"
+  },
+  "faq": {
+    "q1": "O que é SynoChain AI?",
+    "a1": "SynoChain AI é uma plataforma de companheiro de saúde AI financiada pela comunidade que combina tecnologia AI com conhecimento médico abrangente para fornecer orientação de saúde personalizada.",
+    "q2": "Como funciona o Assistente de Saúde AI?",
+    "a2": "Nosso assistente de AI usa modelos de linguagem avançados treinados em conhecimento médico para analisar seus sintomas e fornecer possíveis fatores, condições relacionadas e próximos passos sugeridos.",
+    "q3": "Meus dados de saúde são privados?",
+    "a3": "Sim, levamos a privacidade a sério. Todos os dados de saúde são criptografados e armazenados com segurança. Você controla seus dados e pode excluí-los a qualquer momento.",
+    "q4": "Qual é a diferença entre Pioneiro AI e Fundador Vitalício?",
+    "a4": "Pioneiro AI ($29) oferece 1 ano de acesso ao Assistente de Saúde AI, enquanto Fundador Vitalício ($199) oferece acesso permanente mais benefícios exclusivos como certificados NFT e direitos de voto.",
+    "q5": "Quando o aplicativo móvel estará disponível?",
+    "a5": "Estamos desenvolvendo apps para iOS e Android. Membros fundadores terão acesso prioritário aos testes beta quando disponíveis."
+  },
+  "common": {
+    "learnMore": "Saber Mais",
+    "getStarted": "Começar",
+    "viewAll": "Ver Tudo",
+    "search": "Pesquisar tópicos de saúde...",
+    "loading": "Carregando...",
+    "language": "Idioma"
+  }
+}

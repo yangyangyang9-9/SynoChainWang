@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FounderTiers from '../components/home/FounderTiers.astro';
+import FundUsage from '../components/home/FundUsage.astro';
+import PayPalCheckout from '../components/crowdfunding/PayPalCheckout.tsx';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+import { getCrowdfundingStats, getCrowdfundingPlans } from '../lib/supabase';
+import { formatCurrency, formatNumber } from '../lib/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const stats = await getCrowdfundingStats();
+const progressPercent = Math.min((stats.total_raised / stats.goal) * 100, 100);
+
+// 读取 URL 中的 plan 参数，用于预选结账方案
+const selectedPlanSlug = Astro.url.searchParams.get('plan') || '';
+const plans = await getCrowdfundingPlans();
+const selectedPlan = plans.find((p) => p.slug === selectedPlanSlug) || null;
+---
+
+<BaseLayout title="Founder Membership - SynoChain AI" description="Become a Founder of SynoChain AI. Support the world's first AI health companion project and unlock exclusive benefits." lang={lang}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-white pt-32 pb-16">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="absolute left-1/2 top-0 -z-10 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-medical-100/30 blur-3xl"></div>
+
+    <div class="container-x relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-block rounded-full bg-health-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-health-700">
+          Founder Membership Program
+        </span>
+        <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl md:text-6xl">
+          Become a <span class="gradient-text">Founder</span>
+        </h1>
+        <p class="mt-6 text-base text-ink-500 sm:text-lg">
+          Join our community-funded AI health project. Your contribution helps us build AI models, train medical knowledge systems, and develop apps that make personalized health guidance accessible to everyone.
+        </p>
+
+        <!-- 众筹进度 -->
+        <div class="mx-auto mt-12 max-w-2xl rounded-2xl border border-ink-100 bg-white/80 p-6 shadow-sm backdrop-blur">
+          <div class="mb-4">
+            <div class="mb-2 flex items-center justify-between text-sm">
+              <span class="font-medium text-ink-700">{formatCurrency(stats.total_raised)} raised</span>
+              <span class="text-ink-400">of {formatCurrency(stats.goal)} goal</span>
+            </div>
+            <div class="h-3 w-full overflow-hidden rounded-full bg-ink-100">
+              <div class="h-full rounded-full bg-gradient-to-r from-medical-500 to-health-500" style={`width: ${progressPercent}%`}></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+              <div class="font-display text-xl font-bold text-medical-600 sm:text-2xl">{formatCurrency(stats.total_raised)}</div>
+              <div class="text-xs text-ink-400">Raised</div>
+            </div>
+            <div class="border-x border-ink-100">
+              <div class="font-display text-xl font-bold text-health-600 sm:text-2xl">{formatNumber(stats.supporter_count)}</div>
+              <div class="text-xs text-ink-400">Supporters</div>
+            </div>
+            <div>
+              <div class="font-display text-xl font-bold text-ink-800 sm:text-2xl">{stats.days_remaining}</div>
+              <div class="text-xs text-ink-400">Days Left</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 等级 -->
+  <FounderTiers lang={lang} />
+
+  <!-- 结账区域 -->
+  <section id="checkout" class="section-padding bg-ink-50">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="inline-block rounded-full bg-medical-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-medical-700">
+          Checkout
+        </span>
+        <h2 class="mt-4 text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">
+          Complete Your Founder Membership
+        </h2>
+        <p class="mt-4 text-base text-ink-500 sm:text-lg">
+          Select a plan below to proceed to secure PayPal checkout.
+        </p>
+      </div>
+
+      <!-- 方案选择器：两个可点击卡片 -->
+      <div class="mx-auto mt-12 grid max-w-3xl gap-4 sm:grid-cols-2">
+        {plans.map((plan) => {
+          const isSelected = plan.slug === selectedPlanSlug;
+          const cardClass = isSelected
+            ? 'border-medical-500 ring-2 ring-medical-200 bg-white shadow-lg'
+            : 'border-ink-100 bg-white shadow-sm hover:border-medical-200 hover:shadow-md';
+          const durationLabel = plan.duration === 'lifetime' ? 'one-time' : '/year';
+          return (
+            <a
+              href={`?plan=${plan.slug}#checkout`}
+              class={`relative block rounded-2xl border p-6 transition-all ${cardClass}`}
+            >
+              {isSelected && (
+                <span class="absolute right-4 top-4 flex h-6 w-6 items-center justify-center rounded-full bg-medical-500 text-white">
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </span>
+              )}
+              <h3 class="font-display text-xl font-bold text-ink-800">{plan.name}</h3>
+              <div class="mt-3 flex items-end gap-1">
+                <span class="font-display text-3xl font-extrabold text-ink-800">{formatCurrency(plan.price)}</span>
+                <span class="mb-1 text-xs text-ink-400">{durationLabel}</span>
+              </div>
+              <p class="mt-3 text-xs text-ink-500">{plan.benefits[0]}</p>
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- 选中方案后显示 PayPal 结账组件 -->
+      {selectedPlan ? (
+        <div class="mx-auto mt-10 max-w-md">
+          <PayPalCheckout
+            client:load
+            planSlug={selectedPlan.slug as 'ai-pioneer' | 'lifetime-founder'}
+            amount={selectedPlan.price}
+            planName={selectedPlan.name}
+            lang={lang}
+          />
+        </div>
+      ) : (
+        <p class="mt-10 text-center text-sm text-ink-400">
+          👆 Select a plan above to continue to payment
+        </p>
+      )}
+    </div>
+  </section>
+
+  <!-- 资金用途 -->
+  <FundUsage lang={lang} />
+
+  <!-- 为什么支持 -->
+  <section class="section-padding bg-white">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">Why Support SynoChain AI?</h2>
+      </div>
+      <div class="mx-auto mt-16 grid max-w-5xl gap-8 md:grid-cols-3">
+        <div class="text-center">
+          <div class="mx-auto inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-medical-50 text-3xl">🌍</div>
+          <h3 class="mt-4 font-display text-lg font-bold text-ink-800">Health for Everyone</h3>
+          <p class="mt-2 text-sm text-ink-500">Make personalized AI health guidance accessible to people worldwide, regardless of location or income.</p>
+        </div>
+        <div class="text-center">
+          <div class="mx-auto inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-health-50 text-3xl">🔬</div>
+          <h3 class="mt-4 font-display text-lg font-bold text-ink-800">Transparent Research</h3>
+          <p class="mt-2 text-sm text-ink-500">All AI models and medical knowledge systems are built with full transparency and community oversight.</p>
+        </div>
+        <div class="text-center">
+          <div class="mx-auto inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-medical-50 text-3xl">🚀</div>
+          <h3 class="mt-4 font-display text-lg font-bold text-ink-800">Early Access</h3>
+          <p class="mt-2 text-sm text-ink-500">Founders get priority access to new features, mobile apps, and beta testing opportunities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-padding bg-ink-50">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">Founder FAQ</h2>
+      </div>
+      <div class="mx-auto mt-12 max-w-3xl space-y-4">
+        <details class="group rounded-xl border border-ink-100 bg-white p-6 shadow-sm" open>
+          <summary class="flex cursor-pointer items-center justify-between gap-4 list-none">
+            <h3 class="font-display text-base font-semibold text-ink-800">What happens after I become a Founder?</h3>
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-medical-50 text-medical-600 transition-transform group-open:rotate-180">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm text-ink-500">You'll receive a welcome email with your Founder Badge, access instructions for the AI Health Assistant, and invitations to join our community channels.</p>
+        </details>
+        <details class="group rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 list-none">
+            <h3 class="font-display text-base font-semibold text-ink-800">Can I upgrade from AI Pioneer to Lifetime Founder?</h3>
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-medical-50 text-medical-600 transition-transform group-open:rotate-180">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm text-ink-500">Yes! You can upgrade at any time. Your previous payment will be credited toward the Lifetime Founder plan.</p>
+        </details>
+        <details class="group rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 list-none">
+            <h3 class="font-display text-base font-semibold text-ink-800">Is there a refund policy?</h3>
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-medical-50 text-medical-600 transition-transform group-open:rotate-180">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm text-ink-500">Yes, we offer a 30-day money-back guarantee. If you're not satisfied with your membership, contact us for a full refund.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

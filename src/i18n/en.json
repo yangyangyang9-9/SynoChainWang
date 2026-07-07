@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "home": "Home",
+    "aiTools": "AI Health Tools",
+    "diseaseLibrary": "Disease Library",
+    "symptoms": "Symptoms Checker",
+    "causes": "Causes Explorer",
+    "naturalHealth": "Natural Health",
+    "nutrition": "Nutrition",
+    "healthTests": "Health Tests",
+    "blog": "Blog / Research",
+    "community": "Community",
+    "crowdfunding": "Become a Founder",
+    "support": "Early Supporter"
+  },
+  "hero": {
+    "title": "Build The World's First AI Health Companion Together",
+    "subtitle": "Join our community-funded AI health project. Your contribution helps us build AI models, train medical knowledge systems, develop apps, and make personalized health guidance accessible to everyone.",
+    "cta": "Become Early Supporter",
+    "raised": "raised",
+    "supporters": "supporters",
+    "daysRemaining": "days remaining"
+  },
+  "home": {
+    "aiAssistantTitle": "AI Health Assistant",
+    "aiAssistantDesc": "Get personalized health guidance powered by AI, trained on medical knowledge and constantly updated.",
+    "tryAssistant": "Try AI Assistant",
+    "founderTitle": "Founder Membership",
+    "founderSubtitle": "Be part of the founding community. Support the project and unlock exclusive benefits.",
+    "fundUsageTitle": "Where Your Support Goes",
+    "fundUsageSubtitle": "Full transparency on how your contributions are used to build the platform.",
+    "toolsTitle": "Explore Health Tools",
+    "toolsSubtitle": "Comprehensive AI-powered health tools and knowledge library at your fingertips.",
+    "faqTitle": "Frequently Asked Questions",
+    "architectureTitle": "Platform Architecture",
+    "architectureSubtitle": "A modular, scalable system designed for global health knowledge"
+  },
+  "founder": {
+    "aiPioneer": "AI Pioneer",
+    "lifetimeFounder": "Lifetime Founder",
+    "perYear": "/year",
+    "oneTime": "one-time",
+    "choosePlan": "Choose This Plan",
+    "mostPopular": "Most Popular",
+    "bestValue": "Best Value"
+  },
+  "fund": {
+    "server": "Servers",
+    "serverDesc": "AI computing infrastructure",
+    "aiTraining": "AI Training",
+    "aiTrainingDesc": "Medical AI knowledge system",
+    "appDev": "App Development",
+    "appDevDesc": "iOS / Android Apps",
+    "operations": "Operations",
+    "operationsDesc": "Security & maintenance"
+  },
+  "tools": {
+    "aiTools": {
+      "title": "AI Health Tools",
+      "desc": "Interactive AI-powered health assessment and guidance"
+    },
+    "diseaseLibrary": {
+      "title": "Disease Library",
+      "desc": "Comprehensive database of medical conditions"
+    },
+    "symptoms": {
+      "title": "Symptoms Checker",
+      "desc": "Search and analyze health symptoms"
+    },
+    "causes": {
+      "title": "Causes Explorer",
+      "desc": "Understand the root causes of conditions"
+    },
+    "naturalHealth": {
+      "title": "Natural Health",
+      "desc": "Natural remedies and lifestyle approaches"
+    },
+    "nutrition": {
+      "title": "Nutrition",
+      "desc": "Nutritional knowledge and dietary guidance"
+    },
+    "healthTests": {
+      "title": "Health Tests",
+      "desc": "Interactive self-assessment tools"
+    },
+    "blog": {
+      "title": "Blog / Research",
+      "desc": "Latest research and health articles"
+    },
+    "community": {
+      "title": "Community",
+      "desc": "Connect with health-conscious people"
+    }
+  },
+  "ai": {
+    "title": "AI Health Assistant",
+    "subtitle": "Describe your symptoms and get AI-powered health guidance",
+    "placeholder": "Describe your symptoms... e.g. I have a headache and feel tired",
+    "send": "Send",
+    "thinking": "AI is thinking...",
+    "disclaimer": "This AI assistant provides general health information only and is not a substitute for professional medical advice. Always consult a qualified healthcare provider for medical concerns.",
+    "suggestedQuestions": "Suggested Questions",
+    "newChat": "New Chat"
+  },
+  "footer": {
+    "tagline": "Building the world's first AI health companion, together.",
+    "product": "Product",
+    "company": "Company",
+    "resources": "Resources",
+    "legal": "Legal",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "about": "About Us",
+    "contact": "Contact",
+    "careers": "Careers",
+    "docs": "Documentation",
+    "api": "API",
+    "blog": "Blog"
+  },
+  "faq": {
+    "q1": "What is SynoChain AI?",
+    "a1": "SynoChain AI is a community-funded AI health companion platform that combines AI technology with comprehensive medical knowledge to provide personalized health guidance.",
+    "q2": "How does the AI Health Assistant work?",
+    "a2": "Our AI assistant uses advanced language models trained on medical knowledge to analyze your symptoms and provide possible factors, related conditions, and suggested next steps.",
+    "q3": "Is my health data private?",
+    "a3": "Yes, we take privacy seriously. All health data is encrypted and stored securely. You control your data and can delete it at any time.",
+    "q4": "What's the difference between AI Pioneer and Lifetime Founder?",
+    "a4": "AI Pioneer ($29) gives you 1 year of AI Health Assistant access, while Lifetime Founder ($199) provides permanent access plus exclusive benefits like NFT certificates and voting rights.",
+    "q5": "When will the mobile app be available?",
+    "a5": "We're developing iOS and Android apps. Founder members will get priority access to beta testing once available."
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "viewAll": "View All",
+    "search": "Search health topics...",
+    "loading": "Loading...",
+    "language": "Language"
+  }
+}

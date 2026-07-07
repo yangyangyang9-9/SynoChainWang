@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// 根据语言生成基础路径
+const basePath = lang === 'en' ? '' : `/${lang}`;
+
+// 常见症状标签云数据
+const commonSymptoms = [
+  { name: 'Headache', slug: 'headache', icon: '🤕', count: 142 },
+  { name: 'Fatigue', slug: 'fatigue', icon: '😴', count: 128 },
+  { name: 'Sore Throat', slug: 'sore-throat', icon: '😷', count: 96 },
+  { name: 'Nausea', slug: 'nausea', icon: '🤢', count: 87 },
+  { name: 'Dizziness', slug: 'dizziness', icon: '💫', count: 73 },
+  { name: 'Fever', slug: 'fever', icon: '🌡️', count: 165 },
+  { name: 'Cough', slug: 'cough', icon: '🤧', count: 119 },
+  { name: 'Back Pain', slug: 'back-pain', icon: '🔙', count: 104 },
+  { name: 'Chest Pain', slug: 'chest-pain', icon: '❤️', count: 68 },
+  { name: 'Shortness of Breath', slug: 'shortness-of-breath', icon: '💨', count: 61 },
+  { name: 'Joint Pain', slug: 'joint-pain', icon: '🦴', count: 92 },
+  { name: 'Skin Rash', slug: 'skin-rash', icon: '🔬', count: 54 },
+];
+
+// 身体部位分类
+const bodyParts = [
+  { part: 'Head & Neck', icon: '🧠', count: 8 },
+  { part: 'Chest & Heart', icon: '❤️', count: 6 },
+  { part: 'Abdomen', icon: '🫃', count: 7 },
+  { part: 'Back & Spine', icon: '🔙', count: 5 },
+  { part: 'Limbs & Joints', icon: '🦵', count: 9 },
+  { part: 'Skin', icon: '🧴', count: 6 },
+];
+---
+
+<BaseLayout
+  title="Symptoms Checker - SynoChain AI"
+  description="Check your symptoms with our AI-powered symptom checker. Search common symptoms, understand possible causes, and know when to seek medical care."
+  lang={lang}
+>
+  <!-- 页面顶部 Hero（含大搜索框） -->
+  <section class="relative overflow-hidden bg-white pt-32 pb-16">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="container-x relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-medical-200 bg-medical-50 px-4 py-1.5 text-xs font-medium text-medical-700">
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-medical-400 opacity-75"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-medical-500"></span>
+          </span>
+          AI-Powered Symptom Analysis
+        </span>
+        <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl">
+          Symptoms Checker
+        </h1>
+        <p class="mt-4 text-base text-ink-500 sm:text-lg">
+          Search your symptoms to understand possible causes and related conditions. Get AI-powered guidance on next steps.
+        </p>
+      </div>
+
+      <!-- 大搜索框 -->
+      <div class="mx-auto mt-10 max-w-2xl">
+        <div class="relative">
+          <span class="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-ink-400">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </span>
+          <input
+            type="text"
+            placeholder="Describe your symptom, e.g. headache and fever..."
+            class="w-full rounded-2xl border border-ink-200 bg-white py-5 pl-16 pr-40 text-base text-ink-800 shadow-md transition-colors placeholder:text-ink-400 focus:border-medical-400 focus:outline-none focus:ring-4 focus:ring-medical-100"
+          />
+          <a href={`${basePath}/ai-tools`} class="btn-primary absolute right-2 top-1/2 -translate-y-1/2 px-6 py-3">
+            Check Now
+          </a>
+        </div>
+        <p class="mt-3 text-center text-xs text-ink-400">
+          💡 Tip: The more details you provide, the more accurate the AI analysis will be.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常见症状标签云 -->
+  <section class="bg-white section-padding pt-8">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-2xl font-bold text-ink-800 sm:text-3xl">Common Symptoms</h2>
+        <p class="mt-3 text-ink-500">Click any symptom to learn more about possible causes and related conditions.</p>
+      </div>
+
+      <div class="mx-auto mt-10 flex max-w-4xl flex-wrap items-center justify-center gap-3">
+        {commonSymptoms.map((symptom) => (
+          <a
+            href={`${basePath}/symptoms/${symptom.slug}`}
+            class="group flex items-center gap-2 rounded-full border border-ink-200 bg-white px-5 py-3 text-sm font-medium text-ink-700 shadow-sm transition-all hover:border-medical-300 hover:bg-medical-50 hover:text-medical-700 hover:shadow-md"
+          >
+            <span class="text-lg">{symptom.icon}</span>
+            <span>{symptom.name}</span>
+            <span class="rounded-full bg-ink-50 px-2 py-0.5 text-xs text-ink-400 group-hover:bg-medical-100 group-hover:text-medical-600">
+              {symptom.count}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 身体部位分类 -->
+  <section class="bg-ink-50 section-padding">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-2xl font-bold text-ink-800 sm:text-3xl">Browse by Body Part</h2>
+        <p class="mt-3 text-ink-500">Explore symptoms organized by body region.</p>
+      </div>
+
+      <div class="mx-auto mt-10 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {bodyParts.map((bp) => (
+          <div class="card flex items-center gap-4">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-medical-50 to-health-50 text-3xl">
+              {bp.icon}
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-ink-800">{bp.part}</h3>
+              <p class="text-sm text-ink-400">{bp.count} symptoms</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AI 助手 CTA -->
+  <section class="bg-white section-padding pt-8">
+    <div class="container-x">
+      <div class="mx-auto max-w-4xl overflow-hidden rounded-3xl bg-gradient-to-br from-medical-500 to-health-500 p-8 text-center text-white sm:p-12">
+        <div class="text-5xl">🤖</div>
+        <h2 class="mt-4 text-2xl font-bold sm:text-3xl">Try AI Assistant</h2>
+        <p class="mx-auto mt-3 max-w-xl text-white/90">
+          Get personalized health guidance instantly. Describe your symptoms in natural language and our AI assistant will analyze possible causes and recommend next steps.
+        </p>
+        <a href={`${basePath}/ai-tools`} class="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
+          Start AI Assessment
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+
+      <!-- 医疗免责声明 -->
+      <div class="mx-auto mt-12 max-w-3xl border-t border-ink-100 pt-6">
+        <p class="text-center text-xs leading-relaxed text-ink-400">
+          ⚠️ Medical Disclaimer: The symptom checker provides general information only and is not a medical diagnosis. Always consult a qualified healthcare professional for proper evaluation and treatment. In an emergency, call your local emergency number immediately.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

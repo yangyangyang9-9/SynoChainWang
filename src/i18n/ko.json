@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "home": "홈",
+    "aiTools": "AI 건강 도구",
+    "diseaseLibrary": "질병 라이브러리",
+    "symptoms": "증상 체커",
+    "causes": "원인 탐색기",
+    "naturalHealth": "자연 건강",
+    "nutrition": "영양",
+    "healthTests": "건강 테스트",
+    "blog": "블로그 / 연구",
+    "community": "커뮤니티",
+    "crowdfunding": "창립자 되기",
+    "support": "얼리 서포터"
+  },
+  "hero": {
+    "title": "세계 최초의 AI 건강 동반자를 함께 만들어요",
+    "subtitle": "커뮤니티 자금 지원 AI 건강 프로젝트에 참여하세요. 여러분의 기여는 AI 모델 구축, 의학 지식 시스템 학습, 앱 개발을 돕고 맞춤형 건강 안내를 모두에게 제공합니다.",
+    "cta": "얼리 서포터 되기",
+    "raised": "모금됨",
+    "supporters": "서포터",
+    "daysRemaining": "남은 일수"
+  },
+  "home": {
+    "aiAssistantTitle": "AI 건강 어시스턴트",
+    "aiAssistantDesc": "의학 지식으로 학습되고 지속적으로 업데이트되는 AI 기반 맞춤형 건강 안내를 받으세요.",
+    "tryAssistant": "AI 어시스턴트 체험",
+    "founderTitle": "창립자 멤버십",
+    "founderSubtitle": "창립 커뮤니티의 일원이 되세요. 프로젝트를 지원하고 독점 혜택을 잠금 해제하세요.",
+    "fundUsageTitle": "여러분의 지원이 향하는 곳",
+    "fundUsageSubtitle": "플랫폼 구축을 위해 기여금이 어떻게 사용되는지 완전한 투명성을 제공합니다.",
+    "toolsTitle": "건강 도구 탐색",
+    "toolsSubtitle": "포괄적인 AI 기반 건강 도구와 지식 라이브러리를 손끝에서 만나보세요.",
+    "faqTitle": "자주 묻는 질문",
+    "architectureTitle": "플랫폼 아키텍처",
+    "architectureSubtitle": "글로벌 건강 지식을 위해 설계된 모듈형 확장 가능 시스템"
+  },
+  "founder": {
+    "aiPioneer": "AI 개척자",
+    "lifetimeFounder": "평생 창립자",
+    "perYear": "/년",
+    "oneTime": "일회성",
+    "choosePlan": "이 플랜 선택",
+    "mostPopular": "가장 인기",
+    "bestValue": "최고 가치"
+  },
+  "fund": {
+    "server": "서버",
+    "serverDesc": "AI 컴퓨팅 인프라",
+    "aiTraining": "AI 학습",
+    "aiTrainingDesc": "의학 AI 지식 시스템",
+    "appDev": "앱 개발",
+    "appDevDesc": "iOS / Android 앱",
+    "operations": "운영",
+    "operationsDesc": "보안 및 유지보수"
+  },
+  "tools": {
+    "aiTools": {
+      "title": "AI 건강 도구",
+      "desc": "대화형 AI 기반 건강 평가 및 안내"
+    },
+    "diseaseLibrary": {
+      "title": "질병 라이브러리",
+      "desc": "포괄적인 의학 질환 데이터베이스"
+    },
+    "symptoms": {
+      "title": "증상 체커",
+      "desc": "건강 증상 검색 및 분석"
+    },
+    "causes": {
+      "title": "원인 탐색기",
+      "desc": "질환의 근본 원인 이해"
+    },
+    "naturalHealth": {
+      "title": "자연 건강",
+      "desc": "자연 요법과 라이프스타일 접근법"
+    },
+    "nutrition": {
+      "title": "영양",
+      "desc": "영양 지식과 식단 안내"
+    },
+    "healthTests": {
+      "title": "건강 테스트",
+      "desc": "대화형 자가 평가 도구"
+    },
+    "blog": {
+      "title": "블로그 / 연구",
+      "desc": "최신 연구와 건강 기사"
+    },
+    "community": {
+      "title": "커뮤니티",
+      "desc": "건강을 중시하는 사람들과 연결"
+    }
+  },
+  "ai": {
+    "title": "AI 건강 어시스턴트",
+    "subtitle": "증상을 설명하고 AI 기반 건강 안내를 받으세요",
+    "placeholder": "증상을 설명하세요... 예: 두통이 있고 피곤합니다",
+    "send": "전송",
+    "thinking": "AI가 생각 중...",
+    "disclaimer": "이 AI 어시스턴트는 일반적인 건강 정보만 제공하며 전문적인 의학 조언을 대체할 수 없습니다. 의학적 우려 사항은 항상 자격을 갖춘 의료 제공자에게 문의하세요.",
+    "suggestedQuestions": "추천 질문",
+    "newChat": "새 대화"
+  },
+  "footer": {
+    "tagline": "세계 최초의 AI 건강 동반자를 함께 만듭니다.",
+    "product": "제품",
+    "company": "회사",
+    "resources": "리소스",
+    "legal": "법적",
+    "rights": "모든 권리 보유.",
+    "privacy": "개인정보 처리방침",
+    "terms": "서비스 약관",
+    "about": "회사 소개",
+    "contact": "연락처",
+    "careers": "채용",
+    "docs": "문서",
+    "api": "API",
+    "blog": "블로그"
+  },
+  "faq": {
+    "q1": "SynoChain AI란 무엇인가요?",
+    "a1": "SynoChain AI는 AI 기술과 포괄적인 의학 지식을 결합하여 맞춤형 건강 안내를 제공하는 커뮤니티 자금 지원 AI 건강 동반자 플랫폼입니다.",
+    "q2": "AI 건강 어시스턴트는 어떻게 작동하나요?",
+    "a2": "저희 AI 어시스턴트는 의학 지식으로 학습된 고급 언어 모델을 사용하여 증상을 분석하고 가능한 요인, 관련 질환 및 제안된 다음 단계를 제공합니다.",
+    "q3": "제 건강 데이터는 비공개인가요?",
+    "a3": "네, 개인정보 보호를 중요하게 생각합니다. 모든 건강 데이터는 암호화되어 안전하게 저장됩니다. 본인의 데이터를 통제할 수 있으며 언제든지 삭제할 수 있습니다.",
+    "q4": "AI 개척자와 평생 창립자의 차이는 무엇인가요?",
+    "a4": "AI 개척자($29)는 1년간 AI 건강 어시스턴트 접근 권한을 제공하며, 평생 창립자($199)는 영구 접근 권한과 NFT 인증서 및 투표권 같은 독점 혜택을 제공합니다.",
+    "q5": "모바일 앱은 언제 이용할 수 있나요?",
+    "a5": "iOS와 Android 앱을 개발 중입니다. 창립자 멤버는 이용 가능해지면 베타 테스트에 우선 접근할 수 있습니다."
+  },
+  "common": {
+    "learnMore": "더 알아보기",
+    "getStarted": "시작하기",
+    "viewAll": "모두 보기",
+    "search": "건강 주제 검색...",
+    "loading": "로딩 중...",
+    "language": "언어"
+  }
+}

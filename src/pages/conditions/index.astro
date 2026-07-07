@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// 根据语言生成基础路径（英文为根路径，其他语言带前缀）
+const basePath = lang === 'en' ? '' : `/${lang}`;
+
+// 疾病库 mock 数据
+const conditions = [
+  {
+    slug: 'sinusitis',
+    name: 'Sinusitis',
+    description: 'Inflammation of the sinus cavities causing congestion, pressure, and facial pain.',
+    category: 'ENT',
+    letter: 'S',
+  },
+  {
+    slug: 'eczema',
+    name: 'Eczema',
+    description: 'A chronic skin condition causing dry, itchy, inflamed patches on the skin.',
+    category: 'Dermatology',
+    letter: 'E',
+  },
+  {
+    slug: 'insomnia',
+    name: 'Insomnia',
+    description: 'Difficulty falling or staying asleep, leading to daytime fatigue and impaired focus.',
+    category: 'Neurology',
+    letter: 'I',
+  },
+  {
+    slug: 'migraine',
+    name: 'Migraine',
+    description: 'Severe recurring headaches often accompanied by nausea, light and sound sensitivity.',
+    category: 'Neurology',
+    letter: 'M',
+  },
+  {
+    slug: 'anxiety',
+    name: 'Anxiety',
+    description: 'Persistent excessive worry and fear that interferes with daily activities.',
+    category: 'Mental Health',
+    letter: 'A',
+  },
+  {
+    slug: 'diabetes',
+    name: 'Diabetes',
+    description: 'A metabolic disorder characterized by elevated blood sugar levels over time.',
+    category: 'Endocrinology',
+    letter: 'D',
+  },
+  {
+    slug: 'hypertension',
+    name: 'Hypertension',
+    description: 'Persistently elevated blood pressure increasing risk of heart disease and stroke.',
+    category: 'Cardiology',
+    letter: 'H',
+  },
+  {
+    slug: 'asthma',
+    name: 'Asthma',
+    description: 'Chronic airway inflammation causing wheezing, breathlessness, and chest tightness.',
+    category: 'Respiratory',
+    letter: 'A',
+  },
+  {
+    slug: 'arthritis',
+    name: 'Arthritis',
+    description: 'Joint inflammation causing pain, stiffness, and reduced range of motion.',
+    category: 'Rheumatology',
+    letter: 'A',
+  },
+  {
+    slug: 'depression',
+    name: 'Depression',
+    description: 'A mood disorder causing persistent sadness and loss of interest in activities.',
+    category: 'Mental Health',
+    letter: 'D',
+  },
+];
+
+// A-Z 字母索引
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const activeLetters = [...new Set(conditions.map((c) => c.letter))];
+
+// 类别筛选
+const categories = [...new Set(conditions.map((c) => c.category))];
+---
+
+<BaseLayout
+  title="Disease Library - SynoChain AI"
+  description="Browse our comprehensive disease library covering conditions across cardiology, neurology, dermatology, mental health and more. Search by name or filter by category."
+  lang={lang}
+>
+  <!-- 页面顶部 Hero -->
+  <section class="relative overflow-hidden bg-white pt-32 pb-12">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="container-x relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-medical-200 bg-medical-50 px-4 py-1.5 text-xs font-medium text-medical-700">
+          <span class="text-base">📚</span>
+          {t('tools.diseaseLibrary.title')}
+        </span>
+        <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl">
+          Disease Library
+        </h1>
+        <p class="mt-4 text-base text-ink-500 sm:text-lg">
+          Explore a comprehensive database of medical conditions. Search, filter, and learn about symptoms, causes, and treatments.
+        </p>
+      </div>
+
+      <!-- 搜索框（静态占位） -->
+      <div class="mx-auto mt-10 max-w-2xl">
+        <div class="relative">
+          <span class="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-ink-400">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </span>
+          <input
+            type="text"
+            placeholder="Search diseases, e.g. migraine, asthma..."
+            class="w-full rounded-xl border border-ink-200 bg-white py-4 pl-14 pr-32 text-base text-ink-800 shadow-sm transition-colors placeholder:text-ink-400 focus:border-medical-400 focus:outline-none focus:ring-2 focus:ring-medical-100"
+          />
+          <button class="btn-primary absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2 text-xs">
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 字母索引 + 类别筛选 -->
+  <section class="bg-white pb-8">
+    <div class="container-x">
+      <!-- A-Z 字母索引 -->
+      <div class="flex flex-wrap items-center justify-center gap-1.5">
+        {alphabet.map((letter) => {
+          const isActive = activeLetters.includes(letter);
+          return (
+            <a
+              href={isActive ? `#letter-${letter}` : undefined}
+              class:list={[
+                'flex h-9 w-9 items-center justify-center rounded-lg text-sm font-semibold transition-colors',
+                isActive
+                  ? 'bg-medical-50 text-medical-600 hover:bg-medical-100'
+                  : 'bg-ink-50 text-ink-300 cursor-not-allowed',
+              ]}
+            >
+              {letter}
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- 类别筛选标签 -->
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-2">
+        <span class="rounded-full bg-health-50 px-4 py-1.5 text-xs font-medium text-health-700 ring-1 ring-inset ring-health-200">
+          All
+        </span>
+        {categories.map((cat) => (
+          <span class="rounded-full bg-ink-50 px-4 py-1.5 text-xs font-medium text-ink-600 ring-1 ring-inset ring-ink-200">
+            {cat}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 疾病卡片网格 -->
+  <section class="bg-white section-padding pt-8">
+    <div class="container-x">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {conditions.map((condition) => (
+          <a
+            href={`${basePath}/conditions/${condition.slug}`}
+            id={`letter-${condition.letter}`}
+            class="card group flex flex-col scroll-mt-32"
+          >
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-medical-50 to-health-50 text-xl font-bold text-medical-600">
+                {condition.letter}
+              </div>
+              <span class="rounded-full bg-health-50 px-3 py-1 text-xs font-medium text-health-700 ring-1 ring-inset ring-health-200">
+                {condition.category}
+              </span>
+            </div>
+            <h3 class="mt-4 font-display text-lg font-bold text-ink-800 group-hover:text-medical-600">
+              {condition.name}
+            </h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-ink-500">
+              {condition.description}
+            </p>
+            <div class="mt-4 flex items-center gap-1.5 text-sm font-semibold text-medical-600">
+              View Details
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- 医疗免责声明 -->
+      <div class="mx-auto mt-16 max-w-3xl border-t border-ink-100 pt-6">
+        <p class="text-center text-xs leading-relaxed text-ink-400">
+          ⚠️ Medical Disclaimer: The information provided in this disease library is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider regarding any medical condition.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

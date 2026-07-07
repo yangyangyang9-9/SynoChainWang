@@ -1,0 +1,103 @@
+---
+import { useTranslations, type Lang } from '../../i18n/ui';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const layers = [
+  {
+    title: 'Frontend Layer',
+    tech: 'Astro + React',
+    color: 'medical',
+    items: ['SEO Content Pages', 'Interactive React Components', 'AI Health Assistant UI'],
+  },
+  {
+    title: 'AI Service Layer',
+    tech: 'Node.js API',
+    color: 'health',
+    items: ['AI Inference Server', 'Content Generator', 'SEO Page Builder'],
+  },
+  {
+    title: 'Data Layer',
+    tech: 'Supabase',
+    color: 'medical',
+    items: ['PostgreSQL Database', 'User Auth System', 'File Storage'],
+  },
+  {
+    title: 'Deployment',
+    tech: 'Cloudflare Pages',
+    color: 'health',
+    items: ['Global CDN', 'GitHub Auto-Deploy', 'Edge Functions'],
+  },
+];
+---
+
+<section class="section-padding bg-white">
+  <div class="container-x">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">
+        {t('home.architectureTitle')}
+      </h2>
+      <p class="mt-4 text-base text-ink-500 sm:text-lg">
+        {t('home.architectureSubtitle')}
+      </p>
+    </div>
+
+    <div class="mx-auto mt-16 max-w-4xl">
+      <div class="space-y-4">
+        {layers.map((layer, index) => {
+          const isMedical = layer.color === 'medical';
+          return (
+            <div class="relative">
+              <!-- 连接线 -->
+              {index < layers.length - 1 && (
+                <div class="absolute left-1/2 top-full h-4 w-px -translate-x-1/2 bg-ink-200"></div>
+              )}
+
+              <div class={`rounded-2xl border-2 p-6 transition-all hover:shadow-md ${isMedical ? 'border-medical-100 bg-medical-50/30' : 'border-health-100 bg-health-50/30'}`}>
+                <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+                  <div class="flex items-center gap-4">
+                    <div class={`flex h-12 w-12 items-center justify-center rounded-xl text-lg font-bold ${isMedical ? 'bg-medical-500' : 'bg-health-500'} text-white`}>
+                      {index + 1}
+                    </div>
+                    <div>
+                      <h3 class="font-display text-lg font-bold text-ink-800">{layer.title}</h3>
+                      <p class={`text-sm font-medium ${isMedical ? 'text-medical-600' : 'text-health-600'}`}>{layer.tech}</p>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2">
+                    {layer.items.map((item) => (
+                      <span class={`rounded-full px-3 py-1 text-xs font-medium ${isMedical ? 'bg-medical-100 text-medical-700' : 'bg-health-100 text-health-700'}`}>
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <!-- 数据流向 -->
+      <div class="mt-12 rounded-2xl bg-gradient-to-r from-medical-50 via-white to-health-50 p-6 text-center">
+        <p class="text-sm font-medium text-ink-500">
+          <span class="text-medical-600">SEO Traffic</span>
+          <span class="mx-2">→</span>
+          <span class="text-health-600">AI Assistant</span>
+          <span class="mx-2">→</span>
+          <span class="text-medical-600">Crowdfunding Members</span>
+          <span class="mx-2">→</span>
+          <span class="text-health-600">App Users</span>
+          <span class="mx-2">→</span>
+          <span class="text-ink-700">Revenue</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

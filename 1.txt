@@ -1,0 +1,333 @@
+第三阶段：AI内容生成系统
+
+核心。
+
+流程：
+
+关键词
+ ↓
+疾病数据
+ ↓
+AI Prompt
+ ↓
+生成文章
+ ↓
+保存数据库
+ ↓
+生成页面
+
+创建：
+
+scripts/generate-content.js
+
+功能：
+
+读取：
+
+keywords表
+
+调用AI：
+
+生成：
+
+{
+title:"",
+meta:"",
+summary:"",
+content:"",
+faq:[]
+}
+
+保存：
+
+generated_contents
+
+Trae Prompt：
+
+开发AI内容生成系统。
+
+要求：
+
+Node.js脚本。
+
+功能：
+
+1.连接Supabase
+
+2.读取keywords表
+
+3.读取ai_prompts表
+
+4.调用OpenAI API
+
+5.生成SEO文章
+
+6.保存generated_contents
+
+7.失败自动重试
+
+8.记录生成日志
+
+
+生成完整代码。
+七、第四阶段：SEO页面自动生成
+
+目标：
+
+1000页面自动生成。
+
+例如：
+
+数据库：
+
+sinusitis
+eczema
+insomnia
+
+自动生成：
+
+/conditions/sinusitis
+
+/conditions/eczema
+
+/conditions/insomnia
+
+Trae Prompt：
+
+开发SEO静态页面生成系统。
+
+使用Astro。
+
+要求：
+
+根据Supabase中的seo_pages数据。
+
+自动生成：
+
+Disease pages
+
+Symptom pages
+
+Question pages
+
+
+每个页面必须包含：
+
+SEO title
+
+Meta description
+
+Schema.org MedicalWebPage
+
+FAQ Schema
+
+Internal links
+
+AI assessment CTA按钮。
+
+
+支持10000页面。
+八、第五阶段：首页设计
+
+首页不是博客。
+
+设计：
+
+Hero
+Build The Future Of AI Health Together
+
+按钮：
+
+Join Founder Program
+众筹模块
+
+数据库：
+
+crowdfunding_plans
+
+字段：
+
+name
+
+price
+
+benefits
+
+duration
+
+方案：
+
+AI Pioneer
+
+$29
+
+一年免费
+
+Lifetime Founder
+
+$199
+
+永久使用
+
+Trae Prompt：
+
+设计SynoChain AI首页。
+
+要求：
+
+科技医疗风格。
+
+包含：
+
+1 Hero区域
+
+2 AI健康助手介绍
+
+3 众筹Founder Membership
+
+4 资金用途展示
+
+5 SEO健康知识入口
+
+6 AI工具入口
+
+7 FAQ
+
+8 Footer
+
+使用React组件化。
+九、第六阶段：AI健康助手
+
+API：
+
+/api/health-check
+
+输入：
+
+年龄
+
+性别
+
+症状
+
+持续时间
+
+生活方式
+
+AI输出：
+
+可能因素
+
+相关知识页面
+
+建议下一步
+
+免责声明
+
+Trae Prompt：
+
+开发AI Health Checker。
+
+要求：
+
+React前端。
+
+Node API后台。
+
+调用AI模型。
+
+输入用户症状。
+
+返回结构化JSON：
+
+possible_factors
+
+related_conditions
+
+next_steps
+
+warning_signs
+
+必须添加医疗免责声明。
+十、第七阶段：搜索系统
+
+增加：
+
+站内搜索。
+
+技术：
+
+Meilisearch
+
+功能：
+
+用户搜索：
+
+nose blocked
+
+返回：
+
+Symptoms
+
+Diseases
+
+AI tools
+
+你现在负责开发SynoChain AI Health平台。
+
+目标：
+
+打造一个AI健康知识和AI健康助手平台。
+
+核心功能：
+
+1. 疾病数据库
+2. 症状数据库
+3. SEO自动生成系统
+4. AI内容生成
+5. AI健康检测
+6. 众筹会员系统
+7. Cloudflare Pages部署
+8. Mobile App API
+
+
+技术：
+
+Frontend:
+Astro + React
+
+Database:
+Supabase PostgreSQL
+
+AI:
+OpenAI API
+
+Hosting:
+Cloudflare Pages
+
+
+请按照以下顺序开发：
+
+Phase 1 数据库
+
+Phase 2 AI内容生成
+
+Phase 3 SEO页面生成
+
+Phase 4 首页和众筹
+
+Phase 5 AI助手
+
+Phase 6 API
+
+
+每个阶段输出：
+
+代码
+
+文件结构
+
+部署步骤
+
+测试方法。
+

@@ -1,0 +1,74 @@
+---
+import { useTranslations, type Lang } from '../../i18n/ui';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const basePath = lang === 'en' ? '' : `/${lang}`;
+
+const tools = [
+  { key: 'aiTools', href: '/ai-tools', icon: '🤖', color: 'medical', desc: 'aiTools' },
+  { key: 'diseaseLibrary', href: '/conditions', icon: '📚', color: 'health', desc: 'diseaseLibrary' },
+  { key: 'symptoms', href: '/symptoms', icon: '🔍', color: 'medical', desc: 'symptoms' },
+  { key: 'causes', href: '/causes', icon: '🧬', color: 'health', desc: 'causes' },
+  { key: 'naturalHealth', href: '/natural-health', icon: '🌿', color: 'health', desc: 'naturalHealth' },
+  { key: 'nutrition', href: '/nutrition', icon: '🥗', color: 'health', desc: 'nutrition' },
+  { key: 'healthTests', href: '/health-tests', icon: '📋', color: 'medical', desc: 'healthTests' },
+  { key: 'blog', href: '/blog', icon: '📰', color: 'medical', desc: 'blog' },
+  { key: 'community', href: '/community', icon: '💬', color: 'health', desc: 'community' },
+];
+---
+
+<section class="section-padding bg-white">
+  <div class="container-x">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">
+        {t('home.toolsTitle')}
+      </h2>
+      <p class="mt-4 text-base text-ink-500 sm:text-lg">
+        {t('home.toolsSubtitle')}
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {tools.map((tool) => {
+        const isMedical = tool.color === 'medical';
+        return (
+          <a
+            href={basePath + tool.href}
+            class="group relative overflow-hidden rounded-2xl border border-ink-100 bg-white p-8 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-transparent"
+          >
+            <!-- 悬停背景效果 -->
+            <div class={`absolute inset-0 bg-gradient-to-br ${isMedical ? 'from-medical-50 to-transparent' : 'from-health-50 to-transparent'} opacity-0 transition-opacity group-hover:opacity-100`}></div>
+
+            <div class="relative">
+              <!-- 图标 -->
+              <div class={`inline-flex h-14 w-14 items-center justify-center rounded-2xl text-3xl ${isMedical ? 'bg-medical-50' : 'bg-health-50'}`}>
+                {tool.icon}
+              </div>
+
+              <!-- 标题与描述 -->
+              <h3 class="mt-5 font-display text-xl font-bold text-ink-800">
+                {t(`tools.${tool.key}.title`)}
+              </h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink-500">
+                {t(`tools.${tool.key}.desc`)}
+              </p>
+
+              <!-- 箭头 -->
+              <div class="mt-4 flex items-center gap-1 text-sm font-medium text-ink-400 transition-colors group-hover:text-medical-500">
+                {t('common.learnMore')}
+                <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>

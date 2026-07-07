@@ -1,0 +1,204 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// 根据语言生成基础路径
+const basePath = lang === 'en' ? '' : `/${lang}`;
+
+// 健康测试 mock 数据
+const tests = [
+  {
+    name: 'Stress Level Test',
+    icon: '😰',
+    color: 'from-purple-400 to-indigo-500',
+    desc: 'Assess your current stress levels with 10 research-based questions covering work, life, and emotional wellbeing.',
+    duration: '5 min',
+    questions: 10,
+    category: 'Mental Health',
+  },
+  {
+    name: 'Sleep Quality Assessment',
+    icon: '😴',
+    color: 'from-medical-400 to-medical-600',
+    desc: 'Evaluate your sleep quality and identify factors that may be affecting your rest using the PSQI framework.',
+    duration: '7 min',
+    questions: 12,
+    category: 'Sleep',
+  },
+  {
+    name: 'BMI Calculator',
+    icon: '⚖️',
+    color: 'from-health-400 to-health-600',
+    desc: 'Calculate your Body Mass Index and understand what your number means for your overall health status.',
+    duration: '2 min',
+    questions: 3,
+    category: 'Fitness',
+  },
+  {
+    name: 'Anxiety Self-Assessment',
+    icon: '🧠',
+    color: 'from-amber-400 to-orange-500',
+    desc: 'A validated GAD-7 based screening tool to help understand your anxiety levels over the past two weeks.',
+    duration: '4 min',
+    questions: 7,
+    category: 'Mental Health',
+  },
+  {
+    name: 'Depression Screening',
+    icon: '💙',
+    color: 'from-medical-500 to-health-500',
+    desc: 'PHQ-9 based questionnaire to assess depressive symptoms and their impact on daily functioning.',
+    duration: '5 min',
+    questions: 9,
+    category: 'Mental Health',
+  },
+  {
+    name: 'Heart Disease Risk Test',
+    icon: '❤️',
+    color: 'from-red-400 to-rose-500',
+    desc: 'Estimate your 10-year cardiovascular risk based on lifestyle, family history, and health metrics.',
+    duration: '6 min',
+    questions: 11,
+    category: 'Cardiology',
+  },
+  {
+    name: 'Diabetes Risk Assessment',
+    icon: '🩸',
+    color: 'from-ink-400 to-medical-500',
+    desc: 'Identify your risk of developing Type 2 diabetes with the FINDRISC screening tool.',
+    duration: '4 min',
+    questions: 8,
+    category: 'Endocrinology',
+  },
+  {
+    name: 'Nutrition Habits Quiz',
+    icon: '🥗',
+    color: 'from-health-500 to-medical-500',
+    desc: 'Evaluate your eating patterns and discover areas where you can improve your nutritional intake.',
+    duration: '6 min',
+    questions: 14,
+    category: 'Nutrition',
+  },
+];
+
+// 分类
+const categories = ['All', ...new Set(tests.map((tst) => tst.category))];
+---
+
+<BaseLayout
+  title="Health Tests & Self-Assessments | SynoChain AI"
+  description="Take free, research-based health assessments including stress tests, sleep quality evaluation, BMI calculator, anxiety and depression screening, and more."
+  lang={lang}
+>
+  <!-- 页面顶部 Hero -->
+  <section class="relative overflow-hidden bg-white pt-32 pb-16">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="container-x relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-medical-200 bg-medical-50 px-4 py-1.5 text-xs font-medium text-medical-700">
+          <span class="text-base">📋</span>
+          {t('tools.healthTests.title')}
+        </span>
+        <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl">
+          Health Tests
+        </h1>
+        <p class="mt-4 text-base text-ink-500 sm:text-lg">
+          Take free, validated self-assessments to better understand your health. Get instant results and personalized recommendations.
+        </p>
+      </div>
+
+      <!-- 分类筛选 -->
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-2">
+        {categories.map((cat, index) => (
+          <button
+            class:list={[
+              'rounded-full px-4 py-2 text-sm font-medium transition-colors',
+              index === 0
+                ? 'bg-medical-500 text-white'
+                : 'bg-ink-50 text-ink-600 hover:bg-medical-50 hover:text-medical-700',
+            ]}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 测试卡片列表 -->
+  <section class="bg-white section-padding pt-8">
+    <div class="container-x">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {tests.map((test) => (
+          <div class="card group flex flex-col">
+            <!-- 头部 -->
+            <div class="flex items-start justify-between">
+              <div class={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${test.color} text-3xl shadow-sm`}>
+                {test.icon}
+              </div>
+              <span class="rounded-full bg-ink-50 px-3 py-1 text-xs font-medium text-ink-500">{test.category}</span>
+            </div>
+
+            <!-- 内容 -->
+            <h3 class="mt-4 font-display text-lg font-bold text-ink-800 group-hover:text-medical-600">{test.name}</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-ink-500">{test.desc}</p>
+
+            <!-- 元信息 -->
+            <div class="mt-4 flex items-center gap-4 text-xs text-ink-400">
+              <span class="flex items-center gap-1">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+                {test.duration}
+              </span>
+              <span class="flex items-center gap-1">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></svg>
+                {test.questions} questions
+              </span>
+            </div>
+
+            <!-- 开始测试按钮 -->
+            <button class="btn-primary mt-5 w-full">
+              Start Test
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            </button>
+          </div>
+        ))}
+      </div>
+
+      <!-- 说明 -->
+      <div class="mx-auto mt-16 max-w-3xl rounded-2xl border border-medical-200 bg-medical-50 p-6">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">ℹ️</span>
+          <div>
+            <h3 class="font-display text-sm font-bold text-medical-800">About These Tests</h3>
+            <p class="mt-2 text-sm leading-relaxed text-medical-700">
+              These self-assessments use validated screening tools and are designed for educational and awareness purposes. They are not diagnostic instruments and do not replace professional medical evaluation. Share your results with a healthcare provider for proper interpretation.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI CTA -->
+      <div class="mx-auto mt-12 max-w-4xl overflow-hidden rounded-3xl bg-gradient-to-br from-medical-500 to-health-500 p-8 text-center text-white sm:p-12">
+        <div class="text-5xl">🤖</div>
+        <h2 class="mt-4 text-2xl font-bold sm:text-3xl">Prefer a Conversation?</h2>
+        <p class="mx-auto mt-3 max-w-xl text-white/90">
+          Chat with our AI health assistant for a more personalized, interactive assessment of your health concerns.
+        </p>
+        <a href={`${basePath}/ai-tools`} class="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
+          Try AI Assistant
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+
+      <!-- 医疗免责声明 -->
+      <div class="mx-auto mt-12 max-w-3xl border-t border-ink-100 pt-6">
+        <p class="text-center text-xs leading-relaxed text-ink-400">
+          ⚠️ Medical Disclaimer: These health tests are for informational and educational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider regarding any health concerns.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

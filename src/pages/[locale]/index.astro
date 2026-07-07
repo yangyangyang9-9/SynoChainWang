@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/home/Hero.astro';
+import AIAssistantPreview from '../../components/home/AIAssistantPreview.astro';
+import FounderTiers from '../../components/home/FounderTiers.astro';
+import FundUsage from '../../components/home/FundUsage.astro';
+import ToolsNav from '../../components/home/ToolsNav.astro';
+import Architecture from '../../components/home/Architecture.astro';
+import FAQ from '../../components/home/FAQ.astro';
+import { languages, defaultLang, useTranslations } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(languages)
+    .filter((lang) => lang !== defaultLang)
+    .map((lang) => ({ params: { locale: lang } }));
+}
+
+const { locale } = Astro.params;
+const lang = locale as any;
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title="SynoChain AI - Build The World's First AI Health Companion Together"
+  description="Join our community-funded AI health project."
+  lang={lang}
+>
+  <Hero lang={lang} />
+  <AIAssistantPreview lang={lang} />
+  <FounderTiers lang={lang} />
+  <FundUsage lang={lang} />
+  <ToolsNav lang={lang} />
+  <Architecture lang={lang} />
+  <FAQ lang={lang} />
+</BaseLayout>

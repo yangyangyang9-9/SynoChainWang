@@ -1,0 +1,293 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// 根据语言生成基础路径
+const basePath = lang === 'en' ? '' : `/${lang}`;
+
+// 社区分类标签
+const categories = [
+  { name: 'All', icon: '🌐', count: 1284 },
+  { name: 'Mental Health', icon: '🧠', count: 326 },
+  { name: 'Nutrition', icon: '🥗', count: 287 },
+  { name: 'Fitness', icon: '💪', count: 245 },
+  { name: 'Chronic Conditions', icon: '🩺', count: 198 },
+  { name: 'Natural Remedies', icon: '🌿', count: 154 },
+  { name: 'Sleep', icon: '😴', count: 74 },
+];
+
+// 热门话题
+const trendingTopics = [
+  { title: 'What natural remedies help with seasonal allergies?', replies: 48, views: 1240, likes: 156, category: 'Natural Remedies', author: 'Emma_R', time: '2h ago' },
+  { title: 'Sharing my 30-day meditation journey - results inside', replies: 92, views: 2150, likes: 287, category: 'Mental Health', author: 'MindfulMike', time: '5h ago' },
+  { title: 'Best foods for reducing inflammation? My doctor recommended...', replies: 67, views: 1890, likes: 203, category: 'Nutrition', author: 'HealthFan42', time: '8h ago' },
+  { title: 'How do you manage migraines without medication?', replies: 54, views: 1560, likes: 178, category: 'Chronic Conditions', author: 'PainFreeHope', time: '12h ago' },
+  { title: 'Sleep tracking apps - which one actually works?', replies: 41, views: 980, likes: 112, category: 'Sleep', author: 'NightOwl', time: '1d ago' },
+];
+
+// 用户帖子
+const posts = [
+  {
+    author: 'Sarah_W',
+    avatar: 'SW',
+    avatarColor: 'from-medical-400 to-health-400',
+    time: '3h ago',
+    category: 'Mental Health',
+    title: 'Overcoming morning anxiety - what works for me',
+    content: 'After struggling with morning anxiety for years, I\'ve found a routine that genuinely helps: 10 minutes of sunlight exposure, journaling, and the 4-7-8 breathing technique. Has anyone else found morning routines effective?',
+    likes: 124,
+    replies: 38,
+    tags: ['anxiety', 'morning-rood', 'breathing'],
+  },
+  {
+    author: 'David_Chen',
+    avatar: 'DC',
+    avatarColor: 'from-amber-400 to-orange-500',
+    time: '6h ago',
+    category: 'Fitness',
+    title: 'Low-impact exercises for knee arthritis',
+    content: 'Recently diagnosed with knee osteoarthritis. Looking for exercise recommendations that won\'t aggravate the joint. Swimming has been great so far - what else has worked for others here?',
+    likes: 89,
+    replies: 27,
+    tags: ['arthritis', 'exercise', 'joint-pain'],
+  },
+  {
+    author: 'NutriGirl',
+    avatar: 'NG',
+    avatarColor: 'from-health-400 to-medical-500',
+    time: '9h ago',
+    category: 'Nutrition',
+    title: 'My anti-inflammatory meal prep for the week',
+    content: 'Sharing my weekly meal prep focused on reducing inflammation: lots of leafy greens, fatty fish, turmeric-rich curries, and berry smoothies. Meal prepping has made such a difference in sticking to healthy eating!',
+    likes: 215,
+    replies: 52,
+    tags: ['meal-prep', 'anti-inflammatory', 'diet'],
+  },
+  {
+    author: 'SleepSeeker',
+    avatar: 'SS',
+    avatarColor: 'from-purple-400 to-indigo-500',
+    time: '14h ago',
+    category: 'Sleep',
+    title: 'Magnesium glycinate changed my sleep',
+    content: 'After trying countless remedies, magnesium glycinate before bed has genuinely improved my sleep quality. Falling asleep faster and waking less during the night. Anyone else had success with this?',
+    likes: 167,
+    replies: 43,
+    tags: ['insomnia', 'supplements', 'magnesium'],
+  },
+];
+
+// 社区数据统计
+const stats = [
+  { label: 'Members', value: '24.3K', icon: '👥' },
+  { label: 'Posts', value: '8.7K', icon: '📝' },
+  { label: 'Active Today', value: '1.2K', icon: '⚡' },
+  { label: 'Helpful Answers', value: '15.4K', icon: '💡' },
+];
+---
+
+<BaseLayout
+  title="Community - Connect & Share Health Experiences | SynoChain AI"
+  description="Join our health-focused community. Share experiences, ask questions, and connect with others on their wellness journey across mental health, nutrition, fitness, and more."
+  lang={lang}
+>
+  <!-- 页面顶部 Hero -->
+  <section class="relative overflow-hidden bg-white pt-32 pb-16">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="container-x relative">
+      <div class="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
+        <div class="max-w-2xl">
+          <span class="inline-flex items-center gap-2 rounded-full border border-medical-200 bg-medical-50 px-4 py-1.5 text-xs font-medium text-medical-700">
+            <span class="text-base">💬</span>
+            {t('tools.community.title')}
+          </span>
+          <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl">
+            Community
+          </h1>
+          <p class="mt-4 text-base text-ink-500 sm:text-lg">
+            Connect with health-conscious people, share your experiences, and learn from others on similar wellness journeys.
+          </p>
+        </div>
+
+        <!-- 发起新话题按钮 -->
+        <button class="btn-primary flex-shrink-0">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" /></svg>
+          Start New Topic
+        </button>
+      </div>
+
+      <!-- 社区统计 -->
+      <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {stats.map((stat) => (
+          <div class="card flex items-center gap-3 py-4">
+            <span class="text-3xl">{stat.icon}</span>
+            <div>
+              <div class="font-display text-xl font-bold text-ink-800">{stat.value}</div>
+              <div class="text-xs text-ink-400">{stat.label}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 分类标签 -->
+  <section class="bg-white pb-8">
+    <div class="container-x">
+      <div class="flex flex-wrap items-center gap-2">
+        {categories.map((cat, index) => (
+          <button
+            class:list={[
+              'flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors',
+              index === 0
+                ? 'bg-medical-500 text-white'
+                : 'bg-ink-50 text-ink-600 hover:bg-medical-50 hover:text-medical-700',
+            ]}
+          >
+            <span>{cat.icon}</span>
+            <span>{cat.name}</span>
+            <span class:list={['rounded-full px-2 py-0.5 text-xs', index === 0 ? 'bg-white/20' : 'bg-white text-ink-400']}>
+              {cat.count}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 主内容区 -->
+  <section class="bg-white section-padding pt-8">
+    <div class="container-x">
+      <div class="grid gap-8 lg:grid-cols-3">
+        <!-- 热门话题列表 + 帖子 -->
+        <div class="space-y-8 lg:col-span-2">
+          <!-- 热门话题 -->
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🔥</span>
+              <h2 class="font-display text-2xl font-bold text-ink-800">Trending Topics</h2>
+            </div>
+            <div class="mt-6 space-y-3">
+              {trendingTopics.map((topic) => (
+                <a
+                  href="#"
+                  class="group flex items-center justify-between gap-4 rounded-xl border border-ink-100 p-4 transition-all hover:border-medical-200 hover:bg-medical-50 hover:shadow-sm"
+                >
+                  <div class="min-w-0 flex-1">
+                    <div class="flex items-center gap-2">
+                      <span class="rounded-full bg-health-50 px-2.5 py-0.5 text-xs font-medium text-health-700">{topic.category}</span>
+                      <span class="text-xs text-ink-400">{topic.time} · @{topic.author}</span>
+                    </div>
+                    <h3 class="mt-2 font-semibold text-ink-800 group-hover:text-medical-600">{topic.title}</h3>
+                  </div>
+                  <div class="flex flex-shrink-0 items-center gap-4 text-xs text-ink-400">
+                    <span class="flex items-center gap-1">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+                      {topic.replies}
+                    </span>
+                    <span class="flex items-center gap-1">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                      {topic.views}
+                    </span>
+                    <span class="flex items-center gap-1">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
+                      {topic.likes}
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- 用户帖子卡片 -->
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">📰</span>
+              <h2 class="font-display text-2xl font-bold text-ink-800">Recent Posts</h2>
+            </div>
+            <div class="mt-6 space-y-5">
+              {posts.map((post) => (
+                <article class="card">
+                  <!-- 作者信息 -->
+                  <div class="flex items-center gap-3">
+                    <div class={`flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br ${post.avatarColor} text-sm font-bold text-white`}>
+                      {post.avatar}
+                    </div>
+                    <div>
+                      <div class="font-semibold text-ink-800">@{post.author}</div>
+                      <div class="text-xs text-ink-400">{post.time}</div>
+                    </div>
+                    <span class="ml-auto rounded-full bg-health-50 px-3 py-1 text-xs font-medium text-health-700">{post.category}</span>
+                  </div>
+
+                  <!-- 帖子内容 -->
+                  <h3 class="mt-4 font-display text-lg font-bold text-ink-800">{post.title}</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-ink-600">{post.content}</p>
+
+                  <!-- 标签 -->
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    {post.tags.map((tag) => (
+                      <span class="rounded-md bg-medical-50 px-2 py-0.5 text-xs font-medium text-medical-600">#{tag}</span>
+                    ))}
+                  </div>
+
+                  <!-- 互动按钮 -->
+                  <div class="mt-4 flex items-center gap-6 border-t border-ink-100 pt-4 text-sm text-ink-500">
+                    <button class="flex items-center gap-1.5 transition-colors hover:text-medical-600">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
+                      <span>{post.likes}</span>
+                    </button>
+                    <button class="flex items-center gap-1.5 transition-colors hover:text-medical-600">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+                      <span>{post.replies}</span>
+                    </button>
+                    <button class="flex items-center gap-1.5 transition-colors hover:text-medical-600">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" /></svg>
+                      <span>Share</span>
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- 侧边栏 -->
+        <aside class="space-y-6">
+          <!-- 社区准则 -->
+          <div class="card sticky top-24">
+            <h3 class="flex items-center gap-2 font-display text-lg font-bold text-ink-800">
+              <span>📋</span> Community Guidelines
+            </h3>
+            <ul class="mt-4 space-y-3 text-sm text-ink-600">
+              <li class="flex items-start gap-2"><span class="mt-0.5 text-health-500">✓</span><span>Be respectful and supportive of others</span></li>
+              <li class="flex items-start gap-2"><span class="mt-0.5 text-health-500">✓</span><span>Share evidence-based information</span></li>
+              <li class="flex items-start gap-2"><span class="mt-0.5 text-health-500">✓</span><span>Protect your privacy and others'</span></li>
+              <li class="flex items-start gap-2"><span class="mt-0.5 text-health-500">✓</span><span>Don't share specific medical diagnoses as fact</span></li>
+              <li class="flex items-start gap-2"><span class="mt-0.5 text-health-500">✓</span><span>Report harmful or misleading content</span></li>
+            </ul>
+
+            <!-- AI CTA -->
+            <div class="mt-6 rounded-xl bg-gradient-to-br from-medical-500 to-health-500 p-5 text-center text-white">
+              <h4 class="font-display font-bold">Need Quick Health Advice?</h4>
+              <p class="mt-1 text-sm text-white/90">Our AI assistant is available 24/7 for personalized guidance.</p>
+              <a href={`${basePath}/ai-tools`} class="mt-3 inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-2 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
+                🤖 Ask AI Assistant
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- 医疗免责声明 -->
+      <div class="mx-auto mt-16 max-w-3xl border-t border-ink-100 pt-6">
+        <p class="text-center text-xs leading-relaxed text-ink-400">
+          ⚠️ Medical Disclaimer: Community posts reflect personal experiences and opinions, not medical advice. Always consult a qualified healthcare professional before making health decisions based on information shared here. Do not disregard professional medical advice because of something you read in the community.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

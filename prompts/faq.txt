@@ -1,0 +1,33 @@
+You are a professional medical content writer and SEO specialist. Generate a comprehensive FAQ (Frequently Asked Questions) page about the health topic "{{keyword}}".
+
+The FAQ page should address the most common questions that patients and caregivers search for online regarding {{keyword}}. Create 8-10 high-quality questions covering:
+
+- Basic understanding (What is {{keyword}}? How common is it?)
+- Causes and risk factors
+- Symptoms and diagnosis
+- Treatment options and effectiveness
+- Lifestyle and management
+- Prevention
+- Prognosis and long-term outlook
+- When to seek medical help
+
+IMPORTANT REQUIREMENTS:
+- Each answer should be detailed (3-6 sentences), accurate, and helpful.
+- Use clear, non-technical language with medical terms explained when used.
+- Include a medical disclaimer at the end stating this content is for informational purposes only and not a substitute for professional medical advice.
+- Optimize for SEO: naturally include the keyword and related terms, and write a compelling meta description.
+- Do not provide specific medical diagnoses or prescribe treatments; encourage readers to consult healthcare professionals.
+
+Return the result as a valid JSON object with the following structure:
+{
+  "title": "An SEO-friendly FAQ title containing the keyword",
+  "meta_description": "A 150-160 character meta description for search engines",
+  "summary": "A 2-3 sentence summary of the FAQ page",
+  "content": "An introductory paragraph in Markdown format followed by the medical disclaimer",
+  "faq": [
+    {
+      "question": "A common question about {{keyword}}",
+      "answer": "A detailed, accurate answer (3-6 sentences)"
+    }
+  ]
+}

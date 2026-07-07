@@ -1,0 +1,301 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import { generateMedicalSchema } from '../../lib/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// 根据语言生成基础路径
+const basePath = lang === 'en' ? '' : `/${lang}`;
+
+// 症状详情 mock 数据
+export function getStaticPaths() {
+  const symptomsData = [
+  {
+    slug: 'headache',
+    name: 'Headache',
+    icon: '🤕',
+    description: 'Headache is pain in any region of the head, varying in intensity, location, and duration. It is one of the most common medical complaints and can range from mild discomfort to severe pain.',
+    possibleCauses: ['Tension and stress', 'Migraine', 'Dehydration', 'Lack of sleep', 'Sinus inflammation', 'Eye strain', 'Caffeine withdrawal', 'High blood pressure'],
+    relatedConditions: ['migraine', 'sinusitis', 'hypertension'],
+    whenToSeeDoctor: 'Seek immediate medical attention if you experience a sudden severe headache, headache with fever and stiff neck, headache after a head injury, or headache accompanied by vision changes, weakness, or difficulty speaking.',
+    selfCare: ['Drink plenty of water', 'Rest in a quiet, dark room', 'Apply a cold compress', 'Try over-the-counter pain relievers', 'Practice relaxation techniques'],
+    severity: 'Common',
+  },
+  {
+    slug: 'fatigue',
+    name: 'Fatigue',
+    icon: '😴',
+    description: 'Fatigue is a persistent feeling of tiredness, exhaustion, or lack of energy that is not relieved by rest. It can be physical, mental, or both, and may significantly impact daily activities.',
+    possibleCauses: ['Inadequate sleep', 'Anemia', 'Thyroid disorders', 'Depression', 'Chronic fatigue syndrome', 'Diabetes', 'Heart disease', 'Vitamin deficiencies'],
+    relatedConditions: ['insomnia', 'depression', 'diabetes'],
+    whenToSeeDoctor: 'Consult a doctor if fatigue persists for more than two weeks, is accompanied by unexplained weight loss, chest pain, shortness of breath, or if it interferes significantly with daily life.',
+    selfCare: ['Maintain a regular sleep schedule', 'Exercise regularly', 'Eat a balanced diet', 'Stay hydrated', 'Manage stress', 'Limit caffeine and alcohol'],
+    severity: 'Common',
+  },
+  {
+    slug: 'sore-throat',
+    name: 'Sore Throat',
+    icon: '😷',
+    description: 'A sore throat is pain, scratchiness, or irritation of the throat that often worsens when swallowing. It is commonly caused by viral or bacterial infections and usually resolves on its own.',
+    possibleCauses: ['Viral infections (cold, flu)', 'Strep throat (bacterial)', 'Allergies', 'Dry air', 'Irritants (smoke, pollution)', 'Acid reflux', 'Voice strain'],
+    relatedConditions: ['sinusitis', 'asthma'],
+    whenToSeeDoctor: 'See a doctor if the sore throat lasts longer than a week, is accompanied by high fever, difficulty swallowing or breathing, joint pain, or a rash, or if you have recurrent sore throats.',
+    selfCare: ['Drink warm liquids', 'Gargle with salt water', 'Use throat lozenges', 'Rest your voice', 'Use a humidifier', 'Avoid irritants'],
+    severity: 'Common',
+  },
+  {
+    slug: 'nausea',
+    name: 'Nausea',
+    icon: '🤢',
+    description: 'Nausea is an uncomfortable sensation in the stomach often accompanied by the urge to vomit. It can be caused by various factors ranging from mild digestive issues to serious medical conditions.',
+    possibleCauses: ['Gastroenteritis', 'Motion sickness', 'Pregnancy', 'Migraine', 'Food poisoning', 'Medication side effects', 'Stress and anxiety', 'Acid reflux'],
+    relatedConditions: ['migraine', 'anxiety'],
+    whenToSeeDoctor: 'Seek medical care if nausea is severe, lasts more than 24 hours, is accompanied by severe abdominal pain, high fever, dehydration signs, or if you vomit blood.',
+    selfCare: ['Drink clear fluids slowly', 'Eat bland foods (BRAT diet)', 'Avoid strong odors', 'Rest', 'Try ginger tea', 'Avoid fatty or spicy foods'],
+    severity: 'Common',
+  },
+  {
+    slug: 'dizziness',
+    name: 'Dizziness',
+    icon: '💫',
+    description: 'Dizziness is a term used to describe a range of sensations including feeling faint, woozy, weak, or unsteady. It can affect balance and increase the risk of falls.',
+    possibleCauses: ['Inner ear problems', 'Dehydration', 'Low blood sugar', 'Anemia', 'Medication side effects', 'Anxiety', 'High or low blood pressure', 'Neurological conditions'],
+    relatedConditions: ['hypertension', 'anxiety', 'migraine'],
+    whenToSeeDoctor: 'Seek emergency care if dizziness is accompanied by severe headache, chest pain, difficulty breathing, numbness, vision changes, or fainting, or if it persists for an extended period.',
+    selfCare: ['Sit or lie down immediately', 'Hydrate well', 'Stand up slowly', 'Avoid sudden head movements', 'Limit caffeine and alcohol', 'Check medications with your doctor'],
+    severity: 'Moderate',
+  },
+  {
+    slug: 'fever',
+    name: 'Fever',
+    icon: '🌡️',
+    description: 'Fever is a temporary increase in body temperature, often due to illness. It is part of the body\'s natural defense against infection and is generally not dangerous in adults when below 103°F (39.4°C).',
+    possibleCauses: ['Viral infections (flu, cold)', 'Bacterial infections', 'Heat exhaustion', 'Inflammatory conditions', 'Medications', 'Vaccinations', 'Certain cancers', 'Blood clots'],
+    relatedConditions: ['sinusitis', 'asthma'],
+    whenToSeeDoctor: 'Seek immediate care for adults if fever reaches 103°F (39.4°C) or higher, lasts more than three days, or is accompanied by severe headache, difficulty breathing, chest pain, confusion, or persistent vomiting.',
+    selfCare: ['Drink plenty of fluids', 'Rest', 'Keep the room cool', 'Dress lightly', 'Use a lukewarm sponge bath', 'Take fever-reducing medication'],
+    severity: 'Moderate',
+  },
+  {
+    slug: 'cough',
+    name: 'Cough',
+    icon: '🤧',
+    description: 'A cough is a reflex action that clears the airway of mucus, irritants, and foreign particles. It can be acute (lasting less than 3 weeks) or chronic (lasting more than 8 weeks).',
+    possibleCauses: ['Viral infections', 'Allergies', 'Asthma', 'Acid reflux (GERD)', 'Post-nasal drip', 'Smoking', 'Medications (ACE inhibitors)', 'Chronic bronchitis'],
+    relatedConditions: ['asthma', 'sinusitis'],
+    whenToSeeDoctor: 'See a doctor if a cough lasts more than 3 weeks, produces blood or discolored mucus, is accompanied by shortness of breath, chest pain, fever, or significant weight loss.',
+    selfCare: ['Stay hydrated', 'Use a humidifier', 'Try honey (not for infants)', 'Avoid smoke', 'Gargle warm salt water', 'Sleep with head elevated'],
+    severity: 'Common',
+  },
+  {
+    slug: 'back-pain',
+    name: 'Back Pain',
+    icon: '🔙',
+    description: 'Back pain is one of the most common reasons for doctor visits, ranging from a dull, constant ache to sudden, sharp pain. It can affect the upper, middle, or lower back.',
+    possibleCauses: ['Muscle strain', 'Herniated disc', 'Arthritis', 'Osteoporosis', 'Poor posture', 'Heavy lifting', 'Sedentary lifestyle', 'Kidney problems'],
+    relatedConditions: ['arthritis'],
+    whenToSeeDoctor: 'Seek immediate care if back pain follows a fall or injury, is accompanied by bowel or bladder problems, leg weakness, fever, or unexplained weight loss, or radiates down the leg below the knee.',
+    selfCare: ['Stay active with gentle exercise', 'Apply heat or cold', 'Maintain good posture', 'Sleep on a firm mattress', 'Strengthen core muscles', 'Maintain healthy weight'],
+    severity: 'Common',
+  },
+];
+
+  return symptomsData.map((symptom) => ({
+    params: { slug: symptom.slug },
+    props: { symptom, allSymptoms: symptomsData },
+  }));
+}
+
+const { symptom, allSymptoms } = Astro.props;
+
+// 生成 SEO Schema
+const pageUrl = new URL(Astro.url.pathname, Astro.site || Astro.url).toString();
+const medicalSchema = generateMedicalSchema({
+  title: `${symptom.name} - Causes, Conditions & When to See a Doctor`,
+  description: symptom.description,
+  url: pageUrl,
+});
+
+// 相关疾病（从简化的疾病列表中查找）
+const relatedConditions = symptom.relatedConditions
+  .map((slug) => {
+    const map: Record<string, { slug: string; name: string; category: string }> = {
+      migraine: { slug: 'migraine', name: 'Migraine', category: 'Neurology' },
+      sinusitis: { slug: 'sinusitis', name: 'Sinusitis', category: 'ENT' },
+      hypertension: { slug: 'hypertension', name: 'Hypertension', category: 'Cardiology' },
+      insomnia: { slug: 'insomnia', name: 'Insomnia', category: 'Neurology' },
+      depression: { slug: 'depression', name: 'Depression', category: 'Mental Health' },
+      diabetes: { slug: 'diabetes', name: 'Diabetes', category: 'Endocrinology' },
+      asthma: { slug: 'asthma', name: 'Asthma', category: 'Respiratory' },
+      anxiety: { slug: 'anxiety', name: 'Anxiety', category: 'Mental Health' },
+      arthritis: { slug: 'arthritis', name: 'Arthritis', category: 'Rheumatology' },
+    };
+    return map[slug];
+  })
+  .filter(Boolean);
+
+const severityColor = symptom.severity === 'Moderate' ? 'bg-amber-50 text-amber-700 ring-amber-200' : 'bg-health-50 text-health-700 ring-health-200';
+---
+
+<BaseLayout
+  title={`${symptom.name} - Causes & When to See a Doctor | SynoChain AI`}
+  description={symptom.description}
+  lang={lang}
+>
+  <!-- SEO Schema: MedicalWebPage -->
+  <script type="application/ld+json" set:html={JSON.stringify(medicalSchema)} />
+
+  <!-- 页面顶部 Hero -->
+  <section class="relative overflow-hidden bg-white pt-32 pb-12">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="container-x relative">
+      <!-- 面包屑导航 -->
+      <nav class="flex items-center gap-2 text-sm text-ink-400">
+        <a href={`${basePath}/symptoms`} class="hover:text-medical-600">Symptoms Checker</a>
+        <span>/</span>
+        <span class="font-medium text-ink-700">{symptom.name}</span>
+      </nav>
+
+      <div class="mt-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-center gap-4">
+          <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-medical-50 to-health-50 text-4xl">
+            {symptom.icon}
+          </div>
+          <div>
+            <h1 class="text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl">
+              {symptom.name}
+            </h1>
+            <span class:list={["mt-2 inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium ring-1 ring-inset", severityColor]}>
+              Severity: {symptom.severity}
+            </span>
+          </div>
+        </div>
+        <a href={`${basePath}/ai-tools`} class="btn-primary">
+          <span>🤖</span>
+          Get AI Analysis
+        </a>
+      </div>
+      <p class="mt-6 max-w-3xl text-base leading-relaxed text-ink-500 sm:text-lg">
+        {symptom.description}
+      </p>
+    </div>
+  </section>
+
+  <!-- 内容主体 -->
+  <section class="bg-white section-padding pt-8">
+    <div class="container-x">
+      <div class="grid gap-10 lg:grid-cols-3">
+        <!-- 主内容 -->
+        <div class="space-y-10 lg:col-span-2">
+          <!-- 可能原因 -->
+          <div>
+            <h2 class="flex items-center gap-2 text-2xl font-bold text-ink-800">
+              <span class="text-medical-500">🔍</span> Possible Causes
+            </h2>
+            <p class="mt-3 text-ink-500">The following factors may contribute to {symptom.name.toLowerCase()}:</p>
+            <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+              {symptom.possibleCauses.map((cause) => (
+                <li class="flex items-start gap-2 rounded-lg bg-ink-50 p-3 text-ink-700">
+                  <span class="mt-1 text-medical-500">•</span>
+                  <span>{cause}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- 相关疾病 -->
+          <div>
+            <h2 class="flex items-center gap-2 text-2xl font-bold text-ink-800">
+              <span class="text-medical-500">🩺</span> Related Conditions
+            </h2>
+            <p class="mt-3 text-ink-500">Conditions commonly associated with this symptom:</p>
+            <div class="mt-4 grid gap-3 sm:grid-cols-2">
+              {relatedConditions.map((cond) => (
+                <a
+                  href={`${basePath}/conditions/${cond.slug}`}
+                  class="flex items-center justify-between rounded-xl border border-ink-100 p-4 transition-colors hover:border-medical-200 hover:bg-medical-50"
+                >
+                  <div>
+                    <div class="font-semibold text-ink-800">{cond.name}</div>
+                    <div class="text-xs text-ink-400">{cond.category}</div>
+                  </div>
+                  <svg class="h-5 w-5 text-medical-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7" /></svg>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- 何时就医 -->
+          <div class="rounded-2xl border border-amber-200 bg-amber-50 p-6">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-amber-800">
+              <span>⚠️</span> When to See a Doctor
+            </h2>
+            <p class="mt-3 leading-relaxed text-amber-700">{symptom.whenToSeeDoctor}</p>
+          </div>
+
+          <!-- 自我护理 -->
+          <div>
+            <h2 class="flex items-center gap-2 text-2xl font-bold text-ink-800">
+              <span class="text-health-500">🌿</span> Self-Care Tips
+            </h2>
+            <p class="mt-3 text-ink-500">Home remedies that may help relieve symptoms:</p>
+            <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+              {symptom.selfCare.map((tip) => (
+                <li class="flex items-start gap-2 text-ink-700">
+                  <span class="mt-1 text-health-500">✓</span>
+                  <span>{tip}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- 侧边栏 -->
+        <aside class="space-y-6">
+          <!-- AI 评估 CTA -->
+          <div class="card sticky top-24">
+            <div class="rounded-xl bg-gradient-to-br from-medical-500 to-health-500 p-6 text-center text-white">
+              <div class="text-4xl">🤖</div>
+              <h3 class="mt-3 font-display text-lg font-bold">AI Symptom Analysis</h3>
+              <p class="mt-2 text-sm text-white/90">
+                Describe your symptoms in detail and get AI-powered analysis with possible causes and recommendations.
+              </p>
+              <a href={`${basePath}/ai-tools`} class="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
+                Start AI Assessment →
+              </a>
+            </div>
+
+            <!-- 其他症状链接 -->
+            <h3 class="mt-6 font-display text-lg font-bold text-ink-800">Other Symptoms</h3>
+            <div class="mt-3 space-y-2">
+              {allSymptoms.filter((s) => s.slug !== symptom.slug).slice(0, 6).map((s) => (
+                <a
+                  href={`${basePath}/symptoms/${s.slug}`}
+                  class="flex items-center gap-3 rounded-lg p-2 text-sm text-ink-600 transition-colors hover:bg-medical-50 hover:text-medical-700"
+                >
+                  <span class="text-lg">{s.icon}</span>
+                  <span>{s.name}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- 医疗免责声明 -->
+      <div class="mx-auto mt-16 max-w-4xl rounded-2xl border border-amber-200 bg-amber-50 p-6">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">⚠️</span>
+          <div>
+            <h3 class="font-display text-sm font-bold text-amber-800">Medical Disclaimer</h3>
+            <p class="mt-2 text-sm leading-relaxed text-amber-700">
+              The information provided here is for educational purposes only and is not intended to replace professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider with any questions about a medical condition. Never disregard professional medical advice or delay seeking it because of information on this site. In an emergency, contact your local emergency services immediately.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "aiTools": "Outils de Santé AI",
+    "diseaseLibrary": "Bibliothèque de Maladies",
+    "symptoms": "Vérificateur de Symptômes",
+    "causes": "Explorateur de Causes",
+    "naturalHealth": "Santé Naturelle",
+    "nutrition": "Nutrition",
+    "healthTests": "Tests de Santé",
+    "blog": "Blog / Recherche",
+    "community": "Communauté",
+    "crowdfunding": "Devenir Fondateur",
+    "support": "Soutien Précoce"
+  },
+  "hero": {
+    "title": "Construisons Ensemble le Premier Compagnon de Santé AI au Monde",
+    "subtitle": "Rejoignez notre projet de santé AI financé par la communauté. Votre contribution nous aide à construire des modèles AI, entraîner des systèmes de connaissances médicales, développer des applications et rendre les conseils de santé personnalisés accessibles à tous.",
+    "cta": "Devenir Soutien Précoce",
+    "raised": "collectés",
+    "supporters": "soutiens",
+    "daysRemaining": "jours restants"
+  },
+  "home": {
+    "aiAssistantTitle": "Assistant de Santé AI",
+    "aiAssistantDesc": "Obtenez des conseils de santé personnalisés alimentés par AI, entraînés sur des connaissances médicales et constamment mis à jour.",
+    "tryAssistant": "Essayer l'Assistant AI",
+    "founderTitle": "Adhésion Fondateur",
+    "founderSubtitle": "Faites partie de la communauté fondatrice. Soutenez le projet et débloquez des avantages exclusifs.",
+    "fundUsageTitle": "Où Va Votre Soutien",
+    "fundUsageSubtitle": "Transparence totale sur la façon dont vos contributions sont utilisées pour construire la plateforme.",
+    "toolsTitle": "Explorer les Outils de Santé",
+    "toolsSubtitle": "Des outils de santé complets alimentés par AI et une bibliothèque de connaissances à portée de main.",
+    "faqTitle": "Questions Fréquentes",
+    "architectureTitle": "Architecture de la Plateforme",
+    "architectureSubtitle": "Un système modulaire et évolutif conçu pour la connaissance de santé mondiale"
+  },
+  "founder": {
+    "aiPioneer": "Pionnier AI",
+    "lifetimeFounder": "Fondateur à Vie",
+    "perYear": "/an",
+    "oneTime": "unique",
+    "choosePlan": "Choisir ce Plan",
+    "mostPopular": "Le Plus Populaire",
+    "bestValue": "Meilleure Valeur"
+  },
+  "fund": {
+    "server": "Serveurs",
+    "serverDesc": "Infrastructure informatique AI",
+    "aiTraining": "Entraînement AI",
+    "aiTrainingDesc": "Système de connaissances médicales AI",
+    "appDev": "Développement d'App",
+    "appDevDesc": "Apps iOS / Android",
+    "operations": "Opérations",
+    "operationsDesc": "Sécurité et maintenance"
+  },
+  "tools": {
+    "aiTools": {
+      "title": "Outils de Santé AI",
+      "desc": "Évaluation et conseils de santé interactifs alimentés par AI"
+    },
+    "diseaseLibrary": {
+      "title": "Bibliothèque de Maladies",
+      "desc": "Base de données complète de conditions médicales"
+    },
+    "symptoms": {
+      "title": "Vérificateur de Symptômes",
+      "desc": "Rechercher et analyser les symptômes de santé"
+    },
+    "causes": {
+      "title": "Explorateur de Causes",
+      "desc": "Comprendre les causes profondes des conditions"
+    },
+    "naturalHealth": {
+      "title": "Santé Naturelle",
+      "desc": "Remèdes naturels et approches de mode de vie"
+    },
+    "nutrition": {
+      "title": "Nutrition",
+      "desc": "Connaissances nutritionnelles et conseils diététiques"
+    },
+    "healthTests": {
+      "title": "Tests de Santé",
+      "desc": "Outils interactifs d'auto-évaluation"
+    },
+    "blog": {
+      "title": "Blog / Recherche",
+      "desc": "Dernières recherches et articles de santé"
+    },
+    "community": {
+      "title": "Communauté",
+      "desc": "Connectez-vous avec des personnes soucieuses de leur santé"
+    }
+  },
+  "ai": {
+    "title": "Assistant de Santé AI",
+    "subtitle": "Décrivez vos symptômes et obtenez des conseils de santé alimentés par AI",
+    "placeholder": "Décrivez vos symptômes... ex. J'ai mal à la tête et je me sens fatigué",
+    "send": "Envoyer",
+    "thinking": "AI réfléchit...",
+    "disclaimer": "Cet assistant AI fournit uniquement des informations de santé générales et ne remplace pas un avis médical professionnel. Consultez toujours un professionnel de la santé qualifié pour tout problème médical.",
+    "suggestedQuestions": "Questions Suggérées",
+    "newChat": "Nouveau Chat"
+  },
+  "footer": {
+    "tagline": "Construisons ensemble le premier compagnon de santé AI au monde.",
+    "product": "Produit",
+    "company": "Entreprise",
+    "resources": "Ressources",
+    "legal": "Mentions légales",
+    "rights": "Tous droits réservés.",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "about": "À Propos",
+    "contact": "Contact",
+    "careers": "Carrières",
+    "docs": "Documentation",
+    "api": "API",
+    "blog": "Blog"
+  },
+  "faq": {
+    "q1": "Qu'est-ce que SynoChain AI ?",
+    "a1": "SynoChain AI est une plateforme de compagnon de santé AI financée par la communauté qui combine la technologie AI avec des connaissances médicales complètes pour fournir des conseils de santé personnalisés.",
+    "q2": "Comment fonctionne l'Assistant de Santé AI ?",
+    "a2": "Notre assistant AI utilise des modèles de langage avancés entraînés sur des connaissances médicales pour analyser vos symptômes et fournir des facteurs possibles, des conditions associées et des prochaines étapes suggérées.",
+    "q3": "Mes données de santé sont-elles privées ?",
+    "a3": "Oui, nous prenons la confidentialité au sérieux. Toutes les données de santé sont chiffrées et stockées en toute sécurité. Vous contrôlez vos données et pouvez les supprimer à tout moment.",
+    "q4": "Quelle est la différence entre Pionnier AI et Fondateur à Vie ?",
+    "a4": "Pionnier AI ($29) vous donne 1 an d'accès à l'Assistant de Santé AI, tandis que Fondateur à Vie ($199) offre un accès permanent plus des avantages exclusifs comme des certificats NFT et des droits de vote.",
+    "q5": "Quand l'application mobile sera-t-elle disponible ?",
+    "a5": "Nous développons des apps iOS et Android. Les membres fondateurs auront un accès prioritaire aux tests bêta dès qu'elles seront disponibles."
+  },
+  "common": {
+    "learnMore": "En savoir plus",
+    "getStarted": "Commencer",
+    "viewAll": "Voir tout",
+    "search": "Rechercher des sujets de santé...",
+    "loading": "Chargement...",
+    "language": "Langue"
+  }
+}

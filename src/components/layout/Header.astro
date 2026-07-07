@@ -1,0 +1,130 @@
+---
+import { languages, useTranslations, type Lang, getLocalizedPath } from '../../i18n/ui';
+import LanguageSwitcher from './LanguageSwitcher';
+
+export interface Props {
+  lang: Lang;
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+const t = useTranslations(lang);
+
+const navItems = [
+  { key: 'aiTools', href: '/ai-tools', icon: '🤖' },
+  { key: 'diseaseLibrary', href: '/conditions', icon: '📚' },
+  { key: 'symptoms', href: '/symptoms', icon: '🔍' },
+  { key: 'causes', href: '/causes', icon: '🧬' },
+  { key: 'naturalHealth', href: '/natural-health', icon: '🌿' },
+  { key: 'nutrition', href: '/nutrition', icon: '🥗' },
+  { key: 'healthTests', href: '/health-tests', icon: '📋' },
+  { key: 'blog', href: '/blog', icon: '📰' },
+  { key: 'community', href: '/community', icon: '💬' },
+];
+
+const basePath = lang === 'en' ? '' : `/${lang}`;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-ink-100 bg-white/80 backdrop-blur-lg">
+  <div class="container-x flex h-16 items-center justify-between">
+    <!-- Logo -->
+    <a href={basePath || '/'} class="flex items-center gap-2">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-medical-500 to-health-500">
+        <svg class="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+          <path d="M2 17l10 5 10-5" />
+          <path d="M2 12l10 5 10-5" />
+        </svg>
+      </div>
+      <span class="font-display text-lg font-bold tracking-tight text-ink-800">
+        SynoChain<span class="text-medical-500"> AI</span>
+      </span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden items-center gap-1 lg:flex">
+      {navItems.slice(0, 6).map((item) => (
+        <a
+          href={basePath + item.href}
+          class="rounded-lg px-3 py-2 text-sm font-medium text-ink-600 transition-colors hover:bg-medical-50 hover:text-medical-600"
+        >
+          {t(`nav.${item.key}`)}
+        </a>
+      ))}
+      <div class="group relative">
+        <button class="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-ink-600 transition-colors hover:bg-medical-50 hover:text-medical-600">
+          {t('common.viewAll')}
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="invisible absolute right-0 top-full mt-1 w-64 rounded-xl border border-ink-100 bg-white p-2 shadow-lg opacity-0 transition-all group-hover:visible group-hover:opacity-100">
+          {navItems.slice(6).map((item) => (
+            <a
+              href={basePath + item.href}
+              class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-ink-600 transition-colors hover:bg-medical-50 hover:text-medical-600"
+            >
+              <span class="text-base">{item.icon}</span>
+              <div>
+                <div class="font-medium">{t(`tools.${item.key}.title`)}</div>
+                <div class="text-xs text-ink-400">{t(`tools.${item.key}.desc`)}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
+
+    <!-- Right Actions -->
+    <div class="flex items-center gap-2">
+      <LanguageSwitcher client:load lang={lang} currentPath={currentPath} />
+
+      <a
+        href={basePath + '/crowdfunding'}
+        class="hidden btn-primary text-xs sm:inline-flex sm:px-4 sm:py-2"
+      >
+        {t('nav.support')}
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="rounded-lg p-2 text-ink-600 hover:bg-ink-50 lg:hidden"
+        aria-label="Menu"
+      >
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden border-t border-ink-100 bg-white lg:hidden">
+    <nav class="container-x flex flex-col gap-1 py-4">
+      {navItems.map((item) => (
+        <a
+          href={basePath + item.href}
+          class="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium text-ink-600 hover:bg-medical-50 hover:text-medical-600"
+        >
+          <span class="text-lg">{item.icon}</span>
+          {t(`nav.${item.key}`)}
+        </a>
+      ))}
+      <a
+        href={basePath + '/crowdfunding'}
+        class="btn-primary mt-2 w-full"
+      >
+        {t('nav.support')}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

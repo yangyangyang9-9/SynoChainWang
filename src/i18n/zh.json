@@ -1,0 +1,114 @@
+{
+  "nav": {
+    "home": "首页",
+    "aiTools": "AI 健康工具",
+    "diseaseLibrary": "疾病库",
+    "symptoms": "症状检查",
+    "causes": "病因分析",
+    "naturalHealth": "自然健康",
+    "nutrition": "营养",
+    "healthTests": "健康测试",
+    "blog": "博客 / 研究",
+    "community": "社区",
+    "crowdfunding": "成为创始人",
+    "support": "早期支持者"
+  },
+  "hero": {
+    "title": "共同构建全球首个 AI 健康伴侣",
+    "subtitle": "加入我们社区资助的 AI 健康项目。您的贡献将帮助我们构建 AI 模型、训练医学知识系统、开发应用，让个性化健康指导人人可及。",
+    "cta": "成为早期支持者",
+    "raised": "已筹集",
+    "supporters": "支持者",
+    "daysRemaining": "剩余天数"
+  },
+  "home": {
+    "aiAssistantTitle": "AI 健康助手",
+    "aiAssistantDesc": "获得由 AI 驱动的个性化健康指导，基于医学知识训练并持续更新。",
+    "tryAssistant": "体验 AI 助手",
+    "founderTitle": "创始人会员",
+    "founderSubtitle": "成为创始社区的一员。支持项目并解锁专属权益。",
+    "fundUsageTitle": "您的支持去向",
+    "fundUsageSubtitle": "完全透明地展示您的贡献如何用于构建平台。",
+    "toolsTitle": "探索健康工具",
+    "toolsSubtitle": "全面的 AI 驱动健康工具和知识库触手可及。",
+    "faqTitle": "常见问题",
+    "architectureTitle": "平台架构",
+    "architectureSubtitle": "为全球健康知识设计的模块化、可扩展系统"
+  },
+  "founder": {
+    "aiPioneer": "AI 先锋",
+    "lifetimeFounder": "终身创始人",
+    "perYear": "/年",
+    "oneTime": "一次性",
+    "choosePlan": "选择此方案",
+    "mostPopular": "最受欢迎",
+    "bestValue": "超值之选"
+  },
+  "fund": {
+    "server": "服务器",
+    "serverDesc": "AI 计算基础设施",
+    "aiTraining": "AI 训练",
+    "aiTrainingDesc": "医学 AI 知识系统",
+    "appDev": "App 开发",
+    "appDevDesc": "iOS / Android 应用",
+    "operations": "运营",
+    "operationsDesc": "安全与维护"
+  },
+  "tools": {
+    "aiTools": { "title": "AI 健康工具", "desc": "交互式 AI 健康评估与指导" },
+    "diseaseLibrary": { "title": "疾病库", "desc": "综合医学状况数据库" },
+    "symptoms": { "title": "症状检查", "desc": "搜索和分析健康症状" },
+    "causes": { "title": "病因分析", "desc": "了解病症的根本原因" },
+    "naturalHealth": { "title": "自然健康", "desc": "自然疗法和生活方式" },
+    "nutrition": { "title": "营养", "desc": "营养知识和饮食指导" },
+    "healthTests": { "title": "健康测试", "desc": "交互式自测工具" },
+    "blog": { "title": "博客 / 研究", "desc": "最新研究和健康文章" },
+    "community": { "title": "社区", "desc": "与健康关注者连接" }
+  },
+  "ai": {
+    "title": "AI 健康助手",
+    "subtitle": "描述您的症状，获取 AI 驱动的健康指导",
+    "placeholder": "描述您的症状...例如：我头痛并且感觉疲劳",
+    "send": "发送",
+    "thinking": "AI 正在思考...",
+    "disclaimer": "此 AI 助手仅提供一般健康信息，不能替代专业医疗建议。如有医疗问题，请始终咨询合格的医疗保健提供者。",
+    "suggestedQuestions": "建议问题",
+    "newChat": "新对话"
+  },
+  "footer": {
+    "tagline": "共同构建全球首个 AI 健康伴侣。",
+    "product": "产品",
+    "company": "公司",
+    "resources": "资源",
+    "legal": "法律",
+    "rights": "保留所有权利。",
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "about": "关于我们",
+    "contact": "联系我们",
+    "careers": "招聘",
+    "docs": "文档",
+    "api": "API",
+    "blog": "博客"
+  },
+  "faq": {
+    "q1": "什么是 SynoChain AI？",
+    "a1": "SynoChain AI 是一个社区资助的 AI 健康伴侣平台，将 AI 技术与综合医学知识相结合，提供个性化健康指导。",
+    "q2": "AI 健康助手如何工作？",
+    "a2": "我们的 AI 助手使用基于医学知识训练的先进语言模型来分析您的症状，并提供可能因素、相关病症和建议的下一步。",
+    "q3": "我的健康数据隐私吗？",
+    "a3": "是的，我们非常重视隐私。所有健康数据都经过加密并安全存储。您控制自己的数据，可随时删除。",
+    "q4": "AI 先锋和终身创始人有什么区别？",
+    "a4": "AI 先锋（$29）提供 1 年 AI 健康助手访问权，终身创始人（$199）提供永久访问权以及 NFT 证书和投票权等专属权益。",
+    "q5": "移动应用何时可用？",
+    "a5": "我们正在开发 iOS 和 Android 应用。创始人会员将优先获得 Beta 测试资格。"
+  },
+  "common": {
+    "learnMore": "了解更多",
+    "getStarted": "开始使用",
+    "viewAll": "查看全部",
+    "search": "搜索健康话题...",
+    "loading": "加载中...",
+    "language": "语言"
+  }
+}

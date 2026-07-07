@@ -1,0 +1,114 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "aiTools": "AI健康ツール",
+    "diseaseLibrary": "疾患ライブラリ",
+    "symptoms": "症状チェッカー",
+    "causes": "原因エクスプローラー",
+    "naturalHealth": "自然健康",
+    "nutrition": "栄養",
+    "healthTests": "健康テスト",
+    "blog": "ブログ / 研究",
+    "community": "コミュニティ",
+    "crowdfunding": "創設メンバーになる",
+    "support": "早期サポーター"
+  },
+  "hero": {
+    "title": "世界初のAI健康コンパニオンを一緒に作ろう",
+    "subtitle": "コミュニティ資金のAI健康プロジェクトに参加してください。あなたの貢献は、AIモデルの構築、医学知識システムの訓練、アプリの開発を支援し、パーソナライズされた健康ガイダンスを誰もが利用できるようにします。",
+    "cta": "早期サポーターになる",
+    "raised": "調達済み",
+    "supporters": "サポーター",
+    "daysRemaining": "残り日数"
+  },
+  "home": {
+    "aiAssistantTitle": "AI健康アシスタント",
+    "aiAssistantDesc": "医学知識で訓練され、継続的に更新されるAI駆動のパーソナライズされた健康ガイダンスを取得。",
+    "tryAssistant": "AIアシスタントを試す",
+    "founderTitle": "創設メンバーシップ",
+    "founderSubtitle": "創設コミュニティの一員になりましょう。プロジェクトを支援し、限定特典を解放。",
+    "fundUsageTitle": "あなたの支援の行方",
+    "fundUsageSubtitle": "プラットフォーム構築にあなたの貢献がどう使われるかを完全に透明化。",
+    "toolsTitle": "健康ツールを探索",
+    "toolsSubtitle": "包括的なAI駆動の健康ツールと知識ライブラリを手元に。",
+    "faqTitle": "よくある質問",
+    "architectureTitle": "プラットフォームアーキテクチャ",
+    "architectureSubtitle": "グローバルな健康知識のために設計されたモジュラーでスケーラブルなシステム"
+  },
+  "founder": {
+    "aiPioneer": "AIパイオニア",
+    "lifetimeFounder": "ライフタイム創設者",
+    "perYear": "/年",
+    "oneTime": "一括",
+    "choosePlan": "このプランを選択",
+    "mostPopular": "人気No.1",
+    "bestValue": "最高のお買い得"
+  },
+  "fund": {
+    "server": "サーバー",
+    "serverDesc": "AIコンピューティングインフラ",
+    "aiTraining": "AI訓練",
+    "aiTrainingDesc": "医学AI知識システム",
+    "appDev": "アプリ開発",
+    "appDevDesc": "iOS / Androidアプリ",
+    "operations": "運営",
+    "operationsDesc": "セキュリティと保守"
+  },
+  "tools": {
+    "aiTools": { "title": "AI健康ツール", "desc": "インタラクティブなAI健康評価とガイダンス" },
+    "diseaseLibrary": { "title": "疾患ライブラリ", "desc": "包括的な医学状態データベース" },
+    "symptoms": { "title": "症状チェッカー", "desc": "健康症状の検索と分析" },
+    "causes": { "title": "原因エクスプローラー", "desc": "状態の根本原因を理解" },
+    "naturalHealth": { "title": "自然健康", "desc": "自然療法とライフスタイルアプローチ" },
+    "nutrition": { "title": "栄養", "desc": "栄養知識と食事ガイダンス" },
+    "healthTests": { "title": "健康テスト", "desc": "インタラクティブな自己評価ツール" },
+    "blog": { "title": "ブログ / 研究", "desc": "最新の研究と健康記事" },
+    "community": { "title": "コミュニティ", "desc": "健康意識の高い人々と繋がる" }
+  },
+  "ai": {
+    "title": "AI健康アシスタント",
+    "subtitle": "症状を記述してAI駆動の健康ガイダンスを取得",
+    "placeholder": "症状を記述... 例：頭痛がして疲れを感じます",
+    "send": "送信",
+    "thinking": "AIが考えています...",
+    "disclaimer": "このAIアシスタントは一般的な健康情報のみを提供し、専門的な医学的アドバイスの代わりにはなりません。医学的な懸念については、常に資格のある医療提供者に相談してください。",
+    "suggestedQuestions": "提案された質問",
+    "newChat": "新しいチャット"
+  },
+  "footer": {
+    "tagline": "世界初のAI健康コンパニオンを一緒に構築。",
+    "product": "製品",
+    "company": "会社",
+    "resources": "リソース",
+    "legal": "法務",
+    "rights": "全著作権所有。",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約",
+    "about": "私たちについて",
+    "contact": "お問い合わせ",
+    "careers": "採用",
+    "docs": "ドキュメント",
+    "api": "API",
+    "blog": "ブログ"
+  },
+  "faq": {
+    "q1": "SynoChain AIとは何ですか？",
+    "a1": "SynoChain AIは、コミュニティ資金のAI健康コンパニオンプラットフォームで、AI技術と包括的な医学知識を組み合わせてパーソナライズされた健康ガイダンスを提供します。",
+    "q2": "AI健康アシスタントはどのように機能しますか？",
+    "a2": "私たちのAIアシスタントは、医学知識で訓練された高度な言語モデルを使用して症状を分析し、考えられる要因、関連する状態、提案された次のステップを提供します。",
+    "q3": "私の健康データはプライベートですか？",
+    "a3": "はい、プライバシーを真剣に受け止めています。すべての健康データは暗号化され、安全に保存されます。自分のデータを制御し、いつでも削除できます。",
+    "q4": "AIパイオニアとライフタイム創設者の違いは何ですか？",
+    "a4": "AIパイオニア（$29）は1年間のAI健康アシスタントアクセスを提供し、ライフタイム創設者（$199）は永続的なアクセスとNFT証明書や投票権などの限定特典を提供します。",
+    "q5": "モバイルアプリはいつ利用可能になりますか？",
+    "a5": "iOSおよびAndroidアプリを開発中です。創設メンバーは利用可能になり次第、ベータテストへの優先アクセスを取得できます。"
+  },
+  "common": {
+    "learnMore": "詳しく見る",
+    "getStarted": "始める",
+    "viewAll": "すべて見る",
+    "search": "健康トピックを検索...",
+    "loading": "読み込み中...",
+    "language": "言語"
+  }
+}

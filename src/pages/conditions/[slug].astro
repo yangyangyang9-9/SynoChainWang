@@ -1,0 +1,410 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations, languages } from '../../i18n/ui';
+import { generateMedicalSchema, generateFaqSchema } from '../../lib/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// 根据语言生成基础路径
+const basePath = lang === 'en' ? '' : `/${lang}`;
+
+// 疾病详情 mock 数据（含 SEO 所需完整字段）
+export function getStaticPaths() {
+  const conditionsData = [
+  {
+    slug: 'sinusitis',
+    name: 'Sinusitis',
+    category: 'ENT',
+    overview: 'Sinusitis is the inflammation of the tissue lining the sinuses, often caused by infections, allergies, or structural issues. It can be acute (lasting less than 4 weeks) or chronic (lasting more than 12 weeks).',
+    symptoms: ['Nasal congestion', 'Facial pain or pressure', 'Thick discolored discharge', 'Reduced sense of smell', 'Headache', 'Cough'],
+    causes: ['Viral infections (common cold)', 'Bacterial infections', 'Allergic rhinitis', 'Nasal polyps', 'Deviated septum', 'Weakened immune system'],
+    treatments: ['Saline nasal irrigation', 'Decongestants', 'Corticosteroid nasal sprays', 'Antibiotics (for bacterial cases)', 'Allergy management', 'Surgery in chronic cases'],
+    prevention: ['Avoid upper respiratory infections', 'Manage allergies', 'Avoid cigarette smoke', 'Use a humidifier', 'Wash hands frequently'],
+    relatedSymptoms: ['Headache', 'Nasal congestion', 'Cough'],
+    relatedConditions: ['asthma', 'allergic-rhinitis'],
+    faqs: [
+      { question: 'How long does sinusitis last?', answer: 'Acute sinusitis typically lasts less than 4 weeks, while chronic sinusitis persists for more than 12 weeks despite treatment.' },
+      { question: 'Is sinusitis contagious?', answer: 'Sinusitis itself is not contagious, but the viral infections that often cause it can spread from person to person.' },
+      { question: 'When should I see a doctor for sinusitis?', answer: 'Consult a doctor if symptoms last more than 10 days, worsen after initial improvement, or are accompanied by high fever and severe facial pain.' },
+    ],
+  },
+  {
+    slug: 'eczema',
+    name: 'Eczema',
+    category: 'Dermatology',
+    overview: 'Eczema (atopic dermatitis) is a chronic inflammatory skin condition that causes dry, itchy, red patches. It often begins in childhood and may flare periodically throughout life.',
+    symptoms: ['Dry, sensitive skin', 'Intense itching', 'Red, inflamed patches', 'Crusting or oozing', 'Thickened skin', 'Darkened skin around eyes'],
+    causes: ['Genetic predisposition', 'Immune system overreaction', 'Environmental triggers', 'Skin barrier dysfunction', 'Allergens', 'Stress'],
+    treatments: ['Moisturizers and emollients', 'Topical corticosteroids', 'Calcineurin inhibitors', 'Antihistamines for itching', 'Phototherapy', 'Biologic drugs for severe cases'],
+    prevention: ['Moisturize skin regularly', 'Avoid known triggers', 'Use gentle skin-care products', 'Take lukewarm baths', 'Wear soft, breathable fabrics'],
+    relatedSymptoms: ['Itching', 'Skin rash', 'Dry skin'],
+    relatedConditions: ['asthma', 'allergic-rhinitis'],
+    faqs: [
+      { question: 'Is eczema curable?', answer: 'There is no cure for eczema, but it can be effectively managed with proper skin care and treatment to reduce flare-ups.' },
+      { question: 'Is eczema contagious?', answer: 'No, eczema is not contagious. It cannot be passed from one person to another.' },
+      { question: 'What triggers eczema flare-ups?', answer: 'Common triggers include stress, harsh soaps, weather changes, allergens like dust mites, and certain foods.' },
+    ],
+  },
+  {
+    slug: 'insomnia',
+    name: 'Insomnia',
+    category: 'Neurology',
+    overview: 'Insomnia is a sleep disorder characterized by difficulty falling asleep, staying asleep, or experiencing restorative sleep, resulting in daytime impairment.',
+    symptoms: ['Difficulty falling asleep', 'Waking up frequently during the night', 'Waking up too early', 'Daytime fatigue', 'Difficulty concentrating', 'Irritability'],
+    causes: ['Stress and anxiety', 'Depression', 'Poor sleep habits', 'Caffeine and stimulants', 'Medical conditions', 'Certain medications'],
+    treatments: ['Cognitive Behavioral Therapy for Insomnia (CBT-I)', 'Sleep hygiene improvements', 'Relaxation techniques', 'Prescription sleep medications', 'Melatonin supplements', 'Treating underlying conditions'],
+    prevention: ['Maintain a consistent sleep schedule', 'Create a relaxing bedtime routine', 'Limit screen time before bed', 'Avoid caffeine late in the day', 'Exercise regularly'],
+    relatedSymptoms: ['Fatigue', 'Headache', 'Anxiety'],
+    relatedConditions: ['anxiety', 'depression'],
+    faqs: [
+      { question: 'How much sleep do adults need?', answer: 'Most adults need 7 to 9 hours of sleep per night for optimal health and function.' },
+      { question: 'What is the best treatment for chronic insomnia?', answer: 'Cognitive Behavioral Therapy for Insomnia (CBT-I) is considered the most effective first-line treatment for chronic insomnia.' },
+      { question: 'Can insomnia go away on its own?', answer: 'Short-term insomnia often resolves once the underlying trigger is addressed, but chronic insomnia usually requires treatment.' },
+    ],
+  },
+  {
+    slug: 'migraine',
+    name: 'Migraine',
+    category: 'Neurology',
+    overview: 'Migraine is a neurological condition causing intense, often one-sided throbbing headaches, frequently accompanied by nausea, sensitivity to light and sound, and sometimes aura.',
+    symptoms: ['Severe throbbing headache', 'Sensitivity to light and sound', 'Nausea and vomiting', 'Visual aura', 'Tingling in limbs', 'Difficulty speaking'],
+    causes: ['Genetic factors', 'Hormonal changes', 'Certain foods and drinks', 'Stress', 'Sensory stimuli', 'Sleep changes'],
+    treatments: ['Pain relievers (ibuprofen, acetaminophen)', 'Triptans', 'Anti-nausea medications', 'Preventive medications', 'CGMP monoclonal antibodies', 'Lifestyle modifications'],
+    prevention: ['Identify and avoid triggers', 'Maintain regular sleep', 'Stay hydrated', 'Manage stress', 'Regular exercise', 'Keep a headache diary'],
+    relatedSymptoms: ['Headache', 'Nausea', 'Dizziness'],
+    relatedConditions: ['anxiety', 'depression'],
+    faqs: [
+      { question: 'What triggers a migraine?', answer: 'Common triggers include stress, hormonal changes, certain foods, bright lights, lack of sleep, and weather changes.' },
+      { question: 'How long do migraines last?', answer: 'A migraine attack can last from 4 to 72 hours if untreated, with varying intensity throughout.' },
+      { question: 'Are migraines hereditary?', answer: 'Yes, migraines tend to run in families, suggesting a strong genetic component.' },
+    ],
+  },
+  {
+    slug: 'anxiety',
+    name: 'Anxiety',
+    category: 'Mental Health',
+    overview: 'Anxiety disorders involve excessive, persistent worry and fear that interfere with daily activities. Types include generalized anxiety disorder, panic disorder, and social anxiety disorder.',
+    symptoms: ['Excessive worrying', 'Restlessness', 'Fatigue', 'Difficulty concentrating', 'Irritability', 'Muscle tension', 'Sleep disturbances'],
+    causes: ['Genetic factors', 'Brain chemistry', 'Personality traits', 'Trauma', 'Stress buildup', 'Medical conditions'],
+    treatments: ['Cognitive Behavioral Therapy (CBT)', 'Anti-anxiety medications', 'Antidepressants (SSRIs)', 'Relaxation techniques', 'Mindfulness and meditation', 'Regular exercise'],
+    prevention: ['Reduce caffeine and alcohol', 'Regular physical activity', 'Adequate sleep', 'Stress management', 'Strong social support', 'Limit news and social media'],
+    relatedSymptoms: ['Fatigue', 'Headache', 'Insomnia'],
+    relatedConditions: ['depression', 'insomnia'],
+    faqs: [
+      { question: 'When does anxiety become a disorder?', answer: 'Anxiety becomes a disorder when worry is excessive, persistent (lasting 6+ months), and significantly interferes with daily functioning.' },
+      { question: 'Can anxiety be cured?', answer: 'While anxiety may not be completely curable, it is highly treatable with therapy, medication, and lifestyle changes.' },
+      { question: 'What is the difference between anxiety and panic attacks?', answer: 'Anxiety is a persistent state of worry, while panic attacks are sudden, intense episodes of fear with physical symptoms like rapid heartbeat.' },
+    ],
+  },
+  {
+    slug: 'diabetes',
+    name: 'Diabetes',
+    category: 'Endocrinology',
+    overview: 'Diabetes is a chronic metabolic condition characterized by elevated blood sugar levels, resulting from insufficient insulin production or insulin resistance.',
+    symptoms: ['Frequent urination', 'Excessive thirst', 'Unexplained weight loss', 'Extreme fatigue', 'Blurred vision', 'Slow-healing wounds'],
+    causes: ['Insulin resistance (Type 2)', 'Autoimmune destruction of beta cells (Type 1)', 'Genetic factors', 'Obesity', 'Sedentary lifestyle', 'Poor diet'],
+    treatments: ['Insulin therapy', 'Oral medications (metformin)', 'Blood sugar monitoring', 'Healthy diet', 'Regular exercise', 'Weight management'],
+    prevention: ['Maintain healthy weight', 'Regular physical activity', 'Balanced diet low in refined sugars', 'Limit processed foods', 'Regular health check-ups'],
+    relatedSymptoms: ['Fatigue', 'Increased thirst', 'Frequent urination'],
+    relatedConditions: ['hypertension', 'obesity'],
+    faqs: [
+      { question: 'What is the difference between Type 1 and Type 2 diabetes?', answer: 'Type 1 is an autoimmune condition where the body produces no insulin, while Type 2 involves insulin resistance and is often linked to lifestyle.' },
+      { question: 'Can Type 2 diabetes be reversed?', answer: 'In some cases, Type 2 diabetes can go into remission with significant weight loss and lifestyle changes, though it requires ongoing management.' },
+      { question: 'What should my blood sugar level be?', answer: 'Fasting blood sugar should generally be between 70-100 mg/dL (3.9-5.6 mmol/L) for non-diabetics. Consult your doctor for personalized targets.' },
+    ],
+  },
+  {
+    slug: 'hypertension',
+    name: 'Hypertension',
+    category: 'Cardiology',
+    overview: 'Hypertension, or high blood pressure, is a common condition where the force of blood against artery walls is persistently elevated, increasing risk of heart disease and stroke.',
+    symptoms: ['Often asymptomatic', 'Severe headaches', 'Dizziness', 'Nosebleeds', 'Chest pain', 'Vision problems', 'Shortness of breath'],
+    causes: ['Genetic factors', 'High sodium intake', 'Obesity', 'Lack of physical activity', 'Excessive alcohol', 'Chronic stress', 'Kidney disease'],
+    treatments: ['Lifestyle modifications', 'ACE inhibitors', 'Calcium channel blockers', 'Diuretics', 'Beta-blockers', 'ARB medications'],
+    prevention: ['Reduce sodium intake', 'Maintain healthy weight', 'Regular exercise', 'Limit alcohol', 'Quit smoking', 'Manage stress', 'DASH diet'],
+    relatedSymptoms: ['Headache', 'Dizziness', 'Chest pain'],
+    relatedConditions: ['diabetes', 'arthritis'],
+    faqs: [
+      { question: 'What is a normal blood pressure reading?', answer: 'Normal blood pressure is below 120/80 mmHg. Readings of 130/80 mmHg or higher are generally considered hypertension.' },
+      { question: 'Can hypertension be cured?', answer: 'Hypertension usually cannot be cured but can be effectively controlled with lifestyle changes and medication.' },
+      { question: 'Does salt really affect blood pressure?', answer: 'Yes, excess sodium can raise blood pressure by causing the body to retain water, putting extra strain on blood vessels.' },
+    ],
+  },
+  {
+    slug: 'asthma',
+    name: 'Asthma',
+    category: 'Respiratory',
+    overview: 'Asthma is a chronic inflammatory disease of the airways that causes recurring episodes of wheezing, breathlessness, chest tightness, and coughing.',
+    symptoms: ['Wheezing', 'Shortness of breath', 'Chest tightness', 'Coughing (especially at night)', 'Difficulty sleeping due to breathing', 'Fatigue during exercise'],
+    causes: ['Genetic predisposition', 'Allergens (pollen, dust mites)', 'Respiratory infections', 'Air pollution', 'Cold air', 'Exercise', 'Stress'],
+    treatments: ['Inhaled corticosteroids', 'Bronchodilators (rescue inhalers)', 'Leukotriene modifiers', 'Long-acting beta-agonists', 'Biologics for severe asthma', 'Allergy management'],
+    prevention: ['Identify and avoid triggers', 'Get vaccinated', 'Use prescribed medications', 'Monitor lung function', 'Avoid smoke', 'Manage allergies'],
+    relatedSymptoms: ['Cough', 'Shortness of breath', 'Chest tightness'],
+    relatedConditions: ['sinusitis', 'eczema'],
+    faqs: [
+      { question: 'Can asthma be cured?', answer: 'Asthma cannot be cured, but it can be effectively managed with medications and avoidance of triggers.' },
+      { question: 'What triggers an asthma attack?', answer: 'Common triggers include allergens, respiratory infections, cold air, exercise, smoke, and strong emotions.' },
+      { question: 'Is exercise safe for people with asthma?', answer: 'Yes, with proper management and medication, most people with asthma can exercise safely and benefit from physical activity.' },
+    ],
+  },
+  {
+    slug: 'arthritis',
+    name: 'Arthritis',
+    category: 'Rheumatology',
+    overview: 'Arthritis is inflammation of one or more joints causing pain, stiffness, and reduced range of motion. Common types include osteoarthritis and rheumatoid arthritis.',
+    symptoms: ['Joint pain', 'Stiffness (especially morning)', 'Swelling', 'Reduced range of motion', 'Redness around joints', 'Warmth in affected joints'],
+    causes: ['Cartilage wear (osteoarthritis)', 'Autoimmune response (rheumatoid)', 'Joint injury', 'Infection', 'Age', 'Obesity', 'Genetic factors'],
+    treatments: ['NSAIDs and pain relievers', 'Disease-modifying antirheumatic drugs (DMARDs)', 'Corticosteroid injections', 'Physical therapy', 'Joint replacement surgery', 'Lifestyle modifications'],
+    prevention: ['Maintain healthy weight', 'Regular low-impact exercise', 'Protect joints during activities', 'Avoid repetitive strain', 'Eat anti-inflammatory diet', 'Quit smoking'],
+    relatedSymptoms: ['Joint pain', 'Stiffness', 'Swelling'],
+    relatedConditions: ['hypertension', 'diabetes'],
+    faqs: [
+      { question: 'What is the difference between osteoarthritis and rheumatoid arthritis?', answer: 'Osteoarthritis is caused by wear and tear of cartilage, while rheumatoid arthritis is an autoimmune disease where the immune system attacks joint lining.' },
+      { question: 'Can arthritis be prevented?', answer: 'While not all types can be prevented, maintaining healthy weight, exercising, and protecting joints can reduce risk and slow progression.' },
+      { question: 'What foods help with arthritis?', answer: 'Anti-inflammatory foods like fatty fish, olive oil, nuts, fruits, and vegetables may help reduce arthritis symptoms.' },
+    ],
+  },
+  {
+    slug: 'depression',
+    name: 'Depression',
+    category: 'Mental Health',
+    overview: 'Depression is a mood disorder characterized by persistent feelings of sadness, hopelessness, and loss of interest in activities, affecting how a person thinks, feels, and functions.',
+    symptoms: ['Persistent sad mood', 'Loss of interest in activities', 'Changes in appetite', 'Sleep disturbances', 'Fatigue', 'Feelings of worthlessness', 'Difficulty concentrating'],
+    causes: ['Genetic factors', 'Brain chemistry imbalance', 'Trauma or stressful life events', 'Medical conditions', 'Certain medications', 'Substance abuse'],
+    treatments: ['Psychotherapy (CBT, IPT)', 'Antidepressant medications (SSRIs, SNRIs)', 'Exercise therapy', 'Mindfulness-based therapies', 'Electroconvulsive therapy (severe cases)', 'Support groups'],
+    prevention: ['Stress management', 'Regular exercise', 'Strong social connections', 'Adequate sleep', 'Limit alcohol', 'Seek help early', 'Mindfulness practice'],
+    relatedSymptoms: ['Fatigue', 'Insomnia', 'Anxiety'],
+    relatedConditions: ['anxiety', 'insomnia'],
+    faqs: [
+      { question: 'Is depression just sadness?', answer: 'No, depression is a medical condition involving persistent sadness plus physical and cognitive symptoms that impair daily functioning for at least two weeks.' },
+      { question: 'How long does depression treatment take to work?', answer: 'Antidepressants typically take 4-6 weeks to show effects, while therapy benefits may appear within several weeks of regular sessions.' },
+      { question: 'Can depression go away without treatment?', answer: 'While mild episodes may resolve, untreated depression often persists or recurs and can worsen. Professional treatment significantly improves outcomes.' },
+    ],
+  },
+];
+
+  return conditionsData.map((condition) => ({
+    params: { slug: condition.slug },
+    props: { condition, allConditions: conditionsData },
+  }));
+}
+
+const { condition, allConditions } = Astro.props;
+
+// 生成 SEO Schema
+const pageUrl = new URL(Astro.url.pathname, Astro.site || Astro.url).toString();
+const medicalSchema = generateMedicalSchema({
+  title: `${condition.name} - Symptoms, Causes & Treatment`,
+  description: condition.overview,
+  url: pageUrl,
+});
+
+const faqSchema = generateFaqSchema(condition.faqs);
+
+// 相关疾病（排除当前）
+const relatedConditions = condition.relatedConditions
+  .map((slug) => allConditions.find((c) => c.slug === slug))
+  .filter(Boolean);
+---
+
+<BaseLayout
+  title={`${condition.name} - Symptoms, Causes & Treatment | SynoChain AI`}
+  description={condition.overview}
+  lang={lang}
+>
+  <!-- SEO Schema: MedicalWebPage -->
+  <script type="application/ld+json" set:html={JSON.stringify(medicalSchema)} />
+
+  <!-- SEO Schema: FAQPage -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- 页面顶部 Hero -->
+  <section class="relative overflow-hidden bg-white pt-32 pb-12">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="container-x relative">
+      <!-- 面包屑导航 -->
+      <nav class="flex items-center gap-2 text-sm text-ink-400">
+        <a href={`${basePath}/conditions`} class="hover:text-medical-600">Disease Library</a>
+        <span>/</span>
+        <span class="font-medium text-ink-700">{condition.name}</span>
+      </nav>
+
+      <div class="mt-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <span class="inline-flex items-center gap-2 rounded-full bg-health-50 px-4 py-1.5 text-xs font-medium text-health-700 ring-1 ring-inset ring-health-200">
+            {condition.category}
+          </span>
+          <h1 class="mt-4 text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl">
+            {condition.name}
+          </h1>
+        </div>
+        <a href={`${basePath}/ai-tools`} class="btn-primary">
+          <span>🤖</span>
+          Try AI Health Assessment
+        </a>
+      </div>
+      <p class="mt-6 max-w-3xl text-base leading-relaxed text-ink-500 sm:text-lg">
+        {condition.overview}
+      </p>
+    </div>
+  </section>
+
+  <!-- 内容主体 -->
+  <section class="bg-white section-padding pt-8">
+    <div class="container-x">
+      <div class="grid gap-10 lg:grid-cols-3">
+        <!-- 主内容 -->
+        <div class="space-y-10 lg:col-span-2">
+          <!-- 概述 -->
+          <div>
+            <h2 class="flex items-center gap-2 text-2xl font-bold text-ink-800">
+              <span class="text-medical-500">📋</span> Overview
+            </h2>
+            <p class="mt-4 leading-relaxed text-ink-600">{condition.overview}</p>
+          </div>
+
+          <!-- 症状 -->
+          <div>
+            <h2 class="flex items-center gap-2 text-2xl font-bold text-ink-800">
+              <span class="text-medical-500">🔍</span> Symptoms
+            </h2>
+            <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+              {condition.symptoms.map((symptom) => (
+                <li class="flex items-start gap-2 text-ink-600">
+                  <span class="mt-1 text-health-500">✓</span>
+                  <span>{symptom}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- 病因 -->
+          <div>
+            <h2 class="flex items-center gap-2 text-2xl font-bold text-ink-800">
+              <span class="text-medical-500">🧬</span> Causes
+            </h2>
+            <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+              {condition.causes.map((cause) => (
+                <li class="flex items-start gap-2 text-ink-600">
+                  <span class="mt-1 text-medical-500">•</span>
+                  <span>{cause}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- 治疗 -->
+          <div>
+            <h2 class="flex items-center gap-2 text-2xl font-bold text-ink-800">
+              <span class="text-medical-500">💊</span> Treatment
+            </h2>
+            <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+              {condition.treatments.map((treatment) => (
+                <li class="flex items-start gap-2 text-ink-600">
+                  <span class="mt-1 text-health-500">→</span>
+                  <span>{treatment}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- 预防 -->
+          <div>
+            <h2 class="flex items-center gap-2 text-2xl font-bold text-ink-800">
+              <span class="text-medical-500">🛡️</span> Prevention
+            </h2>
+            <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+              {condition.prevention.map((item) => (
+                <li class="flex items-start gap-2 text-ink-600">
+                  <span class="mt-1 text-health-500">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- FAQ -->
+          <div>
+            <h2 class="flex items-center gap-2 text-2xl font-bold text-ink-800">
+              <span class="text-medical-500">❓</span> Frequently Asked Questions
+            </h2>
+            <div class="mt-6 space-y-4">
+              {condition.faqs.map((faq) => (
+                <details class="group rounded-xl border border-ink-100 bg-white p-6 shadow-sm transition-all hover:shadow-md">
+                  <summary class="flex cursor-pointer items-center justify-between gap-4 list-none">
+                    <h3 class="font-display text-base font-semibold text-ink-800">{faq.question}</h3>
+                    <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-medical-50 text-medical-600 transition-transform group-open:rotate-180">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed text-ink-500 sm:text-base">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- 侧边栏 -->
+        <aside class="space-y-6">
+          <!-- 相关症状 -->
+          <div class="card sticky top-24">
+            <h3 class="font-display text-lg font-bold text-ink-800">Related Symptoms</h3>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {condition.relatedSymptoms.map((symptom) => (
+                <a
+                  href={`${basePath}/symptoms/${symptom.toLowerCase().replace(/\s+/g, '-')}`}
+                  class="rounded-full bg-medical-50 px-3 py-1.5 text-xs font-medium text-medical-700 ring-1 ring-inset ring-medical-200 transition-colors hover:bg-medical-100"
+                >
+                  {symptom}
+                </a>
+              ))}
+            </div>
+
+            <!-- 相关疾病 -->
+            {relatedConditions.length > 0 && (
+              <>
+                <h3 class="mt-6 font-display text-lg font-bold text-ink-800">Related Conditions</h3>
+                <div class="mt-4 space-y-3">
+                  {relatedConditions.map((rel) => (
+                    <a
+                      href={`${basePath}/conditions/${rel.slug}`}
+                      class="block rounded-xl border border-ink-100 p-3 transition-colors hover:border-medical-200 hover:bg-medical-50"
+                    >
+                      <div class="font-semibold text-ink-800">{rel.name}</div>
+                      <div class="text-xs text-ink-400">{rel.category}</div>
+                    </a>
+                  ))}
+                </div>
+              </>
+            )}
+
+            <!-- AI CTA -->
+            <div class="mt-6 rounded-xl bg-gradient-to-br from-medical-500 to-health-500 p-5 text-white">
+              <h4 class="font-display font-bold">Need Personalized Guidance?</h4>
+              <p class="mt-1 text-sm text-white/90">Let our AI assistant analyze your symptoms and provide tailored recommendations.</p>
+              <a href={`${basePath}/ai-tools`} class="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
+                Try AI Health Assessment →
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- 医疗免责声明 -->
+      <div class="mx-auto mt-16 max-w-4xl rounded-2xl border border-amber-200 bg-amber-50 p-6">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">⚠️</span>
+          <div>
+            <h3 class="font-display text-sm font-bold text-amber-800">Medical Disclaimer</h3>
+            <p class="mt-2 text-sm leading-relaxed text-amber-700">
+              The information on this page is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider with any questions about a medical condition. Never disregard professional medical advice or delay seeking it because of something you have read here. In a medical emergency, contact your local emergency services immediately.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

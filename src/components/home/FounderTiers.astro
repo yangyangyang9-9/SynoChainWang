@@ -1,0 +1,104 @@
+---
+import { useTranslations, type Lang } from '../../i18n/ui';
+import { getCrowdfundingPlans, defaultPlans } from '../../lib/supabase';
+import { formatCurrency } from '../../lib/utils';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const plans = await getCrowdfundingPlans();
+const basePath = lang === 'en' ? '' : `/${lang}`;
+---
+
+<section id="founder" class="section-padding bg-white">
+  <div class="container-x">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="inline-block rounded-full bg-health-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-health-700">
+        Founder Membership
+      </span>
+      <h2 class="mt-4 text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">
+        {t('home.founderTitle')}
+      </h2>
+      <p class="mt-4 text-base text-ink-500 sm:text-lg">
+        {t('home.founderSubtitle')}
+      </p>
+    </div>
+
+    <div class="mx-auto mt-16 grid max-w-5xl gap-8 md:grid-cols-2">
+      {plans.map((plan, index) => {
+        const isPopular = index === 0;
+        const isBestValue = index === 1;
+        const tier = plan.slug === 'ai-pioneer' ? 'aiPioneer' : 'lifetimeFounder';
+        const durationLabel = plan.duration === 'lifetime' ? t('founder.oneTime') : t('founder.perYear');
+        const badgeClass = isBestValue
+          ? 'bg-gradient-to-r from-health-500 to-medical-500 text-white'
+          : 'bg-medical-100 text-medical-700';
+        const cardClass = isBestValue
+          ? 'border-health-300 shadow-lg ring-2 ring-health-200 md:scale-105'
+          : 'border-ink-100 shadow-sm';
+
+        return (
+          <div class={`relative rounded-2xl border bg-white p-8 transition-all hover:shadow-xl ${cardClass}`}>
+            <!-- Badge -->
+            {isBestValue && (
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                <span class={`inline-block rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider ${badgeClass}`}>
+                  ★ {t('founder.bestValue')}
+                </span>
+              </div>
+            )}
+            {isPopular && (
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                <span class="inline-block rounded-full bg-medical-500 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white">
+                  {t('founder.mostPopular')}
+                </span>
+              </div>
+            )}
+
+            <!-- Plan Header -->
+            <div class="text-center">
+              <h3 class="font-display text-2xl font-bold text-ink-800">
+                {t(`founder.${tier}`)}
+              </h3>
+              <div class="mt-4 flex items-end justify-center gap-1">
+                <span class="font-display text-5xl font-extrabold text-ink-800">
+                  {formatCurrency(plan.price)}
+                </span>
+                <span class="mb-2 text-sm text-ink-400">{durationLabel}</span>
+              </div>
+            </div>
+
+            <!-- Benefits -->
+            <ul class="mt-8 space-y-4">
+              {plan.benefits.map((benefit) => (
+                <li class="flex items-start gap-3">
+                  <span class={`mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full ${isBestValue ? 'bg-health-100' : 'bg-medical-100'}`}>
+                    <svg class={`h-3 w-3 ${isBestValue ? 'text-health-600' : 'text-medical-600'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <path d="M20 6L9 17l-5-5"/>
+                    </svg>
+                  </span>
+                  <span class="text-sm text-ink-700">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+
+            <!-- CTA -->
+            <a
+              href={basePath + '/crowdfunding?plan=' + plan.slug}
+              class={`mt-8 w-full ${isBestValue ? 'btn-health' : 'btn-primary'}`}
+            >
+              {t('founder.choosePlan')}
+            </a>
+          </div>
+        );
+      })}
+    </div>
+
+    <p class="mt-8 text-center text-xs text-ink-400">
+      🔒 Secure payment · 💳 Credit card / PayPal · 🔄 30-day money-back guarantee
+    </p>
+  </div>
+</section>

@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// 根据语言生成基础路径
+const basePath = lang === 'en' ? '' : `/${lang}`;
+
+// 病因分类 mock 数据
+const causeCategories = [
+  {
+    name: 'Infections',
+    icon: '🦠',
+    color: 'from-red-400 to-red-500',
+    description: 'Diseases caused by pathogenic microorganisms including bacteria, viruses, fungi, and parasites.',
+    causes: [
+      { name: 'Bacterial Infections', examples: 'Strep throat, Tuberculosis, UTI' },
+      { name: 'Viral Infections', examples: 'Common cold, Flu, COVID-19' },
+      { name: 'Fungal Infections', examples: 'Athlete\'s foot, Candidiasis' },
+      { name: 'Parasitic Infections', examples: 'Malaria, Giardiasis' },
+    ],
+  },
+  {
+    name: 'Genetics',
+    icon: '🧬',
+    color: 'from-medical-400 to-medical-600',
+    description: 'Conditions caused by inherited genetic mutations or chromosomal abnormalities.',
+    causes: [
+      { name: 'Inherited Mutations', examples: 'Cystic fibrosis, Sickle cell' },
+      { name: 'Chromosomal Disorders', examples: 'Down syndrome, Turner syndrome' },
+      { name: 'Genetic Predisposition', examples: 'Diabetes Type 2, Heart disease' },
+      { name: 'Spontaneous Mutations', examples: 'Certain cancers' },
+    ],
+  },
+  {
+    name: 'Environmental',
+    icon: '🌍',
+    color: 'from-health-400 to-health-600',
+    description: 'Health issues triggered by external environmental factors and exposures.',
+    causes: [
+      { name: 'Air Pollution', examples: 'Asthma, COPD' },
+      { name: 'Toxic Chemicals', examples: 'Lead poisoning, Asbestos-related' },
+      { name: 'Radiation', examples: 'Skin cancer, Radiation sickness' },
+      { name: 'Climate Factors', examples: 'Heatstroke, Hypothermia' },
+    ],
+  },
+  {
+    name: 'Lifestyle',
+    icon: '🏃',
+    color: 'from-amber-400 to-orange-500',
+    description: 'Conditions linked to daily habits, behaviors, and personal choices.',
+    causes: [
+      { name: 'Poor Diet', examples: 'Obesity, Malnutrition' },
+      { name: 'Physical Inactivity', examples: 'Heart disease, Osteoporosis' },
+      { name: 'Substance Abuse', examples: 'Liver disease, Addiction' },
+      { name: 'Sleep Deprivation', examples: 'Insomnia, Weakened immunity' },
+    ],
+  },
+  {
+    name: 'Psychological',
+    icon: '🧠',
+    color: 'from-purple-400 to-indigo-500',
+    description: 'Mental and emotional factors that contribute to physical and mental health conditions.',
+    causes: [
+      { name: 'Chronic Stress', examples: 'Hypertension, Anxiety' },
+      { name: 'Trauma', examples: 'PTSD, Depression' },
+      { name: 'Anxiety Disorders', examples: 'Panic disorder, GAD' },
+      { name: 'Emotional Distress', examples: 'Eating disorders, Insomnia' },
+    ],
+  },
+  {
+    name: 'Autoimmune',
+    icon: '🛡️',
+    color: 'from-pink-400 to-rose-500',
+    description: 'Conditions where the immune system mistakenly attacks healthy body tissues.',
+    causes: [
+      { name: 'Systemic Autoimmune', examples: 'Lupus, Rheumatoid arthritis' },
+      { name: 'Organ-Specific', examples: 'Type 1 diabetes, Hashimoto\'s' },
+      { name: 'Inflammatory Bowel', examples: 'Crohn\'s, Ulcerative colitis' },
+      { name: 'Neurological Autoimmune', examples: 'Multiple sclerosis' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Causes Explorer - Understand Disease Causes | SynoChain AI"
+  description="Explore the root causes of diseases across categories: infections, genetics, environment, lifestyle, psychological factors, and autoimmune conditions."
+  lang={lang}
+>
+  <!-- 页面顶部 Hero -->
+  <section class="relative overflow-hidden bg-white pt-32 pb-16">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="container-x relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-medical-200 bg-medical-50 px-4 py-1.5 text-xs font-medium text-medical-700">
+          <span class="text-base">🧬</span>
+          {t('tools.causes.title')}
+        </span>
+        <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl">
+          Causes Explorer
+        </h1>
+        <p class="mt-4 text-base text-ink-500 sm:text-lg">
+          Understand the root causes behind common diseases. Explore how infections, genetics, environment, lifestyle, and psychological factors shape health outcomes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 病因分类卡片 -->
+  <section class="bg-white section-padding pt-8">
+    <div class="container-x">
+      <div class="grid gap-6 lg:grid-cols-2">
+        {causeCategories.map((cat) => (
+          <div class="card group">
+            <!-- 分类头部 -->
+            <div class="flex items-start gap-4">
+              <div class={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${cat.color} text-3xl shadow-sm`}>
+                {cat.icon}
+              </div>
+              <div class="flex-1">
+                <h2 class="font-display text-xl font-bold text-ink-800">{cat.name}</h2>
+                <p class="mt-1 text-sm text-ink-500">{cat.description}</p>
+              </div>
+            </div>
+
+            <!-- 病因列表 -->
+            <div class="mt-6 space-y-3">
+              {cat.causes.map((cause) => (
+                <div class="flex items-start justify-between gap-4 rounded-xl bg-ink-50 p-4 transition-colors group-hover:bg-white group-hover:ring-1 group-hover:ring-medical-100">
+                  <div>
+                    <div class="font-semibold text-ink-800">{cause.name}</div>
+                    <div class="mt-0.5 text-xs text-ink-400">{cause.examples}</div>
+                  </div>
+                  <svg class="mt-1 h-5 w-5 flex-shrink-0 text-ink-300 group-hover:text-medical-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7" /></svg>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- AI CTA -->
+      <div class="mx-auto mt-16 max-w-4xl overflow-hidden rounded-3xl bg-gradient-to-br from-medical-500 to-health-500 p-8 text-center text-white sm:p-12">
+        <div class="text-5xl">🤖</div>
+        <h2 class="mt-4 text-2xl font-bold sm:text-3xl">Want to Understand Your Symptoms?</h2>
+        <p class="mx-auto mt-3 max-w-xl text-white/90">
+          Our AI assistant can analyze your symptoms and identify possible underlying causes tailored to your situation.
+        </p>
+        <a href={`${basePath}/ai-tools`} class="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
+          Try AI Health Assessment
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+
+      <!-- 医疗免责声明 -->
+      <div class="mx-auto mt-12 max-w-3xl border-t border-ink-100 pt-6">
+        <p class="text-center text-xs leading-relaxed text-ink-400">
+          ⚠️ Medical Disclaimer: This information is for educational purposes only and is not a substitute for professional medical advice. Always consult a qualified healthcare provider for diagnosis and treatment.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

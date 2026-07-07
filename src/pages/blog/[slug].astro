@@ -1,0 +1,272 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import { formatDate } from '../../lib/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// 根据语言生成基础路径
+const basePath = lang === 'en' ? '' : `/${lang}`;
+
+// 博客文章 mock 数据（含正文内容）
+export function getStaticPaths() {
+  const postsData = [
+  {
+    slug: 'understanding-ai-in-healthcare',
+    title: 'Understanding AI in Healthcare: A Complete Guide',
+    excerpt: 'Explore how artificial intelligence is transforming medical diagnosis, treatment planning, and personalized patient care in 2026.',
+    category: 'AI & Technology',
+    date: '2026-06-28',
+    readTime: '8 min read',
+    author: 'Dr. Sarah Chen',
+    cover: 'from-medical-400 to-medical-600',
+    content: [
+      { type: 'paragraph', text: 'Artificial intelligence has emerged as one of the most transformative forces in modern healthcare. From early disease detection to personalized treatment plans, AI technologies are reshaping how medical professionals diagnose, treat, and manage patient care.' },
+      { type: 'heading', text: 'How AI Is Used in Diagnosis' },
+      { type: 'paragraph', text: 'AI-powered diagnostic tools can analyze medical images, lab results, and patient histories with remarkable accuracy. Machine learning models trained on millions of cases can spot patterns that might escape even experienced clinicians, enabling earlier and more accurate diagnoses of conditions like cancer, heart disease, and neurological disorders.' },
+      { type: 'heading', text: 'Personalized Treatment Planning' },
+      { type: 'paragraph', text: 'Every patient is unique, and AI helps account for that. By analyzing genetic information, lifestyle factors, and treatment outcomes across large populations, AI systems can recommend personalized treatment plans optimized for individual patients—improving outcomes while reducing side effects.' },
+      { type: 'heading', text: 'The Role of AI in Preventive Care' },
+      { type: 'paragraph', text: 'Perhaps the most exciting application is in prevention. AI models can identify risk factors years before symptoms appear, allowing for early intervention. Wearable devices paired with AI analysis can monitor vital signs continuously, alerting patients and doctors to potential issues before they become serious.' },
+      { type: 'paragraph', text: 'At SynoChain AI, we believe that combining AI with comprehensive medical knowledge can make personalized health guidance accessible to everyone, not just those with access to specialized care.' },
+    ],
+  },
+  {
+    slug: 'natural-remedies-for-better-sleep',
+    title: '10 Natural Remedies for Better Sleep Tonight',
+    excerpt: 'Discover evidence-based natural approaches to improve sleep quality, from herbal teas to sleep hygiene practices.',
+    category: 'Natural Health',
+    date: '2026-06-22',
+    readTime: '6 min read',
+    author: 'Dr. James Liu',
+    cover: 'from-health-400 to-health-600',
+    content: [
+      { type: 'paragraph', text: 'Quality sleep is foundational to good health, yet millions struggle with insomnia and poor sleep quality. Before turning to medication, consider these evidence-based natural approaches that can significantly improve your sleep.' },
+      { type: 'heading', text: '1. Establish a Consistent Sleep Schedule' },
+      { type: 'paragraph', text: 'Going to bed and waking up at the same time every day—even on weekends—helps regulate your body\'s internal clock, making it easier to fall asleep and wake naturally.' },
+      { type: 'heading', text: '2. Try Herbal Sleep Aids' },
+      { type: 'paragraph', text: 'Chamomile tea, valerian root, and passionflower have all shown promise in research for improving sleep quality. A warm cup of chamomile tea before bed can be both relaxing and effective.' },
+      { type: 'heading', text: '3. Create a Relaxing Bedtime Routine' },
+      { type: 'paragraph', text: 'Dim the lights, avoid screens, and engage in calming activities like reading, gentle stretching, or meditation. This signals to your brain that it\'s time to wind down.' },
+      { type: 'heading', text: '4. Optimize Your Sleep Environment' },
+      { type: 'paragraph', text: 'Keep your bedroom cool (around 65°F/18°C), dark, and quiet. Invest in a comfortable mattress and pillows that support proper sleep posture.' },
+      { type: 'paragraph', text: 'These natural approaches, combined with good sleep hygiene, can transform your sleep quality without the side effects of sleep medications.' },
+    ],
+  },
+  {
+    slug: 'nutrition-guide-chronic-inflammation',
+    title: 'A Nutrition Guide to Fighting Chronic Inflammation',
+    excerpt: 'Learn which foods reduce inflammation and which to avoid, with a practical 7-day anti-inflammatory meal plan.',
+    category: 'Nutrition',
+    date: '2026-06-15',
+    readTime: '10 min read',
+    author: 'Nutritionist Maya Patel',
+    cover: 'from-medical-500 to-health-500',
+    content: [
+      { type: 'paragraph', text: 'Chronic inflammation is at the root of many modern diseases, from heart disease to arthritis. The good news? Your diet is one of the most powerful tools for reducing inflammation naturally.' },
+      { type: 'heading', text: 'Anti-Inflammatory Foods to Include' },
+      { type: 'paragraph', text: 'Fatty fish rich in omega-3s, leafy green vegetables, berries, nuts, olive oil, and turmeric are all potent anti-inflammatory foods. These foods contain compounds that directly reduce inflammatory markers in the body.' },
+      { type: 'heading', text: 'Foods That Promote Inflammation' },
+      { type: 'paragraph', text: 'Refined sugars, processed meats, trans fats, and excessive alcohol all trigger inflammatory responses. Limiting these can have a dramatic effect on how you feel day to day.' },
+      { type: 'heading', text: 'Building an Anti-Inflammatory Plate' },
+      { type: 'paragraph', text: 'Aim for half your plate to be colorful vegetables, a quarter lean protein (preferably plant-based or fatty fish), and a quarter whole grains. Add healthy fats like olive oil or avocado, and season with anti-inflammatory herbs and spices.' },
+      { type: 'paragraph', text: 'Consistency matters more than perfection. Small, sustainable changes to your eating patterns can significantly reduce inflammation over time.' },
+    ],
+  },
+  {
+    slug: 'managing-anxiety-naturally',
+    title: 'Managing Anxiety: Evidence-Based Natural Approaches',
+    excerpt: 'From mindfulness meditation to breathing exercises, explore proven strategies to reduce anxiety without medication.',
+    category: 'Mental Health',
+    date: '2026-06-08',
+    readTime: '7 min read',
+    author: 'Dr. Emily Roberts',
+    cover: 'from-ink-400 to-medical-500',
+    content: [
+      { type: 'paragraph', text: 'Anxiety affects millions worldwide, but medication isn\'t the only option. Research supports several natural approaches that can be highly effective, especially for mild to moderate anxiety.' },
+      { type: 'heading', text: 'Mindfulness Meditation' },
+      { type: 'paragraph', text: 'Regular mindfulness practice changes brain structure in ways that reduce anxiety. Just 10 minutes a day can lower stress hormones and improve emotional regulation.' },
+      { type: 'heading', text: 'Breathing Techniques' },
+      { type: 'paragraph', text: 'The 4-7-8 breathing technique—inhalation for 4 seconds, hold for 7, exhale for 8—activates the parasympathetic nervous system, quickly reducing anxiety symptoms.' },
+      { type: 'heading', text: 'Regular Exercise' },
+      { type: 'paragraph', text: 'Physical activity releases endorphins and reduces stress hormones. Even a 20-minute daily walk can significantly lower anxiety levels.' },
+      { type: 'paragraph', text: 'While these approaches are powerful, remember that severe anxiety may require professional treatment. There\'s no shame in combining natural strategies with therapy or medication when needed.' },
+    ],
+  },
+  {
+    slug: 'understanding-blood-pressure',
+    title: 'Understanding Your Blood Pressure Numbers',
+    excerpt: 'What do those two numbers really mean? A cardiologist breaks down blood pressure readings and what they reveal about your health.',
+    category: 'Cardiology',
+    date: '2026-05-30',
+    readTime: '5 min read',
+    author: 'Dr. Michael Wong',
+    cover: 'from-medical-600 to-ink-700',
+    content: [
+      { type: 'paragraph', text: 'Blood pressure is one of the most important vital signs, yet many people don\'t fully understand what their numbers mean. Let\'s break it down.' },
+      { type: 'heading', text: 'Systolic vs. Diastolic: The Two Numbers' },
+      { type: 'paragraph', text: 'The top number (systolic) measures pressure when your heart beats; the bottom number (diastolic) measures pressure between beats. Both matter, but systolic pressure is particularly important as a risk factor for cardiovascular disease.' },
+      { type: 'heading', text: 'What\'s a Healthy Range?' },
+      { type: 'paragraph', text: 'Normal blood pressure is below 120/80 mmHg. Elevated readings (120-129/less than 80) warrant lifestyle changes, while readings of 130/80 or higher may require medical attention.' },
+      { type: 'heading', text: 'Lifestyle Factors That Affect Blood Pressure' },
+      { type: 'paragraph', text: 'Sodium intake, physical activity, stress, sleep quality, alcohol consumption, and weight all influence blood pressure. Small lifestyle changes can yield significant improvements.' },
+      { type: 'paragraph', text: 'Regular monitoring is key—hypertension is often called the "silent killer" because it rarely causes symptoms until serious damage occurs.' },
+    ],
+  },
+  {
+    slug: 'gut-health-and-immunity',
+    title: 'The Gut-Immunity Connection: What Science Says',
+    excerpt: 'Recent research reveals how your gut microbiome influences immune function and overall health. Here\'s what you need to know.',
+    category: 'Research',
+    date: '2026-05-21',
+    readTime: '9 min read',
+    author: 'Dr. Anna Kim',
+    cover: 'from-health-500 to-medical-600',
+    content: [
+      { type: 'paragraph', text: 'The human gut is home to trillions of microorganisms that play a crucial role in immune function, mental health, and overall well-being. This gut-immunity connection is one of the most exciting areas of modern medical research.' },
+      { type: 'heading', text: 'How Your Gut Supports Immunity' },
+      { type: 'paragraph', text: 'About 70% of your immune system resides in your gut. The microbiome helps train immune cells, produces antimicrobial compounds, and maintains the gut barrier that keeps pathogens out.' },
+      { type: 'heading', text: 'Foods That Support a Healthy Microbiome' },
+      { type: 'paragraph', text: 'Fiber-rich foods, fermented products like yogurt and kimchi, polyphenol-rich foods like berries and dark chocolate, and prebiotic foods like garlic and onions all nourish beneficial gut bacteria.' },
+      { type: 'heading', text: 'Signs of an Unhealthy Gut' },
+      { type: 'paragraph', text: 'Digestive issues, frequent infections, fatigue, skin problems, and even mood disturbances can signal gut imbalances. Addressing diet and lifestyle can often restore balance.' },
+      { type: 'paragraph', text: 'The research is clear: nurturing your gut microbiome is one of the most impactful things you can do for your immune system and overall health.' },
+    ],
+  },
+];
+
+  return postsData.map((post) => ({
+    params: { slug: post.slug },
+    props: { post, allPosts: postsData },
+  }));
+}
+
+const { post, allPosts } = Astro.props;
+
+// 相关文章推荐（同分类，排除当前文章）
+const relatedPosts = allPosts
+  .filter((p) => p.slug !== post.slug && p.category === post.category)
+  .slice(0, 2);
+
+// 如果同分类不足 2 篇，补充其他文章
+if (relatedPosts.length < 2) {
+  const fillers = allPosts
+    .filter((p) => p.slug !== post.slug && !relatedPosts.includes(p))
+    .slice(0, 2 - relatedPosts.length);
+  relatedPosts.push(...fillers);
+}
+---
+
+<BaseLayout
+  title={`${post.title} | SynoChain AI Blog`}
+  description={post.excerpt}
+  lang={lang}
+>
+  <!-- 文章头部 -->
+  <section class="relative overflow-hidden bg-white pt-32 pb-12">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="container-x relative">
+      <!-- 面包屑导航 -->
+      <nav class="flex items-center gap-2 text-sm text-ink-400">
+        <a href={`${basePath}/blog`} class="hover:text-medical-600">Blog</a>
+        <span>/</span>
+        <span class="font-medium text-ink-700">{post.category}</span>
+      </nav>
+
+      <div class="mx-auto mt-6 max-w-3xl">
+        <span class="inline-flex items-center gap-2 rounded-full bg-health-50 px-4 py-1.5 text-xs font-medium text-health-700 ring-1 ring-inset ring-health-200">
+          {post.category}
+        </span>
+        <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-ink-800 sm:text-4xl lg:text-5xl">
+          {post.title}
+        </h1>
+        <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-ink-500">
+          <div class="flex items-center gap-2">
+            <div class="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-medical-400 to-health-400 text-xs font-bold text-white">
+              {post.author.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+            </div>
+            <span class="font-medium text-ink-700">{post.author}</span>
+          </div>
+          <span class="text-ink-300">•</span>
+          <span>{formatDate(post.date)}</span>
+          <span class="text-ink-300">•</span>
+          <span>{post.readTime}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 文章正文 -->
+  <section class="bg-white section-padding pt-8">
+    <div class="container-x">
+      <div class="mx-auto max-w-3xl">
+        <!-- 封面图占位 -->
+        <div class={`mb-10 flex h-64 items-center justify-center rounded-2xl bg-gradient-to-br ${post.cover} text-8xl opacity-90`}>
+          <span class="opacity-30">📄</span>
+        </div>
+
+        <!-- 正文内容 -->
+        <div class="prose-content space-y-6">
+          {post.content.map((block) => {
+            if (block.type === 'heading') {
+              return (
+                <h2 class="font-display text-2xl font-bold text-ink-800">
+                  {block.text}
+                </h2>
+              );
+            }
+            return (
+              <p class="text-base leading-relaxed text-ink-600 sm:text-lg">
+                {block.text}
+              </p>
+            );
+          })}
+        </div>
+
+        <!-- 文章底部 AI CTA -->
+        <div class="mt-12 rounded-2xl bg-gradient-to-br from-medical-500 to-health-500 p-8 text-center text-white">
+          <h3 class="font-display text-xl font-bold">Have Health Questions?</h3>
+          <p class="mx-auto mt-2 max-w-md text-sm text-white/90">
+            Get personalized AI-powered health guidance based on your specific symptoms and concerns.
+          </p>
+          <a href={`${basePath}/ai-tools`} class="mt-4 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
+            🤖 Try AI Health Assistant
+          </a>
+        </div>
+      </div>
+
+      <!-- 相关文章推荐 -->
+      {relatedPosts.length > 0 && (
+        <div class="mx-auto mt-16 max-w-5xl">
+          <h2 class="text-2xl font-bold text-ink-800">Related Articles</h2>
+          <div class="mt-6 grid gap-6 sm:grid-cols-2">
+            {relatedPosts.map((rel) => (
+              <a
+                href={`${basePath}/blog/${rel.slug}`}
+                class="group flex flex-col overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg hover:border-medical-100"
+              >
+                <div class={`flex h-32 items-center justify-center bg-gradient-to-br ${rel.cover} text-4xl opacity-90`}>
+                  <span class="opacity-30">📄</span>
+                </div>
+                <div class="p-5">
+                  <span class="text-xs font-medium text-medical-600">{rel.category}</span>
+                  <h3 class="mt-2 font-display font-bold text-ink-800 group-hover:text-medical-600">{rel.title}</h3>
+                  <p class="mt-2 text-sm text-ink-500 line-clamp-2">{rel.excerpt}</p>
+                  <div class="mt-3 text-xs text-ink-400">{formatDate(rel.date)} • {rel.readTime}</div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- 医疗免责声明 -->
+      <div class="mx-auto mt-16 max-w-3xl border-t border-ink-100 pt-6">
+        <p class="text-center text-xs leading-relaxed text-ink-400">
+          ⚠️ Medical Disclaimer: This article is for informational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional before making health decisions or starting any treatment.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

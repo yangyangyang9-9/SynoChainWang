@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #FFFFFF;
+    --color-bg-alt: #F8F9FA;
+    --color-text: #1A1A2E;
+    --color-text-muted: #6B7280;
+    --color-primary: #0066FF;
+    --color-secondary: #00C896;
+    --color-border: #E5E7EB;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-ink-800 font-body antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-container px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-medical-500 text-white hover:bg-medical-600 focus:ring-medical-500 shadow-sm hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply btn border border-ink-200 bg-white text-ink-800 hover:bg-ink-50 focus:ring-ink-300;
+  }
+
+  .btn-health {
+    @apply btn bg-health-500 text-white hover:bg-health-600 focus:ring-health-500 shadow-sm hover:shadow-md;
+  }
+
+  .card {
+    @apply rounded-2xl border border-ink-100 bg-white p-6 shadow-sm transition-all duration-200 hover:shadow-md hover:border-medical-100;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-medical-500 via-medical-600 to-health-500 bg-clip-text text-transparent;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(0, 102, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 102, 255, 0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .glow {
+    box-shadow: 0 0 80px -20px rgba(0, 102, 255, 0.3);
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+}
