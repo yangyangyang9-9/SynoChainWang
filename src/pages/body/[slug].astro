@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContentPage from '../../components/ContentPage.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import bodyParts from '../../data/body-parts.json';
+
+export async function getStaticPaths() {
+  return bodyParts.map(part => ({
+    params: { slug: part.slug },
+  }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { slug } = Astro.params;
+const part = bodyParts.find(p => p.slug === slug);
+
+if (!part) {
+  return Astro.redirect('/body', 301);
+}
+
+const isChinese = lang === 'zh';
+
+const contentData = {
+  title: isChinese ? part.name_zh || part.name : part.name,
+  metaDescription: isChinese ? part.meta_description_zh || part.meta_description : part.meta_description,
+  lang,
+  type: 'body_part' as const,
+  overview: isChinese ? part.description_zh || part.description : part.description,
+  quickFacts: {
+    Category: part.category,
+    Region: part.region,
+  },
+  possibleCauses: part.common_conditions,
+  commonSymptoms: part.common_symptoms,
+  relatedConditions: part.related_conditions || [],
+  relatedSymptoms: part.related_symptoms || [],
+  relatedTools: part.related_tools || [],
+  t,
+};
+---
+
+<BaseLayout
+  title={`${contentData.title} - ${t('nav.bodyParts')} - SynoChain AI`}
+  description={contentData.metaDescription}
+  lang={lang}
+>
+  <ContentPage {...contentData} />
+</BaseLayout>

@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "generalized-anxiety",
+    "name": "Generalized Anxiety Disorder",
+    "meta_description": "Learn about generalized anxiety disorder: symptoms, causes, and effective treatment options.",
+    "description": "Generalized anxiety disorder (GAD) is a mental health condition characterized by excessive, uncontrollable worry about everyday things.",
+    "types": ["Generalized anxiety", "Social anxiety", "Panic disorder", "Phobias"],
+    "symptoms": ["Excessive worry", "Restlessness", "Fatigue", "Difficulty concentrating", "Irritability", "Muscle tension", "Sleep disturbances"],
+    "causes": "The exact cause is unknown, but likely involves a combination of genetic factors, brain chemistry, environmental stressors, and life experiences.",
+    "treatments": ["Cognitive-behavioral therapy (CBT)", "Medication (SSRIs, benzodiazepines)", "Mindfulness-based stress reduction", "Relaxation techniques"],
+    "coping_strategies": ["Deep breathing exercises", "Progressive muscle relaxation", "Mindfulness meditation", "Regular exercise", "Healthy lifestyle"],
+    "category": "Anxiety",
+    "related_conditions": ["depression", "panic-disorder", "insomnia"],
+    "related_questions": ["why-am-i-anxious", "why-do-i-worry-so-much"],
+    "related_tools": ["stress-assessment", "anxiety-checker"]
+  },
+  {
+    "slug": "social-anxiety",
+    "name": "Social Anxiety Disorder",
+    "meta_description": "Learn about social anxiety disorder: symptoms, causes, and strategies for managing social fears.",
+    "description": "Social anxiety disorder is a mental health condition characterized by intense fear of social situations where one might be judged or embarrassed.",
+    "types": ["Performance anxiety", "General social anxiety", "Specific social phobias"],
+    "symptoms": ["Fear of social situations", "Excessive self-consciousness", "Avoidance of social events", "Physical symptoms (blushing, sweating, trembling)", "Fear of being judged"],
+    "causes": "May involve genetic factors, brain chemistry, learned behavior, and negative social experiences.",
+    "treatments": ["Cognitive-behavioral therapy (CBT)", "Exposure therapy", "Medication", "Social skills training"],
+    "coping_strategies": ["Gradual exposure to social situations", "Cognitive restructuring", "Mindfulness", "Breathing exercises", "Building social skills"],
+    "category": "Anxiety",
+    "related_conditions": ["generalized-anxiety", "depression", "avoidant-personality-disorder"],
+    "related_questions": ["why-am-i-afraid-of-social-situations", "why-do-i-feel-self-conscious"],
+    "related_tools": ["stress-assessment", "anxiety-checker"]
+  }
+]

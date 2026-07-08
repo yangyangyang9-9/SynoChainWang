@@ -11,15 +11,23 @@ const { lang, currentPath } = Astro.props;
 const t = useTranslations(lang);
 
 const navItems = [
-  { key: 'aiTools', href: '/ai-tools', icon: '🤖' },
-  { key: 'diseaseLibrary', href: '/conditions', icon: '📚' },
+  { key: 'conditions', href: '/conditions', icon: '📚' },
   { key: 'symptoms', href: '/symptoms', icon: '🔍' },
   { key: 'causes', href: '/causes', icon: '🧬' },
-  { key: 'naturalHealth', href: '/natural-health', icon: '🌿' },
+  { key: 'bodyParts', href: '/body', icon: '🦴' },
+  { key: 'labTests', href: '/tests', icon: '🧪' },
+  { key: 'medicines', href: '/medicines', icon: '�' },
   { key: 'nutrition', href: '/nutrition', icon: '🥗' },
-  { key: 'healthTests', href: '/health-tests', icon: '📋' },
-  { key: 'blog', href: '/blog', icon: '📰' },
-  { key: 'community', href: '/community', icon: '💬' },
+  { key: 'vitamins', href: '/vitamins', icon: '💊' },
+  { key: 'mentalHealth', href: '/mental-health', icon: '🧠' },
+  { key: 'womensHealth', href: '/womens-health', icon: '👩' },
+  { key: 'mensHealth', href: '/mens-health', icon: '👨' },
+  { key: 'childrensHealth', href: '/childrens-health', icon: '👶' },
+  { key: 'seniors', href: '/seniors', icon: '�' },
+  { key: 'pregnancy', href: '/pregnancy', icon: '🤰' },
+  { key: 'aiTools', href: '/ai-tools', icon: '🤖' },
+  { key: 'questions', href: '/questions', icon: '❓' },
+  { key: 'blog', href: '/blog', icon: '�' },
 ];
 
 const basePath = lang === 'en' ? '' : `/${lang}`;

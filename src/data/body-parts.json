@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "head",
+    "name": "Head",
+    "meta_description": "Learn about head anatomy, common conditions, and health tips for maintaining a healthy head.",
+    "description": "The head contains the brain, skull, face, and sensory organs. It is the control center for the entire body.",
+    "anatomy": "The head consists of the cranium (skull), facial bones, brain, eyes, ears, nose, mouth, and various glands.",
+    "common_conditions": ["headache", "migraine", "sinusitis", "concussion"],
+    "common_symptoms": ["headache", "dizziness", "vision-changes"],
+    "related_tests": ["ct-scan", "mri", "neurological-exam"],
+    "category": "Neurological"
+  },
+  {
+    "slug": "heart",
+    "name": "Heart",
+    "meta_description": "Learn about heart anatomy, common conditions, and strategies for maintaining cardiovascular health.",
+    "description": "The heart is a muscular organ that pumps blood throughout the body. It is essential for life.",
+    "anatomy": "The heart has four chambers: two atria and two ventricles. It includes the coronary arteries, valves, and electrical conduction system.",
+    "common_conditions": ["hypertension", "heart-attack", "arrhythmia", "heart-failure"],
+    "common_symptoms": ["chest-pain", "shortness-of-breath", "palpitations"],
+    "related_tests": ["ekg", "echocardiogram", "stress-test"],
+    "category": "Cardiovascular"
+  },
+  {
+    "slug": "lungs",
+    "name": "Lungs",
+    "meta_description": "Learn about lung anatomy, common respiratory conditions, and tips for maintaining healthy lungs.",
+    "description": "The lungs are the primary organs of respiration, responsible for gas exchange between the body and the environment.",
+    "anatomy": "Each lung is divided into lobes. They contain bronchi, bronchioles, alveoli, and a network of blood vessels.",
+    "common_conditions": ["asthma", "copd", "pneumonia", "lung-cancer"],
+    "common_symptoms": ["cough", "shortness-of-breath", "wheezing"],
+    "related_tests": ["pulmonary-function-test", "chest-xray", "ct-scan"],
+    "category": "Respiratory"
+  }
+]

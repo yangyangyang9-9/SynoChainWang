@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContentPage from '../../components/ContentPage.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import questions from '../../data/questions.json';
+
+export async function getStaticPaths() {
+  return questions.map(q => ({
+    params: { slug: q.slug },
+  }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { slug } = Astro.params;
+const question = questions.find(q => q.slug === slug);
+
+if (!question) {
+  return Astro.redirect('/questions', 301);
+}
+
+const isChinese = lang === 'zh';
+
+const contentData = {
+  title: isChinese ? question.question_zh || question.question : question.question,
+  metaDescription: isChinese ? question.meta_description_zh || question.meta_description : question.meta_description,
+  lang,
+  type: 'faq' as const,
+  overview: isChinese ? question.answer_zh || question.answer : question.answer,
+  relatedConditions: question.related_conditions || [],
+  relatedSymptoms: question.related_symptoms || [],
+  relatedQuestions: question.related_questions || [],
+  relatedTools: question.related_tools || [],
+  t,
+};
+---
+
+<BaseLayout
+  title={`${contentData.title} - ${t('nav.questions')} - SynoChain AI`}
+  description={contentData.metaDescription}
+  lang={lang}
+>
+  <ContentPage {...contentData} />
+</BaseLayout>

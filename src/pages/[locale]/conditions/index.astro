@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { languages, defaultLang, useTranslations } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(languages)
+    .filter((lang) => lang !== defaultLang)
+    .map((lang) => ({ params: { locale: lang } }));
+}
+
+const { locale } = Astro.params;
+const lang = locale as any;
+const t = useTranslations(lang);
+
+const basePath = `/${lang}`;
+
+const conditions = [
+  {
+    slug: 'sinusitis',
+    name: t('nav.diseaseLibrary') === '疾病库' ? '鼻窦炎' : 'Sinusitis',
+    description: t('nav.diseaseLibrary') === '疾病库' 
+      ? '鼻窦腔发炎，导致充血、压力和面部疼痛。' 
+      : 'Inflammation of the sinus cavities causing congestion, pressure, and facial pain.',
+    category: t('nav.diseaseLibrary') === '疾病库' ? '耳鼻喉科' : 'ENT',
+    letter: 'S',
+  },
+  {
+    slug: 'eczema',
+    name: t('nav.diseaseLibrary') === '疾病库' ? '湿疹' : 'Eczema',
+    description: t('nav.diseaseLibrary') === '疾病库' 
+      ? '一种慢性皮肤病，导致皮肤干燥、瘙痒和发炎。' 
+      : 'A chronic skin condition causing dry, itchy, inflamed patches on the skin.',
+    category: t('nav.diseaseLibrary') === '疾病库' ? '皮肤科' : 'Dermatology',
+    letter: 'E',
+  },
+  {
+    slug: 'insomnia',
+    name: t('nav.diseaseLibrary') === '疾病库' ? '失眠' : 'Insomnia',
+    description: t('nav.diseaseLibrary') === '疾病库' 
+      ? '难以入睡或保持睡眠，导致日间疲劳和注意力受损。' 
+      : 'Difficulty falling or staying asleep, leading to daytime fatigue and impaired focus.',
+    category: t('nav.diseaseLibrary') === '疾病库' ? '神经科' : 'Neurology',
+    letter: 'I',
+  },
+  {
+    slug: 'migraine',
+    name: t('nav.diseaseLibrary') === '疾病库' ? '偏头痛' : 'Migraine',
+    description: t('nav.diseaseLibrary') === '疾病库' 
+      ? '严重的复发性头痛，常伴有恶心、对光和声音敏感。' 
+      : 'Severe recurring headaches often accompanied by nausea, light and sound sensitivity.',
+    category: t('nav.diseaseLibrary') === '疾病库' ? '神经科' : 'Neurology',
+    letter: 'M',
+  },
+  {
+    slug: 'anxiety',
+    name: t('nav.diseaseLibrary') === '疾病库' ? '焦虑症' : 'Anxiety',
+    description: t('nav.diseaseLibrary') === '疾病库' 
+      ? '持续过度的担忧和恐惧，干扰日常活动。' 
+      : 'Persistent excessive worry and fear that interferes with daily activities.',
+    category: t('nav.diseaseLibrary') === '疾病库' ? '心理健康' : 'Mental Health',
+    letter: 'A',
+  },
+  {
+    slug: 'diabetes',
+    name: t('nav.diseaseLibrary') === '疾病库' ? '糖尿病' : 'Diabetes',
+    description: t('nav.diseaseLibrary') === '疾病库' 
+      ? '一种代谢紊乱，特征是血糖水平长期升高。' 
+      : 'A metabolic disorder characterized by elevated blood sugar levels over time.',
+    category: t('nav.diseaseLibrary') === '疾病库' ? '内分泌科' : 'Endocrinology',
+    letter: 'D',
+  },
+  {
+    slug: 'hypertension',
+    name: t('nav.diseaseLibrary') === '疾病库' ? '高血压' : 'Hypertension',
+    description: t('nav.diseaseLibrary') === '疾病库' 
+      ? '持续升高的血压，增加心脏病和中风的风险。' 
+      : 'Persistently elevated blood pressure increasing risk of heart disease and stroke.',
+    category: t('nav.diseaseLibrary') === '疾病库' ? '心血管科' : 'Cardiology',
+    letter: 'H',
+  },
+  {
+    slug: 'asthma',
+    name: t('nav.diseaseLibrary') === '疾病库' ? '哮喘' : 'Asthma',
+    description: t('nav.diseaseLibrary') === '疾病库' 
+      ? '慢性气道炎症，导致喘息、呼吸困难和胸闷。' 
+      : 'Chronic airway inflammation causing wheezing, breathlessness, and chest tightness.',
+    category: t('nav.diseaseLibrary') === '疾病库' ? '呼吸科' : 'Respiratory',
+    letter: 'A',
+  },
+];
+
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const activeLetters = [...new Set(conditions.map((c) => c.letter))];
+const categories = [...new Set(conditions.map((c) => c.category))];
+---
+
+<BaseLayout
+  title={`${t('tools.diseaseLibrary.title')} - SynoChain AI`}
+  description={t('tools.diseaseLibrary.desc')}
+  lang={lang}
+>
+  <section class="relative overflow-hidden bg-white pt-32 pb-12">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="container-x relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-medical-200 bg-medical-50 px-4 py-1.5 text-xs font-medium text-medical-700">
+          <span class="text-base">📚</span>
+          {t('tools.diseaseLibrary.title')}
+        </span>
+        <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl">
+          {t('tools.diseaseLibrary.title')}
+        </h1>
+        <p class="mt-4 text-base text-ink-500 sm:text-lg">
+          {t('tools.diseaseLibrary.desc')}
+        </p>
+      </div>
+
+      <div class="mx-auto mt-10 max-w-2xl">
+        <div class="relative">
+          <span class="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-ink-400">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </span>
+          <input
+            type="text"
+            placeholder={t('common.search')}
+            class="w-full rounded-xl border border-ink-200 bg-white py-4 pl-14 pr-32 text-base text-ink-800 shadow-sm transition-colors placeholder:text-ink-400 focus:border-medical-400 focus:outline-none focus:ring-2 focus:ring-medical-100"
+          />
+          <button class="btn-primary absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2 text-xs">
+            {t('common.search')}
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white pb-8">
+    <div class="container-x">
+      <div class="flex flex-wrap items-center justify-center gap-1.5">
+        {alphabet.map((letter) => {
+          const isActive = activeLetters.includes(letter);
+          return (
+            <a
+              href={isActive ? `#letter-${letter}` : undefined}
+              class:list={[
+                'flex h-9 w-9 items-center justify-center rounded-lg text-sm font-semibold transition-colors',
+                isActive
+                  ? 'bg-medical-50 text-medical-600 hover:bg-medical-100'
+                  : 'bg-ink-50 text-ink-300 cursor-not-allowed',
+              ]}
+            >
+              {letter}
+            </a>
+          );
+        })}
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-2">
+        <span class="rounded-full bg-health-50 px-4 py-1.5 text-xs font-medium text-health-700 ring-1 ring-inset ring-health-200">
+          {lang === 'zh' ? '全部' : 'All'}
+        </span>
+        {categories.map((cat) => (
+          <span class="rounded-full bg-ink-50 px-4 py-1.5 text-xs font-medium text-ink-600 ring-1 ring-inset ring-ink-200">
+            {cat}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white section-padding pt-8">
+    <div class="container-x">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {conditions.map((condition) => (
+          <a
+            href={`${basePath}/conditions/${condition.slug}`}
+            id={`letter-${condition.letter}`}
+            class="card group flex flex-col scroll-mt-32"
+          >
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-medical-50 to-health-50 text-xl font-bold text-medical-600">
+                {condition.letter}
+              </div>
+              <span class="rounded-full bg-health-50 px-3 py-1 text-xs font-medium text-health-700 ring-1 ring-inset ring-health-200">
+                {condition.category}
+              </span>
+            </div>
+            <h3 class="mt-4 font-display text-lg font-bold text-ink-800 group-hover:text-medical-600">
+              {condition.name}
+            </h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-ink-500">
+              {condition.description}
+            </p>
+            <div class="mt-4 flex items-center gap-1.5 text-sm font-semibold text-medical-600">
+              {lang === 'zh' ? '查看详情' : 'View Details'}
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="mx-auto mt-16 max-w-3xl border-t border-ink-100 pt-6">
+        <p class="text-center text-xs leading-relaxed text-ink-400">
+          ⚠️ {t('common.disclaimer')}: {lang === 'zh' ? '本疾病库提供的信息仅供教育目的，不能替代专业医疗建议、诊断或治疗。如有医疗问题，请始终咨询合格的医疗保健提供者。' : 'The information provided in this disease library is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider regarding any medical condition.'}
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

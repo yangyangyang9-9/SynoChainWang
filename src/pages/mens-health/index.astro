@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const basePath = lang === 'en' ? '' : `/${lang}`;
+
+const topics = [
+  { slug: 'prostate-health', name: t('nav.mensHealth') === '男性健康' ? '前列腺健康' : 'Prostate Health', category: 'Urology', letter: 'P' },
+  { slug: 'erectile-dysfunction', name: t('nav.mensHealth') === '男性健康' ? '勃起功能障碍' : 'Erectile Dysfunction', category: 'Sexual Health', letter: 'E' },
+  { slug: 'testosterone', name: t('nav.mensHealth') === '男性健康' ? '睾酮水平' : 'Testosterone', category: 'Hormonal', letter: 'T' },
+  { slug: 'heart-health', name: t('nav.mensHealth') === '男性健康' ? '心脏健康' : 'Heart Health', category: 'Cardiology', letter: 'H' },
+  { slug: 'hair-loss', name: t('nav.mensHealth') === '男性健康' ? '脱发' : 'Hair Loss', category: 'Dermatology', letter: 'H' },
+];
+
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const activeLetters = [...new Set(topics.map((t) => t.letter))];
+const categories = [...new Set(topics.map((t) => t.category))];
+---
+
+<BaseLayout
+  title={`${t('nav.mensHealth')} - SynoChain AI`}
+  description={t('nav.mensHealth') === '男性健康' ? '关注男性健康，了解前列腺健康、睾酮水平和心血管保健。' : 'Focus on men\'s health, learn about prostate health, testosterone levels, and cardiovascular care.'}
+  lang={lang}
+>
+  <section class="relative overflow-hidden bg-white pt-32 pb-12">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="container-x relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-medical-200 bg-medical-50 px-4 py-1.5 text-xs font-medium text-medical-700">
+          <span class="text-base">👨</span>
+          {t('nav.mensHealth')}
+        </span>
+        <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl">
+          {t('nav.mensHealth')}
+        </h1>
+        <p class="mt-4 text-base text-ink-500 sm:text-lg">
+          {t('nav.mensHealth') === '男性健康' ? '关注男性健康，了解前列腺健康、睾酮水平、心血管保健等专题。' : 'Focus on men\'s health, explore topics like prostate health, testosterone levels, and cardiovascular care.'}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white pb-8">
+    <div class="container-x">
+      <div class="flex flex-wrap items-center justify-center gap-1.5">
+        {alphabet.map((letter) => {
+          const isActive = activeLetters.includes(letter);
+          return (
+            <a
+              href={isActive ? `#letter-${letter}` : undefined}
+              class:list={[
+                'flex h-9 w-9 items-center justify-center rounded-lg text-sm font-semibold transition-colors',
+                isActive ? 'bg-medical-50 text-medical-600 hover:bg-medical-100' : 'bg-ink-50 text-ink-300 cursor-not-allowed',
+              ]}
+            >
+              {letter}
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white section-padding pt-8">
+    <div class="container-x">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {topics.map((topic) => (
+          <a
+            href={`${basePath}/mens-health/${topic.slug}`}
+            id={`letter-${topic.letter}`}
+            class="card group flex flex-col scroll-mt-32"
+          >
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-medical-50 to-health-50 text-xl font-bold text-medical-600">
+                {topic.letter}
+              </div>
+              <span class="rounded-full bg-health-50 px-3 py-1 text-xs font-medium text-health-700 ring-1 ring-inset ring-health-200">
+                {topic.category}
+              </span>
+            </div>
+            <h3 class="mt-4 font-display text-lg font-bold text-ink-800 group-hover:text-medical-600">
+              {topic.name}
+            </h3>
+            <div class="mt-4 flex items-center gap-1.5 text-sm font-semibold text-medical-600">
+              {lang === 'zh' ? '查看详情' : 'View Details'}
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

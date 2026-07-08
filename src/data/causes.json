@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "dehydration",
+    "name": "Dehydration",
+    "meta_description": "Learn about dehydration causes, symptoms, and effective strategies for staying properly hydrated.",
+    "description": "Dehydration occurs when the body loses more fluids than it takes in, leading to an imbalance in electrolytes and bodily functions.",
+    "category": "General Health",
+    "risk_level": "Moderate",
+    "related_conditions": ["heat-stroke", "kidney-stones", "constipation"],
+    "related_symptoms": ["thirst", "fatigue", "dry-mouth"],
+    "related_questions": ["why-am-i-tired", "why-do-i-feel-thirsty"]
+  },
+  {
+    "slug": "stress",
+    "name": "Stress",
+    "meta_description": "Understanding stress: causes, effects, and effective management strategies for mental and physical well-being.",
+    "description": "Stress is the body's response to demands or pressures from the environment. It can be physical, emotional, or mental.",
+    "category": "Mental Health",
+    "risk_level": "High",
+    "related_conditions": ["anxiety", "depression", "hypertension"],
+    "related_symptoms": ["fatigue", "headache", "muscle-tension"],
+    "related_questions": ["why-am-i-anxious", "why-do-i-have-headaches"]
+  },
+  {
+    "slug": "sleep-deprivation",
+    "name": "Sleep Deprivation",
+    "meta_description": "Learn about the causes, effects, and solutions for insufficient sleep and poor sleep quality.",
+    "description": "Sleep deprivation is a condition caused by not getting enough sleep or poor sleep quality over an extended period.",
+    "category": "Sleep",
+    "risk_level": "High",
+    "related_conditions": ["insomnia", "sleep-apnea", "depression"],
+    "related_symptoms": ["fatigue", "difficulty-concentrating", "irritability"],
+    "related_questions": ["why-am-i-tired", "why-can't-i-sleep"]
+  }
+]

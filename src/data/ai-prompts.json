@@ -1,0 +1,230 @@
+{
+  "disease_prompt": {
+    "name": "疾病页面生成",
+    "description": "生成疾病详细信息页面的结构化内容",
+    "system_prompt": "你是一个专业的医学内容生成助手。请根据疾病名称生成完整的疾病页面内容。输出必须是严格的 JSON 格式，包含以下字段：title, meta_description, overview, quick_facts, common_symptoms, possible_causes, risk_factors, diagnosis, lifestyle_tips, when_to_seek_care, prevention, faq, related_conditions, related_symptoms, related_questions, related_tools。所有内容必须准确、专业且符合医学标准。",
+    "user_prompt_template": "请生成关于 \"{disease_name}\" 的疾病页面内容。要求：\n1. overview: 疾病概述（200-300字）\n2. quick_facts: 快速事实，包含：患病率、发病年龄、性别差异、预后等\n3. common_symptoms: 列出6-10个常见症状\n4. possible_causes: 列出5-8个可能原因\n5. risk_factors: 列出5-8个风险因素\n6. diagnosis: 诊断方法说明（100-150字）\n7. lifestyle_tips: 列出5-8条生活方式建议\n8. when_to_seek_care: 就医时机说明（100-150字）\n9. prevention: 预防措施说明（100-150字）\n10. faq: 3-5个常见问题及回答\n11. related_conditions: 3-5个相关疾病的slug\n12. related_symptoms: 3-5个相关症状的slug\n13. related_questions: 3-5个相关问题的slug\n14. related_tools: 1-2个相关AI工具的slug",
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "meta_description": { "type": "string" },
+        "overview": { "type": "string" },
+        "quick_facts": { "type": "object", "additionalProperties": { "type": "string" } },
+        "common_symptoms": { "type": "array", "items": { "type": "string" } },
+        "possible_causes": { "type": "array", "items": { "type": "string" } },
+        "risk_factors": { "type": "array", "items": { "type": "string" } },
+        "diagnosis": { "type": "string" },
+        "lifestyle_tips": { "type": "array", "items": { "type": "string" } },
+        "when_to_seek_care": { "type": "string" },
+        "prevention": { "type": "string" },
+        "faq": { "type": "array", "items": { "type": "object", "properties": { "question": { "type": "string" }, "answer": { "type": "string" } } } },
+        "related_conditions": { "type": "array", "items": { "type": "string" } },
+        "related_symptoms": { "type": "array", "items": { "type": "string" } },
+        "related_questions": { "type": "array", "items": { "type": "string" } },
+        "related_tools": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["title", "meta_description", "overview", "quick_facts", "common_symptoms", "possible_causes", "risk_factors", "diagnosis", "lifestyle_tips", "when_to_seek_care", "prevention", "faq"]
+    }
+  },
+  "symptom_prompt": {
+    "name": "症状页面生成",
+    "description": "生成症状详细信息页面的结构化内容",
+    "system_prompt": "你是一个专业的医学内容生成助手。请根据症状名称生成完整的症状页面内容。输出必须是严格的 JSON 格式，包含以下字段：title, meta_description, overview, what_it_feels_like, possible_causes, related_conditions, when_to_see_doctor, self_care_tips, severity, duration, body_part, related_symptoms, related_questions, related_tools。所有内容必须准确、专业且符合医学标准。",
+    "user_prompt_template": "请生成关于 \"{symptom_name}\" 的症状页面内容。要求：\n1. overview: 症状概述（150-200字）\n2. what_it_feels_like: 症状感觉描述（100-150字）\n3. possible_causes: 列出8-12个可能原因\n4. related_conditions: 列出5-8个相关疾病\n5. when_to_see_doctor: 就医时机说明（100-150字）\n6. self_care_tips: 列出5-8条自我护理建议\n7. severity: 严重程度范围\n8. duration: 持续时间范围\n9. body_part: 涉及身体部位\n10. related_symptoms: 列出3-5个相关症状\n11. related_questions: 列出3-5个相关问题\n12. related_tools: 列出1-2个相关AI工具",
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "meta_description": { "type": "string" },
+        "overview": { "type": "string" },
+        "what_it_feels_like": { "type": "string" },
+        "possible_causes": { "type": "array", "items": { "type": "string" } },
+        "related_conditions": { "type": "array", "items": { "type": "string" } },
+        "when_to_see_doctor": { "type": "string" },
+        "self_care_tips": { "type": "array", "items": { "type": "string" } },
+        "severity": { "type": "string" },
+        "duration": { "type": "string" },
+        "body_part": { "type": "string" },
+        "related_symptoms": { "type": "array", "items": { "type": "string" } },
+        "related_questions": { "type": "array", "items": { "type": "string" } },
+        "related_tools": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["title", "meta_description", "overview", "what_it_feels_like", "possible_causes", "related_conditions", "when_to_see_doctor", "self_care_tips"]
+    }
+  },
+  "faq_prompt": {
+    "name": "FAQ页面生成",
+    "description": "生成健康问题FAQ页面的结构化内容",
+    "system_prompt": "你是一个专业的医学内容生成助手。请根据健康问题生成完整的FAQ页面内容。输出必须是严格的 JSON 格式，包含以下字段：title, meta_description, question, answer, related_topics, related_conditions, related_symptoms, related_tools。所有内容必须准确、专业且符合医学标准。",
+    "user_prompt_template": "请生成关于 \"{question}\" 的FAQ页面内容。要求：\n1. title: 问题标题\n2. meta_description: 元描述（150-160字）\n3. question: 完整问题表述\n4. answer: 详细回答（300-500字），包括原因、建议、何时就医等\n5. related_topics: 3-5个相关主题\n6. related_conditions: 3-5个相关疾病\n7. related_symptoms: 3-5个相关症状\n8. related_tools: 1-2个相关AI工具",
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "meta_description": { "type": "string" },
+        "question": { "type": "string" },
+        "answer": { "type": "string" },
+        "related_topics": { "type": "array", "items": { "type": "string" } },
+        "related_conditions": { "type": "array", "items": { "type": "string" } },
+        "related_symptoms": { "type": "array", "items": { "type": "string" } },
+        "related_tools": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["title", "meta_description", "question", "answer"]
+    }
+  },
+  "nutrition_prompt": {
+    "name": "营养页面生成",
+    "description": "生成营养物质详细信息页面的结构化内容",
+    "system_prompt": "你是一个专业的医学内容生成助手。请根据营养物质名称生成完整的营养页面内容。输出必须是严格的 JSON 格式，包含以下字段：title, meta_description, overview, benefits, food_sources, recommended_intake, deficiency_symptoms, toxicity_risk, related_nutrients, related_conditions, related_tools。所有内容必须准确、专业且符合医学标准。",
+    "user_prompt_template": "请生成关于 \"{nutrient_name}\" 的营养页面内容。要求：\n1. overview: 营养物质概述（150-200字）\n2. benefits: 列出6-10个健康益处\n3. food_sources: 列出8-12个食物来源\n4. recommended_intake: 推荐摄入量（分年龄段）\n5. deficiency_symptoms: 缺乏症状（5-8条）\n6. toxicity_risk: 过量风险（如果适用）\n7. related_nutrients: 3-5个相关营养素\n8. related_conditions: 3-5个相关疾病\n9. related_tools: 1-2个相关AI工具",
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "meta_description": { "type": "string" },
+        "overview": { "type": "string" },
+        "benefits": { "type": "array", "items": { "type": "string" } },
+        "food_sources": { "type": "array", "items": { "type": "string" } },
+        "recommended_intake": { "type": "string" },
+        "deficiency_symptoms": { "type": "array", "items": { "type": "string" } },
+        "toxicity_risk": { "type": "string" },
+        "related_nutrients": { "type": "array", "items": { "type": "string" } },
+        "related_conditions": { "type": "array", "items": { "type": "string" } },
+        "related_tools": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["title", "meta_description", "overview", "benefits", "food_sources", "recommended_intake", "deficiency_symptoms"]
+    }
+  },
+  "body_prompt": {
+    "name": "身体部位页面生成",
+    "description": "生成身体部位详细信息页面的结构化内容",
+    "system_prompt": "你是一个专业的医学内容生成助手。请根据身体部位名称生成完整的身体部位页面内容。输出必须是严格的 JSON 格式，包含以下字段：title, meta_description, description, anatomy, common_conditions, common_symptoms, related_tests, related_nutrients, related_tools。所有内容必须准确、专业且符合医学标准。",
+    "user_prompt_template": "请生成关于 \"{body_part_name}\" 的身体部位页面内容。要求：\n1. description: 身体部位描述（150-200字）\n2. anatomy: 解剖结构说明（200-300字）\n3. common_conditions: 列出6-10个常见疾病/状况\n4. common_symptoms: 列出6-10个常见症状\n5. related_tests: 列出3-5个相关检查项目\n6. related_nutrients: 列出3-5个相关营养素\n7. related_tools: 列出1-2个相关AI工具",
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "meta_description": { "type": "string" },
+        "description": { "type": "string" },
+        "anatomy": { "type": "string" },
+        "common_conditions": { "type": "array", "items": { "type": "string" } },
+        "common_symptoms": { "type": "array", "items": { "type": "string" } },
+        "related_tests": { "type": "array", "items": { "type": "string" } },
+        "related_nutrients": { "type": "array", "items": { "type": "string" } },
+        "related_tools": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["title", "meta_description", "description", "anatomy", "common_conditions", "common_symptoms"]
+    }
+  },
+  "cause_prompt": {
+    "name": "病因页面生成",
+    "description": "生成病因详细信息页面的结构化内容",
+    "system_prompt": "你是一个专业的医学内容生成助手。请根据病因名称生成完整的病因页面内容。输出必须是严格的 JSON 格式，包含以下字段：title, meta_description, overview, types, risk_factors, prevention, related_conditions, related_symptoms, related_questions, related_tools。所有内容必须准确、专业且符合医学标准。",
+    "user_prompt_template": "请生成关于 \"{cause_name}\" 的病因页面内容。要求：\n1. overview: 病因概述（150-200字）\n2. types: 列出5-8种类型或分类\n3. risk_factors: 列出5-8个风险因素\n4. prevention: 预防措施（100-150字）\n5. related_conditions: 列出5-8个相关疾病\n6. related_symptoms: 列出5-8个相关症状\n7. related_questions: 列出3-5个相关问题\n8. related_tools: 列出1-2个相关AI工具",
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "meta_description": { "type": "string" },
+        "overview": { "type": "string" },
+        "types": { "type": "array", "items": { "type": "string" } },
+        "risk_factors": { "type": "array", "items": { "type": "string" } },
+        "prevention": { "type": "string" },
+        "related_conditions": { "type": "array", "items": { "type": "string" } },
+        "related_symptoms": { "type": "array", "items": { "type": "string" } },
+        "related_questions": { "type": "array", "items": { "type": "string" } },
+        "related_tools": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["title", "meta_description", "overview", "types", "risk_factors", "prevention"]
+    }
+  },
+  "test_prompt": {
+    "name": "检查项目页面生成",
+    "description": "生成检查项目详细信息页面的结构化内容",
+    "system_prompt": "你是一个专业的医学内容生成助手。请根据检查项目名称生成完整的检查页面内容。输出必须是严格的 JSON 格式，包含以下字段：title, meta_description, overview, purpose, preparation, procedure, results, risks, related_conditions, related_tests, related_tools。所有内容必须准确、专业且符合医学标准。",
+    "user_prompt_template": "请生成关于 \"{test_name}\" 的检查项目页面内容。要求：\n1. overview: 检查项目概述（150-200字）\n2. purpose: 检查目的（100-150字）\n3. preparation: 准备事项（5-8条）\n4. procedure: 检查过程（100-150字）\n5. results: 结果解读（100-150字）\n6. risks: 风险和注意事项\n7. related_conditions: 列出5-8个相关疾病\n8. related_tests: 列出3-5个相关检查\n9. related_tools: 列出1-2个相关AI工具",
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "meta_description": { "type": "string" },
+        "overview": { "type": "string" },
+        "purpose": { "type": "string" },
+        "preparation": { "type": "array", "items": { "type": "string" } },
+        "procedure": { "type": "string" },
+        "results": { "type": "string" },
+        "risks": { "type": "string" },
+        "related_conditions": { "type": "array", "items": { "type": "string" } },
+        "related_tests": { "type": "array", "items": { "type": "string" } },
+        "related_tools": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["title", "meta_description", "overview", "purpose", "preparation", "procedure", "results"]
+    }
+  },
+  "guide_prompt": {
+    "name": "健康指南页面生成",
+    "description": "生成健康指南页面的结构化内容",
+    "system_prompt": "你是一个专业的医学内容生成助手。请根据指南主题生成完整的健康指南页面内容。输出必须是严格的 JSON 格式，包含以下字段：title, meta_description, overview, key_points, step_by_step, common_mistakes, expert_tips, related_topics, related_conditions, related_tools。所有内容必须准确、专业且符合医学标准。",
+    "user_prompt_template": "请生成关于 \"{guide_topic}\" 的健康指南页面内容。要求：\n1. overview: 指南概述（150-200字）\n2. key_points: 列出5-8个关键点\n3. step_by_step: 分步指南（5-8步）\n4. common_mistakes: 常见误区（3-5条）\n5. expert_tips: 专家建议（3-5条）\n6. related_topics: 列出3-5个相关主题\n7. related_conditions: 列出3-5个相关疾病\n8. related_tools: 列出1-2个相关AI工具",
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "meta_description": { "type": "string" },
+        "overview": { "type": "string" },
+        "key_points": { "type": "array", "items": { "type": "string" } },
+        "step_by_step": { "type": "array", "items": { "type": "string" } },
+        "common_mistakes": { "type": "array", "items": { "type": "string" } },
+        "expert_tips": { "type": "array", "items": { "type": "string" } },
+        "related_topics": { "type": "array", "items": { "type": "string" } },
+        "related_conditions": { "type": "array", "items": { "type": "string" } },
+        "related_tools": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["title", "meta_description", "overview", "key_points", "step_by_step"]
+    }
+  },
+  "mental_health_prompt": {
+    "name": "心理健康页面生成",
+    "description": "生成心理健康主题页面的结构化内容",
+    "system_prompt": "你是一个专业的医学内容生成助手。请根据心理健康主题生成完整的心理健康页面内容。输出必须是严格的 JSON 格式，包含以下字段：title, meta_description, overview, signs_and_symptoms, risk_factors, coping_strategies, professional_help, related_conditions, related_symptoms, related_tools。所有内容必须准确、专业且符合医学标准。",
+    "user_prompt_template": "请生成关于 \"{mental_health_topic}\" 的心理健康页面内容。要求：\n1. overview: 心理健康主题概述（200-300字）\n2. signs_and_symptoms: 列出8-12个迹象和症状\n3. risk_factors: 列出5-8个风险因素\n4. coping_strategies: 列出5-8个应对策略\n5. professional_help: 专业帮助资源说明（100-150字）\n6. related_conditions: 列出3-5个相关疾病\n7. related_symptoms: 列出3-5个相关症状\n8. related_tools: 列出1-2个相关AI工具",
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "meta_description": { "type": "string" },
+        "overview": { "type": "string" },
+        "signs_and_symptoms": { "type": "array", "items": { "type": "string" } },
+        "risk_factors": { "type": "array", "items": { "type": "string" } },
+        "coping_strategies": { "type": "array", "items": { "type": "string" } },
+        "professional_help": { "type": "string" },
+        "related_conditions": { "type": "array", "items": { "type": "string" } },
+        "related_symptoms": { "type": "array", "items": { "type": "string" } },
+        "related_tools": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["title", "meta_description", "overview", "signs_and_symptoms", "risk_factors", "coping_strategies"]
+    }
+  },
+  "tool_prompt": {
+    "name": "AI工具页面生成",
+    "description": "生成AI工具介绍页面的结构化内容",
+    "system_prompt": "你是一个专业的医学内容生成助手。请根据AI工具名称生成完整的工具介绍页面内容。输出必须是严格的 JSON 格式，包含以下字段：title, meta_description, overview, how_it_works, features, benefits, limitations, related_tools, related_topics。所有内容必须准确、专业且符合医学标准。",
+    "user_prompt_template": "请生成关于 \"{tool_name}\" 的AI工具页面内容。要求：\n1. overview: 工具概述（150-200字）\n2. how_it_works: 工作原理（150-200字）\n3. features: 列出5-8个功能特性\n4. benefits: 列出5-8个使用益处\n5. limitations: 列出3-5个局限性和注意事项\n6. related_tools: 列出3-5个相关工具\n7. related_topics: 列出3-5个相关主题",
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "meta_description": { "type": "string" },
+        "overview": { "type": "string" },
+        "how_it_works": { "type": "string" },
+        "features": { "type": "array", "items": { "type": "string" } },
+        "benefits": { "type": "array", "items": { "type": "string" } },
+        "limitations": { "type": "array", "items": { "type": "string" } },
+        "related_tools": { "type": "array", "items": { "type": "string" } },
+        "related_topics": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["title", "meta_description", "overview", "how_it_works", "features", "benefits"]
+    }
+  }
+}

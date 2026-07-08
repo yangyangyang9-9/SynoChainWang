@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "blood-test",
+    "name": "Blood Test",
+    "meta_description": "Learn about blood tests: purpose, types, preparation, and how to interpret results.",
+    "description": "A blood test is a laboratory analysis of a blood sample to assess health status, diagnose conditions, or monitor treatments.",
+    "purpose": "Blood tests can detect infections, nutrient deficiencies, organ function, cholesterol levels, blood sugar, and many other health markers.",
+    "procedure": "A small blood sample is drawn from a vein, usually in the arm. The sample is sent to a laboratory for analysis.",
+    "preparation": "Some blood tests require fasting for 8-12 hours. Your doctor will provide specific instructions.",
+    "normal_values": "Normal values vary by test type and laboratory. Common tests include complete blood count (CBC), chemistry panel, and lipid profile.",
+    "abnormal_results": "Abnormal results may indicate infection, anemia, diabetes, kidney or liver problems, or other conditions requiring further investigation.",
+    "cost_range": "$50 - $500+ depending on the type and number of tests",
+    "category": "General",
+    "related_conditions": ["anemia", "diabetes", "kidney-disease"],
+    "related_symptoms": ["fatigue", "weakness", "fever"]
+  },
+  {
+    "slug": "ekg",
+    "name": "EKG/ECG",
+    "meta_description": "Learn about electrocardiograms: purpose, procedure, and what the results mean for heart health.",
+    "description": "An electrocardiogram (EKG or ECG) is a test that records the electrical activity of the heart.",
+    "purpose": "EKGs detect heart rhythm abnormalities, heart attacks, heart muscle damage, and other cardiac conditions.",
+    "procedure": "Small electrodes are placed on the chest, arms, and legs. The machine records the heart's electrical activity over a few minutes.",
+    "preparation": "No special preparation is needed. Wear comfortable clothing that can be easily removed.",
+    "normal_values": "A normal EKG shows regular heart rhythm with specific wave patterns (P wave, QRS complex, T wave).",
+    "abnormal_results": "Abnormal results may indicate arrhythmias, myocardial infarction, hypertrophy, or other heart conditions.",
+    "cost_range": "$100 - $500",
+    "category": "Cardiovascular",
+    "related_conditions": ["heart-attack", "arrhythmia", "hypertension"],
+    "related_symptoms": ["chest-pain", "palpitations", "shortness-of-breath"]
+  },
+  {
+    "slug": "ct-scan",
+    "name": "CT Scan",
+    "meta_description": "Learn about computed tomography scans: purpose, procedure, and safety considerations.",
+    "description": "A CT (computed tomography) scan uses X-rays to create detailed cross-sectional images of the body.",
+    "purpose": "CT scans diagnose tumors, infections, injuries, and structural abnormalities in various parts of the body.",
+    "procedure": "The patient lies on a table that moves through a large doughnut-shaped machine. The machine takes X-ray images from multiple angles.",
+    "preparation": "May require fasting, contrast dye, or specific clothing instructions depending on the area being scanned.",
+    "normal_values": "Normal results show no abnormal masses, lesions, or structural abnormalities.",
+    "abnormal_results": "Abnormal results may show tumors, fractures, bleeding, infections, or other conditions.",
+    "cost_range": "$500 - $3000+",
+    "category": "Imaging",
+    "related_conditions": ["cancer", "stroke", "trauma"],
+    "related_symptoms": ["headache", "pain", "swelling"]
+  }
+]

@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const basePath = lang === 'en' ? '' : `/${lang}`;
+
+const guides = [
+  { slug: 'improve-sleep', name: 'Improve Sleep', category: 'Sleep', letter: 'I' },
+  { slug: 'boost-immunity', name: 'Boost Immunity', category: 'Immune System', letter: 'B' },
+  { slug: 'manage-stress', name: 'Manage Stress', category: 'Mental Health', letter: 'M' },
+  { slug: 'healthy-eating', name: 'Healthy Eating', category: 'Nutrition', letter: 'H' },
+  { slug: 'exercise-guide', name: 'Exercise Guide', category: 'Fitness', letter: 'E' },
+];
+
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const activeLetters = [...new Set(guides.map((g) => g.letter))];
+const categories = [...new Set(guides.map((g) => g.category))];
+---
+
+<BaseLayout
+  title="Health Guides - SynoChain AI"
+  description="Comprehensive health guides to help you improve sleep, boost immunity, manage stress, and maintain healthy habits."
+  lang={lang}
+>
+  <section class="relative overflow-hidden bg-white pt-32 pb-12">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="container-x relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-medical-200 bg-medical-50 px-4 py-1.5 text-xs font-medium text-medical-700">
+          <span class="text-base">📖</span>
+          Health Guides
+        </span>
+        <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl">
+          Health Guides
+        </h1>
+        <p class="mt-4 text-base text-ink-500 sm:text-lg">
+          Practical guides to help you improve your health and wellness. Step-by-step advice from experts.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white pb-8">
+    <div class="container-x">
+      <div class="flex flex-wrap items-center justify-center gap-1.5">
+        {alphabet.map((letter) => {
+          const isActive = activeLetters.includes(letter);
+          return (
+            <a
+              href={isActive ? `#letter-${letter}` : undefined}
+              class:list={[
+                'flex h-9 w-9 items-center justify-center rounded-lg text-sm font-semibold transition-colors',
+                isActive ? 'bg-medical-50 text-medical-600 hover:bg-medical-100' : 'bg-ink-50 text-ink-300 cursor-not-allowed',
+              ]}
+            >
+              {letter}
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white section-padding pt-8">
+    <div class="container-x">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {guides.map((guide) => (
+          <a
+            href={`${basePath}/guides/${guide.slug}`}
+            id={`letter-${guide.letter}`}
+            class="card group flex flex-col scroll-mt-32"
+          >
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-medical-50 to-health-50 text-xl font-bold text-medical-600">
+                {guide.letter}
+              </div>
+              <span class="rounded-full bg-health-50 px-3 py-1 text-xs font-medium text-health-700 ring-1 ring-inset ring-health-200">
+                {guide.category}
+              </span>
+            </div>
+            <h3 class="mt-4 font-display text-lg font-bold text-ink-800 group-hover:text-medical-600">
+              {guide.name}
+            </h3>
+            <div class="mt-4 flex items-center gap-1.5 text-sm font-semibold text-medical-600">
+              {lang === 'zh' ? '查看详情' : 'View Details'}
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

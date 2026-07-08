@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const basePath = lang === 'en' ? '' : `/${lang}`;
+
+const questions = [
+  { slug: 'why-am-i-tired', question: t('nav.questions') === 'FAQ' ? 'Why am I always tired?' : '为什么我总是感到疲倦？', category: 'Fatigue' },
+  { slug: 'why-is-my-nose-blocked', question: t('nav.questions') === 'FAQ' ? 'Why is my nose blocked?' : '为什么我的鼻子堵塞？', category: 'Respiratory' },
+  { slug: 'why-do-i-have-headaches', question: t('nav.questions') === 'FAQ' ? 'Why do I have headaches?' : '为什么我会头痛？', category: 'Neurology' },
+  { slug: 'why-am-i-bloated', question: t('nav.questions') === 'FAQ' ? 'Why am I bloated?' : '为什么我会腹胀？', category: 'Digestive' },
+  { slug: 'why-cant-i-sleep', question: t('nav.questions') === 'FAQ' ? 'Why can\'t I sleep?' : '为什么我睡不着？', category: 'Sleep' },
+  { slug: 'why-do-i-snore', question: t('nav.questions') === 'FAQ' ? 'Why do I snore?' : '为什么我会打鼾？', category: 'Sleep' },
+  { slug: 'why-is-my-stomach-hurting', question: t('nav.questions') === 'FAQ' ? 'Why is my stomach hurting?' : '为什么我的胃痛？', category: 'Digestive' },
+  { slug: 'why-am-i-dizzy', question: t('nav.questions') === 'FAQ' ? 'Why am I dizzy?' : '为什么我会头晕？', category: 'Neurology' },
+];
+
+const categories = [...new Set(questions.map((q) => q.category))];
+---
+
+<BaseLayout
+  title={`${t('nav.questions')} - SynoChain AI`}
+  description={t('nav.questions') === 'FAQ' ? 'Answers to common health questions. Find out why you might be experiencing various symptoms.' : '常见健康问题解答。了解各种症状的可能原因。'}
+  lang={lang}
+>
+  <section class="relative overflow-hidden bg-white pt-32 pb-12">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="container-x relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-medical-200 bg-medical-50 px-4 py-1.5 text-xs font-medium text-medical-700">
+          <span class="text-base">❓</span>
+          {t('nav.questions')}
+        </span>
+        <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl">
+          {t('nav.questions')}
+        </h1>
+        <p class="mt-4 text-base text-ink-500 sm:text-lg">
+          {t('nav.questions') === 'FAQ' ? 'Get answers to your most pressing health questions. Our expert-backed information helps you understand symptoms and make informed decisions.' : '获取您最关心的健康问题的答案。我们的专家支持信息帮助您了解症状并做出明智的决策。'}
+        </p>
+      </div>
+
+      <div class="mx-auto mt-10 max-w-2xl">
+        <div class="relative">
+          <span class="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-ink-400">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </span>
+          <input
+            type="text"
+            placeholder={t('common.search')}
+            class="w-full rounded-xl border border-ink-200 bg-white py-4 pl-14 pr-32 text-base text-ink-800 shadow-sm transition-colors placeholder:text-ink-400 focus:border-medical-400 focus:outline-none focus:ring-2 focus:ring-medical-100"
+          />
+          <button class="btn-primary absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2 text-xs">
+            {t('common.search')}
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white pb-8">
+    <div class="container-x">
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-2">
+        <span class="rounded-full bg-health-50 px-4 py-1.5 text-xs font-medium text-health-700 ring-1 ring-inset ring-health-200">
+          {lang === 'zh' ? '全部' : 'All'}
+        </span>
+        {categories.map((cat) => (
+          <span class="rounded-full bg-ink-50 px-4 py-1.5 text-xs font-medium text-ink-600 ring-1 ring-inset ring-ink-200">
+            {cat}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white section-padding pt-8">
+    <div class="container-x">
+      <div class="mx-auto max-w-3xl space-y-4">
+        {questions.map((q) => (
+          <a
+            href={`${basePath}/questions/${q.slug}`}
+            class="group flex w-full items-start gap-4 rounded-xl border border-ink-100 bg-white p-5 shadow-sm transition-all hover:border-medical-200 hover:shadow-md"
+          >
+            <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-medical-50 text-medical-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 0 1 9-9" />
+              </svg>
+            </div>
+            <div class="flex flex-1 flex-col">
+              <h3 class="text-left font-medium text-ink-800 group-hover:text-medical-600">
+                {q.question}
+              </h3>
+              <span class="mt-1 text-xs text-ink-400">{q.category}</span>
+            </div>
+            <svg class="mt-1 h-5 w-5 flex-shrink-0 text-ink-300 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

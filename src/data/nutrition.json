@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "vitamin-d",
+    "name": "Vitamin D",
+    "meta_description": "Learn about Vitamin D: benefits, food sources, recommended intake, and deficiency symptoms.",
+    "description": "Vitamin D is a fat-soluble vitamin that plays a crucial role in bone health, immune function, and overall well-being.",
+    "type": "Vitamin",
+    "benefits": ["Supports bone health", "Boosts immune function", "Regulates mood", "Supports muscle function", "May reduce inflammation"],
+    "food_sources": ["Fatty fish", "Egg yolks", "Fortified dairy", "Fortified cereals", "Sunlight exposure"],
+    "recommended_intake": "Adults: 600-800 IU daily (varies by age and health status)",
+    "deficiency_symptoms": ["Fatigue", "Muscle weakness", "Bone pain", "Increased risk of infections", "Mood changes"],
+    "toxicity": "Excessive Vitamin D can cause hypercalcemia, kidney stones, and other health issues. Upper limit is generally 4000 IU/day for adults.",
+    "interactions": "May interact with calcium supplements, certain medications, and medical conditions like kidney disease.",
+    "related_conditions": ["osteoporosis", "rickets", "seasonal-affective-disorder"],
+    "related_questions": ["why-am-i-tired", "why-do-my-bones-hurt"]
+  },
+  {
+    "slug": "protein",
+    "name": "Protein",
+    "meta_description": "Learn about protein: benefits, sources, and recommended intake for optimal health and fitness.",
+    "description": "Protein is a macronutrient essential for building and repairing tissues, muscle growth, and various bodily functions.",
+    "type": "Macronutrient",
+    "benefits": ["Builds and repairs muscle", "Supports immune function", "Promotes satiety", "Maintains healthy hair and nails", "Supports hormone production"],
+    "food_sources": ["Lean meats", "Fish", "Eggs", "Dairy products", "Legumes", "Tofu", "Greek yogurt"],
+    "recommended_intake": "Adults: 0.8 grams per kilogram of body weight daily (higher for athletes and older adults)",
+    "deficiency_symptoms": ["Muscle wasting", "Fatigue", "Weakened immunity", "Slow wound healing", "Hair loss"],
+    "toxicity": "Excessive protein intake can strain kidneys and may contribute to dehydration. Generally well-tolerated in healthy individuals.",
+    "interactions": "May interact with kidney disease, liver disease, and certain medications.",
+    "related_conditions": ["muscle-loss", "malnutrition", "chronic-fatigue"],
+    "related_questions": ["why-am-i-tired", "why-do-i-lose-muscle"]
+  },
+  {
+    "slug": "omega-3",
+    "name": "Omega-3 Fatty Acids",
+    "meta_description": "Learn about Omega-3 fatty acids: benefits, food sources, and their role in heart and brain health.",
+    "description": "Omega-3 fatty acids are polyunsaturated fats that are essential for heart health, brain function, and reducing inflammation.",
+    "type": "Fatty Acid",
+    "benefits": ["Supports heart health", "Improves brain function", "Reduces inflammation", "Supports eye health", "May improve mood"],
+    "food_sources": ["Fatty fish (salmon, mackerel, sardines)", "Chia seeds", "Flaxseeds", "Walnuts", "Avocado"],
+    "recommended_intake": "Adults: 250-500 mg of combined EPA and DHA daily",
+    "deficiency_symptoms": ["Dry skin", "Poor memory", "Mood swings", "Joint pain", "Fatigue"],
+    "toxicity": "High doses may increase bleeding risk, especially for those taking blood thinners. Consult a healthcare provider before taking supplements.",
+    "interactions": "May interact with blood-thinning medications, diabetes medications, and hypertension medications.",
+    "related_conditions": ["heart-disease", "depression", "arthritis"],
+    "related_questions": ["why-am-i-depressed", "why-do-my-joints-hurt"]
+  }
+]

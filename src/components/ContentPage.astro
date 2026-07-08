@@ -1,0 +1,318 @@
+---
+export interface Props {
+  title: string;
+  metaDescription: string;
+  lang: string;
+  type: 'disease' | 'symptom' | 'cause' | 'body_part' | 'lab_test' | 'nutrition' | 'guide' | 'mental_health' | 'faq';
+  overview?: string;
+  quickFacts?: Record<string, string>;
+  commonSymptoms?: string[];
+  possibleCauses?: string[];
+  riskFactors?: string[];
+  diagnosis?: string;
+  lifestyleTips?: string[];
+  whenToSeekCare?: string;
+  prevention?: string;
+  faq?: { question: string; answer: string }[];
+  relatedConditions?: string[];
+  relatedSymptoms?: string[];
+  relatedQuestions?: string[];
+  relatedTools?: string[];
+  disclaimer?: string;
+  content?: any;
+  t: (key: string) => string;
+}
+
+const {
+  title,
+  metaDescription,
+  lang,
+  type,
+  overview,
+  quickFacts,
+  commonSymptoms,
+  possibleCauses,
+  riskFactors,
+  diagnosis,
+  lifestyleTips,
+  whenToSeekCare,
+  prevention,
+  faq,
+  relatedConditions,
+  relatedSymptoms,
+  relatedQuestions,
+  relatedTools,
+  content,
+  t,
+} = Astro.props;
+
+const MEDICAL_DISCLAIMER = t('common.disclaimer') || 'This content is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider with any questions you may have regarding a medical condition. Never disregard professional medical advice or delay in seeking it because of something you have read here.';
+
+function formatLink(link: string): string {
+  return link.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+}
+---
+
+<!-- Hero Section -->
+<section class="relative overflow-hidden bg-gradient-to-br from-medical-50 via-white to-health-50 py-16 lg:py-24">
+  <div class="absolute inset-0 opacity-30">
+    <div class="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-medical-200 blur-3xl"></div>
+    <div class="absolute bottom-0 -left-40 h-80 w-80 rounded-full bg-health-200 blur-3xl"></div>
+  </div>
+  <div class="container-x relative">
+    <div class="max-w-3xl">
+      <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-medical-100 px-3 py-1 text-xs font-medium text-medical-700">
+        {t(`content.type.${type}`) || type}
+      </div>
+      <h1 class="mb-4 text-3xl font-display font-bold tracking-tight text-ink-900 sm:text-4xl lg:text-5xl">
+        {title}
+      </h1>
+      <p class="text-lg text-ink-600">{metaDescription}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<main class="container-x py-12 lg:py-16">
+  <div class="grid gap-12 lg:grid-cols-3 lg:gap-16">
+    <!-- Left Sidebar -->
+    <aside class="order-2 lg:order-1 lg:w-72">
+      <div class="sticky top-24 space-y-6">
+        {quickFacts && Object.keys(quickFacts).length > 0 && (
+          <div class="rounded-xl border border-ink-100 bg-white p-5 shadow-sm">
+            <h3 class="mb-4 text-sm font-semibold text-ink-900">{t('content.quickFacts')}</h3>
+            <div class="space-y-3">
+              {Object.entries(quickFacts).map(([key, value]) => (
+                <div class="flex items-start justify-between gap-2">
+                  <span class="text-xs font-medium text-ink-500">{key}</span>
+                  <span class="text-xs text-ink-700">{value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {relatedTools && relatedTools.length > 0 && (
+          <div class="rounded-xl border border-ink-100 bg-white p-5 shadow-sm">
+            <h3 class="mb-4 text-sm font-semibold text-ink-900">{t('content.aiTools')}</h3>
+            <div class="space-y-2">
+              {relatedTools.map((tool) => {
+                const url = `/ai-tools`;
+                const label = tool.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+                return (
+                  <a href={url} class="flex items-center gap-2 rounded-lg p-2 text-sm text-ink-700 transition-colors hover:bg-medical-50">
+                    <span class="text-lg">🤖</span>
+                    <span>{label}</span>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="order-1 max-w-3xl lg:order-2">
+      <!-- Overview -->
+      {overview && (
+        <section class="mb-8">
+          <h2 class="mb-4 text-xl font-display font-semibold text-ink-900">{t('content.overview')}</h2>
+          <p class="text-ink-600 leading-relaxed">{overview}</p>
+        </section>
+      )}
+
+      <!-- Common Symptoms -->
+      {commonSymptoms && commonSymptoms.length > 0 && (
+        <section class="mb-8">
+          <h2 class="mb-4 text-xl font-display font-semibold text-ink-900">{t('content.commonSymptoms')}</h2>
+          <ul class="grid gap-2 sm:grid-cols-2">
+            {commonSymptoms.map((symptom) => (
+              <li class="flex items-center gap-2 rounded-lg bg-health-50 px-4 py-2 text-ink-700">
+                <span class="h-1.5 w-1.5 rounded-full bg-health-500"></span>
+                {symptom}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <!-- Possible Causes -->
+      {possibleCauses && possibleCauses.length > 0 && (
+        <section class="mb-8">
+          <h2 class="mb-4 text-xl font-display font-semibold text-ink-900">{t('content.possibleCauses')}</h2>
+          <ul class="grid gap-2 sm:grid-cols-2">
+            {possibleCauses.map((cause) => (
+              <li class="flex items-start gap-3 rounded-lg border border-ink-100 p-3">
+                <span class="mt-0.5 text-sm text-medical-500">•</span>
+                <span class="text-ink-700">{cause}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <!-- Risk Factors -->
+      {riskFactors && riskFactors.length > 0 && (
+        <section class="mb-8">
+          <h2 class="mb-4 text-xl font-display font-semibold text-ink-900">{t('content.riskFactors')}</h2>
+          <div class="rounded-xl border border-ink-100 bg-white p-5">
+            <div class="grid gap-2 sm:grid-cols-2">
+              {riskFactors.map((factor) => (
+                <div class="flex items-center gap-2">
+                  <svg class="h-4 w-4 text-warning-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  <span class="text-sm text-ink-700">{factor}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <!-- Diagnosis -->
+      {diagnosis && (
+        <section class="mb-8">
+          <h2 class="mb-4 text-xl font-display font-semibold text-ink-900">{t('content.diagnosis')}</h2>
+          <div class="rounded-xl border border-ink-100 bg-white p-5">
+            <p class="text-ink-600 leading-relaxed">{diagnosis}</p>
+          </div>
+        </section>
+      )}
+
+      <!-- Lifestyle Tips -->
+      {lifestyleTips && lifestyleTips.length > 0 && (
+        <section class="mb-8">
+          <h2 class="mb-4 text-xl font-display font-semibold text-ink-900">{t('content.lifestyleTips')}</h2>
+          <div class="grid gap-3 sm:grid-cols-2">
+            {lifestyleTips.map((tip, index) => (
+              <div class="flex gap-3 rounded-xl bg-health-50 p-4">
+                <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-health-500 text-xs font-bold text-white">
+                  {index + 1}
+                </div>
+                <p class="text-sm text-ink-700">{tip}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- When to Seek Medical Care -->
+      {whenToSeekCare && (
+        <section class="mb-8">
+          <h2 class="mb-4 text-xl font-display font-semibold text-ink-900">{t('content.whenToSeekCare')}</h2>
+          <div class="rounded-xl border border-warning-200 bg-warning-50 p-5">
+            <div class="flex items-start gap-3">
+              <svg class="mt-0.5 h-5 w-5 shrink-0 text-warning-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+              <p class="text-ink-700">{whenToSeekCare}</p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <!-- Prevention -->
+      {prevention && (
+        <section class="mb-8">
+          <h2 class="mb-4 text-xl font-display font-semibold text-ink-900">{t('content.prevention')}</h2>
+          <p class="rounded-xl border border-health-200 bg-health-50 p-5 text-ink-700">{prevention}</p>
+        </section>
+      )}
+
+      <!-- FAQ -->
+      {faq && faq.length > 0 && (
+        <section class="mb-8">
+          <h2 class="mb-4 text-xl font-display font-semibold text-ink-900">{t('content.faq')}</h2>
+          <div class="space-y-3">
+            {faq.map((item, index) => (
+              <div class="rounded-xl border border-ink-100 bg-white overflow-hidden">
+                <button
+                  class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-medium text-ink-900 transition-colors hover:bg-ink-50"
+                  aria-expanded="false"
+                  aria-controls={`faq-${index}`}
+                >
+                  <span>{item.question}</span>
+                  <svg class="h-5 w-5 shrink-0 text-ink-400 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </button>
+                <div id={`faq-${index}`} class="px-5 pb-4 text-sm text-ink-600">
+                  {item.answer}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- Related Articles -->
+      {(relatedConditions || relatedSymptoms || relatedQuestions) && (
+        <section class="mb-8">
+          <h2 class="mb-4 text-xl font-display font-semibold text-ink-900">{t('content.relatedArticles')}</h2>
+          <div class="space-y-4 rounded-xl border border-ink-100 bg-white p-5">
+            {relatedConditions && relatedConditions.length > 0 && (
+              <div class="mb-4">
+                <h4 class="mb-2 text-sm font-semibold text-medical-600">{t('content.relatedConditions')}</h4>
+                <div class="flex flex-wrap gap-2">
+                  {relatedConditions.map((link) => (
+                    <a href={`/conditions/${link}`} class="rounded-lg bg-medical-50 px-3 py-1 text-sm text-medical-600 transition-colors hover:bg-medical-100">
+                      {formatLink(link)}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+            {relatedSymptoms && relatedSymptoms.length > 0 && (
+              <div class="mb-4">
+                <h4 class="mb-2 text-sm font-semibold text-medical-600">{t('content.relatedSymptoms')}</h4>
+                <div class="flex flex-wrap gap-2">
+                  {relatedSymptoms.map((link) => (
+                    <a href={`/symptoms/${link}`} class="rounded-lg bg-medical-50 px-3 py-1 text-sm text-medical-600 transition-colors hover:bg-medical-100">
+                      {formatLink(link)}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+            {relatedQuestions && relatedQuestions.length > 0 && (
+              <div class="mb-4">
+                <h4 class="mb-2 text-sm font-semibold text-medical-600">{t('content.relatedQuestions')}</h4>
+                <div class="flex flex-wrap gap-2">
+                  {relatedQuestions.map((link) => (
+                    <a href={`/questions/${link}`} class="rounded-lg bg-medical-50 px-3 py-1 text-sm text-medical-600 transition-colors hover:bg-medical-100">
+                      {formatLink(link)}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      <!-- AI Health Assessment CTA -->
+      <section class="mb-8">
+        <div class="rounded-2xl bg-gradient-to-r from-medical-600 to-health-500 p-6 text-white">
+          <h3 class="mb-2 text-lg font-display font-bold">{t('content.aiAssessment')}</h3>
+          <p class="mb-4 text-sm text-medical-100">{t('content.aiAssessmentDesc')}</p>
+          <a href="/ai-tools" class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-medical-700 transition-colors hover:bg-medical-50">
+            {t('content.takeAssessment')}
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- Medical Disclaimer -->
+      <section class="rounded-xl border border-ink-100 bg-ink-50 p-5">
+        <h3 class="mb-2 text-sm font-semibold text-ink-700">{t('content.disclaimer')}</h3>
+        <p class="text-xs text-ink-500 leading-relaxed">{MEDICAL_DISCLAIMER}</p>
+      </section>
+    </div>
+  </div>
+</main>

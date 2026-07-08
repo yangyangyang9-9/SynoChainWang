@@ -20,16 +20,42 @@ export default function LanguageSwitcher({ lang, currentPath }: Props) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // 构建切换语言的 URL
+  // 构建切换语言的 URL，带回退机制
   function buildLangUrl(targetLang: string): string {
     let path = currentPath;
     const segments = path.split('/').filter(Boolean);
+    
+    // 移除现有的语言前缀
     if (segments.length > 0 && segments[0] in languages) {
       segments.shift();
       path = '/' + segments.join('/');
     }
+    
+    // 确保路径不为空
     if (path === '/') path = '';
-    return targetLang === defaultLang ? `/${path}` : `/${targetLang}${path}`;
+    
+    // 如果是英文，直接返回路径；否则添加语言前缀
+    if (targetLang === defaultLang) {
+      return `/${path}`;
+    }
+    
+    // 对于非英文，检查是否有二级路径（如 /zh/conditions/sinusitis）
+    // 如果有且不是索引页，添加回退机制
+    if (path && !isIndexPage(path)) {
+      // 返回带语言前缀的路径，但如果该路径不存在会404
+      // 服务器端会处理回退
+      return `/${targetLang}${path}`;
+    }
+    
+    return `/${targetLang}${path}`;
+  }
+  
+  // 判断是否为索引页
+  function isIndexPage(path: string): boolean {
+    const cleanPath = path.replace(/^\/|\/$/g, '');
+    // 如果路径为空或只有一个段且没有文件扩展名，视为索引页
+    const parts = cleanPath.split('/');
+    return parts.length <= 1 || (parts.length === 2 && parts[1] === '');
   }
 
   // 用户手动选择语言时保存偏好

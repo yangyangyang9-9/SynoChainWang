@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const basePath = lang === 'en' ? '' : `/${lang}`;
+
+const medicines = [
+  { slug: 'ibuprofen', name: t('nav.medicines') === '药物' ? '布洛芬' : 'Ibuprofen', category: 'Pain Relief', letter: 'I' },
+  { slug: 'paracetamol', name: t('nav.medicines') === '药物' ? '对乙酰氨基酚' : 'Paracetamol', category: 'Pain Relief', letter: 'P' },
+  { slug: 'aspirin', name: t('nav.medicines') === '药物' ? '阿司匹林' : 'Aspirin', category: 'Cardiology', letter: 'A' },
+  { slug: 'antibiotics', name: t('nav.medicines') === '药物' ? '抗生素' : 'Antibiotics', category: 'Antimicrobials', letter: 'A' },
+  { slug: 'antihistamines', name: t('nav.medicines') === '药物' ? '抗组胺药' : 'Antihistamines', category: 'Allergy', letter: 'A' },
+];
+
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const activeLetters = [...new Set(medicines.map((m) => m.letter))];
+const categories = [...new Set(medicines.map((m) => m.category))];
+---
+
+<BaseLayout
+  title={`${t('nav.medicines')} - SynoChain AI`}
+  description={t('nav.medicines') === '药物' ? '了解常用药物的用途、副作用和注意事项。' : 'Learn about common medications, their uses, side effects, and precautions.'}
+  lang={lang}
+>
+  <section class="relative overflow-hidden bg-white pt-32 pb-12">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="container-x relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-medical-200 bg-medical-50 px-4 py-1.5 text-xs font-medium text-medical-700">
+          <span class="text-base">💊</span>
+          {t('nav.medicines')}
+        </span>
+        <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl">
+          {t('nav.medicines')}
+        </h1>
+        <p class="mt-4 text-base text-ink-500 sm:text-lg">
+          {t('nav.medicines') === '药物' ? '探索常用药物信息，了解适应症、用法用量和安全注意事项。' : 'Explore common medication information, including indications, dosage, and safety precautions.'}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white pb-8">
+    <div class="container-x">
+      <div class="flex flex-wrap items-center justify-center gap-1.5">
+        {alphabet.map((letter) => {
+          const isActive = activeLetters.includes(letter);
+          return (
+            <a
+              href={isActive ? `#letter-${letter}` : undefined}
+              class:list={[
+                'flex h-9 w-9 items-center justify-center rounded-lg text-sm font-semibold transition-colors',
+                isActive ? 'bg-medical-50 text-medical-600 hover:bg-medical-100' : 'bg-ink-50 text-ink-300 cursor-not-allowed',
+              ]}
+            >
+              {letter}
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white section-padding pt-8">
+    <div class="container-x">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {medicines.map((med) => (
+          <a
+            href={`${basePath}/medicines/${med.slug}`}
+            id={`letter-${med.letter}`}
+            class="card group flex flex-col scroll-mt-32"
+          >
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-medical-50 to-health-50 text-xl font-bold text-medical-600">
+                {med.letter}
+              </div>
+              <span class="rounded-full bg-health-50 px-3 py-1 text-xs font-medium text-health-700 ring-1 ring-inset ring-health-200">
+                {med.category}
+              </span>
+            </div>
+            <h3 class="mt-4 font-display text-lg font-bold text-ink-800 group-hover:text-medical-600">
+              {med.name}
+            </h3>
+            <div class="mt-4 flex items-center gap-1.5 text-sm font-semibold text-medical-600">
+              {lang === 'zh' ? '查看详情' : 'View Details'}
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
