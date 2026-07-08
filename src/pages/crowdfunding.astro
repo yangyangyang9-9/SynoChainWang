@@ -16,6 +16,9 @@ const progressPercent = Math.min((stats.total_raised / stats.goal) * 100, 100);
 const selectedPlanSlug = Astro.url.searchParams.get('plan') || '';
 const plans = await getCrowdfundingPlans();
 const selectedPlan = plans.find((p) => p.slug === selectedPlanSlug) || null;
+
+// 从环境变量读取 PayPal Client ID（公开值，可安全传递到前端）
+const paypalClientId = import.meta.env.PAYPAL_CLIENT_ID || '';
 ---
 
 <BaseLayout title="Founder Membership - SynoChain AI" description="Become a Founder of SynoChain AI. Support the world's first AI health companion project and unlock exclusive benefits." lang={lang}>
@@ -124,6 +127,7 @@ const selectedPlan = plans.find((p) => p.slug === selectedPlanSlug) || null;
             amount={selectedPlan.price}
             planName={selectedPlan.name}
             lang={lang}
+            clientId={paypalClientId}
           />
         </div>
       ) : (

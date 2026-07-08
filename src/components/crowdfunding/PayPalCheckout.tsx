@@ -2,19 +2,51 @@ import { useState, useEffect, useRef } from 'react';
 import { Loader2, CheckCircle2, AlertCircle, Award, Copy, Sparkles } from 'lucide-react';
 
 // PayPal SDK 类型定义
+interface PayPalActions {
+  order: {
+    create: (config: {
+      purchase_units: Array<{
+        reference_id?: string;
+        description?: string;
+        amount: { value: string; currency_code: string };
+      }>;
+      application_context?: Record<string, unknown>;
+    }) => Promise<string>;
+    capture: () => Promise<PayPalCaptureResult>;
+  };
+}
+
+interface PayPalCaptureResult {
+  id: string;
+  status: string;
+  purchase_units?: Array<{
+    payments?: {
+      captures?: Array<{ id: string; status: string }>;
+    };
+  }>;
+  payer?: {
+    name?: { given_name?: string; surname?: string };
+    email_address?: string;
+  };
+}
+
+interface PayPalButtonInstance {
+  render: (el: HTMLElement) => Promise<void>;
+  close: () => void;
+}
+
 interface PayPalSDK {
   Buttons: (opts: {
-    fundingSource?: string;
     style?: {
       layout?: 'vertical' | 'horizontal';
       color?: 'gold' | 'blue' | 'silver' | 'white' | 'black';
       shape?: 'rect' | 'pill';
       label?: 'paypal' | 'pay' | 'checkout' | 'buynow';
     };
-    createOrder: () => Promise<string>;
-    onApprove: (data: { orderID: string }) => Promise<void>;
-    onError: (err: unknown) => void;
-  }) => { render: (el: HTMLElement) => Promise<void>; close: () => void };
+    createOrder: (data: unknown, actions: PayPalActions) => Promise<string>;
+    onApprove: (data: { orderID: string }, actions: PayPalActions) => Promise<void>;
+    onError?: (err: unknown) => void;
+  }) => PayPalButtonInstance;
 }
 
 // 组件 Props
@@ -23,6 +55,7 @@ export interface PayPalCheckoutProps {
   amount: number;
   planName: string;
   lang?: string;
+  clientId?: string;
 }
 
 // 支付状态
@@ -33,6 +66,7 @@ interface PaymentResult {
   transactionId: string;
   orderId: string;
   badgeToken: string;
+  payerEmail?: string;
 }
 
 // 动态注入 PayPal JS SDK 脚本
@@ -48,12 +82,13 @@ function loadPayPalScript(clientId: string): Promise<PayPalSDK | null> {
       existing.addEventListener('load', () => {
         resolve(window.paypal ? (window.paypal as unknown as PayPalSDK) : null);
       });
+      existing.addEventListener('error', () => resolve(null));
       return;
     }
 
     const script = document.createElement('script');
     script.id = 'paypal-sdk-script';
-    script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD&intent=capture`;
+    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(clientId)}&currency=USD&intent=capture`;
     script.async = true;
     script.onload = () => {
       resolve(window.paypal ? (window.paypal as unknown as PayPalSDK) : null);
@@ -66,11 +101,18 @@ function loadPayPalScript(clientId: string): Promise<PayPalSDK | null> {
   });
 }
 
+// 众筹方案描述
+const PLAN_DESCRIPTIONS: Record<string, string> = {
+  'ai-pioneer': 'SynoChain AI - AI Pioneer Membership (1 year)',
+  'lifetime-founder': 'SynoChain AI - Lifetime Founder Membership',
+};
+
 export default function PayPalCheckout({
   planSlug,
   amount,
   planName,
   lang = 'en',
+  clientId = '',
 }: PayPalCheckoutProps) {
   const [sdkReady, setSdkReady] = useState(false);
   const [demoMode, setDemoMode] = useState(false);
@@ -80,20 +122,17 @@ export default function PayPalCheckout({
   const [copied, setCopied] = useState(false);
   const buttonsContainerRef = useRef<HTMLDivElement>(null);
   const buttonsRendered = useRef(false);
-  const buttonsInstance = useRef<{ close: () => void } | null>(null);
+  const buttonsInstance = useRef<PayPalButtonInstance | null>(null);
 
   const isZh = lang === 'zh';
   const text = {
     loadingSdk: isZh ? '正在加载支付系统...' : 'Loading payment system...',
-    payButton: isZh ? '使用 PayPal 支付' : 'Pay with PayPal',
     demoPayButton: isZh ? '演示支付（未配置 PayPal）' : 'Demo Payment (PayPal not configured)',
     demoPayDesc: isZh ? '点击模拟支付流程。配置 PayPal 凭证后可启用真实支付。' : 'Click to simulate payment. Configure PayPal credentials to enable real payments.',
     secure: isZh ? '🔒 安全支付 · 由 PayPal 保护' : '🔒 Secure payment powered by PayPal',
     processing: isZh ? '正在处理支付...' : 'Processing payment...',
     successTitle: isZh ? '🎉 支付成功！' : '🎉 Payment Successful!',
-    thankYou: isZh
-      ? '感谢您成为 SynoChain AI 创始会员！'
-      : 'Thank you for becoming a SynoChain AI Founder!',
+    thankYou: isZh ? '感谢您成为 SynoChain AI 创始会员！' : 'Thank you for becoming a SynoChain AI Founder!',
     transactionId: isZh ? '交易号' : 'Transaction ID',
     orderId: isZh ? '订单号' : 'Order ID',
     badgeToken: isZh ? 'Founder Badge 凭证' : 'Founder Badge Token',
@@ -101,33 +140,104 @@ export default function PayPalCheckout({
     copied: isZh ? '已复制!' : 'Copied!',
     errorTitle: isZh ? '支付失败' : 'Payment Failed',
     retry: isZh ? '重试' : 'Try again',
-    sdkError: isZh
-      ? '无法加载 PayPal 支付系统，请检查网络后刷新页面。'
-      : 'Failed to load PayPal SDK. Please check your network and refresh.',
     amountLabel: isZh ? '支付金额' : 'Amount',
   };
 
-  // 初始化：获取 client token 并加载 SDK
+  // 生成 Founder Badge Token
+  function generateBadgeToken(orderId: string): string {
+    const prefix = planSlug === 'lifetime-founder' ? 'FOUNDER-LT' : 'PIONEER';
+    return `${prefix}-${orderId}`;
+  }
+
+  // 创建 PayPal 按钮配置
+  function createButtonConfig() {
+    return {
+      style: {
+        layout: 'vertical' as const,
+        color: 'blue' as const,
+        shape: 'rect' as const,
+        label: 'paypal' as const,
+      },
+      // 客户端创建订单 - 使用 SDK 内置的 actions.order.create()
+      createOrder: async (_data: unknown, actions: PayPalActions): Promise<string> => {
+        setStatus('loading');
+        try {
+          const orderId = await actions.order.create({
+            purchase_units: [
+              {
+                reference_id: planSlug,
+                description: PLAN_DESCRIPTIONS[planSlug] || planName,
+                amount: {
+                  value: amount.toFixed(2),
+                  currency_code: 'USD',
+                },
+              },
+            ],
+            application_context: {
+              brand_name: 'SynoChain AI',
+              user_action: 'PAY_NOW',
+              shipping_preference: 'NO_SHIPPING',
+            },
+          });
+          return orderId;
+        } catch (err) {
+          console.error('[PayPalCheckout] createOrder error:', err);
+          setStatus('error');
+          setErrorMsg(err instanceof Error ? err.message : 'Failed to create order');
+          throw err;
+        }
+      },
+      // 客户端捕获支付 - 使用 SDK 内置的 actions.order.capture()
+      onApprove: async (_data: { orderID: string }, actions: PayPalActions): Promise<void> => {
+        try {
+          const capture = await actions.order.capture();
+
+          if (capture.status !== 'COMPLETED') {
+            throw new Error(`Payment not completed. Status: ${capture.status}`);
+          }
+
+          const transactionId =
+            capture.purchase_units?.[0]?.payments?.captures?.[0]?.id ||
+            capture.id;
+          const payerEmail = capture.payer?.email_address || '';
+
+          setResult({
+            transactionId,
+            orderId: _data.orderID,
+            badgeToken: generateBadgeToken(_data.orderID),
+            payerEmail,
+          });
+          setStatus('success');
+        } catch (err) {
+          console.error('[PayPalCheckout] onApprove error:', err);
+          setStatus('error');
+          setErrorMsg(err instanceof Error ? err.message : 'Failed to capture payment');
+        }
+      },
+      onError: (err: unknown) => {
+        console.error('[PayPalCheckout] Payment error:', err);
+        setStatus('error');
+        setErrorMsg(
+          err instanceof Error ? err.message : 'Payment processing error'
+        );
+      },
+    };
+  }
+
+  // 初始化：加载 PayPal SDK
   useEffect(() => {
     let cancelled = false;
 
     async function init() {
+      // 没有 clientId，进入演示模式
+      if (!clientId) {
+        if (cancelled) return;
+        setDemoMode(true);
+        return;
+      }
+
       try {
-        const res = await fetch('/api/paypal?action=token');
-        const data = await res.json();
-
-        if (!data.success) {
-          throw new Error('API returned failure');
-        }
-
-        // 未配置 PayPal 时，进入演示模式
-        if (!data.isConfigured || !data.clientId) {
-          if (cancelled) return;
-          setDemoMode(true);
-          return;
-        }
-
-        const sdk = await loadPayPalScript(data.clientId);
+        const sdk = await loadPayPalScript(clientId);
         if (cancelled) return;
 
         if (sdk) {
@@ -139,7 +249,6 @@ export default function PayPalCheckout({
       } catch (err) {
         if (cancelled) return;
         console.error('[PayPalCheckout] Init failed:', err);
-        // 出错时也回退到演示模式，确保用户仍能体验流程
         setDemoMode(true);
       }
     }
@@ -150,13 +259,12 @@ export default function PayPalCheckout({
       if (buttonsInstance.current) {
         try {
           buttonsInstance.current.close();
-        } catch (e) {
+        } catch {
           // ignore
         }
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [clientId]);
 
   // 渲染 PayPal 按钮
   useEffect(() => {
@@ -166,55 +274,7 @@ export default function PayPalCheckout({
     const paypalSdk = window.paypal as unknown as PayPalSDK;
 
     try {
-      const buttons = paypalSdk.Buttons({
-        style: {
-          layout: 'vertical',
-          color: 'blue',
-          shape: 'rect',
-          label: 'paypal',
-        },
-        createOrder: async () => {
-          setStatus('loading');
-          const res = await fetch('/api/paypal?action=create', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ planSlug, amount }),
-          });
-          const data = await res.json();
-          if (!data.success) {
-            throw new Error(data.error || 'Failed to create order');
-          }
-          return data.orderId;
-        },
-        onApprove: async (approvalData) => {
-          const res = await fetch('/api/paypal?action=capture', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              orderId: approvalData.orderID,
-              planSlug,
-              email: '',
-            }),
-          });
-          const data = await res.json();
-          if (!data.success) {
-            throw new Error(data.error || 'Failed to capture payment');
-          }
-          setResult({
-            transactionId: data.transactionId,
-            orderId: data.orderId,
-            badgeToken: data.badgeToken,
-          });
-          setStatus('success');
-        },
-        onError: (err) => {
-          console.error('[PayPalCheckout] Payment error:', err);
-          setStatus('error');
-          setErrorMsg(
-            err instanceof Error ? err.message : 'Payment processing error'
-          );
-        },
-      });
+      const buttons = paypalSdk.Buttons(createButtonConfig());
 
       buttons.render(buttonsContainerRef.current).then(() => {
         buttonsRendered.current = true;
@@ -234,19 +294,15 @@ export default function PayPalCheckout({
   async function handleDemoPayment() {
     setStatus('loading');
     try {
-      // 模拟 API 延迟
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
       const mockOrderId = `DEMO-${Date.now()}`;
       const mockTransactionId = `DEMO-TXN-${Date.now()}`;
-      const badgeToken = planSlug === 'lifetime-founder'
-        ? `FOUNDER-LT-${mockOrderId}`
-        : `PIONEER-${mockOrderId}`;
 
       setResult({
         transactionId: mockTransactionId,
         orderId: mockOrderId,
-        badgeToken,
+        badgeToken: generateBadgeToken(mockOrderId),
       });
       setStatus('success');
     } catch (err) {
@@ -273,64 +329,24 @@ export default function PayPalCheckout({
     if (buttonsInstance.current) {
       try {
         buttonsInstance.current.close();
-      } catch (e) {
+      } catch {
         // ignore
       }
       buttonsInstance.current = null;
     }
     if (sdkReady && buttonsContainerRef.current && window.paypal) {
       const paypalSdk = window.paypal as unknown as PayPalSDK;
-      const buttons = paypalSdk.Buttons({
-        style: {
-          layout: 'vertical',
-          color: 'blue',
-          shape: 'rect',
-          label: 'paypal',
-        },
-        createOrder: async () => {
-          setStatus('loading');
-          const res = await fetch('/api/paypal?action=create', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ planSlug, amount }),
-          });
-          const data = await res.json();
-          if (!data.success) throw new Error(data.error);
-          return data.orderId;
-        },
-        onApprove: async (approvalData) => {
-          const res = await fetch('/api/paypal?action=capture', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              orderId: approvalData.orderID,
-              planSlug,
-              email: '',
-            }),
-          });
-          const data = await res.json();
-          if (!data.success) throw new Error(data.error);
-          setResult({
-            transactionId: data.transactionId,
-            orderId: data.orderId,
-            badgeToken: data.badgeToken,
-          });
-          setStatus('success');
-        },
-        onError: (err) => {
-          console.error('[PayPalCheckout] Payment error:', err);
-          setStatus('error');
-          setErrorMsg(
-            err instanceof Error ? err.message : 'Payment processing error'
-          );
-        },
-      });
-      buttons.render(buttonsContainerRef.current).then(() => {
-        buttonsRendered.current = true;
-        buttonsInstance.current = buttons;
-      }).catch(() => {
+      try {
+        const buttons = paypalSdk.Buttons(createButtonConfig());
+        buttons.render(buttonsContainerRef.current).then(() => {
+          buttonsRendered.current = true;
+          buttonsInstance.current = buttons;
+        }).catch(() => {
+          setDemoMode(true);
+        });
+      } catch {
         setDemoMode(true);
-      });
+      }
     }
   }
 
