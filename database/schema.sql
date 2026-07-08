@@ -4,6 +4,40 @@
 -- 包含：用户、疾病库、症状库、病因库、身体部位、检查项目、药物、营养、心理、FAQ、指南
 -- ============================================================
 
+-- ========== 清除旧表（解决列不存在错误）==========
+-- 如果之前执行过旧版 schema，表已存在但缺少新列，需要先删除
+DROP TABLE IF EXISTS public.community_posts CASCADE;
+DROP TABLE IF EXISTS public.blog_posts CASCADE;
+DROP TABLE IF EXISTS public.ai_tools CASCADE;
+DROP TABLE IF EXISTS public.health_checks CASCADE;
+DROP TABLE IF EXISTS public.ai_messages CASCADE;
+DROP TABLE IF EXISTS public.ai_conversations CASCADE;
+DROP TABLE IF EXISTS public.seo_pages CASCADE;
+DROP TABLE IF EXISTS public.generated_contents CASCADE;
+DROP TABLE IF EXISTS public.ai_prompts CASCADE;
+DROP TABLE IF EXISTS public.keywords CASCADE;
+DROP TABLE IF EXISTS public.faq_questions CASCADE;
+DROP TABLE IF EXISTS public.pregnancy_health CASCADE;
+DROP TABLE IF EXISTS public.seniors_health CASCADE;
+DROP TABLE IF EXISTS public.childrens_health CASCADE;
+DROP TABLE IF EXISTS public.mens_health CASCADE;
+DROP TABLE IF EXISTS public.womens_health CASCADE;
+DROP TABLE IF EXISTS public.mental_health CASCADE;
+DROP TABLE IF EXISTS public.health_guides CASCADE;
+DROP TABLE IF EXISTS public.vitamins CASCADE;
+DROP TABLE IF EXISTS public.nutrition_items CASCADE;
+DROP TABLE IF EXISTS public.medicines CASCADE;
+DROP TABLE IF EXISTS public.lab_tests CASCADE;
+DROP TABLE IF EXISTS public.body_parts CASCADE;
+DROP TABLE IF EXISTS public.causes CASCADE;
+DROP TABLE IF EXISTS public.symptoms CASCADE;
+DROP TABLE IF EXISTS public.diseases CASCADE;
+DROP TABLE IF EXISTS public.fund_allocation CASCADE;
+DROP TABLE IF EXISTS public.founder_memberships CASCADE;
+DROP TABLE IF EXISTS public.crowdfunding_stats CASCADE;
+DROP TABLE IF EXISTS public.crowdfunding_plans CASCADE;
+DROP TABLE IF EXISTS public.profiles CASCADE;
+
 -- ========== 用户系统 ==========
 -- 用户资料表（扩展 Supabase auth.users）
 CREATE TABLE IF NOT EXISTS public.profiles (
