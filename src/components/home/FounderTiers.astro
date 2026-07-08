@@ -87,7 +87,7 @@ const basePath = lang === 'en' ? '' : `/${lang}`;
 
             <!-- CTA -->
             <a
-              href={basePath + '/crowdfunding?plan=' + plan.slug}
+              href={'/crowdfunding?plan=' + plan.slug}
               class={`mt-8 w-full ${isBestValue ? 'btn-health' : 'btn-primary'}`}
             >
               {t('founder.choosePlan')}

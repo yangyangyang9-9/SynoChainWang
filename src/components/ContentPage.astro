@@ -51,6 +51,8 @@ const MEDICAL_DISCLAIMER = t('common.disclaimer') || 'This content is for inform
 function formatLink(link: string): string {
   return link.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 }
+
+const basePath = lang === 'en' ? '' : `/${lang}`;
 ---
 
 <!-- Hero Section -->
@@ -231,16 +233,16 @@ function formatLink(link: string): string {
             {faq.map((item, index) => (
               <div class="rounded-xl border border-ink-100 bg-white overflow-hidden">
                 <button
-                  class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-medium text-ink-900 transition-colors hover:bg-ink-50"
+                  class="faq-accordion-trigger flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-medium text-ink-900 transition-colors hover:bg-ink-50"
                   aria-expanded="false"
                   aria-controls={`faq-${index}`}
                 >
                   <span>{item.question}</span>
-                  <svg class="h-5 w-5 shrink-0 text-ink-400 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg class="faq-arrow h-5 w-5 shrink-0 text-ink-400 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M6 9l6 6 6-6" />
                   </svg>
                 </button>
-                <div id={`faq-${index}`} class="px-5 pb-4 text-sm text-ink-600">
+                <div id={`faq-${index}`} class="px-5 pb-4 text-sm text-ink-600" style="display: none;">
                   {item.answer}
                 </div>
               </div>
@@ -316,3 +318,19 @@ function formatLink(link: string): string {
     </div>
   </div>
 </main>
+
+<!-- FAQ Accordion Toggle -->
+<script>
+  document.querySelectorAll('.faq-accordion-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling;
+      const arrow = btn.querySelector('.faq-arrow');
+      const isOpen = content.style.display !== 'none';
+
+      // Toggle current
+      content.style.display = isOpen ? 'none' : 'block';
+      arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+</script>
