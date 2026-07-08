@@ -1,23 +1,33 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import topics from '../../data/pregnancy.json';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const basePath = lang === 'en' ? '' : `/${lang}`;
 
-const topics = [
-  { slug: 'prenatal-care', name: t('nav.pregnancy') === '孕期健康' ? '产前护理' : 'Prenatal Care', category: 'Care', letter: 'P' },
-  { slug: 'pregnancy-symptoms', name: t('nav.pregnancy') === '孕期健康' ? '孕期症状' : 'Pregnancy Symptoms', category: 'Symptoms', letter: 'P' },
-  { slug: 'nutrition-during-pregnancy', name: t('nav.pregnancy') === '孕期健康' ? '孕期营养' : 'Nutrition During Pregnancy', category: 'Nutrition', letter: 'N' },
-  { slug: 'exercise-in-pregnancy', name: t('nav.pregnancy') === '孕期健康' ? '孕期运动' : 'Exercise in Pregnancy', category: 'Physical Activity', letter: 'E' },
-  { slug: 'childbirth-preparation', name: t('nav.pregnancy') === '孕期健康' ? '分娩准备' : 'Childbirth Preparation', category: 'Preparation', letter: 'C' },
-];
+const isChinese = t('nav.pregnancy') === '孕期健康';
+
+const nameZh: Record<string, string> = {
+  'prenatal-care': '产前护理',
+  'pregnancy-symptoms': '孕期症状',
+  'nutrition-during-pregnancy': '孕期营养',
+  'exercise-in-pregnancy': '孕期运动',
+  'childbirth-preparation': '分娩准备',
+};
+
+const displayTopics = topics.map((topic) => ({
+  slug: topic.slug,
+  name: isChinese ? (nameZh[topic.slug] || topic.name) : topic.name,
+  category: topic.category,
+  letter: topic.letter,
+}));
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-const activeLetters = [...new Set(topics.map((t) => t.letter))];
-const categories = [...new Set(topics.map((t) => t.category))];
+const activeLetters = [...new Set(displayTopics.map((t) => t.letter))];
+const categories = [...new Set(displayTopics.map((t) => t.category))];
 ---
 
 <BaseLayout
@@ -67,7 +77,7 @@ const categories = [...new Set(topics.map((t) => t.category))];
   <section class="bg-white section-padding pt-8">
     <div class="container-x">
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {topics.map((topic) => (
+        {displayTopics.map((topic) => (
           <a
             href={`${basePath}/pregnancy/${topic.slug}`}
             id={`letter-${topic.letter}`}

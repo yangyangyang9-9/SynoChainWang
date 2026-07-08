@@ -1,0 +1,212 @@
+[
+  {
+    "slug": "menstrual-health",
+    "name": "Menstrual Health",
+    "meta_description": "Learn about menstrual health: cycle phases, common irregularities, symptoms, and when to seek care for abnormal periods.",
+    "description": "Menstrual health refers to the overall well-being of the menstrual cycle, including cycle regularity, flow, and the absence of severe symptoms that interfere with daily life.",
+    "category": "Reproductive",
+    "letter": "M",
+    "overview": "Menstrual health encompasses the regular functioning of the menstrual cycle, which is a key indicator of overall reproductive and hormonal health. A typical menstrual cycle lasts between 21 and 35 days, with bleeding lasting 2 to 7 days. Variations in cycle length, flow, and associated symptoms are common, but significant changes or severe symptoms may signal underlying conditions such as hormonal imbalances, polyps, fibroids, or thyroid disorders. Tracking the cycle and understanding what is normal for your body empowers early detection of issues and supports informed conversations with healthcare providers.",
+    "common_symptoms": [
+      "Menstrual cramping (dysmenorrhea)",
+      "Bloating and fluid retention",
+      "Breast tenderness",
+      "Mood changes and irritability",
+      "Fatigue",
+      "Headaches or migraines",
+      "Acne flare-ups",
+      "Changes in bowel habits"
+    ],
+    "risk_factors": [
+      "Stress and significant weight changes",
+      "Polycystic ovary syndrome (PCOS)",
+      "Thyroid disorders",
+      "Uterine fibroids or polyps",
+      "Endometriosis",
+      "Eating disorders or low body weight",
+      "Excessive exercise",
+      "Certain medications, including hormonal contraceptives"
+    ],
+    "lifestyle_tips": [
+      "Track your cycle using an app or calendar to identify patterns",
+      "Maintain a balanced diet rich in iron, calcium, and omega-3 fatty acids",
+      "Stay hydrated and limit caffeine and salt before your period",
+      "Engage in regular, moderate exercise to reduce cramps and mood symptoms",
+      "Practice stress-reduction techniques such as yoga or mindfulness",
+      "Use heat therapy (heating pad) for cramp relief",
+      "Prioritize sleep to support hormonal balance"
+    ],
+    "when_to_seek_care": "Consult a healthcare provider if your periods are consistently shorter than 21 days or longer than 35 days, bleeding lasts more than 7 days, you soak through a pad or tampon every hour for several hours, you experience severe pain that disrupts daily activities, or you miss periods for three months in a row (and are not pregnant). Seek immediate care for sudden heavy bleeding with dizziness or fainting.",
+    "related_conditions": ["pcos", "endometriosis", "menopause"],
+    "related_symptoms": ["fatigue", "headache", "back-pain"],
+    "related_questions": ["why-is-my-period-irregular", "why-do-i-have-severe-menstrual-cramps"],
+    "related_tools": ["cycle-tracker", "symptom-checker"]
+  },
+  {
+    "slug": "pcos",
+    "name": "Polycystic Ovary Syndrome (PCOS)",
+    "meta_description": "Learn about PCOS: symptoms, hormonal causes, long-term risks, and lifestyle-based management strategies.",
+    "description": "Polycystic ovary syndrome (PCOS) is a common hormonal disorder in women of reproductive age, characterized by irregular periods, excess androgens, and polycystic ovaries.",
+    "category": "Hormonal",
+    "letter": "P",
+    "overview": "Polycystic ovary syndrome (PCOS) is one of the most common endocrine disorders affecting women of reproductive age, with an estimated prevalence of 6 to 12 percent worldwide. It is defined by a combination of irregular menstrual cycles, elevated androgen (male hormone) levels, and polycystic-appearing ovaries on ultrasound. PCOS is a leading cause of infertility and is closely linked to insulin resistance, which increases the risk of type 2 diabetes, metabolic syndrome, and cardiovascular disease. While there is no cure, early diagnosis and ongoing management through lifestyle changes, medication, and regular monitoring can effectively control symptoms and reduce long-term health risks.",
+    "common_symptoms": [
+      "Irregular or absent periods",
+      "Excess facial or body hair (hirsutism)",
+      "Severe or cystic acne",
+      "Thinning hair or male-pattern baldness",
+      "Weight gain or difficulty losing weight",
+      "Darkening of skin in folds (acanthosis nigricans)",
+      "Difficulty conceiving",
+      "Oily skin"
+    ],
+    "risk_factors": [
+      "Family history of PCOS",
+      "Insulin resistance and obesity",
+      "Sedentary lifestyle",
+      "Low-grade chronic inflammation",
+      "Type 2 diabetes or gestational diabetes in family",
+      "Higher levels of androgens during puberty"
+    ],
+    "lifestyle_tips": [
+      "Focus on weight management; even a 5-10% weight loss can restore ovulation",
+      "Adopt a low-glycemic-index diet rich in whole grains, vegetables, and lean protein",
+      "Engage in at least 150 minutes of moderate exercise per week",
+      "Include strength training to improve insulin sensitivity",
+      "Limit processed foods and added sugars",
+      "Work with an endocrinologist or gynecologist on medication options",
+      "Monitor mental health, as anxiety and depression are more common in PCOS"
+    ],
+    "when_to_seek_care": "See a healthcare provider if you have irregular or absent periods, unexplained weight gain with acne or excess hair growth, or difficulty getting pregnant. Seek urgent care for sudden severe pelvic pain, especially with vomiting, which can indicate ovarian torsion. Regular check-ups are important to screen for diabetes, high blood pressure, and cholesterol if you have PCOS.",
+    "related_conditions": ["menstrual-health", "diabetes", "endometriosis"],
+    "related_symptoms": ["fatigue", "acne", "weight-changes"],
+    "related_questions": ["why-are-my-periods-irregular", "why-am-i-gaining-weight"],
+    "related_tools": ["hormone-assessment", "symptom-checker"]
+  },
+  {
+    "slug": "endometriosis",
+    "name": "Endometriosis",
+    "meta_description": "Learn about endometriosis: symptoms, causes, diagnosis, and treatment options for this chronic pelvic condition.",
+    "description": "Endometriosis is a chronic condition in which tissue similar to the lining of the uterus grows outside the uterus, causing pain and potential fertility issues.",
+    "category": "Reproductive",
+    "letter": "E",
+    "overview": "Endometriosis is a chronic, often painful condition in which endometrial-like tissue grows outside the uterus, most commonly on the ovaries, fallopian tubes, and pelvic lining. This tissue responds to hormonal changes, causing inflammation, scarring, and adhesions. The condition affects roughly 1 in 10 women of reproductive age and is a leading cause of infertility. Symptoms vary widely and do not always correlate with disease severity, which contributes to an average diagnostic delay of 7 to 10 years. While endometriosis has no cure, a combination of medical therapy, surgery, and lifestyle strategies can effectively manage pain and preserve fertility.",
+    "common_symptoms": [
+      "Severe menstrual cramps (dysmenorrhea)",
+      "Chronic pelvic or lower back pain",
+      "Pain during or after intercourse",
+      "Painful bowel movements or urination during periods",
+      "Heavy or irregular bleeding",
+      "Fatigue",
+      "Digestive issues such as bloating, diarrhea, or constipation",
+      "Difficulty conceiving"
+    ],
+    "risk_factors": [
+      "Family history of endometriosis",
+      "Short menstrual cycles (less than 27 days)",
+      "Heavy periods lasting more than 7 days",
+      "Never having given birth",
+      "Early onset of menstruation (before age 11)",
+      "Low body mass index",
+      "Uterine or reproductive tract abnormalities"
+    ],
+    "lifestyle_tips": [
+      "Apply heat (heating pads, warm baths) to relieve pelvic pain",
+      "Follow an anti-inflammatory diet rich in omega-3s, fruits, and vegetables",
+      "Limit red meat, caffeine, and alcohol, which may worsen inflammation",
+      "Engage in gentle, regular exercise such as yoga, walking, or swimming",
+      "Practice stress management through meditation or cognitive behavioral therapy",
+      "Keep a symptom and pain diary to share with your care team",
+      "Consider pelvic floor physical therapy for muscle tension relief"
+    ],
+    "when_to_seek_care": "Seek evaluation for pelvic pain that disrupts daily life, painful periods that do not respond to over-the-counter pain relief, pain during intercourse, or difficulty becoming pregnant. Seek immediate care for sudden severe abdominal pain, especially with fever or vomiting, which can signal a ruptured cyst or ovarian torsion.",
+    "related_conditions": ["menstrual-health", "pcos", "infertility"],
+    "related_symptoms": ["back-pain", "fatigue", "pelvic-pain"],
+    "related_questions": ["why-do-i-have-severe-period-pain", "why-does-intercourse-hurt"],
+    "related_tools": ["pain-tracker", "symptom-checker"]
+  },
+  {
+    "slug": "menopause",
+    "name": "Menopause",
+    "meta_description": "Learn about menopause: stages, common symptoms, long-term health impacts, and management strategies.",
+    "description": "Menopause is the natural transition marking the end of menstrual cycles, typically occurring between ages 45 and 55, accompanied by hormonal and physical changes.",
+    "category": "Hormonal",
+    "letter": "M",
+    "overview": "Menopause is defined as the permanent cessation of menstruation, confirmed after 12 consecutive months without a period. It typically occurs between ages 45 and 55, with the average age around 51. The transition, called perimenopause, can last several years and is marked by fluctuating estrogen and progesterone levels. These hormonal changes produce a range of symptoms including hot flashes, night sweats, sleep disturbances, mood changes, and vaginal dryness. Menopause also increases the risk of osteoporosis and cardiovascular disease due to the protective effects of estrogen being lost. While menopause is a natural life stage, a range of lifestyle, non-hormonal, and hormonal therapies can ease symptoms and protect long-term health.",
+    "common_symptoms": [
+      "Hot flashes and night sweats",
+      "Irregular periods leading to cessation",
+      "Sleep disturbances and insomnia",
+      "Mood swings, irritability, or anxiety",
+      "Vaginal dryness and discomfort",
+      "Decreased libido",
+      "Fatigue and difficulty concentrating ('brain fog')",
+      "Weight gain, particularly around the abdomen"
+    ],
+    "risk_factors": [
+      "Smoking, which can trigger earlier menopause",
+      "Family history of early menopause",
+      "Certain cancer treatments such as chemotherapy or radiation",
+      "Surgical removal of ovaries (oophorectomy)",
+      "Autoimmune conditions",
+      "Increasing age (natural progression)"
+    ],
+    "lifestyle_tips": [
+      "Eat a diet rich in calcium and vitamin D to protect bone health",
+      "Engage in weight-bearing and resistance exercise to prevent osteoporosis",
+      "Dress in layers and keep the bedroom cool to manage hot flashes",
+      "Limit caffeine, alcohol, and spicy foods, which can trigger hot flashes",
+      "Practice relaxation techniques such as deep breathing and yoga",
+      "Maintain a consistent sleep schedule and good sleep hygiene",
+      "Stay connected with a healthcare provider to discuss hormone or non-hormonal therapies"
+    ],
+    "when_to_seek_care": "Talk to a healthcare provider if symptoms such as hot flashes, sleep problems, or mood changes interfere with daily life, or if you experience bleeding after menopause, which should always be evaluated. Seek urgent care for heavy bleeding, severe pelvic pain, or signs of cardiovascular issues such as chest pain or shortness of breath.",
+    "related_conditions": ["menstrual-health", "osteoporosis", "depression"],
+    "related_symptoms": ["fatigue", "insomnia", "mood-changes"],
+    "related_questions": ["why-am-i-having-hot-flashes", "why-cant-i-sleep"],
+    "related_tools": ["menopause-tracker", "symptom-checker"]
+  },
+  {
+    "slug": "breast-health",
+    "name": "Breast Health",
+    "meta_description": "Learn about breast health: screening, common changes, risk factors, and early detection of breast conditions.",
+    "description": "Breast health involves awareness of normal breast changes, routine screening, and early detection of conditions ranging from benign cysts to breast cancer.",
+    "category": "Prevention",
+    "letter": "B",
+    "overview": "Breast health refers to the ongoing awareness, screening, and care of breast tissue throughout a woman's life. Breasts undergo normal changes influenced by hormones, age, and life events such as pregnancy and menopause. Understanding what is normal for your body allows earlier detection of unusual changes, which is critical because breast cancer is the most commonly diagnosed cancer in women worldwide. Early detection through self-awareness, clinical exams, and mammography significantly improves outcomes. Most breast changes are benign, including cysts and fibrocystic changes, but any new or persistent change should be evaluated promptly by a healthcare professional.",
+    "common_symptoms": [
+      "A new lump or thickening in the breast or underarm",
+      "Change in breast size, shape, or contour",
+      "Nipple discharge, especially if bloody or clear",
+      "Skin dimpling, redness, or puckering",
+      "Nipple retraction or inversion",
+      "Persistent breast or nipple pain",
+      "Scaliness or rash on the nipple",
+      "Swelling or warmth in part of the breast"
+    ],
+    "risk_factors": [
+      "Increasing age",
+      "Family history of breast or ovarian cancer",
+      "Inherited mutations such as BRCA1 or BRCA2",
+      "Early menstruation (before age 12) or late menopause (after age 55)",
+      "Dense breast tissue",
+      "Long-term hormone replacement therapy",
+      "Excess body weight after menopause",
+      "Smoking and high alcohol consumption"
+    ],
+    "lifestyle_tips": [
+      "Perform regular breast self-awareness to notice changes early",
+      "Follow recommended screening guidelines for mammograms and clinical exams",
+      "Maintain a healthy weight, especially after menopause",
+      "Limit alcohol to no more than one drink per day",
+      "Engage in regular physical activity",
+      "Eat a diet rich in vegetables, fruits, and whole grains",
+      "Discuss personal risk factors with your healthcare provider to plan screening"
+    ],
+    "when_to_seek_care": "See a healthcare provider promptly if you notice a new lump, a change in breast size or shape, nipple discharge (especially bloody or clear), skin changes such as dimpling or redness, or persistent pain in one area. Never delay evaluation of a change that persists through one full menstrual cycle. Seek urgent care for rapidly growing, painful swelling with fever, which may indicate an infection (mastitis) or abscess.",
+    "related_conditions": ["menopause", "breast-cancer", "mastitis"],
+    "related_symptoms": ["breast-pain", "breast-lump", "nipple-discharge"],
+    "related_questions": ["why-do-my-breasts-hurt", "when-should-i-start-mammograms"],
+    "related_tools": ["breast-self-exam-guide", "risk-assessment"]
+  }
+]

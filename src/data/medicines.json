@@ -1,0 +1,177 @@
+[
+  {
+    "slug": "ibuprofen",
+    "name": "Ibuprofen",
+    "meta_description": "Learn about ibuprofen: uses, dosage, side effects, warnings, and precautions for this common NSAID pain reliever and anti-inflammatory medication.",
+    "description": "Ibuprofen is a nonsteroidal anti-inflammatory drug (NSAID) used to reduce fever, pain, and inflammation. It works by blocking the production of prostaglandins, chemicals in the body that cause pain and swelling. It is one of the most widely used over-the-counter medications for mild to moderate pain and is available in various forms including tablets, capsules, liquids, and topical gels.",
+    "category": "Pain Relief",
+    "uses": [
+      "Relief of mild to moderate pain such as headache, toothache, and backache",
+      "Reduction of fever",
+      "Treatment of inflammation in conditions like arthritis",
+      "Relief of menstrual cramps",
+      "Management of muscle aches and joint pain"
+    ],
+    "dosage": "Adults and children over 12: 200-400 mg every 4-6 hours as needed, not exceeding 1200 mg per day without medical supervision. Take with food or milk to reduce stomach upset. For children under 12, dosing is based on weight and should be directed by a healthcare provider. Always use the lowest effective dose for the shortest duration necessary.",
+    "side_effects": [
+      "Stomach upset or pain",
+      "Heartburn and indigestion",
+      "Nausea and vomiting",
+      "Dizziness or headache",
+      "Fluid retention and swelling",
+      "Rash or mild allergic reactions"
+    ],
+    "warnings": [
+      "Do not take if you have a history of stomach ulcers or bleeding",
+      "Avoid use in the third trimester of pregnancy",
+      "Consult a doctor before use if you have kidney, liver, or heart disease",
+      "Do not combine with other NSAIDs or blood thinners without medical advice",
+      "Seek immediate medical attention for signs of bleeding, chest pain, or severe allergic reaction",
+      "Long-term use may increase the risk of heart attack and stroke"
+    ],
+    "related_conditions": ["arthritis", "migraine", "hypertension"],
+    "related_symptoms": ["headache", "fever", "back-pain"],
+    "related_questions": ["why-do-i-have-headaches", "why-do-my-joints-hurt"],
+    "related_tools": ["symptom-checker"],
+    "letter": "I"
+  },
+  {
+    "slug": "paracetamol",
+    "name": "Paracetamol",
+    "meta_description": "Learn about paracetamol (acetaminophen): uses, dosage, side effects, warnings, and safe use of this common pain and fever medication.",
+    "description": "Paracetamol, also known as acetaminophen, is a widely used analgesic (pain reliever) and antipyretic (fever reducer). Unlike NSAIDs, it does not have significant anti-inflammatory properties. It is generally gentle on the stomach and is the preferred pain reliever for many people who cannot tolerate NSAIDs, including pregnant women and those with stomach ulcers.",
+    "category": "Pain Relief",
+    "uses": [
+      "Relief of mild to moderate pain including headache and muscle ache",
+      "Reduction of fever",
+      "Management of cold and flu symptoms",
+      "Pain relief for those who cannot take NSAIDs",
+      "Suitable for use during pregnancy when recommended by a doctor"
+    ],
+    "dosage": "Adults and children over 12: 500-1000 mg every 4-6 hours as needed, not exceeding 4000 mg (4 g) in any 24-hour period. For children, dosing is based on weight and age; always follow the product label or medical advice. Do not exceed the recommended dose, as overdose can cause serious liver damage even if symptoms do not appear immediately.",
+    "side_effects": [
+      "Nausea (rare at recommended doses)",
+      "Skin rash or allergic reactions (rare)",
+      "Liver damage in cases of overdose",
+      "Low blood platelets with prolonged use (rare)"
+    ],
+    "warnings": [
+      "Never exceed the maximum daily dose of 4000 mg for adults",
+      "Avoid alcohol while taking paracetamol to reduce liver damage risk",
+      "Check other medications for paracetamol to avoid accidental overdose",
+      "Consult a doctor before use if you have liver disease or drink alcohol regularly",
+      "Seek emergency care immediately in case of suspected overdose, even without symptoms",
+      "Use with caution in people with low body weight or malnutrition"
+    ],
+    "related_conditions": ["migraine", "diabetes"],
+    "related_symptoms": ["headache", "fever", "fatigue"],
+    "related_questions": ["why-am-i-tired", "why-do-i-have-headaches"],
+    "related_tools": ["symptom-checker"],
+    "letter": "P"
+  },
+  {
+    "slug": "aspirin",
+    "name": "Aspirin",
+    "meta_description": "Learn about aspirin: uses, dosage, side effects, warnings, and its role in pain relief and cardiovascular protection.",
+    "description": "Aspirin (acetylsalicylic acid) is an NSAID with analgesic, antipyretic, and anti-inflammatory properties. In addition to pain and fever relief, low-dose aspirin is widely used for its blood-thinning effects to prevent heart attacks and strokes in people at high cardiovascular risk. It is one of the oldest and most studied medications in use today.",
+    "category": "Cardiology",
+    "uses": [
+      "Relief of mild to moderate pain",
+      "Reduction of fever",
+      "Anti-inflammatory treatment for conditions like arthritis",
+      "Low-dose prevention of heart attacks in high-risk individuals",
+      "Prevention of ischemic stroke in certain patients"
+    ],
+    "dosage": "For pain or fever in adults: 300-900 mg every 4-6 hours as needed, not exceeding 4000 mg per day. For cardiovascular prevention (only under medical supervision): typically 75-150 mg once daily. Take with food or water to minimize stomach irritation. Never give aspirin to children or teenagers under 16 due to the risk of Reye's syndrome unless specifically directed by a doctor.",
+    "side_effects": [
+      "Stomach irritation and pain",
+      "Increased risk of bleeding and bruising",
+      "Heartburn and nausea",
+      "Tinnitus (ringing in the ears) at high doses",
+      "Allergic reactions including asthma exacerbation in sensitive individuals"
+    ],
+    "warnings": [
+      "Do not give to children or teenagers under 16 due to Reye's syndrome risk",
+      "Avoid if you have a bleeding disorder or active stomach ulcer",
+      "Consult a doctor before use if pregnant or breastfeeding",
+      "Do not combine with other blood thinners without medical advice",
+      "Stop taking aspirin and seek care if you experience black stools or vomiting blood",
+      "Inform healthcare providers before any surgery or dental procedures"
+    ],
+    "related_conditions": ["hypertension", "arthritis", "migraine"],
+    "related_symptoms": ["headache", "fever", "dizziness"],
+    "related_questions": ["why-do-i-have-headaches", "why-am-i-anxious"],
+    "related_tools": ["symptom-checker"],
+    "letter": "A"
+  },
+  {
+    "slug": "antibiotics",
+    "name": "Antibiotics",
+    "meta_description": "Learn about antibiotics: uses, dosage, side effects, warnings, and the importance of responsible use to prevent antibiotic resistance.",
+    "description": "Antibiotics are a class of medications used to treat bacterial infections by killing or inhibiting the growth of bacteria. They are ineffective against viral infections such as the common cold or flu. There are many types of antibiotics, including penicillins, cephalosporins, macrolides, and fluoroquinolones, each targeting different bacteria and types of infection. Responsible use is essential to prevent antibiotic resistance.",
+    "category": "Antimicrobials",
+    "uses": [
+      "Treatment of bacterial respiratory infections such as strep throat",
+      "Management of skin and soft tissue infections",
+      "Treatment of urinary tract infections",
+      "Treatment of certain sexually transmitted infections",
+      "Prevention of infection before surgical procedures"
+    ],
+    "dosage": "Dosage varies widely depending on the specific antibiotic, type and severity of infection, and patient factors such as age, weight, and kidney function. Always follow the prescribed course exactly as directed, complete the full course even if you feel better, and never share or save antibiotics for future use. Typical courses range from 5 to 14 days.",
+    "side_effects": [
+      "Nausea, vomiting, and diarrhea",
+      "Yeast infections (oral thrush or vaginal candidiasis)",
+      "Allergic reactions ranging from rash to anaphylaxis",
+      "Sunlight sensitivity with certain antibiotics",
+      "Digestive upset and loss of appetite"
+    ],
+    "warnings": [
+      "Only use antibiotics prescribed for your specific infection",
+      "Always complete the full prescribed course even if symptoms improve",
+      "Never use leftover antibiotics or share them with others",
+      "Inform your doctor of any allergies, especially to penicillin",
+      "Misuse contributes to antibiotic resistance, making future infections harder to treat",
+      "Seek immediate medical help for signs of severe allergic reaction"
+    ],
+    "related_conditions": ["sinusitis", "asthma"],
+    "related_symptoms": ["fever", "sore-throat", "cough"],
+    "related_questions": ["why-is-my-nose-blocked", "why-am-i-tired"],
+    "related_tools": ["symptom-checker"],
+    "letter": "A"
+  },
+  {
+    "slug": "antihistamines",
+    "name": "Antihistamines",
+    "meta_description": "Learn about antihistamines: uses, dosage, side effects, warnings, and how they relieve allergy symptoms and other conditions.",
+    "description": "Antihistamines are medications that block the action of histamine, a chemical released by the immune system during allergic reactions. They are commonly used to treat allergies, hay fever, and hives, and some types are also effective for motion sickness, nausea, and as sleep aids. Antihistamines are generally classified as first-generation (which tend to cause drowsiness) and second-generation (which are less sedating).",
+    "category": "Allergy",
+    "uses": [
+      "Relief of seasonal and perennial allergy symptoms",
+      "Treatment of hay fever (allergic rhinitis)",
+      "Reduction of hives and skin itching",
+      "Management of motion sickness and nausea",
+      "Use as a short-term sleep aid for some first-generation types"
+    ],
+    "dosage": "Dosage depends on the specific antihistamine, formulation, and patient age. Second-generation antihistamines such as cetirizine or loratadine are typically taken once daily (10 mg for adults). First-generation antihistamines may be taken every 4-6 hours but cause drowsiness. Always follow the product label or medical advice, and do not exceed the recommended dose. Adjustments may be needed for children, older adults, or those with kidney or liver conditions.",
+    "side_effects": [
+      "Drowsiness and reduced alertness (especially first-generation)",
+      "Dry mouth, nose, or throat",
+      "Dizziness or headache",
+      "Blurred vision",
+      "Digestive upset such as nausea or constipation"
+    ],
+    "warnings": [
+      "Avoid driving or operating machinery if the medication causes drowsiness",
+      "Do not combine with alcohol or other sedating medications",
+      "Consult a doctor before use if you have glaucoma, enlarged prostate, or thyroid disease",
+      "Use with caution in older adults due to increased sensitivity",
+      "Inform your doctor of all medications to avoid interactions",
+      "Some antihistamines are not recommended during pregnancy or breastfeeding without medical advice"
+    ],
+    "related_conditions": ["eczema", "asthma", "sinusitis"],
+    "related_symptoms": ["sore-throat", "cough", "dizziness"],
+    "related_questions": ["why-is-my-nose-blocked", "why-do-i-have-headaches"],
+    "related_tools": ["symptom-checker"],
+    "letter": "A"
+  }
+]

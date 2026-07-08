@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContentPage from '../../components/ContentPage.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import topics from '../../data/mens-health.json';
+
+export async function getStaticPaths() {
+  return topics.map(topic => ({
+    params: { slug: topic.slug },
+  }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { slug } = Astro.params;
+const topic = topics.find(t => t.slug === slug);
+
+if (!topic) {
+  return Astro.redirect('/mens-health', 301);
+}
+
+const contentData = {
+  title: topic.name,
+  metaDescription: topic.meta_description,
+  lang,
+  type: 'disease' as const,
+  overview: topic.overview || topic.description,
+  quickFacts: { Category: topic.category },
+  commonSymptoms: topic.common_symptoms,
+  riskFactors: topic.risk_factors,
+  lifestyleTips: topic.lifestyle_tips,
+  whenToSeekCare: topic.when_to_seek_care,
+  relatedConditions: topic.related_conditions || [],
+  relatedSymptoms: topic.related_symptoms || [],
+  relatedQuestions: topic.related_questions || [],
+  relatedTools: topic.related_tools || [],
+  t,
+};
+---
+
+<BaseLayout
+  title={`${contentData.title} - ${t('nav.mensHealth')} - SynoChain AI`}
+  description={contentData.metaDescription}
+  lang={lang}
+>
+  <ContentPage {...contentData} />
+</BaseLayout>

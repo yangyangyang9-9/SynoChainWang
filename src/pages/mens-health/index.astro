@@ -1,28 +1,38 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import topics from '../../data/mens-health.json';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const basePath = lang === 'en' ? '' : `/${lang}`;
 
-const topics = [
-  { slug: 'prostate-health', name: t('nav.mensHealth') === '男性健康' ? '前列腺健康' : 'Prostate Health', category: 'Urology', letter: 'P' },
-  { slug: 'erectile-dysfunction', name: t('nav.mensHealth') === '男性健康' ? '勃起功能障碍' : 'Erectile Dysfunction', category: 'Sexual Health', letter: 'E' },
-  { slug: 'testosterone', name: t('nav.mensHealth') === '男性健康' ? '睾酮水平' : 'Testosterone', category: 'Hormonal', letter: 'T' },
-  { slug: 'heart-health', name: t('nav.mensHealth') === '男性健康' ? '心脏健康' : 'Heart Health', category: 'Cardiology', letter: 'H' },
-  { slug: 'hair-loss', name: t('nav.mensHealth') === '男性健康' ? '脱发' : 'Hair Loss', category: 'Dermatology', letter: 'H' },
-];
+const isChinese = t('nav.mensHealth') === '男性健康';
+
+const nameZh: Record<string, string> = {
+  'prostate-health': '前列腺健康',
+  'testosterone': '睾酮水平',
+  'erectile-dysfunction': '勃起功能障碍',
+  'hair-loss': '脱发',
+  'male-fertility': '男性生育力',
+};
+
+const displayTopics = topics.map((topic) => ({
+  slug: topic.slug,
+  name: isChinese ? (nameZh[topic.slug] || topic.name) : topic.name,
+  category: topic.category,
+  letter: topic.letter,
+}));
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-const activeLetters = [...new Set(topics.map((t) => t.letter))];
-const categories = [...new Set(topics.map((t) => t.category))];
+const activeLetters = [...new Set(displayTopics.map((t) => t.letter))];
+const categories = [...new Set(displayTopics.map((t) => t.category))];
 ---
 
 <BaseLayout
   title={`${t('nav.mensHealth')} - SynoChain AI`}
-  description={t('nav.mensHealth') === '男性健康' ? '关注男性健康，了解前列腺健康、睾酮水平和心血管保健。' : 'Focus on men\'s health, learn about prostate health, testosterone levels, and cardiovascular care.'}
+  description={isChinese ? '关注男性健康，了解前列腺健康、睾酮水平、勃起功能障碍、脱发和男性生育力等专题。' : 'Focus on men\'s health, learn about prostate health, testosterone, erectile dysfunction, hair loss, and male fertility.'}
   lang={lang}
 >
   <section class="relative overflow-hidden bg-white pt-32 pb-12">
@@ -37,7 +47,7 @@ const categories = [...new Set(topics.map((t) => t.category))];
           {t('nav.mensHealth')}
         </h1>
         <p class="mt-4 text-base text-ink-500 sm:text-lg">
-          {t('nav.mensHealth') === '男性健康' ? '关注男性健康，了解前列腺健康、睾酮水平、心血管保健等专题。' : 'Focus on men\'s health, explore topics like prostate health, testosterone levels, and cardiovascular care.'}
+          {isChinese ? '关注男性健康，了解前列腺健康、睾酮水平、勃起功能障碍、脱发和男性生育力等专题。' : 'Focus on men\'s health, explore topics like prostate health, testosterone, erectile dysfunction, hair loss, and male fertility.'}
         </p>
       </div>
     </div>
@@ -67,7 +77,7 @@ const categories = [...new Set(topics.map((t) => t.category))];
   <section class="bg-white section-padding pt-8">
     <div class="container-x">
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {topics.map((topic) => (
+        {displayTopics.map((topic) => (
           <a
             href={`${basePath}/mens-health/${topic.slug}`}
             id={`letter-${topic.letter}`}
@@ -85,7 +95,7 @@ const categories = [...new Set(topics.map((t) => t.category))];
               {topic.name}
             </h3>
             <div class="mt-4 flex items-center gap-1.5 text-sm font-semibold text-medical-600">
-              {lang === 'zh' ? '查看详情' : 'View Details'}
+              {isChinese ? '查看详情' : 'View Details'}
               <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>

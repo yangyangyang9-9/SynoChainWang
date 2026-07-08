@@ -1,0 +1,220 @@
+[
+  {
+    "slug": "arthritis-management",
+    "name": "Arthritis Management",
+    "meta_description": "Learn about arthritis in older adults: types like osteoarthritis and rheumatoid arthritis, symptoms, risk factors, pain management, and lifestyle tips to maintain joint health and mobility.",
+    "description": "Arthritis management focuses on relieving joint pain, preserving mobility, and improving quality of life for seniors living with osteoarthritis, rheumatoid arthritis, and related conditions.",
+    "category": "Chronic Conditions",
+    "overview": "Arthritis is a leading cause of disability among older adults, encompassing more than 100 conditions that affect the joints and surrounding tissues. The two most common forms in seniors are osteoarthritis (OA), caused by wear and tear of protective cartilage, and rheumatoid arthritis (RA), an autoimmune disease causing joint inflammation. Arthritis management aims to reduce pain, control inflammation, preserve joint function, and prevent disability through a combination of medication, physical therapy, exercise, weight management, and assistive devices. Early diagnosis and a personalized care plan can significantly improve outcomes and help seniors remain active and independent.",
+    "common_symptoms": [
+      "Joint pain that worsens with activity and improves with rest",
+      "Morning stiffness lasting more than 30 minutes",
+      "Swelling, tenderness, or warmth around joints",
+      "Reduced range of motion and flexibility",
+      "Crepitus (grinding or cracking sounds) during movement",
+      "Joint deformity in advanced stages",
+      "Fatigue and reduced physical function"
+    ],
+    "risk_factors": [
+      "Age over 50",
+      "Family history of arthritis",
+      "Previous joint injury or surgery",
+      "Obesity and excess body weight",
+      "Female sex (higher risk for most types)",
+      "Repetitive joint-stressing occupations",
+      "Bone deformities or metabolic diseases"
+    ],
+    "lifestyle_tips": [
+      "Engage in low-impact exercise such as swimming, cycling, or walking",
+      "Maintain a healthy weight to reduce stress on weight-bearing joints",
+      "Apply heat or cold packs to relieve pain and stiffness",
+      "Use assistive devices like canes or jar openers to protect joints",
+      "Practice gentle stretching and range-of-motion exercises daily",
+      "Eat an anti-inflammatory diet rich in omega-3s, fruits, and vegetables",
+      "Get adequate rest and balance activity with recovery",
+      "Work with a physical therapist on a personalized joint-protection plan"
+    ],
+    "when_to_seek_care": "See a healthcare provider if joint pain or stiffness persists beyond a few weeks, limits daily activities, or is accompanied by swelling, redness, or warmth. Seek prompt care for sudden severe joint pain, inability to move a joint, fever with joint symptoms, or joint deformity. A rheumatologist can confirm the diagnosis and tailor a treatment plan including medications, therapy, or injections.",
+    "related_conditions": ["osteoarthritis", "rheumatoid-arthritis", "osteoporosis", "gout"],
+    "related_symptoms": ["joint-pain", "fatigue", "back-pain"],
+    "related_questions": ["why-do-my-joints-hurt", "why-am-i-tired"],
+    "related_tools": ["symptom-checker", "nutrition-assessment"],
+    "letter": "A"
+  },
+  {
+    "slug": "memory-care",
+    "name": "Memory Care",
+    "meta_description": "Understand memory care for seniors: causes of memory loss, signs of dementia and Alzheimer's, risk factors, caregiving strategies, and when to seek evaluation for cognitive decline.",
+    "description": "Memory care addresses cognitive health in older adults, including early signs of dementia, Alzheimer's disease, and strategies to support memory and quality of life.",
+    "category": "Cognitive Health",
+    "overview": "Memory care focuses on the diagnosis, support, and management of cognitive decline in older adults, with particular attention to dementia and Alzheimer's disease. Some degree of forgetfulness is a normal part of aging, but persistent memory loss, confusion, or difficulty with familiar tasks may signal a more serious condition. Early evaluation is critical because some causes of memory impairment, such as medication effects, vitamin deficiencies, or depression, are reversible, while others, like Alzheimer's, benefit from early intervention and planning. Memory care encompasses medical treatment, cognitive stimulation, caregiver support, environmental modifications, and safety planning to help seniors maintain dignity and independence for as long as possible.",
+    "common_symptoms": [
+      "Frequently forgetting recent events or conversations",
+      "Repeating questions or stories",
+      "Misplacing items in unusual places",
+      "Difficulty finding words or following conversations",
+      "Getting lost in familiar locations",
+      "Trouble managing finances or medications",
+      "Changes in mood, personality, or judgment",
+      "Withdrawal from social activities"
+    ],
+    "risk_factors": [
+      "Age over 65",
+      "Family history of Alzheimer's or dementia",
+      "Cardiovascular disease, hypertension, or diabetes",
+      "Traumatic brain injury",
+      "Hearing loss and social isolation",
+      "Depression and chronic stress",
+      "Smoking and excessive alcohol use",
+      "Sedentary lifestyle and poor diet"
+    ],
+    "lifestyle_tips": [
+      "Stay mentally active with reading, puzzles, or learning new skills",
+      "Engage in regular physical exercise to support brain blood flow",
+      "Maintain strong social connections and community involvement",
+      "Follow a Mediterranean or MIND diet rich in vegetables and fish",
+      "Get 7-8 hours of quality sleep each night",
+      "Manage cardiovascular risk factors like blood pressure and diabetes",
+      "Use calendars, reminders, and labels to support daily routines",
+      "Address hearing loss with proper evaluation and aids"
+    ],
+    "when_to_seek_care": "Consult a healthcare provider if memory changes interfere with daily life, if you notice sudden or rapidly worsening confusion, or if there are changes in personality or judgment. Seek immediate care for sudden severe confusion, which may indicate a stroke, infection, or medication reaction. A neurologist or geriatrician can perform cognitive assessments and recommend a care plan.",
+    "related_conditions": ["alzheimers-disease", "dementia", "depression", "stroke"],
+    "related_symptoms": ["memory-loss", "fatigue", "headache"],
+    "related_questions": ["why-am-i-tired", "why-do-i-have-headaches"],
+    "related_tools": ["symptom-checker", "mental-health-assessment"],
+    "letter": "M"
+  },
+  {
+    "slug": "fall-prevention",
+    "name": "Fall Prevention",
+    "meta_description": "Learn about fall prevention for seniors: risk factors, home safety modifications, balance exercises, medication review, and strategies to reduce fall injuries and maintain independence.",
+    "description": "Fall prevention helps older adults reduce the risk of falls and fall-related injuries through home safety, exercise, medication management, and regular health reviews.",
+    "category": "Mobility",
+    "overview": "Falls are one of the most serious and preventable health risks for older adults, often leading to fractures, head injuries, hospitalization, and loss of independence. About one in three adults over 65 falls each year, and the risk rises with age. Fall prevention requires a multifaceted approach that addresses modifiable risk factors including muscle weakness, balance problems, vision impairment, medication side effects, chronic conditions, and environmental hazards. Comprehensive fall prevention combines strength and balance training, home safety modifications, regular vision and medication reviews, proper footwear, and assistive devices when needed, empowering seniors to stay active and confident.",
+    "common_symptoms": [
+      "Unsteadiness or loss of balance when walking",
+      "Dizziness or lightheadedness upon standing",
+      "Muscle weakness in the legs",
+      "Slow or shuffling gait",
+      "Difficulty getting up from a chair",
+      "Fear of falling that limits activity",
+      "Previous falls or near-falls",
+      "Foot pain or numbness"
+    ],
+    "risk_factors": [
+      "Age over 65",
+      "History of previous falls",
+      "Muscle weakness and deconditioning",
+      "Balance or gait disorders",
+      "Vision impairment",
+      "Multiple medications (polypharmacy)",
+      "Chronic conditions like arthritis, diabetes, or Parkinson's",
+      "Home hazards such as loose rugs, poor lighting, and lack of grab bars"
+    ],
+    "lifestyle_tips": [
+      "Perform balance and strength exercises like tai chi or physical therapy",
+      "Remove tripping hazards and secure loose rugs",
+      "Install grab bars in bathrooms and handrails on stairs",
+      "Improve lighting throughout the home, especially at night",
+      "Wear supportive, non-slip footwear both indoors and outdoors",
+      "Have medications reviewed regularly for fall-increasing side effects",
+      "Get annual vision and hearing check-ups",
+      "Stand up slowly to prevent dizziness from blood pressure drops"
+    ],
+    "when_to_seek_care": "Seek medical evaluation after any fall, even without obvious injury, to identify treatable causes and prevent future falls. See a doctor promptly for dizziness, new balance problems, or unsteadiness. Seek emergency care for head injury, severe pain, inability to stand, or signs of fracture after a fall. A geriatrician can perform a comprehensive fall risk assessment.",
+    "related_conditions": ["osteoporosis", "arthritis", "parkinsons-disease", "hypotension"],
+    "related_symptoms": ["dizziness", "joint-pain", "fatigue"],
+    "related_questions": ["why-am-i-dizzy", "why-do-my-joints-hurt"],
+    "related_tools": ["symptom-checker", "fitness-assessment"],
+    "letter": "F"
+  },
+  {
+    "slug": "medication-management",
+    "name": "Medication Management",
+    "meta_description": "Learn about medication management for seniors: polypharmacy risks, drug interactions, side effects, organizing prescriptions, and tips for safe medication use in older adults.",
+    "description": "Medication management helps older adults safely manage multiple prescriptions, avoid interactions, and ensure medications are used effectively and as prescribed.",
+    "category": "Chronic Conditions",
+    "overview": "Medication management is a critical component of senior health care, as older adults often take multiple medications for chronic conditions. While these medications improve health and longevity, polypharmacy (the use of five or more medications) increases the risk of drug interactions, side effects, adherence errors, and adverse events. Age-related changes in how the body processes medications also make seniors more sensitive to their effects. Effective medication management involves maintaining an accurate medication list, regular reviews with healthcare providers and pharmacists, using organizers or reminder systems, understanding each medication's purpose and side effects, and coordinating care among multiple specialists. These practices help prevent complications and hospitalizations while maximizing therapeutic benefits.",
+    "common_symptoms": [
+      "Confusion or cognitive changes after starting a new medication",
+      "Dizziness, drowsiness, or unsteadiness",
+      "Gastrointestinal issues like nausea or constipation",
+      "Unexpected falls or weakness",
+      "Skin rashes or allergic reactions",
+      "Difficulty remembering whether a dose was taken",
+      "Using multiple pharmacies and providers",
+      "Running out of refills or taking expired medications"
+    ],
+    "risk_factors": [
+      "Taking five or more medications (polypharmacy)",
+      "Multiple prescribing doctors and pharmacies",
+      "Cognitive impairment or memory loss",
+      "Kidney or liver function decline",
+      "Living alone without medication support",
+      "Frequent medication changes or new prescriptions",
+      "Use of over-the-counter drugs and supplements",
+      "Low health literacy or language barriers"
+    ],
+    "lifestyle_tips": [
+      "Keep an up-to-date list of all medications, doses, and schedules",
+      "Use pill organizers or blister packs to track daily doses",
+      "Set alarms or use reminder apps for medication times",
+      "Review all medications with a doctor or pharmacist at least annually",
+      "Use a single pharmacy to coordinate and check for interactions",
+      "Ask about side effects and what to do if a dose is missed",
+      "Store medications in a cool, dry place out of reach of others",
+      "Never share medications or stop a prescription without consulting a doctor"
+    ],
+    "when_to_seek_care": "Contact a healthcare provider or pharmacist if you experience new or worsening symptoms after starting a medication, suspect a side effect or interaction, or have trouble following your regimen. Seek emergency care for severe allergic reactions, trouble breathing, chest pain, or sudden confusion. Schedule a medication review whenever a new drug is added or a specialist changes a prescription.",
+    "related_conditions": ["hypertension", "diabetes", "depression", "heart-disease"],
+    "related_symptoms": ["dizziness", "fatigue", "memory-loss"],
+    "related_questions": ["why-am-i-dizzy", "why-am-i-tired"],
+    "related_tools": ["symptom-checker", "medication-tracker"],
+    "letter": "M"
+  },
+  {
+    "slug": "healthy-aging",
+    "name": "Healthy Aging",
+    "meta_description": "Discover healthy aging strategies for seniors: physical activity, nutrition, mental wellness, preventive care, and lifestyle habits that promote longevity and quality of life.",
+    "description": "Healthy aging promotes physical, mental, and social well-being in older adults through preventive care, balanced nutrition, regular activity, and meaningful engagement.",
+    "category": "Prevention",
+    "overview": "Healthy aging is a holistic approach to maintaining physical, mental, and social well-being throughout the later years of life. Rather than simply extending lifespan, healthy aging focuses on healthspan, the years lived in good health and with independence. It is shaped by a combination of genetics, lifestyle, environment, and access to care. Key pillars include regular physical activity, balanced nutrition, quality sleep, strong social connections, cognitive engagement, preventive healthcare, and management of chronic conditions. Adopting healthy habits at any age can reduce the risk of disease, preserve mobility and cognition, and enhance overall quality of life, allowing older adults to remain active, connected, and purposeful.",
+    "common_symptoms": [
+      "Gradual decrease in muscle mass and strength",
+      "Reduced energy and slower recovery from activity",
+      "Changes in sleep patterns",
+      "Mild forgetfulness or slower recall",
+      "Decreased appetite or changes in taste",
+      "Reduced balance and flexibility",
+      "Changes in mood or social engagement",
+      "Wrinkling and loss of skin elasticity"
+    ],
+    "risk_factors": [
+      "Sedentary lifestyle and physical inactivity",
+      "Poor diet and nutritional deficiencies",
+      "Social isolation and loneliness",
+      "Smoking and excessive alcohol consumption",
+      "Chronic stress and poor sleep",
+      "Unmanaged chronic conditions",
+      "Skipping preventive screenings and vaccinations",
+      "Limited access to healthcare and community resources"
+    ],
+    "lifestyle_tips": [
+      "Aim for 150 minutes of moderate exercise per week, including strength training",
+      "Eat a balanced diet with plenty of fruits, vegetables, and whole grains",
+      "Stay socially active through community groups, hobbies, or volunteering",
+      "Prioritize 7-8 hours of quality sleep each night",
+      "Keep up with recommended screenings, vaccinations, and dental visits",
+      "Challenge the brain with reading, games, or new skills",
+      "Limit alcohol and avoid smoking",
+      "Practice stress management through mindfulness, nature, or faith"
+    ],
+    "when_to_seek_care": "Schedule regular wellness visits to monitor chronic conditions and update preventive care. See a healthcare provider for new or unusual symptoms, unexplained weight loss, persistent pain, mood changes, or declining function. Seek prompt care for chest pain, sudden weakness or numbness, severe shortness of breath, or signs of a stroke. A geriatrician can help coordinate care tailored to the needs of older adults.",
+    "related_conditions": ["hypertension", "diabetes", "osteoporosis", "depression"],
+    "related_symptoms": ["fatigue", "memory-loss", "joint-pain"],
+    "related_questions": ["why-am-i-tired", "why-am-i-gaining-weight"],
+    "related_tools": ["symptom-checker", "nutrition-assessment", "fitness-assessment"],
+    "letter": "H"
+  }
+]

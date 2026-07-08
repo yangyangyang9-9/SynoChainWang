@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContentPage from '../../components/ContentPage.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import vitamins from '../../data/vitamins.json';
+
+export async function getStaticPaths() {
+  return vitamins.map(vit => ({
+    params: { slug: vit.slug },
+  }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { slug } = Astro.params;
+const vit = vitamins.find(v => v.slug === slug);
+
+if (!vit) {
+  return Astro.redirect('/vitamins', 301);
+}
+
+const contentData = {
+  title: vit.name,
+  metaDescription: vit.meta_description,
+  lang,
+  type: 'nutrition' as const,
+  overview: vit.description,
+  quickFacts: {
+    Category: vit.category,
+    'Recommended Intake': vit.recommended_intake,
+  },
+  commonSymptoms: vit.deficiency_symptoms,
+  possibleCauses: vit.benefits,
+  lifestyleTips: vit.food_sources,
+  relatedConditions: vit.related_conditions || [],
+  relatedSymptoms: vit.related_symptoms || [],
+  relatedQuestions: vit.related_questions || [],
+  relatedTools: vit.related_tools || [],
+  t,
+};
+---
+
+<BaseLayout
+  title={`${contentData.title} - ${t('nav.vitamins')} - SynoChain AI`}
+  description={contentData.metaDescription}
+  lang={lang}
+>
+  <ContentPage {...contentData} />
+</BaseLayout>

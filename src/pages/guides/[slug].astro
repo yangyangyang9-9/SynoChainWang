@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContentPage from '../../components/ContentPage.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import guides from '../../data/guides.json';
+
+export async function getStaticPaths() {
+  return guides.map(guide => ({
+    params: { slug: guide.slug },
+  }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { slug } = Astro.params;
+const guide = guides.find(g => g.slug === slug);
+
+if (!guide) {
+  return Astro.redirect('/guides', 301);
+}
+
+const contentData = {
+  title: guide.name,
+  metaDescription: guide.meta_description,
+  lang,
+  type: 'guide' as const,
+  overview: guide.introduction || guide.description,
+  quickFacts: {
+    Category: guide.category,
+    Audience: guide.audience,
+    Difficulty: guide.difficulty,
+    'Reading Time': `${guide.reading_time} min`,
+  },
+  lifestyleTips: guide.key_takeaways,
+  relatedConditions: guide.related_conditions || [],
+  relatedSymptoms: guide.related_symptoms || [],
+  relatedQuestions: guide.related_questions || [],
+  relatedTools: guide.related_tools || [],
+  t,
+};
+---
+
+<BaseLayout
+  title={`${contentData.title} - SynoChain AI`}
+  description={contentData.metaDescription}
+  lang={lang}
+>
+  <ContentPage {...contentData} />
+</BaseLayout>

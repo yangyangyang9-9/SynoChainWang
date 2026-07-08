@@ -1,19 +1,19 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import guidesData from '../../data/guides.json';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const basePath = lang === 'en' ? '' : `/${lang}`;
 
-const guides = [
-  { slug: 'improve-sleep', name: 'Improve Sleep', category: 'Sleep', letter: 'I' },
-  { slug: 'boost-immunity', name: 'Boost Immunity', category: 'Immune System', letter: 'B' },
-  { slug: 'manage-stress', name: 'Manage Stress', category: 'Mental Health', letter: 'M' },
-  { slug: 'healthy-eating', name: 'Healthy Eating', category: 'Nutrition', letter: 'H' },
-  { slug: 'exercise-guide', name: 'Exercise Guide', category: 'Fitness', letter: 'E' },
-];
+const guides = guidesData.map((g) => ({
+  slug: g.slug,
+  name: g.name,
+  category: g.category,
+  letter: g.name.charAt(0).toUpperCase(),
+}));
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const activeLetters = [...new Set(guides.map((g) => g.letter))];

@@ -1,0 +1,219 @@
+[
+  {
+    "slug": "vaccination-schedule",
+    "name": "Vaccination Schedule",
+    "meta_description": "Learn about childhood vaccination schedules: recommended immunizations from birth through adolescence, timing, importance, side effects, and how to keep your child's vaccines on track.",
+    "description": "A vaccination schedule outlines the recommended timing of immunizations that protect children from serious and potentially life-threatening infectious diseases.",
+    "category": "Immunization",
+    "overview": "Vaccination is one of the most effective public health interventions in history, protecting children from serious infectious diseases such as measles, polio, whooping cough, and diphtheria. A vaccination schedule outlines the recommended ages and intervals at which children should receive specific immunizations, typically beginning at birth and continuing through adolescence. Following the schedule ensures that children develop immunity at the right time, when they are most vulnerable and when the immune response is most effective. Delaying or skipping vaccines leaves children unprotected and can lead to outbreaks of preventable diseases. Parents should keep an up-to-date immunization record and discuss any concerns with their pediatrician.",
+    "common_symptoms": [
+      "Mild fever within 24-48 hours after vaccination",
+      "Soreness, redness, or swelling at the injection site",
+      "Fussiness or increased crying in infants",
+      "Mild rash (e.g., after MMR or varicella vaccine)",
+      "Drowsiness or temporary loss of appetite",
+      "Swollen lymph nodes"
+    ],
+    "risk_factors": [
+      "Missed or delayed vaccine doses",
+      "Living in areas with low community vaccination coverage",
+      "Travel to regions with endemic diseases",
+      "Underlying immunodeficiency conditions",
+      "Premature birth requiring adjusted scheduling",
+      "Lack of access to healthcare or immunization records",
+      "Misinformation or vaccine hesitancy among caregivers"
+    ],
+    "lifestyle_tips": [
+      "Keep an up-to-date written or digital immunization record",
+      "Schedule well-child visits on time to stay on track",
+      "Use a cool, damp cloth to ease soreness at the injection site",
+      "Offer extra fluids and comfort after vaccinations",
+      "Discuss any vaccine concerns openly with your pediatrician",
+      "Inform the doctor of any prior reactions or severe allergies before vaccination",
+      "Stay informed about catch-up schedules if a dose is missed",
+      "Keep track of seasonal vaccines like the annual flu shot"
+    ],
+    "when_to_seek_care": "Seek immediate medical attention if your child shows signs of a severe allergic reaction (anaphylaxis) after vaccination, such as difficulty breathing, swelling of the face or throat, hives, or collapse. Contact your pediatrician for persistent fever above 40°C (104°F), seizures, extreme lethargy, or inconsolable crying lasting more than three hours. Mild side effects are normal, but any unusual or concerning symptoms should be reported to a healthcare provider.",
+    "related_conditions": ["measles", "whooping-cough", "influenza", "polio"],
+    "related_symptoms": ["fever", "rash"],
+    "related_questions": ["why-does-my-child-have-a-fever", "why-does-my-child-have-a-rash"],
+    "related_tools": ["symptom-checker", "vaccination-tracker"],
+    "letter": "V"
+  },
+  {
+    "slug": "common-childhood-illnesses",
+    "name": "Common Childhood Illnesses",
+    "meta_description": "Understand common childhood illnesses like colds, ear infections, chickenpox, and gastroenteritis: symptoms, causes, home care, and when to see a pediatrician.",
+    "description": "Common childhood illnesses are frequent infectious conditions that affect infants and children, including colds, ear infections, strep throat, chickenpox, and gastroenteritis.",
+    "category": "Common Illnesses",
+    "overview": "Children are especially susceptible to common illnesses because their immune systems are still developing and they are in close contact with other children in daycare and school settings. The most frequent childhood illnesses include the common cold, ear infections (otitis media), strep throat, chickenpox, hand-foot-and-mouth disease, and viral gastroenteritis. Most of these illnesses are mild and resolve on their own with supportive care, but some can lead to complications if not properly managed. Recognizing symptoms early, practicing good hygiene, and knowing when to seek medical care helps parents navigate these common health challenges and keep their children comfortable during recovery.",
+    "common_symptoms": [
+      "Runny or stuffy nose and sneezing",
+      "Fever, often low-grade",
+      "Cough and sore throat",
+      "Ear pulling or ear pain (ear infection)",
+      "Vomiting and diarrhea (gastroenteritis)",
+      "Rashes or skin spots (chickenpox, hand-foot-and-mouth)",
+      "Reduced appetite and irritability",
+      "Fatigue and decreased activity"
+    ],
+    "risk_factors": [
+      "Attendance at daycare or preschool",
+      "Young age, especially under 5 years",
+      "Incomplete or missing vaccinations",
+      "Exposure to secondhand smoke",
+      "Poor hand hygiene habits",
+      "Weakened immune system or chronic conditions",
+      "Bottle feeding while lying down (ear infections)",
+      "Seasonal exposure during winter months"
+    ],
+    "lifestyle_tips": [
+      "Encourage frequent handwashing with soap and water",
+      "Ensure your child stays well-hydrated during illness",
+      "Provide plenty of rest and a comfortable environment",
+      "Use a humidifier to ease congestion and cough",
+      "Teach children to cover coughs and sneezes properly",
+      "Keep sick children home to prevent spreading illness",
+      "Follow the recommended vaccination schedule",
+      "Avoid exposing children to secondhand smoke"
+    ],
+    "when_to_seek_care": "Contact a pediatrician if your child is under 3 months old with a fever of 38°C (100.4°F) or higher, shows signs of dehydration (dry mouth, no tears when crying, fewer wet diapers), has difficulty breathing, persistent vomiting, a rash that spreads rapidly, or a fever lasting more than three days. Seek emergency care for severe breathing difficulty, blue lips, extreme lethargy, or a stiff neck with fever.",
+    "related_conditions": ["common-cold", "ear-infection", "chickenpox", "gastroenteritis", "strep-throat"],
+    "related_symptoms": ["fever", "cough", "rash", "diarrhea"],
+    "related_questions": ["why-does-my-child-have-a-fever", "why-does-my-child-have-a-cough"],
+    "related_tools": ["symptom-checker", "fever-tracker"],
+    "letter": "C"
+  },
+  {
+    "slug": "child-nutrition",
+    "name": "Child Nutrition",
+    "meta_description": "Learn about child nutrition: balanced diets for growing kids, essential nutrients, portion sizes, picky eating, and how to build lifelong healthy eating habits.",
+    "description": "Child nutrition focuses on providing children with the balanced diet and essential nutrients needed for healthy growth, development, and lifelong eating habits.",
+    "category": "Nutrition",
+    "overview": "Proper nutrition during childhood is essential for physical growth, cognitive development, immune function, and the establishment of lifelong healthy eating habits. Children have unique nutritional needs that change as they grow, requiring adequate intake of macronutrients (proteins, carbohydrates, and healthy fats) and micronutrients (such as iron, calcium, vitamin D, and zinc). A balanced diet built around fruits, vegetables, whole grains, lean proteins, and dairy supports healthy weight and development. Common challenges include picky eating, food allergies, and the rising prevalence of childhood obesity. Parents play a key role by modeling healthy eating, offering variety, and creating positive mealtime environments.",
+    "common_symptoms": [
+      "Picky eating or food refusal in toddlers",
+      "Slow growth or failure to thrive (in nutritional deficiency)",
+      "Fatigue or low energy levels",
+      "Frequent infections due to weak immunity",
+      "Constipation from low fiber intake",
+      "Dental cavities linked to sugary diets",
+      "Difficulty concentrating at school",
+      "Unexplained weight gain or loss"
+    ],
+    "risk_factors": [
+      "High intake of processed foods and sugary drinks",
+      "Picky eating patterns limiting food variety",
+      "Food allergies or intolerances",
+      "Socioeconomic barriers to fresh, nutritious food",
+      "Excessive screen time and sedentary habits",
+      "Skipping breakfast or irregular meals",
+      "Family history of obesity or diabetes",
+      "Lack of parental modeling of healthy eating"
+    ],
+    "lifestyle_tips": [
+      "Offer a rainbow of fruits and vegetables daily",
+      "Include whole grains, lean proteins, and dairy in meals",
+      "Limit sugary drinks and offer water or milk instead",
+      "Establish regular family meal times without screens",
+      "Involve children in meal planning and preparation",
+      "Offer new foods repeatedly without pressure",
+      "Ensure adequate iron, calcium, and vitamin D intake",
+      "Encourage mindful eating and appropriate portion sizes"
+    ],
+    "when_to_seek_care": "Consult a pediatrician or pediatric dietitian if your child shows poor growth, significant weight loss or gain, chronic constipation, signs of food allergy (hives, swelling, vomiting), persistent picky eating that limits nutrition, or symptoms of nutrient deficiency such as pale skin, fatigue, or brittle nails. Seek immediate care for severe allergic reactions or signs of dehydration.",
+    "related_conditions": ["childhood-obesity", "iron-deficiency-anemia", "food-allergies", "constipation"],
+    "related_symptoms": ["fatigue", "poor-appetite"],
+    "related_questions": ["why-am-i-always-tired", "why-is-my-child-not-eating"],
+    "related_tools": ["nutrition-assessment", "bmi-calculator"],
+    "letter": "C"
+  },
+  {
+    "slug": "developmental-milestones",
+    "name": "Developmental Milestones",
+    "meta_description": "Track child developmental milestones from infancy to age 5: motor, language, social, and cognitive skills, and when to discuss developmental concerns with a specialist.",
+    "description": "Developmental milestones are functional skills and abilities most children can perform by certain ages, spanning motor, language, social, and cognitive development.",
+    "category": "Development",
+    "overview": "Developmental milestones are age-specific skills that mark a child's progress across key areas of growth: gross motor (sitting, crawling, walking), fine motor (grasping, drawing), language and communication (babbling, first words, sentences), social and emotional (smiling, playing with others), and cognitive (problem-solving, pretend play). While every child develops at their own pace, milestones provide a helpful framework for monitoring progress and identifying potential delays early. Early identification of developmental concerns is critical, as timely intervention with therapies such as speech, occupational, or physical therapy can significantly improve outcomes. Parents and pediatricians track milestones together during well-child visits.",
+    "common_symptoms": [
+      "Delayed speech or limited vocabulary for age",
+      "Not sitting, crawling, or walking by expected ages",
+      "Lack of eye contact or social smiling by 2-3 months",
+      "Not responding to name by 12 months",
+      "Loss of previously acquired skills (regression)",
+      "Repetitive movements or restricted interests",
+      "Difficulty interacting with peers",
+      "Trouble following simple instructions"
+    ],
+    "risk_factors": [
+      "Premature birth or low birth weight",
+      "Genetic conditions such as Down syndrome",
+      "Exposure to toxins or infections during pregnancy",
+      "Complications during birth or oxygen deprivation",
+      "Family history of developmental disorders",
+      "Environmental factors such as lead exposure",
+      "Lack of stimulation or nurturing interaction",
+      "Hearing or vision impairments"
+    ],
+    "lifestyle_tips": [
+      "Engage in daily reading and conversation with your child",
+      "Provide age-appropriate toys that encourage exploration",
+      "Encourage tummy time and supervised physical play for infants",
+      "Limit screen time, especially under 18 months",
+      "Sing, talk, and respond to your child's cues consistently",
+      "Create a safe space for crawling, climbing, and movement",
+      "Attend regular well-child checkups to track milestones",
+      "Foster social interaction through playdates and group activities"
+    ],
+    "when_to_seek_care": "Discuss developmental concerns with your pediatrician if your child misses multiple milestones, loses skills they once had, shows no babbling or pointing by 12 months, no words by 16 months, or no two-word phrases by 24 months. Ask for a developmental screening or referral to a specialist (such as a developmental pediatrician, speech therapist, or occupational therapist) for further evaluation. Early intervention is most effective when started as soon as possible.",
+    "related_conditions": ["autism-spectrum-disorder", "developmental-delay", "adhd", "speech-delay"],
+    "related_symptoms": ["speech-delay", "poor-muscle-tone"],
+    "related_questions": ["why-is-my-child-not-talking", "why-is-my-child-not-walking"],
+    "related_tools": ["milestone-tracker", "developmental-screening"],
+    "letter": "D"
+  },
+  {
+    "slug": "child-sleep",
+    "name": "Child Sleep",
+    "meta_description": "Learn about child sleep: how much sleep kids need by age, sleep training methods, bedtime routines, common sleep problems, and how to build healthy sleep habits.",
+    "description": "Child sleep encompasses the sleep patterns, needs, and challenges of infants, toddlers, and children, including establishing healthy routines and addressing sleep disturbances.",
+    "category": "Behavioral",
+    "overview": "Adequate, quality sleep is vital for a child's physical growth, brain development, emotional regulation, and immune function. Sleep needs vary by age, from 14-17 hours per day for newborns to 9-12 hours for school-age children. Many children experience sleep challenges at some point, including difficulty falling asleep, night wakings, nightmares, bedtime resistance, and parasomnias such as sleepwalking. Establishing a consistent bedtime routine, a sleep-friendly environment, and age-appropriate sleep schedules helps children develop healthy sleep habits that last a lifetime. Persistent sleep problems can affect mood, behavior, and learning, and may signal underlying medical issues such as sleep apnea.",
+    "common_symptoms": [
+      "Difficulty falling asleep at bedtime",
+      "Frequent night wakings",
+      "Early morning awakening",
+      "Bedtime resistance or tantrums",
+      "Snoring or pauses in breathing during sleep",
+      "Nightmares or night terrors",
+      "Daytime sleepiness or irritability",
+      "Sleepwalking or talking during sleep"
+    ],
+    "risk_factors": [
+      "Inconsistent bedtime routines or schedules",
+      "Excessive screen time before bed",
+      "Caffeine intake from sodas or chocolate",
+      "Overcrowded or noisy sleep environment",
+      "Stress, anxiety, or major life changes",
+      "Enlarged tonsils or adenoids (sleep apnea risk)",
+      "Lack of physical activity during the day",
+      "Co-sleeping beyond the appropriate age"
+    ],
+    "lifestyle_tips": [
+      "Establish a consistent, calming bedtime routine",
+      "Set a regular sleep and wake time, even on weekends",
+      "Keep the bedroom dark, quiet, and comfortably cool",
+      "Avoid screens at least one hour before bedtime",
+      "Encourage physical activity during the day",
+      "Limit caffeine, especially in the afternoon and evening",
+      "Use a transitional object like a stuffed animal for comfort",
+      "Teach self-soothing skills so children can fall asleep independently"
+    ],
+    "when_to_seek_care": "Consult a pediatrician if your child snores loudly, pauses breathing during sleep, has persistent difficulty falling or staying asleep despite good sleep habits, experiences frequent night terrors or sleepwalking, or shows excessive daytime sleepiness that affects school or behavior. A sleep specialist can evaluate for conditions like obstructive sleep apnea, insomnia, or circadian rhythm disorders.",
+    "related_conditions": ["insomnia", "sleep-apnea", "adhd", "anxiety"],
+    "related_symptoms": ["fatigue", "snoring"],
+    "related_questions": ["why-cant-i-sleep", "why-is-my-child-tired"],
+    "related_tools": ["sleep-tracker", "symptom-checker"],
+    "letter": "C"
+  }
+]

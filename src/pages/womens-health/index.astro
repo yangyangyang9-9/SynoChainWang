@@ -1,19 +1,29 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import topicsData from '../../data/womens-health.json';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const basePath = lang === 'en' ? '' : `/${lang}`;
 
-const topics = [
-  { slug: 'menstrual-cycle', name: t('nav.womensHealth') === '女性健康' ? '月经周期' : 'Menstrual Cycle', category: 'Reproductive', letter: 'M' },
-  { slug: 'pregnancy-health', name: t('nav.womensHealth') === '女性健康' ? '孕期健康' : 'Pregnancy Health', category: 'Pregnancy', letter: 'P' },
-  { slug: 'menopause', name: t('nav.womensHealth') === '女性健康' ? '更年期' : 'Menopause', category: 'Hormonal', letter: 'M' },
-  { slug: 'breast-health', name: t('nav.womensHealth') === '女性健康' ? '乳腺健康' : 'Breast Health', category: 'Cancer', letter: 'B' },
-  { slug: 'osteoporosis', name: t('nav.womensHealth') === '女性健康' ? '骨质疏松' : 'Osteoporosis', category: 'Bone Health', letter: 'O' },
-];
+const isZh = t('nav.womensHealth') === '女性健康';
+
+const zhNames: Record<string, string> = {
+  'menstrual-health': '月经健康',
+  'pcos': '多囊卵巢综合征',
+  'endometriosis': '子宫内膜异位症',
+  'menopause': '更年期',
+  'breast-health': '乳腺健康',
+};
+
+const topics = topicsData.map((topic) => ({
+  slug: topic.slug,
+  name: isZh ? (zhNames[topic.slug] || topic.name) : topic.name,
+  category: topic.category,
+  letter: topic.letter,
+}));
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const activeLetters = [...new Set(topics.map((t) => t.letter))];

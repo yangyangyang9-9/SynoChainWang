@@ -1,0 +1,221 @@
+[
+  {
+    "slug": "vitamin-a",
+    "name": "Vitamin A",
+    "meta_description": "Learn about Vitamin A: benefits, food sources, recommended intake, deficiency symptoms, and overdose risks for vision and immune health.",
+    "description": "Vitamin A is a fat-soluble vitamin essential for vision, immune function, cell growth, and the maintenance of healthy skin and mucous membranes. It exists in two forms: preformed vitamin A (retinol) from animal sources and provitamin A carotenoids from plant sources.",
+    "category": "Fat-Soluble",
+    "benefits": [
+      "Supports healthy vision, especially in low light",
+      "Strengthens the immune system",
+      "Promotes healthy skin and mucous membranes",
+      "Aids in cell growth and differentiation",
+      "Supports reproductive health"
+    ],
+    "food_sources": [
+      "Liver (beef, chicken)",
+      "Sweet potatoes",
+      "Carrots",
+      "Spinach and kale",
+      "Fortified dairy products",
+      "Eggs",
+      "Mangoes and apricots"
+    ],
+    "recommended_intake": "Adults: 700-900 mcg RAE per day (varies by sex and life stage)",
+    "deficiency_symptoms": [
+      "Night blindness",
+      "Dry eyes",
+      "Frequent infections",
+      "Dry, scaly skin",
+      "Delayed growth in children"
+    ],
+    "overdose_risks": "Excessive Vitamin A intake can cause hypervitaminosis A, leading to nausea, headache, liver damage, bone and joint pain, and in severe cases, coma. High intake during pregnancy can cause birth defects. Upper limit is 3000 mcg RAE per day for adults.",
+    "related_conditions": ["night-blindness", "measles", "anemia"],
+    "related_symptoms": ["dry-eyes", "night-blindness", "dry-skin"],
+    "related_questions": ["why-is-my-vision-blurry", "why-do-i-have-dry-eyes"],
+    "related_tools": ["nutrition-assessment", "symptom-checker"],
+    "letter": "A"
+  },
+  {
+    "slug": "vitamin-b",
+    "name": "B Vitamins",
+    "meta_description": "Learn about B vitamins: benefits, food sources, recommended intake, deficiency symptoms, and the role of B-complex in energy and brain health.",
+    "description": "B vitamins are a group of water-soluble vitamins that play essential roles in energy production, brain function, and cell metabolism. The B-complex includes B1 (thiamine), B2 (riboflavin), B3 (niacin), B5 (pantothenic acid), B6 (pyridoxine), B7 (biotin), B9 (folate), and B12 (cobalamin).",
+    "category": "Water-Soluble",
+    "benefits": [
+      "Supports energy production from food",
+      "Promotes healthy brain and nervous system function",
+      "Aids in red blood cell formation",
+      "Supports DNA synthesis and cell repair",
+      "Helps maintain healthy skin, hair, and eyes"
+    ],
+    "food_sources": [
+      "Whole grains",
+      "Meat, poultry, and fish",
+      "Eggs and dairy products",
+      "Legumes and beans",
+      "Leafy green vegetables",
+      "Fortified cereals",
+      "Nuts and seeds"
+    ],
+    "recommended_intake": "Varies by B vitamin; for example, B12: 2.4 mcg/day for adults, Folate: 400 mcg DFE/day for adults",
+    "deficiency_symptoms": [
+      "Fatigue and weakness",
+      "Tingling or numbness in hands and feet",
+      "Memory problems",
+      "Mood changes and irritability",
+      "Anemia"
+    ],
+    "overdose_risks": "B vitamins are water-soluble and excess is typically excreted in urine. However, very high doses of B6 (over 100 mg/day long-term) can cause nerve damage, and excess B3 (niacin) can cause flushing and liver damage. B9 excess can mask B12 deficiency.",
+    "related_conditions": ["anemia", "beriberi", "pellagra"],
+    "related_symptoms": ["fatigue", "weakness", "tingling"],
+    "related_questions": ["why-am-i-tired", "why-do-i-have-no-energy"],
+    "related_tools": ["nutrition-assessment", "symptom-checker"],
+    "letter": "B"
+  },
+  {
+    "slug": "vitamin-c",
+    "name": "Vitamin C",
+    "meta_description": "Learn about Vitamin C: benefits, food sources, recommended intake, deficiency symptoms, and its role in immunity and collagen production.",
+    "description": "Vitamin C (ascorbic acid) is a water-soluble vitamin and powerful antioxidant that plays a vital role in immune function, collagen synthesis, wound healing, and the absorption of iron from plant-based foods. The body cannot produce or store vitamin C, so it must be obtained regularly from the diet.",
+    "category": "Water-Soluble",
+    "benefits": [
+      "Powerful antioxidant that protects cells from damage",
+      "Supports immune system function",
+      "Essential for collagen synthesis and wound healing",
+      "Enhances iron absorption from plant foods",
+      "Supports healthy skin, blood vessels, and cartilage"
+    ],
+    "food_sources": [
+      "Citrus fruits (oranges, grapefruits)",
+      "Strawberries and kiwifruit",
+      "Bell peppers",
+      "Broccoli and Brussels sprouts",
+      "Tomatoes",
+      "Potatoes",
+      "Leafy green vegetables"
+    ],
+    "recommended_intake": "Adults: 75-90 mg per day (higher for smokers and pregnant/nursing women)",
+    "deficiency_symptoms": [
+      "Scurvy with bleeding gums",
+      "Easy bruising",
+      "Slow wound healing",
+      "Dry and splitting hair",
+      "Weakened immunity"
+    ],
+    "overdose_risks": "Vitamin C is generally safe, but doses above 2000 mg per day can cause gastrointestinal discomfort, diarrhea, and may increase the risk of kidney stones in susceptible individuals. Upper limit is 2000 mg per day for adults.",
+    "related_conditions": ["scurvy", "common-cold", "anemia"],
+    "related_symptoms": ["fatigue", "bleeding-gums", "slow-healing"],
+    "related_questions": ["why-am-i-tired", "why-do-i-bruise-easily"],
+    "related_tools": ["nutrition-assessment", "symptom-checker"],
+    "letter": "C"
+  },
+  {
+    "slug": "vitamin-d",
+    "name": "Vitamin D",
+    "meta_description": "Learn about Vitamin D: benefits, food sources, recommended intake, deficiency symptoms, and its role in bone health and immunity.",
+    "description": "Vitamin D is a fat-soluble vitamin that plays a crucial role in bone health, immune function, and overall well-being. Often called the 'sunshine vitamin', it is produced by the body when skin is exposed to sunlight and is essential for calcium absorption and bone mineralization.",
+    "category": "Fat-Soluble",
+    "benefits": [
+      "Supports bone health by aiding calcium absorption",
+      "Boosts immune function",
+      "Regulates mood and may reduce depression",
+      "Supports muscle function",
+      "May reduce inflammation"
+    ],
+    "food_sources": [
+      "Fatty fish (salmon, mackerel, sardines)",
+      "Egg yolks",
+      "Fortified dairy products",
+      "Fortified cereals",
+      "Beef liver",
+      "Sunlight exposure"
+    ],
+    "recommended_intake": "Adults: 600-800 IU (15-20 mcg) daily (varies by age and health status)",
+    "deficiency_symptoms": [
+      "Fatigue",
+      "Muscle weakness",
+      "Bone pain",
+      "Increased risk of infections",
+      "Mood changes"
+    ],
+    "overdose_risks": "Excessive Vitamin D can cause hypercalcemia (high blood calcium), leading to kidney stones, nausea, vomiting, weakness, and kidney damage. Upper limit is generally 4000 IU (100 mcg) per day for adults.",
+    "related_conditions": ["osteoporosis", "rickets", "seasonal-affective-disorder"],
+    "related_symptoms": ["fatigue", "muscle-weakness", "bone-pain"],
+    "related_questions": ["why-am-i-tired", "why-do-my-bones-hurt"],
+    "related_tools": ["nutrition-assessment", "symptom-checker"],
+    "letter": "D"
+  },
+  {
+    "slug": "vitamin-e",
+    "name": "Vitamin E",
+    "meta_description": "Learn about Vitamin E: benefits, food sources, recommended intake, deficiency symptoms, and its role as an antioxidant for skin and immune health.",
+    "description": "Vitamin E is a fat-soluble antioxidant vitamin that protects cell membranes from oxidative damage. It supports immune function, skin health, and blood vessel function, and plays a role in preventing the breakdown of vitamin A and unsaturated fatty acids.",
+    "category": "Fat-Soluble",
+    "benefits": [
+      "Powerful antioxidant that protects cells from oxidative damage",
+      "Supports immune function",
+      "Promotes healthy skin and wound healing",
+      "Helps widen blood vessels and prevent clotting",
+      "May reduce the risk of certain chronic diseases"
+    ],
+    "food_sources": [
+      "Vegetable oils (sunflower, safflower, wheat germ)",
+      "Nuts and seeds (almonds, sunflower seeds)",
+      "Spinach and broccoli",
+      "Fortified cereals",
+      "Avocados",
+      "Peanut butter"
+    ],
+    "recommended_intake": "Adults: 15 mg (22.4 IU) per day",
+    "deficiency_symptoms": [
+      "Muscle weakness",
+      "Vision problems",
+      "Immune system impairment",
+      "Numbness or tingling",
+      "Dry, damaged skin"
+    ],
+    "overdose_risks": "Vitamin E from food is generally safe, but high-dose supplements may increase the risk of bleeding, especially in people taking blood thinners. Upper limit is 1000 mg (1500 IU) per day for adults.",
+    "related_conditions": ["heart-disease", "cancer", "alzheimers-disease"],
+    "related_symptoms": ["muscle-weakness", "dry-skin", "vision-problems"],
+    "related_questions": ["why-is-my-vision-blurry", "why-do-i-have-dry-skin"],
+    "related_tools": ["nutrition-assessment", "symptom-checker"],
+    "letter": "E"
+  },
+  {
+    "slug": "vitamin-k",
+    "name": "Vitamin K",
+    "meta_description": "Learn about Vitamin K: benefits, food sources, recommended intake, deficiency symptoms, and its role in blood clotting and bone health.",
+    "description": "Vitamin K is a fat-soluble vitamin essential for blood clotting, bone metabolism, and cardiovascular health. It exists in two main forms: vitamin K1 (phylloquinone) found in plants, and vitamin K2 (menaquinone) found in animal products and fermented foods.",
+    "category": "Fat-Soluble",
+    "benefits": [
+      "Essential for blood clotting and wound healing",
+      "Supports bone health and density",
+      "Helps prevent calcium buildup in blood vessels",
+      "Supports cardiovascular health",
+      "Aids in calcium regulation"
+    ],
+    "food_sources": [
+      "Leafy green vegetables (kale, spinach, collards)",
+      "Broccoli and Brussels sprouts",
+      "Fermented foods (natto, sauerkraut)",
+      "Egg yolks",
+      "Liver",
+      "Cheese and butter"
+    ],
+    "recommended_intake": "Adults: 90-120 mcg per day (varies by sex)",
+    "deficiency_symptoms": [
+      "Easy bruising",
+      "Excessive bleeding from wounds",
+      "Heavy menstrual periods",
+      "Oozing from gums or nose",
+      "Increased risk of bone fractures"
+    ],
+    "overdose_risks": "Vitamin K from natural food sources is generally safe, but high doses of synthetic vitamin K3 (menadione) can cause hemolytic anemia and jaundice. No upper limit has been established for vitamin K1 and K2 from food and supplements.",
+    "related_conditions": ["osteoporosis", "bleeding-disorders", "cardiovascular-disease"],
+    "related_symptoms": ["easy-bruising", "excessive-bleeding", "nosebleeds"],
+    "related_questions": ["why-do-i-bruise-easily", "why-do-i-have-nosebleeds"],
+    "related_tools": ["nutrition-assessment", "symptom-checker"],
+    "letter": "K"
+  }
+]

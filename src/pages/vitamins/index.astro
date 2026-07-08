@@ -1,20 +1,20 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import vitaminsData from '../../data/vitamins.json';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const basePath = lang === 'en' ? '' : `/${lang}`;
+const isZh = t('nav.vitamins') === '维生素';
 
-const vitamins = [
-  { slug: 'vitamin-a', name: t('nav.vitamins') === '维生素' ? '维生素A' : 'Vitamin A', category: 'Fat-Soluble', letter: 'A' },
-  { slug: 'vitamin-b', name: t('nav.vitamins') === '维生素' ? '维生素B族' : 'B Vitamins', category: 'Water-Soluble', letter: 'B' },
-  { slug: 'vitamin-c', name: t('nav.vitamins') === '维生素' ? '维生素C' : 'Vitamin C', category: 'Water-Soluble', letter: 'C' },
-  { slug: 'vitamin-d', name: t('nav.vitamins') === '维生素' ? '维生素D' : 'Vitamin D', category: 'Fat-Soluble', letter: 'D' },
-  { slug: 'vitamin-e', name: t('nav.vitamins') === '维生素' ? '维生素E' : 'Vitamin E', category: 'Fat-Soluble', letter: 'E' },
-  { slug: 'vitamin-k', name: t('nav.vitamins') === '维生素' ? '维生素K' : 'Vitamin K', category: 'Fat-Soluble', letter: 'K' },
-];
+const vitamins = vitaminsData.map((vit) => ({
+  slug: vit.slug,
+  name: isZh ? vit.name.replace('Vitamin ', '维生素').replace('B Vitamins', '维生素B族') : vit.name,
+  category: vit.category,
+  letter: vit.letter,
+}));
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const activeLetters = [...new Set(vitamins.map((v) => v.letter))];

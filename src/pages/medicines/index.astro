@@ -1,19 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import medicines from '../../data/medicines.json';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const basePath = lang === 'en' ? '' : `/${lang}`;
-
-const medicines = [
-  { slug: 'ibuprofen', name: t('nav.medicines') === '药物' ? '布洛芬' : 'Ibuprofen', category: 'Pain Relief', letter: 'I' },
-  { slug: 'paracetamol', name: t('nav.medicines') === '药物' ? '对乙酰氨基酚' : 'Paracetamol', category: 'Pain Relief', letter: 'P' },
-  { slug: 'aspirin', name: t('nav.medicines') === '药物' ? '阿司匹林' : 'Aspirin', category: 'Cardiology', letter: 'A' },
-  { slug: 'antibiotics', name: t('nav.medicines') === '药物' ? '抗生素' : 'Antibiotics', category: 'Antimicrobials', letter: 'A' },
-  { slug: 'antihistamines', name: t('nav.medicines') === '药物' ? '抗组胺药' : 'Antihistamines', category: 'Allergy', letter: 'A' },
-];
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const activeLetters = [...new Set(medicines.map((m) => m.letter))];
@@ -84,6 +77,9 @@ const categories = [...new Set(medicines.map((m) => m.category))];
             <h3 class="mt-4 font-display text-lg font-bold text-ink-800 group-hover:text-medical-600">
               {med.name}
             </h3>
+            <p class="mt-2 line-clamp-3 text-sm text-ink-500">
+              {med.description}
+            </p>
             <div class="mt-4 flex items-center gap-1.5 text-sm font-semibold text-medical-600">
               {lang === 'zh' ? '查看详情' : 'View Details'}
               <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">

@@ -1,0 +1,213 @@
+[
+  {
+    "slug": "prostate-health",
+    "name": "Prostate Health",
+    "meta_description": "Learn about prostate health: common conditions like BPH and prostatitis, symptoms, risk factors, screening, and lifestyle tips for maintaining a healthy prostate.",
+    "description": "Prostate health focuses on the care and prevention of conditions affecting the prostate gland, including benign prostatic hyperplasia (BPH), prostatitis, and prostate cancer.",
+    "category": "Reproductive",
+    "overview": "The prostate is a small walnut-sized gland in men that produces fluid for semen. As men age, the prostate is prone to several conditions, most commonly benign prostatic hyperplasia (BPH), prostatitis (inflammation), and prostate cancer. Prostate health focuses on early detection, symptom management, and prevention. Regular screening, a healthy lifestyle, and awareness of urinary and sexual changes are key to maintaining prostate health throughout life.",
+    "common_symptoms": [
+      "Frequent urination, especially at night",
+      "Difficulty starting or stopping urination",
+      "Weak or interrupted urine stream",
+      "Pain or burning during urination",
+      "Blood in urine or semen",
+      "Pelvic or lower back pain",
+      "Painful ejaculation"
+    ],
+    "risk_factors": [
+      "Age over 50",
+      "Family history of prostate cancer",
+      "African ancestry",
+      "Obesity and sedentary lifestyle",
+      "Diet high in red meat and high-fat dairy",
+      "Smoking",
+      "History of prostatitis or STIs"
+    ],
+    "lifestyle_tips": [
+      "Eat a diet rich in fruits, vegetables, and whole grains",
+      "Include tomatoes and cruciferous vegetables for prostate-protective nutrients",
+      "Stay physically active with regular exercise",
+      "Maintain a healthy weight",
+      "Limit red meat and high-fat dairy products",
+      "Stay hydrated but reduce fluids before bedtime",
+      "Schedule regular prostate screenings after age 50"
+    ],
+    "when_to_seek_care": "See a healthcare provider if you experience frequent or painful urination, blood in urine or semen, persistent pelvic pain, or sudden changes in urinary habits. Men over 50 (or 40-45 with risk factors) should discuss PSA screening with their doctor. Seek immediate care for inability to urinate or severe pelvic pain.",
+    "related_conditions": ["prostate-cancer", "bph", "prostatitis", "urinary-tract-infection"],
+    "related_symptoms": ["back-pain", "fatigue"],
+    "related_questions": ["why-am-i-tired", "why-do-i-have-headaches"],
+    "related_tools": ["symptom-checker", "hormone-checker"],
+    "letter": "P"
+  },
+  {
+    "slug": "testosterone",
+    "name": "Testosterone",
+    "meta_description": "Understand testosterone levels in men: symptoms of low testosterone, causes, diagnosis, treatment options, and natural ways to maintain hormonal balance.",
+    "description": "Testosterone is the primary male sex hormone responsible for reproductive function, muscle mass, bone density, and overall well-being.",
+    "category": "Hormonal",
+    "overview": "Testosterone is the key male sex hormone produced mainly in the testicles. It regulates sex drive, bone mass, fat distribution, muscle strength, and red blood cell production. Testosterone levels naturally decline with age (about 1% per year after age 30), but abnormally low levels can cause a condition called hypogonadism. Symptoms may include fatigue, low libido, depression, and loss of muscle mass. Diagnosis involves blood tests, and treatment may include lifestyle changes or testosterone replacement therapy (TRT) when clinically indicated.",
+    "common_symptoms": [
+      "Reduced sex drive (low libido)",
+      "Erectile dysfunction",
+      "Fatigue and decreased energy",
+      "Loss of muscle mass and strength",
+      "Increased body fat",
+      "Mood changes, irritability, or depression",
+      "Decreased bone density",
+      "Difficulty concentrating"
+    ],
+    "risk_factors": [
+      "Aging (natural decline after 30)",
+      "Obesity and metabolic syndrome",
+      "Type 2 diabetes",
+      "Chronic illness or stress",
+      "Testicular injury or infection",
+      "Certain medications (opioids, steroids)",
+      "Genetic conditions like Klinefelter syndrome",
+      "Excessive alcohol consumption"
+    ],
+    "lifestyle_tips": [
+      "Get 7-9 hours of quality sleep per night",
+      "Engage in regular resistance training and HIIT",
+      "Maintain a balanced diet with healthy fats, protein, and zinc",
+      "Manage chronic stress through mindfulness or meditation",
+      "Maintain a healthy body weight",
+      "Limit alcohol and avoid tobacco",
+      "Get adequate vitamin D from sunlight or supplements",
+      "Avoid excessive endurance training without recovery"
+    ],
+    "when_to_seek_care": "Consult a healthcare provider if you experience persistent low libido, fatigue, mood changes, or unexplained muscle loss. A blood test measuring total testosterone (ideally morning levels) can confirm deficiency. Discuss the benefits and risks of testosterone therapy with an endocrinologist or urologist rather than self-medicating.",
+    "related_conditions": ["hypogonadism", "depression", "diabetes", "obesity"],
+    "related_symptoms": ["fatigue"],
+    "related_questions": ["why-am-i-tired", "why-am-i-gaining-weight"],
+    "related_tools": ["hormone-checker", "fitness-assessment"],
+    "letter": "T"
+  },
+  {
+    "slug": "erectile-dysfunction",
+    "name": "Erectile Dysfunction",
+    "meta_description": "Learn about erectile dysfunction (ED): causes, symptoms, risk factors, treatment options, and when to seek medical care for this common men's health condition.",
+    "description": "Erectile dysfunction (ED) is the inability to achieve or maintain an erection sufficient for satisfactory sexual performance.",
+    "category": "Reproductive",
+    "overview": "Erectile dysfunction (ED) is the persistent inability to achieve or maintain an erection firm enough for sexual intercourse. It is a common condition affecting millions of men, with prevalence increasing with age. ED is often an early warning sign of underlying cardiovascular disease, diabetes, or hormonal imbalances, as it reflects impaired blood flow or nerve function. Causes can be physical, psychological, or a combination of both. Effective treatments range from lifestyle changes and oral medications to therapy and advanced medical interventions.",
+    "common_symptoms": [
+      "Difficulty achieving an erection",
+      "Difficulty maintaining an erection during sex",
+      "Reduced sexual desire",
+      "Erections that are less firm than usual",
+      "Inability to get an erection at all"
+    ],
+    "risk_factors": [
+      "Cardiovascular disease and atherosclerosis",
+      "Diabetes",
+      "High blood pressure and high cholesterol",
+      "Obesity and metabolic syndrome",
+      "Smoking and tobacco use",
+      "Excessive alcohol or substance use",
+      "Depression, anxiety, or chronic stress",
+      "Certain medications (antidepressants, blood pressure drugs)"
+    ],
+    "lifestyle_tips": [
+      "Quit smoking and avoid tobacco products",
+      "Limit alcohol consumption",
+      "Exercise regularly to improve blood flow",
+      "Maintain a healthy weight and diet",
+      "Manage stress, anxiety, and depression",
+      "Communicate openly with your partner",
+      "Get adequate sleep",
+      "Review medications with your doctor for side effects"
+    ],
+    "when_to_seek_care": "See a doctor if ED persists for more than a few weeks, as it may indicate an underlying health condition like heart disease or diabetes. Seek immediate care if ED occurs suddenly with other symptoms like chest pain or shortness of breath. A urologist can evaluate causes and recommend treatments including medications, therapy, or other interventions.",
+    "related_conditions": ["hypertension", "diabetes", "depression", "hypogonadism"],
+    "related_symptoms": ["fatigue"],
+    "related_questions": ["why-am-i-anxious", "why-am-i-tired"],
+    "related_tools": ["symptom-checker", "heart-health-assessment", "hormone-checker"],
+    "letter": "E"
+  },
+  {
+    "slug": "hair-loss",
+    "name": "Hair Loss",
+    "meta_description": "Understand male hair loss: types like male pattern baldness, causes, prevention strategies, and treatment options to slow or reverse hair loss.",
+    "description": "Hair loss in men includes male pattern baldness (androgenetic alopecia) and other forms of thinning or shedding affecting the scalp and body.",
+    "category": "Prevention",
+    "overview": "Hair loss is a common concern for men, with male pattern baldness (androgenetic alopecia) being the most prevalent type, affecting up to 70% of men during their lifetime. It is driven by genetics and the hormone dihydrotestosterone (DHT), which shrinks hair follicles over time. Other causes include stress, nutritional deficiencies, medications, and medical conditions like thyroid disorders. While hair loss is generally harmless, it can significantly impact self-esteem. Various treatments, from medications to procedures, can slow progression or restore hair.",
+    "common_symptoms": [
+      "Receding hairline at the temples",
+      "Thinning at the crown of the head",
+      "Horseshoe pattern of hair loss",
+      "Increased hair shedding on pillows or in shower",
+      "Gradual miniaturization of hair shafts",
+      "Patchy or sudden hair loss"
+    ],
+    "risk_factors": [
+      "Family history of male pattern baldness",
+      "Aging",
+      "High levels of DHT",
+      "Chronic stress",
+      "Nutritional deficiencies (iron, zinc, vitamin D)",
+      "Smoking",
+      "Certain medications and medical treatments",
+      "Thyroid disorders"
+    ],
+    "lifestyle_tips": [
+      "Maintain a balanced diet rich in protein, iron, and vitamins",
+      "Manage stress through exercise and relaxation techniques",
+      "Avoid tight hairstyles that pull on hair",
+      "Use gentle hair care products",
+      "Consider FDA-approved treatments like minoxidil",
+      "Consult a dermatologist about finasteride or other medications",
+      "Avoid smoking, which restricts blood flow to follicles",
+      "Get enough sleep to support overall health"
+    ],
+    "when_to_seek_care": "Consult a dermatologist if you experience sudden or patchy hair loss, hair loss accompanied by itching or scaling, or if hair loss causes significant distress. Early intervention offers the best chance of slowing progression. Seek care for hair loss related to medications or underlying conditions like thyroid disease.",
+    "related_conditions": ["thyroid-disorder", "anemia", "depression"],
+    "related_symptoms": ["fatigue"],
+    "related_questions": ["why-am-i-anxious", "why-do-i-have-acne"],
+    "related_tools": ["symptom-checker", "nutrition-assessment"],
+    "letter": "H"
+  },
+  {
+    "slug": "male-fertility",
+    "name": "Male Fertility",
+    "meta_description": "Learn about male fertility: factors affecting sperm health, common causes of infertility, diagnosis, lifestyle tips, and treatment options.",
+    "description": "Male fertility refers to a man's ability to conceive a child, primarily determined by sperm production, quality, and delivery.",
+    "category": "Reproductive",
+    "overview": "Male fertility plays a role in about 40-50% of all infertility cases. It depends on the production of healthy sperm, proper sperm transport, and adequate sexual function. Factors affecting fertility include hormone levels, lifestyle habits, environmental exposures, and underlying medical conditions like varicocele or infections. A semen analysis is the primary diagnostic tool, evaluating sperm count, motility, and morphology. Many causes of male infertility can be addressed through lifestyle changes, medical treatment, or assisted reproductive technologies.",
+    "common_symptoms": [
+      "Difficulty conceiving after 12 months of trying",
+      "Low sperm count (oligospermia)",
+      "Reduced sperm motility",
+      "Abnormal sperm morphology",
+      "Hormonal symptoms like low libido or fatigue",
+      "Swelling or lump in the testicles",
+      "Erectile or ejaculatory dysfunction"
+    ],
+    "risk_factors": [
+      "Varicocele (enlarged veins in the scrotum)",
+      "History of infections or STIs",
+      "Exposure to heat (hot tubs, tight underwear)",
+      "Smoking, alcohol, and recreational drugs",
+      "Obesity and poor diet",
+      "Exposure to environmental toxins and pesticides",
+      "Certain medications and anabolic steroids",
+      "Age-related decline in sperm quality"
+    ],
+    "lifestyle_tips": [
+      "Maintain a healthy weight through diet and exercise",
+      "Eat foods rich in antioxidants, zinc, and omega-3 fatty acids",
+      "Avoid smoking, recreational drugs, and excessive alcohol",
+      "Limit heat exposure to the testicles",
+      "Manage stress and get adequate sleep",
+      "Avoid anabolic steroids and certain medications",
+      "Stay hydrated and reduce caffeine intake",
+      "Get regular check-ups to address underlying conditions"
+    ],
+    "when_to_seek_care": "See a fertility specialist if you and your partner have been unable to conceive after 12 months of regular unprotected sex (or 6 months if the female partner is over 35). Seek evaluation sooner if you have a history of testicular injury, infections, or hormonal symptoms. A urologist or reproductive endocrinologist can perform semen analysis and recommend treatments.",
+    "related_conditions": ["varicocele", "hypogonadism", "diabetes", "depression"],
+    "related_symptoms": ["fatigue"],
+    "related_questions": ["why-am-i-tired", "why-am-i-gaining-weight"],
+    "related_tools": ["hormone-checker", "fitness-assessment", "nutrition-assessment"],
+    "letter": "M"
+  }
+]

@@ -1,0 +1,221 @@
+[
+  {
+    "slug": "prenatal-care",
+    "name": "Prenatal Care",
+    "meta_description": "Learn about prenatal care: schedule of visits, key screenings, tests, and how regular monitoring supports a healthy pregnancy for parent and baby.",
+    "description": "Prenatal care is the regular healthcare you receive throughout pregnancy to monitor the health of both the pregnant person and the developing baby.",
+    "category": "Care",
+    "letter": "P",
+    "overview": "Prenatal care is the comprehensive medical care provided throughout pregnancy to promote the health of the pregnant person and the developing fetus. It begins as soon as pregnancy is confirmed and continues until delivery. Through a schedule of regular check-ups, healthcare providers monitor fetal growth, detect complications early, manage pre-existing conditions, and provide guidance on nutrition, exercise, and lifestyle. Studies consistently show that early and adequate prenatal care significantly reduces the risk of preterm birth, low birth weight, and maternal complications. A typical schedule includes monthly visits in the first two trimesters, visits every two weeks around weeks 28 to 36, and weekly visits from week 36 until delivery.",
+    "common_symptoms": [
+      "Nausea and vomiting (morning sickness)",
+      "Fatigue and increased need for sleep",
+      "Breast tenderness and enlargement",
+      "Frequent urination",
+      "Mild swelling of ankles and feet",
+      "Mood swings and emotional changes",
+      "Heartburn and constipation",
+      "Stretching sensations or mild round ligament pain"
+    ],
+    "risk_factors": [
+      "Age under 17 or over 35",
+      "Pre-existing conditions such as diabetes, hypertension, or thyroid disease",
+      "Previous pregnancy complications including preterm birth or preeclampsia",
+      "Multiple pregnancy (twins, triplets)",
+      "Smoking, alcohol, or substance use",
+      "Low pre-pregnancy body weight or obesity",
+      "Limited access to healthcare or late initiation of care",
+      "Certain infections such as HIV, hepatitis, or syphilis"
+    ],
+    "lifestyle_tips": [
+      "Begin prenatal care as soon as you suspect pregnancy to establish an early baseline",
+      "Take a daily prenatal vitamin containing 400 to 800 micrograms of folic acid",
+      "Keep every scheduled appointment and come prepared with questions",
+      "Track fetal movements in the third trimester as advised by your provider",
+      "Maintain a balanced diet rich in fruits, vegetables, lean protein, and whole grains",
+      "Stay hydrated and aim for at least 8 to 10 glasses of water daily",
+      "Avoid alcohol, tobacco, recreational drugs, and limit caffeine",
+      "Discuss any medications or supplements with your provider before use"
+    ],
+    "when_to_seek_care": "Schedule your first prenatal visit as soon as you have a positive pregnancy test. Seek immediate medical attention if you experience severe abdominal pain, heavy vaginal bleeding, sudden swelling of the face or hands, severe headache with vision changes, fever above 38.3 degrees Celsius, persistent vomiting preventing fluids, or a noticeable decrease in fetal movement after week 20. Never skip scheduled visits, and contact your provider between appointments for any unusual symptoms.",
+    "related_conditions": ["preeclampsia", "gestational-diabetes", "preterm-labor"],
+    "related_symptoms": ["nausea", "fatigue", "swelling"],
+    "related_questions": ["when-should-i-start-prenatal-care", "what-tests-are-done-during-pregnancy"],
+    "related_tools": ["due-date-calculator", "symptom-checker"]
+  },
+  {
+    "slug": "pregnancy-symptoms",
+    "name": "Pregnancy Symptoms",
+    "meta_description": "Understand common pregnancy symptoms by trimester, what is normal, warning signs, and when to contact a healthcare provider.",
+    "description": "Pregnancy symptoms are the physical and emotional changes that occur as the body adapts to hormonal shifts and a growing baby throughout each trimester.",
+    "category": "Symptoms",
+    "letter": "P",
+    "overview": "Pregnancy symptoms vary widely between individuals and even between pregnancies, driven primarily by rising levels of human chorionic gonadotropin (hCG), estrogen, and progesterone. The first trimester is often marked by nausea, fatigue, breast tenderness, and frequent urination. The second trimester is typically the most comfortable, with many early symptoms easing and fetal movement beginning. The third trimester brings physical strain as the baby grows, including back pain, swelling, shortness of breath, and Braxton Hicks contractions. Recognizing which symptoms are expected and which are warning signs empowers pregnant individuals to seek timely care and reduces unnecessary anxiety during this transformative time.",
+    "common_symptoms": [
+      "Missed period (often the first sign)",
+      "Nausea with or without vomiting, typically in the first trimester",
+      "Extreme fatigue, especially in early pregnancy",
+      "Breast swelling, tenderness, and darkening of the areolas",
+      "Frequent urination from early pregnancy onward",
+      "Food cravings or aversions and heightened sense of smell",
+      "Mood swings, irritability, and emotional sensitivity",
+      "Heartburn, bloating, and constipation"
+    ],
+    "risk_factors": [
+      "Multiple pregnancy, which intensifies hormone levels and symptoms",
+      "History of motion sickness or migraines, increasing nausea risk",
+      "Pre-existing conditions such as thyroid disorders or anemia",
+      "First pregnancy, which may produce more noticeable symptoms",
+      "High stress levels and inadequate sleep",
+      "Poor nutrition or dehydration, which can worsen symptoms",
+      "Advanced maternal age"
+    ],
+    "lifestyle_tips": [
+      "Eat small, frequent meals to manage nausea and stabilize energy",
+      "Keep crackers by your bedside and eat a few before getting up",
+      "Stay hydrated with water, herbal teas, or electrolyte drinks",
+      "Rest when tired and aim for 7 to 9 hours of sleep per night",
+      "Wear a supportive bra and loose, comfortable clothing",
+      "Use ginger or vitamin B6 (with provider approval) for nausea relief",
+      "Practice gentle exercise such as walking or prenatal yoga",
+      "Track symptoms to identify triggers and patterns to discuss with your provider"
+    ],
+    "when_to_seek_care": "Contact your healthcare provider if you cannot keep fluids down for more than 12 hours, experience severe abdominal or pelvic pain, heavy bleeding, fever, or painful urination. Seek emergency care for sudden severe swelling with headache or vision changes, difficulty breathing, chest pain, or a sudden decrease in fetal movement after week 20. Routine symptoms that persist or significantly affect daily life should also be discussed at prenatal visits.",
+    "related_conditions": ["morning-sickness", "preeclampsia", "preterm-labor"],
+    "related_symptoms": ["nausea", "fatigue", "headache"],
+    "related_questions": ["why-am-i-so-tired-during-pregnancy", "when-do-pregnancy-symptoms-start"],
+    "related_tools": ["symptom-checker", "due-date-calculator"]
+  },
+  {
+    "slug": "nutrition-during-pregnancy",
+    "name": "Nutrition During Pregnancy",
+    "meta_description": "Learn about nutrition during pregnancy: essential nutrients, foods to eat and avoid, weight gain guidelines, and safe supplementation.",
+    "description": "Nutrition during pregnancy focuses on eating a balanced, nutrient-rich diet that supports fetal development and the health of the pregnant person.",
+    "category": "Nutrition",
+    "letter": "N",
+    "overview": "Nutrition during pregnancy plays a critical role in fetal growth, brain development, and the long-term health of both parent and child. Caloric needs increase modestly, by about 300 to 450 extra calories per day in the second and third trimesters, but the need for many vitamins and minerals rises significantly. Key nutrients include folic acid to prevent neural tube defects, iron to support increased blood volume, calcium and vitamin D for fetal bone development, DHA for brain and eye development, and protein for tissue growth. Equally important is knowing which foods to avoid, such as raw or undercooked seafood, unpasteurized dairy, deli meats, high-mercury fish, and excess caffeine or alcohol. Following evidence-based guidelines helps reduce the risk of complications and supports a healthy birth weight.",
+    "common_symptoms": [
+      "Increased appetite and food cravings",
+      "Food aversions, especially to meat or strong-smelling foods",
+      "Heartburn and acid reflux after meals",
+      "Constipation due to iron supplements and hormonal changes",
+      "Nausea that can limit food tolerance",
+      "Heightened sense of smell affecting food choices",
+      "Swelling related to high sodium intake",
+      "Fatigue linked to low iron or inadequate calories"
+    ],
+    "risk_factors": [
+      "Pre-existing nutrient deficiencies such as anemia or low vitamin D",
+      "Vegetarian, vegan, or highly restrictive diets",
+      "Multiple pregnancy, which requires higher nutrient intake",
+      "Adolescent pregnancy, where the parent is still growing",
+      "Food insecurity or limited access to fresh foods",
+      "History of eating disorders",
+      "Excessive caffeine or alcohol consumption",
+      "Gestational diabetes requiring dietary control"
+    ],
+    "lifestyle_tips": [
+      "Take a daily prenatal vitamin with 400 to 800 mcg of folic acid throughout pregnancy",
+      "Include at least 27 mg of iron daily from lean meats, legumes, and fortified grains",
+      "Eat 2 to 3 servings of low-mercury fish such as salmon or sardines per week for DHA",
+      "Aim for 1,000 mg of calcium daily from dairy, fortified plant milks, or leafy greens",
+      "Stay hydrated with at least 8 to 10 glasses of water daily",
+      "Avoid raw fish, unpasteurized cheese, deli meats, and high-mercury fish",
+      "Limit caffeine to 200 mg per day (about one 12-ounce coffee)",
+      "Choose whole grains, fruits, and vegetables to manage constipation and blood sugar"
+    ],
+    "when_to_seek_care": "Consult your healthcare provider or a registered dietitian if you experience persistent vomiting that prevents adequate nutrition, rapid or inadequate weight gain, signs of anemia such as severe fatigue or paleness, or cravings for non-food items such as ice, clay, or starch (a condition called pica). Seek urgent care for signs of foodborne illness including fever, diarrhea, or dehydration after eating suspect foods.",
+    "related_conditions": ["gestational-diabetes", "anemia", "preeclampsia"],
+    "related_symptoms": ["nausea", "fatigue", "heartburn"],
+    "related_questions": ["what-foods-should-i-avoid-during-pregnancy", "how-much-weight-should-i-gain-in-pregnancy"],
+    "related_tools": ["pregnancy-nutrition-guide", "symptom-checker"]
+  },
+  {
+    "slug": "exercise-in-pregnancy",
+    "name": "Exercise in Pregnancy",
+    "meta_description": "Learn about exercise in pregnancy: safe activities, guidelines, benefits, warning signs to stop, and how to stay active safely.",
+    "description": "Exercise in pregnancy involves safe, regular physical activity that supports maternal health, reduces discomfort, and prepares the body for labor and recovery.",
+    "category": "Physical Activity",
+    "letter": "E",
+    "overview": "Regular exercise during pregnancy is strongly recommended by major health organizations for most pregnant individuals without complications. The American College of Obstetricians and Gynecologists (ACOG) recommends at least 150 minutes of moderate-intensity activity per week, spread across several days. Safe options include brisk walking, swimming, stationary cycling, and prenatal yoga or Pilates. Exercise helps reduce back pain, ease constipation, lower the risk of gestational diabetes and preeclampsia, support healthy weight gain, improve sleep, and boost mood. It also builds stamina for labor and supports faster postpartum recovery. Certain activities should be avoided, including contact sports, activities with a high risk of falling, scuba diving, and exercising flat on the back after the first trimester. Individuals with high-risk pregnancies should consult their provider for a personalized plan.",
+    "common_symptoms": [
+      "Round ligament pain during movement",
+      "Shortness of breath, especially in the third trimester",
+      "Lower back pain and pelvic pressure",
+      "Increased sweating and feeling warmer than usual",
+      "Braxton Hicks contractions after vigorous activity",
+      "Swelling of the feet and ankles after exercise",
+      "Heartburn during or after workouts",
+      "Decreased balance as the center of gravity shifts"
+    ],
+    "risk_factors": [
+      "High-risk conditions such as preeclampsia or placenta previa",
+      "History of preterm labor or cervical insufficiency",
+      "Multiple pregnancy requiring modified activity",
+      "Severe anemia or uncontrolled heart disease",
+      "Inexperienced exercisers starting intense programs too quickly",
+      "Dehydration and exercising in hot, humid environments",
+      "Pre-existing joint or back problems",
+      "First-time pregnancy without guidance on safe movements"
+    ],
+    "lifestyle_tips": [
+      "Aim for 150 minutes of moderate exercise per week, such as 30 minutes on 5 days",
+      "Choose low-impact activities like walking, swimming, or prenatal yoga",
+      "Always warm up for 5 to 10 minutes and cool down afterward",
+      "Drink water before, during, and after exercise to stay hydrated",
+      "Avoid exercising flat on your back after the first trimester",
+      "Use the 'talk test': you should be able to hold a conversation during activity",
+      "Listen to your body and reduce intensity as pregnancy progresses",
+      "Wear supportive footwear and a well-fitted maternity bra"
+    ],
+    "when_to_seek_care": "Stop exercising and contact your healthcare provider immediately if you experience vaginal bleeding, painful contractions before 37 weeks, chest pain, dizziness or fainting, calf pain or swelling, muscle weakness, or fluid leaking from the vagina. Also seek guidance if you develop shortness of breath before exertion, irregular heartbeat, or a sudden drop in energy. Always discuss your exercise plan with your provider, especially if you have any pregnancy complications.",
+    "related_conditions": ["gestational-diabetes", "preeclampsia", "preterm-labor"],
+    "related_symptoms": ["back-pain", "fatigue", "swelling"],
+    "related_questions": ["is-it-safe-to-exercise-during-pregnancy", "what-exercises-should-i-avoid-while-pregnant"],
+    "related_tools": ["pregnancy-fitness-guide", "symptom-checker"]
+  },
+  {
+    "slug": "childbirth-preparation",
+    "name": "Childbirth Preparation",
+    "meta_description": "Learn about childbirth preparation: birth plans, classes, labor stages, pain management, packing lists, and what to expect on delivery day.",
+    "description": "Childbirth preparation involves education, planning, and practical steps that help expectant parents approach labor, delivery, and the postpartum period with confidence.",
+    "category": "Preparation",
+    "letter": "C",
+    "overview": "Childbirth preparation is the process of getting ready for labor, delivery, and the early postpartum period through education, planning, and practical arrangements. It typically begins in the second or early third trimester and includes attending childbirth classes, learning about the stages of labor, exploring pain management options, drafting a birth plan, packing a hospital bag, and arranging support for after the birth. Understanding what to expect helps reduce fear, supports informed decision-making, and improves the overall birth experience. Preparation also includes choosing a healthcare team and birth setting, understanding possible interventions, and recognizing the signs of labor so that parents know when to head to the hospital or call their provider.",
+    "common_symptoms": [
+      "Braxton Hicks contractions becoming more noticeable in late pregnancy",
+      "Increased back pain and pelvic pressure as the baby drops",
+      "Frequent urination as the baby presses on the bladder",
+      "Difficulty sleeping due to discomfort and anticipation",
+      "Nesting instinct and bursts of energy",
+      "Loose joints and changes in balance",
+      "Lightening (baby settling lower into the pelvis)",
+      "Loss of the mucus plug or bloody show as labor approaches"
+    ],
+    "risk_factors": [
+      "First pregnancy with limited exposure to the birth process",
+      "High-risk pregnancy requiring specialized birth planning",
+      "Anxiety or fear of childbirth (tokophobia)",
+      "Limited support system or birth partner availability",
+      "Previous traumatic birth experience",
+      "Late start to preparation, leaving little time for classes",
+      "Pre-existing medical conditions influencing delivery options",
+      "Plans for vaginal birth after cesarean (VBAC)"
+    ],
+    "lifestyle_tips": [
+      "Enroll in a childbirth education class by the third trimester",
+      "Draft a birth plan covering pain management, positions, and preferences",
+      "Pack a hospital bag by week 36 with essentials for you, baby, and partner",
+      "Practice breathing and relaxation techniques daily",
+      "Learn the signs of labor: contractions, water breaking, and bloody show",
+      "Tour your birth facility and confirm registration in advance",
+      "Discuss pain relief options with your provider, including epidural and natural methods",
+      "Arrange postpartum support for meals, childcare, and household tasks"
+    ],
+    "when_to_seek_care": "Head to the hospital or contact your provider if you experience regular contractions 5 minutes apart lasting 1 minute each for at least 1 hour (5-1-1 rule), your water breaks (especially if the fluid is green, brown, or foul-smelling), you have heavy vaginal bleeding, or you notice a sudden decrease in fetal movement. Seek immediate care for severe abdominal pain, sudden severe headache, vision changes, or fever before your due date. If you are unsure whether you are in labor, call your provider for guidance.",
+    "related_conditions": ["preterm-labor", "preeclampsia", "postpartum-depression"],
+    "related_symptoms": ["back-pain", "pelvic-pain", "contractions"],
+    "related_questions": ["how-do-i-know-when-im-in-labor", "what-should-i-pack-for-the-hospital"],
+    "related_tools": ["birth-plan-builder", "contraction-timer"]
+  }
+]

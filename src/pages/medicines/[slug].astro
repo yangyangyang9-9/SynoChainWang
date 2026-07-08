@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContentPage from '../../components/ContentPage.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import medicines from '../../data/medicines.json';
+
+export async function getStaticPaths() {
+  return medicines.map(med => ({
+    params: { slug: med.slug },
+  }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { slug } = Astro.params;
+const med = medicines.find(m => m.slug === slug);
+
+if (!med) {
+  return Astro.redirect('/medicines', 301);
+}
+
+const contentData = {
+  title: med.name,
+  metaDescription: med.meta_description,
+  lang,
+  type: 'lab_test' as const,
+  overview: med.description,
+  quickFacts: {
+    Category: med.category,
+  },
+  possibleCauses: med.uses,
+  commonSymptoms: med.side_effects,
+  lifestyleTips: med.warnings,
+  relatedConditions: med.related_conditions || [],
+  relatedSymptoms: med.related_symptoms || [],
+  relatedQuestions: med.related_questions || [],
+  relatedTools: med.related_tools || [],
+  t,
+};
+---
+
+<BaseLayout
+  title={`${contentData.title} - ${t('nav.medicines')} - SynoChain AI`}
+  description={contentData.metaDescription}
+  lang={lang}
+>
+  <ContentPage {...contentData} />
+</BaseLayout>
