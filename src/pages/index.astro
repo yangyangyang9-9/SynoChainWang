@@ -2,8 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
 import AIAssistantPreview from '../components/home/AIAssistantPreview.astro';
-import FounderTiers from '../components/home/FounderTiers.astro';
-import FundUsage from '../components/home/FundUsage.astro';
 import ToolsNav from '../components/home/ToolsNav.astro';
 import Architecture from '../components/home/Architecture.astro';
 import FAQ from '../components/home/FAQ.astro';
@@ -20,8 +18,52 @@ const t = useTranslations(lang);
 >
   <Hero lang={lang} />
   <AIAssistantPreview lang={lang} />
-  <FounderTiers lang={lang} />
-  <FundUsage lang={lang} />
+
+  <!-- Medical Fund CTA -->
+  <section class="section-padding bg-ink-50">
+    <div class="container-x">
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-medical-600 via-medical-500 to-health-500 p-8 shadow-2xl sm:p-12">
+        <div class="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-white/10 blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-white/10 blur-3xl"></div>
+        <div class="relative grid items-center gap-8 lg:grid-cols-2">
+          <div>
+            <span class="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
+              Medical Treatment Fund
+            </span>
+            <h2 class="mt-4 text-3xl font-bold text-white sm:text-4xl">
+              Help Save Lives with Crypto Donations
+            </h2>
+            <p class="mt-4 text-base text-white/90 sm:text-lg">
+              Support patients battling major illnesses. 100% of donations go directly to life-saving medical treatments. Watch their stories, donate with crypto, and make a real difference.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-4">
+              <a href="/medical-fund" class="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-medical-600 shadow-lg transition-transform hover:scale-105">
+                💝 Donate Now
+              </a>
+              <a href="/medical-fund#patients" class="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/20">
+                View Patient Stories
+              </a>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="rounded-2xl bg-white/15 p-4 text-center backdrop-blur">
+              <div class="font-display text-2xl font-bold text-white sm:text-3xl">$148K+</div>
+              <div class="mt-1 text-xs text-white/80">Raised</div>
+            </div>
+            <div class="rounded-2xl bg-white/15 p-4 text-center backdrop-blur">
+              <div class="font-display text-2xl font-bold text-white sm:text-3xl">6</div>
+              <div class="mt-1 text-xs text-white/80">Patients</div>
+            </div>
+            <div class="rounded-2xl bg-white/15 p-4 text-center backdrop-blur">
+              <div class="font-display text-2xl font-bold text-white sm:text-3xl">100%</div>
+              <div class="mt-1 text-xs text-white/80">To Care</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <ToolsNav lang={lang} />
   <Architecture lang={lang} />
   <FAQ lang={lang} />

@@ -1,0 +1,510 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const WALLET_ADDRESS = '0x7859887393f998d118073aeeEaA68DCb8Bf349d4';
+const COMPANY_EMAIL = 'support@synochain.ai';
+
+// 示例病人数据
+const patients = [
+  {
+    name: 'Sarah M.',
+    age: 34,
+    condition: 'Stage III Breast Cancer',
+    location: 'New York, USA',
+    videoThumbnail: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=a%20brave%20young%20woman%20smiling%20warmly%20in%20a%20hospital%20garden%2C%20soft%20natural%20lighting%2C%20hopeful%20mood%2C%20documentary%20style%20photo&image_size=landscape_4_3',
+    raised: 18450,
+    goal: 50000,
+    story: 'Sarah was diagnosed with stage III breast cancer last year. She needs funding for immunotherapy treatment not covered by her insurance.',
+    daysLeft: 23,
+  },
+  {
+    name: 'Michael R.',
+    age: 52,
+    condition: 'Cardiac Surgery',
+    location: 'London, UK',
+    videoThumbnail: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=a%20middle%20aged%20man%20with%20kind%20eyes%20sitting%20in%20a%20cozy%20living%20room%2C%20warm%20lighting%2C%20documentary%20photo%20style&image_size=landscape_4_3',
+    raised: 32000,
+    goal: 80000,
+    story: 'Michael requires a complex heart valve replacement surgery. As a father of three, he is fighting to be there for his family.',
+    daysLeft: 15,
+  },
+  {
+    name: 'Lily C.',
+    age: 7,
+    condition: 'Leukemia Treatment',
+    location: 'Toronto, Canada',
+    videoThumbnail: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=a%20courageous%20little%20girl%20with%20a%20bright%20smile%20holding%20a%20stuffed%20animal%20in%20a%20hospital%2C%20soft%20warm%20lighting%2C%20hopeful%20documentary%20photo&image_size=landscape_4_3',
+    raised: 45200,
+    goal: 120000,
+    story: 'Little Lily is battling acute lymphoblastic leukemia. Her family needs help covering the cost of a bone marrow transplant.',
+    daysLeft: 40,
+  },
+  {
+    name: 'David K.',
+    age: 45,
+    condition: 'Liver Transplant',
+    location: 'Sydney, Australia',
+    videoThumbnail: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=a%20resilient%20man%20in%20his%20forties%20standing%20by%20the%20ocean%2C%20contemplative%20expression%2C%20warm%20golden%20hour%20lighting%2C%20documentary%20photo%20style&image_size=landscape_4_3',
+    raised: 9800,
+    goal: 150000,
+    story: 'David has been on the transplant waiting list for 18 months. He needs urgent help with transplant surgery and post-operative care.',
+    daysLeft: 60,
+  },
+  {
+    name: 'Aisha T.',
+    age: 28,
+    condition: 'Brain Tumor Surgery',
+    location: 'Dubai, UAE',
+    videoThumbnail: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=a%20brave%20young%20woman%20with%20a%20headscarf%20smiling%20gently%20in%20a%20modern%20hospital%20corridor%2C%20soft%20natural%20light%2C%20documentary%20photo%20style&image_size=landscape_4_3',
+    raised: 27300,
+    goal: 95000,
+    story: 'Aisha was diagnosed with a benign brain tumor that requires delicate surgery. She dreams of returning to her teaching career.',
+    daysLeft: 30,
+  },
+  {
+    name: 'James W.',
+    age: 61,
+    condition: 'Kidney Dialysis & Transplant',
+    location: 'Chicago, USA',
+    videoThumbnail: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=a%20dignified%20older%20man%20with%20grey%20hair%20sitting%20in%20a%20sunlit%20room%2C%20peaceful%20expression%2C%20warm%20documentary%20photo%20style&image_size=landscape_4_3',
+    raised: 15600,
+    goal: 70000,
+    story: 'James has been on dialysis for 3 years. A kidney transplant would give him a second chance at life with his grandchildren.',
+    daysLeft: 45,
+  },
+];
+---
+
+<BaseLayout title="Medical Treatment Fund - SynoChain AI" description="Support patients battling major illnesses. Donate crypto to help fund life-saving treatments. 100% of funds go directly to patient care." lang={lang}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-white pt-32 pb-16">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="absolute left-1/2 top-0 -z-10 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-medical-100/30 blur-3xl"></div>
+    <div class="absolute right-0 top-40 -z-10 h-[400px] w-[400px] rounded-full bg-health-100/20 blur-3xl"></div>
+
+    <div class="container-x relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-block rounded-full bg-health-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-health-700">
+          Medical Treatment Fund
+        </span>
+        <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl md:text-6xl">
+          Help Save Lives with <span class="gradient-text">Crypto Donations</span>
+        </h1>
+        <p class="mt-6 text-base text-ink-500 sm:text-lg">
+          Support patients battling major illnesses. Every donation goes directly to funding life-saving medical treatments. 100% transparent, 100% on-chain.
+        </p>
+
+        <!-- 统计 -->
+        <div class="mx-auto mt-10 grid max-w-2xl grid-cols-3 gap-4">
+          <div class="rounded-2xl border border-ink-100 bg-white/80 p-4 shadow-sm backdrop-blur">
+            <div class="font-display text-2xl font-bold text-medical-600 sm:text-3xl">$148K+</div>
+            <div class="mt-1 text-xs text-ink-400">Total Raised</div>
+          </div>
+          <div class="rounded-2xl border border-ink-100 bg-white/80 p-4 shadow-sm backdrop-blur">
+            <div class="font-display text-2xl font-bold text-health-600 sm:text-3xl">6</div>
+            <div class="mt-1 text-xs text-ink-400">Active Patients</div>
+          </div>
+          <div class="rounded-2xl border border-ink-100 bg-white/80 p-4 shadow-sm backdrop-blur">
+            <div class="font-display text-2xl font-bold text-ink-800 sm:text-3xl">100%</div>
+            <div class="mt-1 text-xs text-ink-400">To Treatment</div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="#donate" class="btn-primary w-full sm:w-auto">
+            <span>💝</span> Donate Now
+          </a>
+          <a href="#patients" class="btn-secondary w-full sm:w-auto">
+            View Patient Stories
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 病人故事 -->
+  <section id="patients" class="section-padding bg-ink-50">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="inline-block rounded-full bg-health-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-health-700">
+          Patient Stories
+        </span>
+        <h2 class="mt-4 text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">
+          Real Patients, Real Battles
+        </h2>
+        <p class="mt-4 text-base text-ink-500 sm:text-lg">
+          Watch their stories. Every patient has been verified by our team. Your donation directly funds their treatment.
+        </p>
+      </div>
+
+      <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {patients.map((patient) => {
+          const progress = Math.min((patient.raised / patient.goal) * 100, 100);
+          return (
+            <div class="group overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm transition-all hover:shadow-xl">
+              <!-- 视频缩略图 -->
+              <div class="relative aspect-video overflow-hidden">
+                <img
+                  src={patient.videoThumbnail}
+                  alt={patient.name}
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <!-- 播放按钮 -->
+                <div class="absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity group-hover:bg-black/40">
+                  <div class="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 shadow-lg transition-transform group-hover:scale-110">
+                    <svg class="ml-1 h-7 w-7 text-medical-600" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+                <!-- 疾病标签 -->
+                <div class="absolute left-3 top-3">
+                  <span class="rounded-full bg-medical-500/90 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
+                    {patient.condition}
+                  </span>
+                </div>
+                <!-- 剩余天数 -->
+                <div class="absolute right-3 top-3">
+                  <span class="rounded-full bg-black/60 px-3 py-1 text-xs font-medium text-white backdrop-blur">
+                    {patient.daysLeft} days left
+                  </span>
+                </div>
+              </div>
+
+              <!-- 内容 -->
+              <div class="p-6">
+                <div class="flex items-center gap-2">
+                  <h3 class="font-display text-lg font-bold text-ink-800">{patient.name}</h3>
+                  <span class="text-sm text-ink-400">· {patient.age} yrs</span>
+                </div>
+                <p class="mt-1 text-xs text-ink-400">📍 {patient.location}</p>
+                <p class="mt-3 text-sm leading-relaxed text-ink-600 line-clamp-3">{patient.story}</p>
+
+                <!-- 筹款进度 -->
+                <div class="mt-4">
+                  <div class="mb-2 flex items-center justify-between text-sm">
+                    <span class="font-semibold text-medical-600">${patient.raised.toLocaleString()}</span>
+                    <span class="text-ink-400">of ${patient.goal.toLocaleString()}</span>
+                  </div>
+                  <div class="h-2.5 w-full overflow-hidden rounded-full bg-ink-100">
+                    <div
+                      class="h-full rounded-full bg-gradient-to-r from-medical-500 to-health-500"
+                      style={`width: ${progress}%`}
+                    ></div>
+                  </div>
+                </div>
+
+                <!-- 捐款按钮 -->
+                <a
+                  href="#donate"
+                  class="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-medical-50 px-4 py-3 text-sm font-semibold text-medical-700 transition-colors hover:bg-medical-100"
+                >
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  Donate to {patient.name}
+                </a>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- 钱包捐款 -->
+  <section id="donate" class="section-padding bg-white">
+    <div class="container-x">
+      <div class="mx-auto max-w-3xl">
+        <div class="text-center">
+          <span class="inline-block rounded-full bg-medical-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-medical-700">
+            Crypto Donation
+          </span>
+          <h2 class="mt-4 text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">
+            Make a Difference Today
+          </h2>
+          <p class="mt-4 text-base text-ink-500 sm:text-lg">
+            Send your donation to our verified wallet address. All funds are used exclusively for patient treatment at SynoChain AI partner medical facilities.
+          </p>
+        </div>
+
+        <!-- 钱包地址卡片 -->
+        <div class="mx-auto mt-12 max-w-2xl">
+          <div class="relative overflow-hidden rounded-3xl border-2 border-medical-200 bg-gradient-to-br from-medical-50 via-white to-health-50 p-8 shadow-xl">
+            <!-- 装饰背景 -->
+            <div class="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-medical-200/30 blur-3xl"></div>
+            <div class="absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-health-200/30 blur-3xl"></div>
+
+            <div class="relative">
+              <div class="flex items-center gap-3">
+                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-medical-500 to-health-500 shadow-lg">
+                  <svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 8V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-1" />
+                    <path d="M16 12h6" />
+                    <path d="M19 9v6" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-display text-lg font-bold text-ink-800">Donation Wallet Address</h3>
+                  <p class="text-xs text-ink-500">Ethereum / ERC-20 / USDT / USDC</p>
+                </div>
+              </div>
+
+              <!-- 地址 -->
+              <div class="mt-6">
+                <div class="rounded-xl border-2 border-dashed border-medical-300 bg-white/80 p-4">
+                  <p class="text-xs font-medium text-ink-400">Wallet Address (Click to Copy)</p>
+                  <div class="mt-2 flex items-center gap-2">
+                    <code id="wallet-address" class="flex-1 truncate font-mono text-sm font-semibold text-ink-800 sm:text-base">
+                      {WALLET_ADDRESS}
+                    </code>
+                    <button
+                      id="copy-wallet-btn"
+                      class="flex-shrink-0 rounded-lg bg-medical-500 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-medical-600"
+                    >
+                      <span id="copy-text">Copy</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 支持的代币 -->
+              <div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                <div class="rounded-xl border border-ink-100 bg-white p-3 text-center">
+                  <div class="text-lg font-bold text-ink-800">ETH</div>
+                  <div class="text-xs text-ink-400">Ethereum</div>
+                </div>
+                <div class="rounded-xl border border-ink-100 bg-white p-3 text-center">
+                  <div class="text-lg font-bold text-ink-800">USDT</div>
+                  <div class="text-xs text-ink-400">Tether</div>
+                </div>
+                <div class="rounded-xl border border-ink-100 bg-white p-3 text-center">
+                  <div class="text-lg font-bold text-ink-800">USDC</div>
+                  <div class="text-xs text-ink-400">USD Coin</div>
+                </div>
+                <div class="rounded-xl border border-ink-100 bg-white p-3 text-center">
+                  <div class="text-lg font-bold text-ink-800">BTC</div>
+                  <div class="text-xs text-ink-400">Bitcoin</div>
+                </div>
+              </div>
+
+              <!-- 安全提示 -->
+              <div class="mt-6 flex items-start gap-2 rounded-xl bg-health-50 p-4">
+                <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-health-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+                <div>
+                  <p class="text-sm font-medium text-health-800">Verified & Secure</p>
+                  <p class="mt-1 text-xs text-health-700">
+                    This wallet is managed by SynoChain AI. 100% of donations are used exclusively for patient medical treatment at our partner facilities. All transactions are on-chain and fully transparent.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 捐款后联系 -->
+        <div class="mx-auto mt-8 max-w-2xl rounded-2xl border border-ink-100 bg-ink-50 p-6 text-center">
+          <p class="text-sm text-ink-600">
+            <strong class="text-ink-800">After donating:</strong> Contact us at{' '}
+            <a href={`mailto:${COMPANY_EMAIL}`} class="font-semibold text-medical-600 underline hover:text-medical-700">
+              {COMPANY_EMAIL}
+            </a>{' '}
+            to receive your donor certificate and fundraising qualification. You can help raise funds for specific patients.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 流程说明 -->
+  <section class="section-padding bg-ink-50">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="inline-block rounded-full bg-health-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-health-700">
+          How It Works
+        </span>
+        <h2 class="mt-4 text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">
+          Simple Process, Life-Changing Impact
+        </h2>
+      </div>
+
+      <div class="mx-auto mt-16 grid max-w-5xl gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <!-- Step 1 -->
+        <div class="relative rounded-2xl border border-ink-100 bg-white p-6 text-center shadow-sm">
+          <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-medical-50 text-2xl">📹</div>
+          <h3 class="mt-4 font-display text-base font-bold text-ink-800">1. Patient Sends Video</h3>
+          <p class="mt-2 text-xs leading-relaxed text-ink-500">
+            Patients record a video sharing their story and send it to our company email for review.
+          </p>
+          <div class="mt-3 rounded-lg bg-medical-50 p-2">
+            <p class="text-xs font-medium text-medical-700">📧 {COMPANY_EMAIL}</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative rounded-2xl border border-ink-100 bg-white p-6 text-center shadow-sm">
+          <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-health-50 text-2xl">✅</div>
+          <h3 class="mt-4 font-display text-base font-bold text-ink-800">2. Team Verification</h3>
+          <p class="mt-2 text-xs leading-relaxed text-ink-500">
+            Our medical team verifies the patient's condition, medical records, and treatment plan.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative rounded-2xl border border-ink-100 bg-white p-6 text-center shadow-sm">
+          <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-medical-50 text-2xl">🤝</div>
+          <h3 class="mt-4 font-display text-base font-bold text-ink-800">3. Fundraising Begins</h3>
+          <p class="mt-2 text-xs leading-relaxed text-ink-500">
+            Verified patient stories are published on our platform. Donors can watch videos and contribute.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative rounded-2xl border border-ink-100 bg-white p-6 text-center shadow-sm">
+          <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-health-50 text-2xl">🏥</div>
+          <h3 class="mt-4 font-display text-base font-bold text-ink-800">4. Treatment & Care</h3>
+          <p class="mt-2 text-xs leading-relaxed text-ink-500">
+            Funds are released directly to SynoChain AI partner medical facilities for patient treatment. No cash withdrawals.
+          </p>
+        </div>
+      </div>
+
+      <!-- 连接线说明 -->
+      <div class="mx-auto mt-12 max-w-3xl rounded-2xl border border-health-200 bg-health-50 p-6 text-center">
+        <div class="flex items-center justify-center gap-2 text-health-700">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          <p class="text-sm font-medium">
+            <strong>Important:</strong> All raised funds can only be used for medical treatment at SynoChain AI partner facilities. We guarantee 100% of donations reach the patients.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 成为筹款人 -->
+  <section class="section-padding bg-white">
+    <div class="container-x">
+      <div class="mx-auto max-w-3xl">
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-medical-600 via-medical-500 to-health-500 p-8 shadow-2xl sm:p-12">
+          <div class="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-white/10 blur-3xl"></div>
+          <div class="absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-white/10 blur-3xl"></div>
+
+          <div class="relative text-center">
+            <h2 class="text-3xl font-bold text-white sm:text-4xl">
+              Are You or a Loved One in Need?
+            </h2>
+            <p class="mt-4 text-base text-white/90 sm:text-lg">
+              If you are battling a major illness and need financial help for treatment, you can apply for our medical fund program.
+            </p>
+
+            <div class="mx-auto mt-8 max-w-xl rounded-2xl bg-white/15 p-6 backdrop-blur">
+              <h3 class="font-display text-lg font-bold text-white">How to Apply:</h3>
+              <ol class="mt-4 space-y-3 text-left">
+                <li class="flex items-start gap-3">
+                  <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white text-sm font-bold text-medical-600">1</span>
+                  <span class="text-sm text-white/90">Record a short video (2-5 minutes) telling your story</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white text-sm font-bold text-medical-600">2</span>
+                  <span class="text-sm text-white/90">Send the video to our email with your medical records</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white text-sm font-bold text-medical-600">3</span>
+                  <span class="text-sm text-white/90">Our team will review and contact you within 5 business days</span>
+                </li>
+              </ol>
+            </div>
+
+            <a
+              href={`mailto:${COMPANY_EMAIL}?subject=Medical Fund Application&body=I would like to apply for the medical treatment fund.%0D%0A%0D%0APatient Name:%0D%0ACondition:%0D%0ATreatment Needed:%0D%0AEstimated Cost:%0D%0AContact Information:`}
+              class="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-bold text-medical-600 shadow-lg transition-transform hover:scale-105"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Apply via Email
+            </a>
+            <p class="mt-3 text-xs text-white/70">{COMPANY_EMAIL}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-padding bg-ink-50">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">Frequently Asked Questions</h2>
+      </div>
+      <div class="mx-auto mt-12 max-w-3xl space-y-4">
+        <details class="group rounded-xl border border-ink-100 bg-white p-6 shadow-sm" open>
+          <summary class="flex cursor-pointer items-center justify-between gap-4 list-none">
+            <h3 class="font-display text-base font-semibold text-ink-800">How do I know the patients are real?</h3>
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-medical-50 text-medical-600 transition-transform group-open:rotate-180">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm text-ink-500">Every patient is verified by our medical team. We review medical records, speak with treating physicians, and confirm the diagnosis before publishing any story. Each patient video is genuine and recorded by the patient themselves.</p>
+        </details>
+        <details class="group rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 list-none">
+            <h3 class="font-display text-base font-semibold text-ink-800">Where exactly does my donation go?</h3>
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-medical-50 text-medical-600 transition-transform group-open:rotate-180">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm text-ink-500">100% of your donation goes directly to the patient's medical treatment at SynoChain AI partner medical facilities. Funds are never withdrawn as cash — they are disbursed directly to the hospital or clinic providing treatment.</p>
+        </details>
+        <details class="group rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 list-none">
+            <h3 class="font-display text-base font-semibold text-ink-800">Can I fundraise for a specific patient?</h3>
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-medical-50 text-medical-600 transition-transform group-open:rotate-180">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm text-ink-500">Yes! After making a donation, contact us at our company email to receive fundraising qualification. You can then share a specific patient's story and help raise additional funds through your network.</p>
+        </details>
+        <details class="group rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 list-none">
+            <h3 class="font-display text-base font-semibold text-ink-800">What cryptocurrencies do you accept?</h3>
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-medical-50 text-medical-600 transition-transform group-open:rotate-180">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm text-ink-500">We accept ETH, USDT (ERC-20), USDC (ERC-20), and BTC. Simply send your donation to the wallet address listed on this page. All transactions are recorded on the blockchain for full transparency.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // 复制钱包地址
+  const copyBtn = document.getElementById('copy-wallet-btn');
+  const copyText = document.getElementById('copy-text');
+  const walletAddress = document.getElementById('wallet-address');
+
+  copyBtn?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(walletAddress?.textContent || '');
+      if (copyText) {
+        copyText.textContent = 'Copied!';
+        copyBtn.classList.add('bg-health-500');
+        copyBtn.classList.remove('bg-medical-500');
+        setTimeout(() => {
+          copyText.textContent = 'Copy';
+          copyBtn.classList.remove('bg-health-500');
+          copyBtn.classList.add('bg-medical-500');
+        }, 2000);
+      }
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  });
+</script>

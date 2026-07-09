@@ -1,7 +1,5 @@
 ---
 import { useTranslations, type Lang } from '../../i18n/ui';
-import { getCrowdfundingStats, defaultStats } from '../../lib/supabase';
-import { formatCurrency, formatNumber } from '../../lib/utils';
 
 export interface Props {
   lang: Lang;
@@ -9,8 +7,6 @@ export interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const stats = await getCrowdfundingStats();
-const progressPercent = Math.min((stats.total_raised / stats.goal) * 100, 100);
 ---
 
 <section class="relative overflow-hidden bg-white pt-32 pb-20 md:pt-40 md:pb-32">
@@ -29,7 +25,7 @@ const progressPercent = Math.min((stats.total_raised / stats.goal) * 100, 100);
           <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-health-400 opacity-75"></span>
           <span class="relative inline-flex h-2 w-2 rounded-full bg-health-500"></span>
         </span>
-        Community-Funded AI Health Project
+        AI-Powered Health Platform & Medical Fund
       </div>
 
       <!-- 主标题 -->
@@ -41,14 +37,14 @@ const progressPercent = Math.min((stats.total_raised / stats.goal) * 100, 100);
 
       <!-- 副标题 -->
       <p class="animate-slide-up animation-delay-200 mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ink-500 sm:text-lg md:text-xl">
-        Join our community-funded AI health project. Your contribution helps us build AI models, train medical knowledge systems, develop apps, and make personalized health guidance accessible to everyone.
+        AI-powered health guidance for everyone. Support patients battling major illnesses through our medical treatment fund. 100% transparent crypto donations.
       </p>
 
       <!-- CTA 按钮 -->
       <div class="animate-slide-up animation-delay-300 mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <a href="#founder" class="btn-primary w-full sm:w-auto">
-          <span class="text-base">🚀</span>
-          {t('hero.cta')}
+        <a href="/medical-fund" class="btn-primary w-full sm:w-auto">
+          <span class="text-base">💝</span>
+          Donate & Save Lives
         </a>
         <a href="#ai-assistant" class="btn-secondary w-full sm:w-auto">
           {t('home.tryAssistant')}
@@ -56,43 +52,20 @@ const progressPercent = Math.min((stats.total_raised / stats.goal) * 100, 100);
         </a>
       </div>
 
-      <!-- 众筹进度 -->
+      <!-- 统计数据 -->
       <div class="animate-slide-up animation-delay-400 mt-16 mx-auto max-w-3xl">
-        <div class="rounded-2xl border border-ink-100 bg-white/80 p-6 shadow-sm backdrop-blur sm:p-8">
-          <!-- 进度条 -->
-          <div class="mb-6">
-            <div class="mb-2 flex items-center justify-between text-sm">
-              <span class="font-medium text-ink-700">{formatCurrency(stats.total_raised)} {t('hero.raised')}</span>
-              <span class="text-ink-400">of {formatCurrency(stats.goal)} goal</span>
-            </div>
-            <div class="h-3 w-full overflow-hidden rounded-full bg-ink-100">
-              <div
-                class="h-full rounded-full bg-gradient-to-r from-medical-500 to-health-500 transition-all duration-1000"
-                style={`width: ${progressPercent}%`}
-              ></div>
-            </div>
+        <div class="grid grid-cols-3 gap-4 sm:gap-8">
+          <div class="rounded-2xl border border-ink-100 bg-white/80 p-6 text-center shadow-sm backdrop-blur">
+            <div class="font-display text-2xl font-bold text-medical-600 sm:text-3xl">$148K+</div>
+            <div class="mt-1 text-xs text-ink-400 sm:text-sm">Raised for Patients</div>
           </div>
-
-          <!-- 统计数据 -->
-          <div class="grid grid-cols-3 gap-4 sm:gap-8">
-            <div class="text-center">
-              <div class="font-display text-2xl font-bold text-medical-600 sm:text-3xl">
-                {formatCurrency(stats.total_raised)}
-              </div>
-              <div class="mt-1 text-xs text-ink-400 sm:text-sm">{t('hero.raised')}</div>
-            </div>
-            <div class="border-x border-ink-100 text-center">
-              <div class="font-display text-2xl font-bold text-health-600 sm:text-3xl">
-                {formatNumber(stats.supporter_count)}
-              </div>
-              <div class="mt-1 text-xs text-ink-400 sm:text-sm">{t('hero.supporters')}</div>
-            </div>
-            <div class="text-center">
-              <div class="font-display text-2xl font-bold text-ink-800 sm:text-3xl">
-                {stats.days_remaining}
-              </div>
-              <div class="mt-1 text-xs text-ink-400 sm:text-sm">{t('hero.daysRemaining')}</div>
-            </div>
+          <div class="rounded-2xl border border-ink-100 bg-white/80 p-6 text-center shadow-sm backdrop-blur">
+            <div class="font-display text-2xl font-bold text-health-600 sm:text-3xl">5,350+</div>
+            <div class="mt-1 text-xs text-ink-400 sm:text-sm">Health Pages</div>
+          </div>
+          <div class="rounded-2xl border border-ink-100 bg-white/80 p-6 text-center shadow-sm backdrop-blur">
+            <div class="font-display text-2xl font-bold text-ink-800 sm:text-3xl">8</div>
+            <div class="mt-1 text-xs text-ink-400 sm:text-sm">Languages</div>
           </div>
         </div>
       </div>
