@@ -70,6 +70,25 @@ const basePath = lang === 'en' ? '' : `/${lang}`;
         {title}
       </h1>
       <p class="text-lg text-ink-600">{metaDescription}</p>
+      <!-- Hero Image based on content type -->
+      <div class="mt-8 overflow-hidden rounded-2xl border border-ink-100 shadow-lg">
+        <img
+          src={`https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=${encodeURIComponent(
+            type === 'disease' ? 'medical illustration of disease pathology, clean clinical style, blue and teal gradient background, professional medical diagram'
+            : type === 'symptom' ? 'medical symptom illustration showing human body health indicators, clean modern medical style, blue teal gradient'
+            : type === 'cause' ? 'illustration of health risk factors and disease causes, medical infographic style, blue and teal color scheme'
+            : type === 'body_part' ? 'anatomical illustration of human body, medical anatomy style, clean professional, blue teal gradient background'
+            : type === 'lab_test' ? 'medical laboratory test illustration, blood test tubes and microscope, clean clinical style, blue teal gradient'
+            : type === 'nutrition' ? 'healthy nutrition and food illustration, fresh fruits vegetables and supplements, clean modern style, blue teal'
+            : type === 'guide' ? 'health and wellness guide illustration, lifestyle medicine concept, clean modern style, blue teal gradient'
+            : type === 'mental_health' ? 'mental health and wellness illustration, brain and mindfulness concept, calming blue teal gradient'
+            : 'medical health FAQ illustration, question and answer concept, clean modern style, blue teal gradient'
+          )}&image_size=landscape_16_9`}
+          alt={title}
+          class="h-48 w-full object-cover sm:h-64"
+          loading="eager"
+        />
+      </div>
     </div>
   </div>
 </section>

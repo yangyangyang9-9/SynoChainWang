@@ -201,9 +201,14 @@ if (relatedPosts.length < 2) {
   <section class="bg-white section-padding pt-8">
     <div class="container-x">
       <div class="mx-auto max-w-3xl">
-        <!-- 封面图占位 -->
-        <div class={`mb-10 flex h-64 items-center justify-center rounded-2xl bg-gradient-to-br ${post.cover} text-8xl opacity-90`}>
-          <span class="opacity-30">📄</span>
+        <!-- 封面图 -->
+        <div class="mb-10 overflow-hidden rounded-2xl border border-ink-100 shadow-lg">
+          <img
+            src={`https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=${encodeURIComponent(post.title + ', clean modern health blog illustration, blue teal gradient, professional medical style')}&image_size=landscape_16_9`}
+            alt={post.title}
+            class="h-64 w-full object-cover"
+            loading="eager"
+          />
         </div>
 
         <!-- 正文内容 -->

@@ -43,6 +43,13 @@ const categories = [...new Set(bodyParts.map((p) => p.category))];
         <p class="mt-4 text-base text-ink-500 sm:text-lg">
           {t('nav.bodyParts') === '身体部位' ? '了解人体各部位的解剖结构、功能和常见健康问题。' : 'Learn about the anatomy, functions, and common health issues of each body part.'}
         </p>
+        <div class="mt-8 mx-auto max-w-xl">
+          <img
+            src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=human%20anatomy%20body%20parts%20medical%20illustration%2C%20clean%20anatomical%20diagram%2C%20blue%20teal%20gradient%20background%2C%20professional%20medical%20style&image_size=landscape_16_9"
+            alt="Body Parts"
+            class="w-full rounded-2xl border border-ink-100 shadow-lg"
+          />
+        </div>
       </div>
     </div>
   </section>
