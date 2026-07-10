@@ -5,9 +5,6 @@ import { getLangFromUrl, useTranslations } from '../i18n/ui';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// 根据语言生成基础路径
-const basePath = lang === 'en' ? '' : `/${lang}`;
-
 // 社区分类标签
 const categories = [
   { name: 'All', icon: '🌐', count: 1284 },
@@ -284,7 +281,7 @@ const stats = [
             <div class="mt-6 rounded-xl bg-gradient-to-br from-medical-500 to-health-500 p-5 text-center text-white">
               <h4 class="font-display font-bold">Need Quick Health Advice?</h4>
               <p class="mt-1 text-sm text-white/90">Our AI assistant is available 24/7 for personalized guidance.</p>
-              <a href={`${basePath}/ai-tools`} class="mt-3 inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-2 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
+              <a href="/ai-tools" class="mt-3 inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-2 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
                 🤖 Ask AI Assistant
               </a>
             </div>

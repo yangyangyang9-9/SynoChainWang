@@ -5,8 +5,6 @@ import { getLangFromUrl, useTranslations } from '../../i18n/ui';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const basePath = lang === 'en' ? '' : `/${lang}`;
-
 const questions = [
   { slug: 'why-am-i-tired', question: t('nav.questions') === 'FAQ' ? 'Why am I always tired?' : '为什么我总是感到疲倦？', category: 'Fatigue' },
   { slug: 'why-is-my-nose-blocked', question: t('nav.questions') === 'FAQ' ? 'Why is my nose blocked?' : '为什么我的鼻子堵塞？', category: 'Respiratory' },
@@ -90,7 +88,7 @@ const categories = [...new Set(questions.map((q) => q.category))];
       <div class="mx-auto max-w-3xl space-y-4">
         {questions.map((q) => (
           <a
-            href={`${basePath}/questions/${q.slug}`}
+            href={`/questions/${q.slug}`}
             class="group flex w-full items-start gap-4 rounded-xl border border-ink-100 bg-white p-5 shadow-sm transition-all hover:border-medical-200 hover:shadow-md"
           >
             <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-medical-50 text-medical-600">

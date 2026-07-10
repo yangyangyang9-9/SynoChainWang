@@ -5,9 +5,6 @@ import { getLangFromUrl, useTranslations } from '../i18n/ui';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// 根据语言生成基础路径
-const basePath = lang === 'en' ? '' : `/${lang}`;
-
 // 健康测试 mock 数据
 const tests = [
   {
@@ -194,7 +191,7 @@ const categories = ['All', ...new Set(tests.map((tst) => tst.category))];
         <p class="mx-auto mt-3 max-w-xl text-white/90">
           Chat with our AI health assistant for a more personalized, interactive assessment of your health concerns.
         </p>
-        <a href={`${basePath}/ai-tools`} class="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
+        <a href="/ai-tools" class="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
           Try AI Assistant
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
         </a>

@@ -12,8 +12,6 @@ const { locale } = Astro.params;
 const lang = locale as any;
 const t = useTranslations(lang);
 
-const basePath = `/${lang}`;
-
 const conditions = [
   {
     slug: 'sinusitis',
@@ -175,7 +173,7 @@ const categories = [...new Set(conditions.map((c) => c.category))];
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {conditions.map((condition) => (
           <a
-            href={`${basePath}/conditions/${condition.slug}`}
+            href={`/conditions/${condition.slug}`}
             id={`letter-${condition.letter}`}
             class="card group flex flex-col scroll-mt-32"
           >

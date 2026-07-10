@@ -7,7 +7,6 @@ export interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const basePath = lang === 'en' ? '' : `/${lang}`;
 const year = new Date().getFullYear();
 
 const productLinks = [
@@ -35,7 +34,7 @@ const companyLinks = [
     <div class="grid grid-cols-2 gap-8 md:grid-cols-5">
       <!-- Brand -->
       <div class="col-span-2 md:col-span-2">
-        <a href={basePath || '/'} class="flex items-center gap-2">
+        <a href="/" class="flex items-center gap-2">
           <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-medical-500 to-health-500">
             <svg class="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M12 2L2 7l10 5 10-5-10-5z" />

@@ -6,9 +6,6 @@ import { generateMedicalSchema, generateFaqSchema } from '../../lib/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// 根据语言生成基础路径
-const basePath = lang === 'en' ? '' : `/${lang}`;
-
 // 疾病详情 mock 数据（含 SEO 所需完整字段）
 export function getStaticPaths() {
   const conditionsData = [
@@ -225,7 +222,7 @@ const relatedConditions = condition.relatedConditions
     <div class="container-x relative">
       <!-- 面包屑导航 -->
       <nav class="flex items-center gap-2 text-sm text-ink-400">
-        <a href={`${basePath}/conditions`} class="hover:text-medical-600">Disease Library</a>
+        <a href="/conditions" class="hover:text-medical-600">Disease Library</a>
         <span>/</span>
         <span class="font-medium text-ink-700">{condition.name}</span>
       </nav>
@@ -239,7 +236,7 @@ const relatedConditions = condition.relatedConditions
             {condition.name}
           </h1>
         </div>
-        <a href={`${basePath}/ai-tools`} class="btn-primary">
+        <a href="/ai-tools" class="btn-primary">
           <span>🤖</span>
           Try AI Health Assessment
         </a>
@@ -355,7 +352,7 @@ const relatedConditions = condition.relatedConditions
             <div class="mt-4 flex flex-wrap gap-2">
               {condition.relatedSymptoms.map((symptom) => (
                 <a
-                  href={`${basePath}/symptoms/${symptom.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`/symptoms/${symptom.toLowerCase().replace(/\s+/g, '-')}`}
                   class="rounded-full bg-medical-50 px-3 py-1.5 text-xs font-medium text-medical-700 ring-1 ring-inset ring-medical-200 transition-colors hover:bg-medical-100"
                 >
                   {symptom}
@@ -370,7 +367,7 @@ const relatedConditions = condition.relatedConditions
                 <div class="mt-4 space-y-3">
                   {relatedConditions.map((rel) => (
                     <a
-                      href={`${basePath}/conditions/${rel.slug}`}
+                      href={`/conditions/${rel.slug}`}
                       class="block rounded-xl border border-ink-100 p-3 transition-colors hover:border-medical-200 hover:bg-medical-50"
                     >
                       <div class="font-semibold text-ink-800">{rel.name}</div>
@@ -385,7 +382,7 @@ const relatedConditions = condition.relatedConditions
             <div class="mt-6 rounded-xl bg-gradient-to-br from-medical-500 to-health-500 p-5 text-white">
               <h4 class="font-display font-bold">Need Personalized Guidance?</h4>
               <p class="mt-1 text-sm text-white/90">Let our AI assistant analyze your symptoms and provide tailored recommendations.</p>
-              <a href={`${basePath}/ai-tools`} class="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
+              <a href="/ai-tools" class="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
                 Try AI Health Assessment →
               </a>
             </div>

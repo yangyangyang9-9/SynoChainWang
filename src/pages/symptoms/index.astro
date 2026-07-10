@@ -5,9 +5,6 @@ import { getLangFromUrl, useTranslations } from '../../i18n/ui';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// 根据语言生成基础路径
-const basePath = lang === 'en' ? '' : `/${lang}`;
-
 // 常见症状标签云数据
 const commonSymptoms = [
   { name: 'Headache', slug: 'headache', icon: '🤕', count: 142 },
@@ -81,7 +78,7 @@ const bodyParts = [
             placeholder="Describe your symptom, e.g. headache and fever..."
             class="w-full rounded-2xl border border-ink-200 bg-white py-5 pl-16 pr-40 text-base text-ink-800 shadow-md transition-colors placeholder:text-ink-400 focus:border-medical-400 focus:outline-none focus:ring-4 focus:ring-medical-100"
           />
-          <a href={`${basePath}/ai-tools`} class="btn-primary absolute right-2 top-1/2 -translate-y-1/2 px-6 py-3">
+          <a href="/ai-tools" class="btn-primary absolute right-2 top-1/2 -translate-y-1/2 px-6 py-3">
             Check Now
           </a>
         </div>
@@ -103,7 +100,7 @@ const bodyParts = [
       <div class="mx-auto mt-10 flex max-w-4xl flex-wrap items-center justify-center gap-3">
         {commonSymptoms.map((symptom) => (
           <a
-            href={`${basePath}/symptoms/${symptom.slug}`}
+            href={`/symptoms/${symptom.slug}`}
             class="group flex items-center gap-2 rounded-full border border-ink-200 bg-white px-5 py-3 text-sm font-medium text-ink-700 shadow-sm transition-all hover:border-medical-300 hover:bg-medical-50 hover:text-medical-700 hover:shadow-md"
           >
             <span class="text-lg">{symptom.icon}</span>
@@ -150,7 +147,7 @@ const bodyParts = [
         <p class="mx-auto mt-3 max-w-xl text-white/90">
           Get personalized health guidance instantly. Describe your symptoms in natural language and our AI assistant will analyze possible causes and recommend next steps.
         </p>
-        <a href={`${basePath}/ai-tools`} class="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
+        <a href="/ai-tools" class="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
           Start AI Assessment
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
         </a>

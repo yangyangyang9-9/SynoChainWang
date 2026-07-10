@@ -6,9 +6,6 @@ import { generateMedicalSchema } from '../../lib/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// 根据语言生成基础路径
-const basePath = lang === 'en' ? '' : `/${lang}`;
-
 // 症状详情 mock 数据
 export function getStaticPaths() {
   const symptomsData = [
@@ -153,7 +150,7 @@ const severityColor = symptom.severity === 'Moderate' ? 'bg-amber-50 text-amber-
     <div class="container-x relative">
       <!-- 面包屑导航 -->
       <nav class="flex items-center gap-2 text-sm text-ink-400">
-        <a href={`${basePath}/symptoms`} class="hover:text-medical-600">Symptoms Checker</a>
+        <a href="/symptoms" class="hover:text-medical-600">Symptoms Checker</a>
         <span>/</span>
         <span class="font-medium text-ink-700">{symptom.name}</span>
       </nav>
@@ -172,7 +169,7 @@ const severityColor = symptom.severity === 'Moderate' ? 'bg-amber-50 text-amber-
             </span>
           </div>
         </div>
-        <a href={`${basePath}/ai-tools`} class="btn-primary">
+        <a href="/ai-tools" class="btn-primary">
           <span>🤖</span>
           Get AI Analysis
         </a>
@@ -214,7 +211,7 @@ const severityColor = symptom.severity === 'Moderate' ? 'bg-amber-50 text-amber-
             <div class="mt-4 grid gap-3 sm:grid-cols-2">
               {relatedConditions.map((cond) => (
                 <a
-                  href={`${basePath}/conditions/${cond.slug}`}
+                  href={`/conditions/${cond.slug}`}
                   class="flex items-center justify-between rounded-xl border border-ink-100 p-4 transition-colors hover:border-medical-200 hover:bg-medical-50"
                 >
                   <div>
@@ -262,7 +259,7 @@ const severityColor = symptom.severity === 'Moderate' ? 'bg-amber-50 text-amber-
               <p class="mt-2 text-sm text-white/90">
                 Describe your symptoms in detail and get AI-powered analysis with possible causes and recommendations.
               </p>
-              <a href={`${basePath}/ai-tools`} class="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
+              <a href="/ai-tools" class="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
                 Start AI Assessment →
               </a>
             </div>
@@ -272,7 +269,7 @@ const severityColor = symptom.severity === 'Moderate' ? 'bg-amber-50 text-amber-
             <div class="mt-3 space-y-2">
               {allSymptoms.filter((s) => s.slug !== symptom.slug).slice(0, 6).map((s) => (
                 <a
-                  href={`${basePath}/symptoms/${s.slug}`}
+                  href={`/symptoms/${s.slug}`}
                   class="flex items-center gap-3 rounded-lg p-2 text-sm text-ink-600 transition-colors hover:bg-medical-50 hover:text-medical-700"
                 >
                   <span class="text-lg">{s.icon}</span>

@@ -7,7 +7,6 @@ export interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const basePath = lang === 'en' ? '' : `/${lang}`;
 
 const tools = [
   { key: 'aiTools', href: '/ai-tools', icon: '🤖', color: 'medical', desc: 'aiTools' },

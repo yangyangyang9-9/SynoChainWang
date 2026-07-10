@@ -6,9 +6,6 @@ import { formatDate } from '../../lib/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// 根据语言生成基础路径
-const basePath = lang === 'en' ? '' : `/${lang}`;
-
 // 博客文章 mock 数据（含正文内容）
 export function getStaticPaths() {
   const postsData = [
@@ -169,7 +166,7 @@ if (relatedPosts.length < 2) {
     <div class="container-x relative">
       <!-- 面包屑导航 -->
       <nav class="flex items-center gap-2 text-sm text-ink-400">
-        <a href={`${basePath}/blog`} class="hover:text-medical-600">Blog</a>
+        <a href="/blog" class="hover:text-medical-600">Blog</a>
         <span>/</span>
         <span class="font-medium text-ink-700">{post.category}</span>
       </nav>
@@ -235,7 +232,7 @@ if (relatedPosts.length < 2) {
           <p class="mx-auto mt-2 max-w-md text-sm text-white/90">
             Get personalized AI-powered health guidance based on your specific symptoms and concerns.
           </p>
-          <a href={`${basePath}/ai-tools`} class="mt-4 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
+          <a href="/ai-tools" class="mt-4 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-medical-600 transition-colors hover:bg-white/90">
             🤖 Try AI Health Assistant
           </a>
         </div>
@@ -248,7 +245,7 @@ if (relatedPosts.length < 2) {
           <div class="mt-6 grid gap-6 sm:grid-cols-2">
             {relatedPosts.map((rel) => (
               <a
-                href={`${basePath}/blog/${rel.slug}`}
+                href={`/blog/${rel.slug}`}
                 class="group flex flex-col overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg hover:border-medical-100"
               >
                 <div class={`flex h-32 items-center justify-center bg-gradient-to-br ${rel.cover} text-4xl opacity-90`}>

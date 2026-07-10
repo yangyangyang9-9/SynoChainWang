@@ -6,8 +6,6 @@ import medicines from '../../data/medicines.json';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const basePath = lang === 'en' ? '' : `/${lang}`;
-
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const activeLetters = [...new Set(medicines.map((m) => m.letter))];
 const categories = [...new Set(medicines.map((m) => m.category))];
@@ -69,7 +67,7 @@ const categories = [...new Set(medicines.map((m) => m.category))];
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {medicines.map((med) => (
           <a
-            href={`${basePath}/medicines/${med.slug}`}
+            href={`/medicines/${med.slug}`}
             id={`letter-${med.letter}`}
             class="card group flex flex-col scroll-mt-32"
           >

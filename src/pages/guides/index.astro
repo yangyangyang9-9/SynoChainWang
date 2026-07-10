@@ -6,8 +6,6 @@ import guidesData from '../../data/guides.json';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const basePath = lang === 'en' ? '' : `/${lang}`;
-
 const guides = guidesData.map((g) => ({
   slug: g.slug,
   name: g.name,
@@ -76,7 +74,7 @@ const categories = [...new Set(guides.map((g) => g.category))];
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {guides.map((guide) => (
           <a
-            href={`${basePath}/guides/${guide.slug}`}
+            href={`/guides/${guide.slug}`}
             id={`letter-${guide.letter}`}
             class="card group flex flex-col scroll-mt-32"
           >

@@ -6,8 +6,6 @@ import topics from '../../data/mental-health.json';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const basePath = lang === 'en' ? '' : `/${lang}`;
-
 const isChinese = t('nav.mentalHealth') === '心理健康';
 
 const displayTopics = topics.map((topic) => ({
@@ -78,7 +76,7 @@ const categories = [...new Set(displayTopics.map((t) => t.category))];
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {displayTopics.map((topic) => (
           <a
-            href={`${basePath}/mental-health/${topic.slug}`}
+            href={`/mental-health/${topic.slug}`}
             id={`letter-${topic.letter}`}
             class="card group flex flex-col scroll-mt-32"
           >

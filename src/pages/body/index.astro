@@ -5,8 +5,6 @@ import { getLangFromUrl, useTranslations } from '../../i18n/ui';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const basePath = lang === 'en' ? '' : `/${lang}`;
-
 const bodyParts = [
   { slug: 'head', name: t('nav.bodyParts') === '身体部位' ? '头部' : 'Head', category: 'Cranial', letter: 'H' },
   { slug: 'neck', name: t('nav.bodyParts') === '身体部位' ? '颈部' : 'Neck', category: 'Cervical', letter: 'N' },
@@ -80,7 +78,7 @@ const categories = [...new Set(bodyParts.map((p) => p.category))];
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {bodyParts.map((part) => (
           <a
-            href={`${basePath}/body/${part.slug}`}
+            href={`/body/${part.slug}`}
             id={`letter-${part.letter}`}
             class="card group flex flex-col scroll-mt-32"
           >

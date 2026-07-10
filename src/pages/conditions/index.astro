@@ -5,9 +5,6 @@ import { getLangFromUrl, useTranslations } from '../../i18n/ui';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// 根据语言生成基础路径（英文为根路径，其他语言带前缀）
-const basePath = lang === 'en' ? '' : `/${lang}`;
-
 // 疾病库 mock 数据
 const conditions = [
   {
@@ -184,7 +181,7 @@ const categories = [...new Set(conditions.map((c) => c.category))];
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {conditions.map((condition) => (
           <a
-            href={`${basePath}/conditions/${condition.slug}`}
+            href={`/conditions/${condition.slug}`}
             id={`letter-${condition.letter}`}
             class="card group flex flex-col scroll-mt-32"
           >

@@ -6,8 +6,6 @@ import topicsData from '../../data/womens-health.json';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const basePath = lang === 'en' ? '' : `/${lang}`;
-
 const isZh = t('nav.womensHealth') === '女性健康';
 
 const zhNames: Record<string, string> = {
@@ -86,7 +84,7 @@ const categories = [...new Set(topics.map((t) => t.category))];
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {topics.map((topic) => (
           <a
-            href={`${basePath}/womens-health/${topic.slug}`}
+            href={`/womens-health/${topic.slug}`}
             id={`letter-${topic.letter}`}
             class="card group flex flex-col scroll-mt-32"
           >
