@@ -25,26 +25,26 @@ const t = useTranslations(lang);
           <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-health-400 opacity-75"></span>
           <span class="relative inline-flex h-2 w-2 rounded-full bg-health-500"></span>
         </span>
-        AI-Powered Health Platform & Medical Fund
+        {t('hero.badge')}
       </div>
 
       <!-- 主标题 -->
       <h1 class="animate-slide-up text-4xl font-extrabold leading-tight tracking-tight text-ink-800 sm:text-5xl md:text-6xl lg:text-7xl">
-        Build The World's First
-        <span class="gradient-text block sm:inline">AI Health Companion</span>
-        Together
+        {t('hero.titleLine1')}
+        <span class="gradient-text block sm:inline">{t('hero.titleLine2')}</span>
+        {t('hero.titleLine3')}
       </h1>
 
       <!-- 副标题 -->
       <p class="animate-slide-up animation-delay-200 mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ink-500 sm:text-lg md:text-xl">
-        AI-powered health guidance for everyone. Support patients battling major illnesses through our medical treatment fund. 100% transparent crypto donations.
+        {t('hero.subtitleNew')}
       </p>
 
       <!-- CTA 按钮 -->
       <div class="animate-slide-up animation-delay-300 mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
         <a href="/medical-fund" class="btn-primary w-full sm:w-auto">
           <span class="text-base">💝</span>
-          Donate & Save Lives
+          {t('hero.donateCta')}
         </a>
         <a href="#ai-assistant" class="btn-secondary w-full sm:w-auto">
           {t('home.tryAssistant')}
@@ -57,15 +57,15 @@ const t = useTranslations(lang);
         <div class="grid grid-cols-3 gap-4 sm:gap-8">
           <div class="rounded-2xl border border-ink-100 bg-white/80 p-6 text-center shadow-sm backdrop-blur">
             <div class="font-display text-2xl font-bold text-medical-600 sm:text-3xl">$148K+</div>
-            <div class="mt-1 text-xs text-ink-400 sm:text-sm">Raised for Patients</div>
+            <div class="mt-1 text-xs text-ink-400 sm:text-sm">{t('hero.statRaised')}</div>
           </div>
           <div class="rounded-2xl border border-ink-100 bg-white/80 p-6 text-center shadow-sm backdrop-blur">
             <div class="font-display text-2xl font-bold text-health-600 sm:text-3xl">5,350+</div>
-            <div class="mt-1 text-xs text-ink-400 sm:text-sm">Health Pages</div>
+            <div class="mt-1 text-xs text-ink-400 sm:text-sm">{t('hero.statPages')}</div>
           </div>
           <div class="rounded-2xl border border-ink-100 bg-white/80 p-6 text-center shadow-sm backdrop-blur">
             <div class="font-display text-2xl font-bold text-ink-800 sm:text-3xl">8</div>
-            <div class="mt-1 text-xs text-ink-400 sm:text-sm">Languages</div>
+            <div class="mt-1 text-xs text-ink-400 sm:text-sm">{t('hero.statLanguages')}</div>
           </div>
         </div>
       </div>

@@ -14,6 +14,21 @@ const { title = 'SynoChain AI - AI Health Companion', description = 'Build the w
 
 const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
+
+// 提取当前路径（去掉语言前缀）用于生成 hreflang
+const pathSegments = currentPath.split('/').filter(Boolean);
+const supportedLangs = Object.keys(languages);
+let basePath = currentPath;
+if (pathSegments.length > 0 && supportedLangs.includes(pathSegments[0])) {
+  basePath = '/' + pathSegments.slice(1).join('/');
+  if (basePath === '/') basePath = '';
+}
+
+// og:locale 映射
+const ogLocales: Record<string, string> = {
+  en: 'en_US', zh: 'zh_CN', es: 'es_ES', ja: 'ja_JP',
+  de: 'de_DE', fr: 'fr_FR', ko: 'ko_KR', pt: 'pt_PT',
+};
 ---
 
 <!doctype html>
@@ -36,6 +51,22 @@ const currentPath = Astro.url.pathname;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+
+    <!-- hreflang alternate links for SEO i18n -->
+    <link rel="alternate" hreflang="en" href={`https://synochain.ai${basePath || '/'}`} />
+    {supportedLangs.filter(l => l !== 'en').map((l) => (
+      <link rel="alternate" hreflang={l} href={`https://synochain.ai/${l}${basePath}`} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={`https://synochain.ai${basePath || '/'}`} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={`https://synochain.ai${lang === 'en' ? (basePath || '/') : '/' + lang + basePath}`} />
+
+    <!-- Open Graph locale -->
+    <meta property="og:locale" content={ogLocales[lang] || 'en_US'} />
+    {supportedLangs.filter(l => l !== lang).map((l) => (
+      <meta property="og:locale:alternate" content={ogLocales[l] || 'en_US'} />
+    ))}
 
     <!-- Google Search Console 验证 -->
     {import.meta.env.GOOGLE_SITE_VERIFICATION && (

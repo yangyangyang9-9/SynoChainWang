@@ -105,17 +105,17 @@ const stats = [
             {t('tools.community.title')}
           </span>
           <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-ink-800 sm:text-5xl">
-            Community
+            {t('community.title')}
           </h1>
           <p class="mt-4 text-base text-ink-500 sm:text-lg">
-            Connect with health-conscious people, share your experiences, and learn from others on similar wellness journeys.
+            {t('community.subtitle')}
           </p>
         </div>
 
         <!-- 发起新话题按钮 -->
         <button class="btn-primary flex-shrink-0">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" /></svg>
-          Start New Topic
+          {t('community.startTopic')}
         </button>
       </div>
 
@@ -178,7 +178,7 @@ const stats = [
           <div>
             <div class="flex items-center gap-2">
               <span class="text-2xl">🔥</span>
-              <h2 class="font-display text-2xl font-bold text-ink-800">Trending Topics</h2>
+              <h2 class="font-display text-2xl font-bold text-ink-800">{t('community.trending')}</h2>
             </div>
             <div class="mt-6 space-y-3">
               {trendingTopics.map((topic) => (
@@ -216,7 +216,7 @@ const stats = [
           <div>
             <div class="flex items-center gap-2">
               <span class="text-2xl">📰</span>
-              <h2 class="font-display text-2xl font-bold text-ink-800">Recent Posts</h2>
+              <h2 class="font-display text-2xl font-bold text-ink-800">{t('community.latest')}</h2>
             </div>
             <div class="mt-6 space-y-5">
               {posts.map((post) => (
